@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from analysis.signal_processing import example_plot
+from .components import menu_bar as mb
 
 class FFTAnalyzerApp:
     def __init__(self, master):
@@ -22,21 +23,8 @@ class FFTAnalyzerApp:
 
     def setup_gui(self):
         # Create a menu bar
-        self.menu_bar = tk.Menu(self.master)
+        self.menu_bar = mb.setup_menu(self.master, self.load_signals, self.show_example_plot)
         self.master.config(menu=self.menu_bar)
-
-        # Add "File" menu
-        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
-        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
-
-        # Add calculation menu
-        self.calculation_menu = tk.Menu(self.menu_bar, tearoff=0)
-        self.menu_bar.add_cascade(label="Berechnung", menu=self.calculation_menu)
-
-        # Add "Open" option to "File" menu
-        self.file_menu.add_command(label="Open", command=self.load_signals)
-        # Add "Kreuzkorrelation" option to "Berechnung" menu
-        self.calculation_menu.add_command(label="Kreuzkorrelation", command=self.show_example_plot)
 
         # Placeholder for storing the signal files
         self.signal_files = []
