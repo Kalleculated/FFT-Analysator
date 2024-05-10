@@ -1,1 +1,8 @@
+title: FFT-Analysator
+description: Dieses Softwaremodul ist ein Werkzeug, um diverse Berechnungen zweier Signale im Bereich der Akustik auszuführen. 
 theme: just-the-docs
+
+url: https://kalleculated.github.io/FFT-Analysator/
+
+aux_links:
+  Template Repository: https://github.com/Kalleculated/FFT-Analysator
