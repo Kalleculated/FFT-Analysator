@@ -21,7 +21,7 @@ class MainView:
         # Setze einige zusätzliche Design- und Template-Parameter
         pn.state.template.param.update(
             site="FFT-Analysator",
-            title="FFT-Analysator",
+            title="",
             header_background="#E91E63",
             accent_base_color="#E91E63",
         )
