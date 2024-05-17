@@ -1,15 +1,12 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import tkinter as tk
+import h5py
+import io
 
-def example_plot(master):
-    figure = plt.Figure(figsize=(5, 4), dpi=100)
-    ax = figure.add_subplot(111)
-    t = np.linspace(0, 2 * np.pi, 100)
-    s = np.sin(t)
-    ax.plot(t, s)
-    ax.set_title("Example Plot: Sine Wave")
-    canvas = FigureCanvasTkAgg(figure, master=master)
-    canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-    return ax, canvas
+def count_channels(file_data):
+    # Erstelle ein file-like object aus den Bytes
+    #print(io.BytesIO(file_data))
+    with h5py.File(io.BytesIO(file_data[0]), 'r') as file:
+        # Zugriff auf den gewünschten Datensatz
+        data = file['time_data']
+        # Die Anzahl der Kanäle (zweite Dimension der Daten)
+        num_channels = data.shape[1]
+    return num_channels
