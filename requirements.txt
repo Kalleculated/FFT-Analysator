@@ -2,5 +2,5 @@ numpy==1.26.3
 scipy==1.13.0
 acoular
 matplotlib==3.9
-panel=1.4.2
+panel==1.4.2
 
