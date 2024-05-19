@@ -9,4 +9,5 @@ def count_channels(file_data):
         data = file['time_data'][:]
         # Die Anzahl der Kanäle (zweite Dimension der Daten)
         # Test ob das Commit + Branches geht.
+        # Commite ich im richtigen Branch?
     return data
