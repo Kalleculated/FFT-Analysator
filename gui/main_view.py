@@ -1,6 +1,6 @@
 import panel as pn
 from gui.components.file_input import FileInputComponent
-import analysis.signal_processing as sp
+import analysis.preprocessing as sp
 import matplotlib.pyplot as plt
 import gui.components.upload_button as ub
 import gui.components.file_input as fi
