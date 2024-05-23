@@ -6,6 +6,7 @@ import gui.components.upload_button as ub
 import gui.components.file_input as fi
 import holoviews as hv
 import panel as pn
+import numpy as np
 
 hv.extension("bokeh", "plotly")
 
@@ -21,7 +22,7 @@ class MainView:
         self.file_input.component.param.watch(self.update_side, 'value')
         self.accordion = pn.Accordion(('Upload', self.file_input.component),('Autokorrelation', "test"), sizing_mode='stretch_width')
         self.tabs = pn.Tabs(('Upload', self.file_input.component),('Autokorrelation', "test"), sizing_mode='stretch_width', dynamic=True)
-        self.floatpanel = pn.layout.FloatPanel(self.tabs, name='Basic FloatPanel', margin=20, contained = False)
+        self.floatpanel = pn.layout.FloatPanel(self.tabs, name='Parameter', margin=50, contained = False)
 
         # Create a sidebar and main area
         self.sidebar = pn.Column(
@@ -49,8 +50,8 @@ class MainView:
             file_data = self.file_input.component.value
             data = sp.count_channels(file_data)
 
-            # Create a holoviews plot with data
-            fig = hv.Curve(data[:,0], kdims="Frequenz", vdims="Amplitude").opts(
+            # Create a holoviews plot with data and divide kdmis by amound of channels
+            fig = hv.Curve((np.linspace(0,1,51200), data[:,1]), kdims="Zeit in Sekunden", vdims="Amplitude").opts(
                 height=400
             )
 
