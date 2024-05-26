@@ -1,9 +1,8 @@
 import panel as pn
 from gui.views.sidebar import Sidebar
 from gui.views.main_view import MainView
-from analysis.signal_processing import count_channels
+import analysis.signal_processing as sp
 import holoviews as hv
-import numpy as np
 
 hv.extension("bokeh", "plotly")
 
@@ -26,8 +25,16 @@ class AppController:
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
-        file_data = self.sidebar.file_input.component.value
-        self.main_view.update_signal(file_data)
+        # Note, we could also split this into multiple functions
+
+        file_data_bytes = self.sidebar.file_input.component.value
+        file_data = sp.convert_data(file_data_bytes)
+        
+        if event.obj == self.sidebar.file_input.component:
+            self.sidebar.update_sidebar(file_data)
+        
+        if event.obj == self.sidebar.multi_choice._component:
+            self.main_view.update_signal(file_data, self.sidebar.multi_choice._component.value)
 
     def servable(self):
         # Serve app layout
