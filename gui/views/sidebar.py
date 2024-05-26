@@ -1,14 +1,15 @@
 import panel as pn
 from gui.components.file_input import FileInputComponent
 from gui.components.multi_choice import MultiChoice
+from gui.components.accordion import Accordion
 import analysis.signal_processing as sp
 
 class Sidebar:
     def __init__(self, callback=None):
         self.file_input = FileInputComponent()
         self.multi_choice = MultiChoice()
-        self.accordion = pn.Accordion(('Upload', self.file_input.component), ('Plot', self.multi_choice._component), sizing_mode='stretch_width')
-        self.layout = pn.Column(self.accordion, sizing_mode='stretch_width')
+        self.accordion = Accordion(self.file_input, self.multi_choice)
+        self.layout = pn.Column(self.accordion._component, sizing_mode='stretch_width')
 
         if callback:
             self.file_input.component.param.watch(callback, "value")
