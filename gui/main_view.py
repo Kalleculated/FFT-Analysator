@@ -21,8 +21,7 @@ class MainView:
         self.file_input.component.param.watch(self.update_main, 'value')
         self.file_input.component.param.watch(self.update_side, 'value')
         self.accordion = pn.Accordion(('Upload', self.file_input.component),('Autokorrelation', "test"), sizing_mode='stretch_width')
-        self.tabs = pn.Tabs(('Upload', self.file_input.component),('Autokorrelation', "test"), sizing_mode='stretch_width', dynamic=True)
-        self.floatpanel = pn.layout.FloatPanel(self.tabs, name='Parameter', margin=50, contained = False)
+        self.tabs = pn.Tabs(('Signalinput', ''),('Ergebnis', "test"), sizing_mode='stretch_width', dynamic=True)
 
         # Create a sidebar and main area
         self.sidebar = pn.Column(
@@ -56,12 +55,11 @@ class MainView:
             )
 
             self.main.objects = [
-                pn.pane.HoloViews(fig, sizing_mode="stretch_width"),
-                self.floatpanel
+                self.tabs
             ]
         else:
-            self.main.objects = [pn.pane.Markdown("Keine Datei ausgewählt!"),
-                                 self.floatpanel
+            self.main.objects = [
+                self.tabs
             ]
 
     def update_side(self, event=None):
@@ -71,13 +69,11 @@ class MainView:
 
             self.sidebar.objects = [
                 self.accordion,
-                self.tabs,
                 pn.pane.Markdown(f"Fileshape: {data.shape}")
             ]
         else:
             self.sidebar.objects = [
-                self.accordion,
-                self.tabs
+                self.accordion
             ]
 
     def servable(self):
