@@ -22,11 +22,12 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
-        self.sidebar = Sidebar()
+        self.sidebar = Sidebar(self.handle_sidebar_event)
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
-        self.main_view.update_main(event)
+        file_data = self.sidebar.file_input.component.value
+        self.main_view.update_signal(file_data)
 
     def servable(self):
         # Serve app layout
