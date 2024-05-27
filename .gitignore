@@ -2,3 +2,4 @@
 .mypy_cache
 .vscode
 widget_test
+.idea
