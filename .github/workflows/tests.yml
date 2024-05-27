@@ -22,4 +22,4 @@ jobs:
         pip install pytest panel numpy holoviews 
     - name: Run tests
       run: |
-        pytest
+        python -m pytest
