@@ -1,5 +1,4 @@
 import panel as pn
-import analysis.preprocessing as sp
 
 class FileInputComponent:
     def __init__(self):

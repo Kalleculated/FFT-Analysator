@@ -19,19 +19,20 @@ Source Location        Level
 3      (0,0.1,0.3)     0.5 Pa
 ====== =============== ======
 """
-import pathlib
+
 from os import getcwd
 from os import path
 from acoular import __file__ as bpath, MicGeom, WNoiseGenerator, PointSource, Mixer, WriteH5
 
-current_directory = pathlib.Path(getcwd())
-full_path = path.join(current_directory.parent, "test_data")
+folder_name = "test_data"
+current_directory = getcwd()
+full_path = path.join(current_directory, folder_name)
 sfreq = 51200
 duration = 1
 nsamples = duration*sfreq
 micgeofile = path.join(path.split(bpath)[0],'xml','array_64.xml')
 h5savefile = path.join(full_path, 'three_sources.h5')
-print(micgeofile)
+
 m = MicGeom(from_file=micgeofile)
 n1 = WNoiseGenerator(sample_freq=sfreq, numsamples=nsamples, seed=1)
 n2 = WNoiseGenerator(sample_freq=sfreq, numsamples=nsamples, seed=2, rms=0.7)
