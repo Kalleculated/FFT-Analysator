@@ -1,15 +1,13 @@
-import h5py
-import io
+# Hier kommen unsere Funktionen wie Leistungsdichtespektrum, Korrelation etc.
+class Signal_process:
 
-def convert_data(file_data):
-    # Erstelle ein file-like object aus den Bytes
-    #print(io.BytesIO(file_data))
-    with h5py.File(io.BytesIO(file_data[0]), 'r') as file:
-        # Zugriff auf den gewünschten Datensatz
-        data = file['time_data'][:]
-        # Die Anzahl der Kanäle (zweite Dimension der Daten)
+    def __init__(self,signal1, signal2):
 
-    return data
+        self.signal1 = signal1
+        self.signal2 = signal2
 
-def count_channels(file_data):
-    return file_data.shape[1]
+    def Funktionalität1(self):
+        return None
+
+    def Funktionalität2(self):
+        return None

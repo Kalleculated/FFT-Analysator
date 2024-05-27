@@ -1,0 +1,52 @@
+Index: analysis/signal_processing.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import h5py\r\nimport io\r\n\r\ndef count_channels(file_data):\r\n    # Erstelle ein file-like object aus den Bytes\r\n    #print(io.BytesIO(file_data))\r\n    with h5py.File(io.BytesIO(file_data[0]), 'r') as file:\r\n        # Zugriff auf den gewünschten Datensatz\r\n        data = file['time_data'][:]\r\n        # Die Anzahl der Kanäle (zweite Dimension der Daten)\r\n    return data\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/analysis/signal_processing.py b/analysis/signal_processing.py
+--- a/analysis/signal_processing.py	
++++ b/analysis/signal_processing.py	
+@@ -1,11 +1,17 @@
+ import h5py
+ import io
++from pathlib import Path as path
++from os import getcwd
+ 
+ def count_channels(file_data):
+     # Erstelle ein file-like object aus den Bytes
+-    #print(io.BytesIO(file_data))
+-    with h5py.File(io.BytesIO(file_data[0]), 'r') as file:
++    with h5py.File(file_data, 'r') as file:
+         # Zugriff auf den gewünschten Datensatz
+         data = file['time_data'][:]
+         # Die Anzahl der Kanäle (zweite Dimension der Daten)
+     return data
++
++
++data_directory = path(getcwd()).parent
++data_file = data_directory/"test_data"/"three_sources.h5"
++print(count_channels(data_file))
+Index: test_data/generate.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># -*- coding: utf-8 -*-\r\n#pylint: disable-msg=E0611, E1101, C0103, R0901, R0902, R0903, R0904, W0232\r\n#------------------------------------------------------------------------------\r\n# Copyright (c) Acoular Development Team.\r\n#------------------------------------------------------------------------------\r\n\"\"\"Generates a test data set for three sources.\r\n \r\nThe simulation generates the sound pressure at 64 microphones that are\r\narrangend in the 'array64' geometry which is part of the package. The sound\r\npressure signals are sampled at 51200 Hz for a duration of 1 second.\r\n\r\nSource location (relative to array center) and levels:\r\n\r\n====== =============== ======\r\nSource Location        Level \r\n====== =============== ======\r\n1      (-0.1,-0.1,0.3) 1 Pa\r\n2      (0.15,0,0.3)    0.7 Pa \r\n3      (0,0.1,0.3)     0.5 Pa\r\n====== =============== ======\r\n\"\"\"\r\n\r\nfrom os import getcwd\r\nfrom os import path\r\nfrom acoular import __file__ as bpath, MicGeom, WNoiseGenerator, PointSource, Mixer, WriteH5\r\n\r\nfolder_name = \"test_data\"\r\ncurrent_directory = getcwd()\r\nfull_path = path.join(current_directory, folder_name)\r\nsfreq = 51200\r\nduration = 1\r\nnsamples = duration*sfreq\r\nmicgeofile = path.join(path.split(bpath)[0],'xml','array_64.xml')\r\nh5savefile = path.join(full_path, 'three_sources.h5')\r\n\r\nm = MicGeom(from_file=micgeofile)\r\nn1 = WNoiseGenerator(sample_freq=sfreq, numsamples=nsamples, seed=1)\r\nn2 = WNoiseGenerator(sample_freq=sfreq, numsamples=nsamples, seed=2, rms=0.7)\r\nn3 = WNoiseGenerator(sample_freq=sfreq, numsamples=nsamples, seed=3, rms=0.5)\r\np1 = PointSource(signal=n1, mics=m,  loc=(-0.1,-0.1,0.3))\r\np2 = PointSource(signal=n2, mics=m,  loc=(0.15,0,0.3))\r\np3 = PointSource(signal=n3, mics=m,  loc=(0,0.1,0.3))\r\np = Mixer(source=p1, sources=[p2,p3])\r\nwh5 = WriteH5(source=p, name=h5savefile)\r\nwh5.save()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test_data/generate.py b/test_data/generate.py
+--- a/test_data/generate.py	
++++ b/test_data/generate.py	
+@@ -24,9 +24,9 @@
+ from os import path
+ from acoular import __file__ as bpath, MicGeom, WNoiseGenerator, PointSource, Mixer, WriteH5
+ 
+-folder_name = "test_data"
++#folder_name = "test_data"
+ current_directory = getcwd()
+-full_path = path.join(current_directory, folder_name)
++full_path = path.join(current_directory)
+ sfreq = 51200
+ duration = 1
+ nsamples = duration*sfreq
