@@ -38,8 +38,6 @@ class Preprocess:
 
 
 
-
-
 print(Preprocess.get_abtastrate(Preprocess))
 
 
