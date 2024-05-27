@@ -2,7 +2,6 @@ import panel as pn
 from gui.components.file_input import FileInputComponent
 from gui.components.multi_choice import MultiChoice
 from gui.components.accordion import Accordion
-import analysis.signal_processing as sp
 
 class Sidebar:
     def __init__(self, callback=None):
@@ -15,10 +14,10 @@ class Sidebar:
             self.file_input.component.param.watch(callback, "value")
             self.multi_choice._component.param.watch(callback, "value")
     
-    def update_sidebar(self, data):
+    def update_sidebar(self, data_callback):
         # Update the multi_choice component with the new data
         self.multi_choice._component.name = "Wähle 1-2 Channel aus!"
-        self.multi_choice._component.options = [i for i in range(data.shape[1])]
+        self.multi_choice._component.options = [i for i in range(data_callback.get_channel_count())]
         self.multi_choice._component.max_items = 2
 
     def servable(self):

@@ -1,5 +1,4 @@
 import panel as pn
-from  analysis.signal_processing import convert_data
 from gui.components.tabs import Tabs
 import holoviews as hv
 import numpy as np
@@ -11,13 +10,13 @@ class MainView:
         self.tabs = Tabs()
         self.main = pn.Column(self.tabs._component, sizing_mode='stretch_width')
 
-    def update_signal(self, data, channels):
+    def update_signal(self, data_callback, channels):
         # Update the main view with the new data
         self.signals = pn.Column(sizing_mode='stretch_width')
         
         if channels:
             for channel in channels:
-                fig = hv.Curve((np.linspace(0,1,51200), data[:,channel]), 
+                fig = hv.Curve((np.linspace(0,1,51200), data_callback.converted_file[:,channel]), 
                             kdims="Zeit in Sekunden", vdims="Amplitude").opts()
                 plot_pane = HoloViews(fig, sizing_mode='stretch_width')
                 self.signals.append(plot_pane)

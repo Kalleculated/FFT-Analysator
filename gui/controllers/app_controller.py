@@ -1,7 +1,7 @@
 import panel as pn
 from gui.views.sidebar import Sidebar
 from gui.views.main_view import MainView
-import analysis.signal_processing as sp
+import analysis.preprocessing as pp
 import holoviews as hv
 
 hv.extension("bokeh", "plotly")
@@ -28,13 +28,13 @@ class AppController:
         # Note, we could also split this into multiple functions
 
         file_data_bytes = self.sidebar.file_input.component.value
-        file_data = sp.convert_data(file_data_bytes)
+        preprocessing = pp.Preprocess(file_data_bytes)
         
         if event.obj == self.sidebar.file_input.component:
-            self.sidebar.update_sidebar(file_data)
+            self.sidebar.update_sidebar(preprocessing)
         
         if event.obj == self.sidebar.multi_choice._component:
-            self.main_view.update_signal(file_data, self.sidebar.multi_choice._component.value)
+            self.main_view.update_signal(preprocessing, self.sidebar.multi_choice._component.value)
 
     def servable(self):
         # Serve app layout
