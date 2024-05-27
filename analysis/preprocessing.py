@@ -31,13 +31,6 @@ class Preprocess:
         return count
 
     def get_abtastrate(self):
-        # Muss noch befüllt werden. Vermutlich bietet Acourlar hier eine Funktion oder es kann aus dem Datenset gelesen
+        # Muss noch befüllt werden. Vermutlich bietet Acourlar hier eine Funktion oder es kann aus dem Datenset
         # gelesen werden
-        return "test"
-    
-
-
-
-print(Preprocess.get_abtastrate(Preprocess))
-
-
+        return None
