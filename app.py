@@ -1,4 +1,4 @@
-from gui.controllers.app_controller import AppController
+from gui.main_view import MainView
 
-app = AppController()
-app.servable()
+main_view = MainView()
+main_view.servable()
