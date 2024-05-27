@@ -21,20 +21,27 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
-        self.sidebar = Sidebar(self.handle_sidebar_event)
+        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event)
+
+        # Initialization of data preprocessing and binary file
+        self.binary_file = None
+        self.preprocessing = None
+
+    def handle_fileupload_event(self, event):
+        # Handle the file upload event and update the preprocessing object
+        self.binary_file = self.sidebar.file_input.component.value
+        self.preprocessing = pp.Preprocess(self.binary_file)
+
+        if event.obj == self.sidebar.file_input.component:
+            self.sidebar.update_multi_choice(self.preprocessing)
+
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
         # Note, we could also split this into multiple functions
-
-        file_data_bytes = self.sidebar.file_input.component.value
-        preprocessing = pp.Preprocess(file_data_bytes)
-        
-        if event.obj == self.sidebar.file_input.component:
-            self.sidebar.update_sidebar(preprocessing)
         
         if event.obj == self.sidebar.multi_choice._component:
-            self.main_view.update_signal(preprocessing, self.sidebar.multi_choice._component.value)
+            self.main_view.update_signal(self.preprocessing, self.sidebar.multi_choice._component.value)
 
     def servable(self):
         # Serve app layout
