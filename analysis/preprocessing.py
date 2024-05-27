@@ -33,4 +33,11 @@ class Preprocess:
     def get_abtastrate(self):
         # Muss noch befüllt werden. Vermutlich bietet Acourlar hier eine Funktion oder es kann aus dem Datenset gelesen
         # gelesen werden
-        return None
+        return "test"
+    
+
+
+
+print(Preprocess.get_abtastrate(Preprocess))
+
+
