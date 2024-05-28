@@ -2,9 +2,8 @@ import panel as pn
 
 class Switch:
     def __init__(self):
-        # Direkt das FileInput-Widget als Attribut speichern
         self.switch = pn.widgets.Switch
-        self._component = self.switch(name = 'test')
+        self._component = self.switch(name = 'test', width = 30, margin = (0, 20))
 
     @property
     def component(self):
