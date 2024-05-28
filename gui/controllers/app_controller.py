@@ -40,8 +40,8 @@ class AppController:
         # Update the main view when the sidebar event is triggered
         # Note, we could also split this into multiple functions
         
-        if event.obj == self.sidebar.multi_choice._component:
-            self.main_view.update_signal(self.preprocessing, self.sidebar.multi_choice._component.value)
+        if event.obj == self.sidebar.multi_choice._component or event.obj == self.sidebar.stretching_switch._component:
+            self.main_view.update_signal(self.preprocessing, self.sidebar.multi_choice._component.value, self.sidebar.stretching_switch._component.value)
 
     def servable(self):
         # Serve app layout

@@ -10,15 +10,21 @@ class MainView:
         self.tabs = Tabs()
         self.main = pn.Column(self.tabs._component, sizing_mode='stretch_width')
 
-    def update_signal(self, data_callback, channels):
+    def update_signal(self, data_callback, channels, stretch_value):
         # Update the main view with the new data
         self.signals = pn.Column(sizing_mode='stretch_width')
         
         if channels:
             for channel in channels:
+
                 fig = hv.Curve((np.linspace(0,1,51200), data_callback.converted_file[:,channel]), 
                             kdims="Zeit in Sekunden", vdims="Amplitude").opts()
-                plot_pane = HoloViews(fig, sizing_mode='stretch_width')
+                
+                if stretch_value:
+                    plot_pane = HoloViews(fig, sizing_mode='stretch_width')
+                else:
+                    plot_pane = HoloViews(fig)
+                    
                 self.signals.append(plot_pane)
                 
                 self.tabs._component[0] = (self.str_signal_tab, self.signals)
