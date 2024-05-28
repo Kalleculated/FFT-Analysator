@@ -1,17 +1,15 @@
 import panel as pn
-from gui.components.file_input import FileInputComponent
-from gui.components.multi_choice import MultiChoice
 
 class Accordion:
-    def __init__(self, file_input, multi_choice):
+    def __init__(self, file_input, multi_choice, stretching_switch):
         self.file_input = file_input
         self.multi_choice = multi_choice
+        self.stretching_switch = stretching_switch
         self.accordion = pn.Accordion
         self._component = self.accordion(('Upload', self.file_input.component),
-                                          ('Plot', self.multi_choice._component), 
+                                          ('Plot', pn.Column(self.multi_choice._component, pn.Row(pn.widgets.StaticText(name='Stretch plot', value=''), self.stretching_switch._component))), 
                                           sizing_mode='stretch_width')
 
     @property
     def component(self):
-        # Der Getter gibt das gespeicherte Widget zurück
         return self._component
