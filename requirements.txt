@@ -2,8 +2,5 @@ numpy
 acoular
 panel
 h5py
-matplotlib
 holoviews
 pytest
-
-conda install -c conda-forge numpy acoular panel h5py matplotlib holoviews pytest -y
