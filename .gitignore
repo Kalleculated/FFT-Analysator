@@ -3,3 +3,4 @@
 .vscode
 widget_test
 .idea
+*.ipynb
