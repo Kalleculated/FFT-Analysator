@@ -29,10 +29,10 @@ class AppController:
 
     def handle_fileupload_event(self, event):
         # Handle the file upload event and update the preprocessing object
-        self.binary_file = self.sidebar.file_input.component.value
+        self.binary_file = self.sidebar.accordion.file_input.component.value
         self.preprocessing = pp.Preprocess(self.binary_file)
 
-        if event.obj == self.sidebar.file_input.component:
+        if event.obj == self.sidebar.accordion.file_input.component:
             self.sidebar.update_multi_choice(self.preprocessing)
 
 
@@ -40,8 +40,8 @@ class AppController:
         # Update the main view when the sidebar event is triggered
         # Note, we could also split this into multiple functions
         
-        if event.obj == self.sidebar.multi_choice._component or event.obj == self.sidebar.stretching_switch._component:
-            self.main_view.update_signal(self.preprocessing, self.sidebar.multi_choice._component.value, self.sidebar.stretching_switch._component.value)
+        if event.obj == self.sidebar.accordion.multi_choice._component or event.obj == self.sidebar.accordion.stretching_switch._component:
+            self.main_view.update_signal(self.preprocessing, self.sidebar.accordion.multi_choice._component.value, self.sidebar.accordion.stretching_switch._component.value)
 
     def servable(self):
         # Serve app layout
