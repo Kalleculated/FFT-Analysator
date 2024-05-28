@@ -1,4 +1,10 @@
 from gui.controllers.app_controller import AppController
 
-app = AppController()
-app.servable()
+class App:
+    def __init__(self):
+        self.app = AppController()
+    
+    def run(self):
+        self.app.servable()
+
+app = App().run()

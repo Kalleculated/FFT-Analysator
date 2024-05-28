@@ -1,7 +1,6 @@
-from gui.controllers.app_controller import AppController
+from app import App
 
 def test_app_initialization():
     """Testet, ob die AppController-Instanz korrekt initialisiert und servable gemacht werden kann."""
-    app = AppController()
-    app.servable()
+    App().run()
     # pytest nimmt standardmäßig an, dass der Test erfolgreich ist, wenn keine Exceptions auftreten.
