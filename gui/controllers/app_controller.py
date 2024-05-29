@@ -1,17 +1,20 @@
-import panel as pn
-from gui.views.sidebar import Sidebar
-from gui.views.main_view import MainView
-import analysis.preprocessing as pp
 import holoviews as hv
+import panel as pn
 
-hv.extension("bokeh", "plotly")
+import analysis.preprocessing as pp
+from gui.views.main_view import MainView
+from gui.views.sidebar import Sidebar
+
+
+hv.extension("bokeh", "plotly")  # type: ignore
+
 
 class AppController:
     def __init__(self):
 
         # Initialization of panel extensions and template
         pn.extension(sizing_mode="stretch_width", template="fast", theme="dark")
-        pn.extension("plotly")
+        pn.extension("plotly")  # type: ignore
         pn.state.template.param.update(
             site="FFT-Analysator",
             title="",
@@ -35,13 +38,19 @@ class AppController:
         if event.obj == self.sidebar.accordion.file_input.component:
             self.sidebar.update_multi_choice(self.preprocessing)
 
-
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
         # Note, we could also split this into multiple functions
-        
-        if event.obj == self.sidebar.accordion.multi_choice._component or event.obj == self.sidebar.accordion.stretching_switch._component:
-            self.main_view.update_signal(self.preprocessing, self.sidebar.accordion.multi_choice._component.value, self.sidebar.accordion.stretching_switch._component.value)
+
+        if (
+            event.obj == self.sidebar.accordion.multi_choice._component
+            or event.obj == self.sidebar.accordion.stretching_switch._component
+        ):
+            self.main_view.update_signal(
+                self.preprocessing,
+                self.sidebar.accordion.multi_choice._component.value,
+                self.sidebar.accordion.stretching_switch._component.value,
+            )
 
     def servable(self):
         # Serve app layout

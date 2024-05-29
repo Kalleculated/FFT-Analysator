@@ -1,6 +1,11 @@
 numpy
+
 acoular
+
 panel
+
 h5py
+
 holoviews
+
 pytest
