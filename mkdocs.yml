@@ -3,7 +3,7 @@ site_description: "Eine Dokumentation für den FFT-Analysator"
 site_url: "https://kalleculated.github.io/FFT-Analysator/"
 repo_url: "https://github.com/Kalleculated/FFT-Analysator/"
 repo_name: "FFT-Analysator/FFT-Analysator"
-watch: [mkdocs.yml, src/fft_analysator]
+watch: [mkdocs.yml, docs, src/fft_analysator]
 site_dir: "site"
 
 validation:
