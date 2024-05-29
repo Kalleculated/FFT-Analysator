@@ -6,10 +6,12 @@ import numpy as np
 
 class Preprocess:
 
-    def __init__(self, binary_file):
+    def __init__(self, binary_file=None):
 
         self.binary_file = binary_file
-        self.converted_file = self.convert_data(self.binary_file)
+
+        if binary_file:
+            self.converted_file = self.convert_data(self.binary_file)
 
         self.channel_count = None
         self.channel_size = None

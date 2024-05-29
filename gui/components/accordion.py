@@ -12,10 +12,10 @@ class Accordion:
         self.stretching_switch = Switch()
         self.accordion = pn.Accordion
         self._component = self.accordion(('Upload', self.file_input.component),
-                                          ('Plot', pn.Column(self.multi_choice._component,
+                                          ('Plot', pn.Column(self.multi_choice.component,
                                                               pn.layout.Divider(margin=(5, 0, 5, 0)),
                                                               pn.Row(pn.widgets.StaticText(name='Stretch plot', value=''),  # noqa: E501
-                                                                     self.stretching_switch._component))),
+                                                                     self.stretching_switch.component))),
                                           sizing_mode='stretch_width')
 
     @property

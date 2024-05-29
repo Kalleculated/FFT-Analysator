@@ -10,7 +10,7 @@ class MainView:
     def __init__(self):
         self.str_signal_tab = "Signalinput"
         self.tabs = Tabs()
-        self.main = pn.Column(self.tabs._component, sizing_mode='stretch_width')
+        self.main = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
     def update_signal(self, data_callback, channels, stretch_value):
         # Update the main view with the new data
@@ -29,10 +29,10 @@ class MainView:
 
                 self.signals.append(plot_pane)
 
-                self.tabs._component[0] = (self.str_signal_tab, self.signals)
+                self.tabs.component[0] = (self.str_signal_tab, self.signals)
 
         else:
-            self.tabs._component[0] = (self.str_signal_tab, 'Keine Datei ausgewählt!')
+            self.tabs.component[0] = (self.str_signal_tab, 'Keine Datei ausgewählt!')
 
     def servable(self):
         self.main.servable(target="main")

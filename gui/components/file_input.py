@@ -1,5 +1,6 @@
 import panel as pn
 
+
 class FileInputComponent:
     def __init__(self):
         self.file_input = pn.widgets.FileInput
