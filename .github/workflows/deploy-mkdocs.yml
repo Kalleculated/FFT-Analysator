@@ -3,7 +3,7 @@ name: Deploy MkDocs Site
 on:
   push:
     branches:
-      - main  # Stelle sicher, dass dies der Branch ist, von dem du deployen möchtest
+      - mkdocs-documentation  # Stelle sicher, dass dies der Branch ist, von dem du deployen möchtest
   workflow_dispatch:  # Ermöglicht das manuelle Auslösen des Workflows
 
 jobs:
