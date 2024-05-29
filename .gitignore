@@ -5,3 +5,4 @@ widget_test
 .idea
 *.ipynb
 *.egg*
+site
