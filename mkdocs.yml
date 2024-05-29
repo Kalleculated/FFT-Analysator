@@ -1,0 +1,6 @@
+site_name: FFT-Analysator
+plugins:
+  - search
+  - mkdocstrings:
+      watch:
+        - src/  # Pfad anpassen zu deinem Python-Code
