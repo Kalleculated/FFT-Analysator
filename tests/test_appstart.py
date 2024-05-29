@@ -1,5 +1,6 @@
 from app import App
 
+
 def test_app_initialization():
     """Testet, ob die AppController-Instanz korrekt initialisiert und servable gemacht werden kann."""
     App().run()

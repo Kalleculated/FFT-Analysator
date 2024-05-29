@@ -1,7 +1,6 @@
+import analysis.preprocessing as pp
 import holoviews as hv
 import panel as pn
-
-import analysis.preprocessing as pp
 from gui.views.main_view import MainView
 from gui.views.sidebar import Sidebar
 
