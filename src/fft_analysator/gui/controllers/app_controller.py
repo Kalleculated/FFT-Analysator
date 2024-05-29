@@ -1,8 +1,9 @@
-import analysis.preprocessing as pp
 import holoviews as hv
 import panel as pn
-from gui.views.main_view import MainView
-from gui.views.sidebar import Sidebar
+
+import fft_analysator.analysis.preprocessing as pp
+from fft_analysator.gui.views.main_view import MainView
+from fft_analysator.gui.views.sidebar import Sidebar
 
 
 hv.extension("bokeh", "plotly")  # type: ignore
@@ -11,19 +12,18 @@ hv.extension("bokeh", "plotly")  # type: ignore
 class AppController:
     def __init__(self):
 
-        # Initialization of panel extensions and template
-        pn.extension(sizing_mode="stretch_width", template="fast", theme="dark")
-        pn.extension("plotly")  # type: ignore
-        pn.state.template.param.update(
-            site="FFT-Analysator",
-            title="",
-            header_background="#E91E63",
-            accent_base_color="#E91E63",
-        )
-
         # Initialization of main and side views
         self.main_view = MainView()
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event)
+
+        # Initialization of panel extensions and template
+        self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
+                                                            header_background="#E91E63",
+                                                            accent_base_color="#E91E63",
+                                                            theme="dark",
+                                                            sidebar=self.sidebar.layout,
+                                                            main=self.main_view.layout
+                                                            )
 
         # Initialization of data preprocessing and binary file
         self.binary_file = None
@@ -58,5 +58,4 @@ class AppController:
 
     def servable(self):
         # Serve app layout
-        self.main_view.servable()
-        self.sidebar.servable()
+        self.template_layout.servable()

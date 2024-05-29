@@ -1,4 +1,4 @@
-from app import App
+from fft_analysator.app import App
 
 
 def test_app_initialization():

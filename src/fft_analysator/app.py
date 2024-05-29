@@ -1,4 +1,6 @@
-from gui.controllers.app_controller import AppController
+import panel as pn
+
+from fft_analysator.gui.controllers.app_controller import AppController
 
 
 class App:
@@ -7,6 +9,9 @@ class App:
 
     def run(self):
         self.app.servable()
+
+    def serve_app(self):
+        pn.serve(self.app.template_layout, port=5000, show=True)
 
 
 app = App().run()

@@ -3,14 +3,14 @@ import numpy as np
 import panel as pn
 from panel.pane import HoloViews
 
-from gui.components.tabs import Tabs
+from fft_analysator.gui.components.tabs import Tabs
 
 
 class MainView:
     def __init__(self):
         self.str_signal_tab = "Signalinput"
         self.tabs = Tabs()
-        self.main = pn.Column(self.tabs.component, sizing_mode='stretch_width')
+        self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
     def update_signal(self, data_callback, channels, stretch_value):
         # Update the main view with the new data
@@ -35,4 +35,4 @@ class MainView:
             self.tabs.component[0] = (self.str_signal_tab, 'Keine Datei ausgewählt!')
 
     def servable(self):
-        self.main.servable(target="main")
+        self.layout.servable(target="main")

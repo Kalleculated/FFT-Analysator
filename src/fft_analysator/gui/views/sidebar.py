@@ -1,5 +1,5 @@
 
-from gui.components.accordion import Accordion
+from fft_analysator.gui.components.accordion import Accordion
 
 
 class Sidebar:
