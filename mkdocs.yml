@@ -16,6 +16,12 @@ nav:
   - Overview: index.md
 - Getting Started:
   - Installation: installation.md
+- User Documentation:
+  - Main functions: user_documentation.md
+  - Screenshots and Examples: screenshots_and_examples.md
+- Developer Documentation:
+  - Backend Documentation: dev_backend_documentation.md
+  - Frontend Documentation: dev_frontend_documentation.md
 
 theme:
   name: material
@@ -70,7 +76,7 @@ plugins:
         options:
           docstring_options:
             ignore_init_summary: true
-          docstring_section_style: list
+          docstring_section_style: table
           filters: ["!^_"]
           heading_level: 1
           inherited_members: true

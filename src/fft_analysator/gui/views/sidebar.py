@@ -14,7 +14,16 @@ class Sidebar:
             self.accordion.multi_choice.component.param.watch(callback, "value")
 
     def update_multi_choice(self, data_callback=None):
-        # Update the multi_choice component with the new data
+        """
+        The update_multi_choice function is used to update the multi_choice component with new data.
+        If a data_callback is provided, then the options of the multi_choice component are set to be
+        the number of channels in that callback. The name of the component is also updated accordingly.
+        Otherwise, if no data_callback was provided, then we assume that there's no file selected and
+        we set both options and name to empty lists/strings respectively.
+
+        Args:
+            data_callback (object): Get the callback to the data object
+        """
         if data_callback:
             self.accordion.multi_choice.component.name = "Wähle 1-2 Channel aus!"
             self.accordion.multi_choice.component.options = list(range(data_callback.get_channel_count()))
