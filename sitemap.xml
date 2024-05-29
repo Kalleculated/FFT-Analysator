@@ -6,7 +6,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/dev_backend_documentation/</loc>
+         <lastmod>2024-05-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/dev_frontend_documentation/</loc>
+         <lastmod>2024-05-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kalleculated.github.io/FFT-Analysator/installation/</loc>
+         <lastmod>2024-05-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/screenshots_and_examples/</loc>
+         <lastmod>2024-05-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/user_documentation/</loc>
          <lastmod>2024-05-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
