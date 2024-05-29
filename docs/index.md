@@ -1,3 +1,3 @@
-# Modul Dokumentation
+# About
 
-::: fft_analysator
+Das ist die Dokumentation für den FFT-Analysator.

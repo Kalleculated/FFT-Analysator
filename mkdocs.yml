@@ -6,9 +6,54 @@ repo_name: "FFT-Analysator/FFT-Analysator"
 watch: [mkdocs.yml, src/fft_analysator]
 site_dir: "site"
 
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
 nav:
 - Home:
   - Overview: index.md
+- Getting Started:
+  - Installation: installation.md
+
+theme:
+  name: material
+  logo: logo.png
+  custom_dir: docs/.overrides
+  features:
+  - announce.dismiss
+  #- content.action.edit
+  #- content.action.view
+  - content.code.annotate
+  - content.code.copy
+  - content.tooltips
+  - navigation.indexes
+  # - navigation.sections
+  # - navigation.top
+  - search.highlight
+  - search.suggest
+  - toc.follow
+  palette:
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: teal
+    accent: purple
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    accent: lime
+    toggle:
+      icon: material/weather-night
+      name: Switch to system preference
+
 
 plugins:
 - search
