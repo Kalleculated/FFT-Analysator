@@ -1,6 +1,41 @@
-site_name: FFT-Analysator
+site_name: "FFT-Analysator"
+site_description: "Eine Dokumentation für den FFT-Analysator"
+site_url: "https://kalleculated.github.io/FFT-Analysator/"
+repo_url: "https://github.com/Kalleculated/FFT-Analysator/"
+repo_name: "FFT-Analysator/FFT-Analysator"
+watch: [mkdocs.yml, src/fft_analysator]
+site_dir: "site"
+
+nav:
+- Home:
+  - Overview: index.md
+
 plugins:
-  - search
-  - mkdocstrings:
-      watch:
-        - src/  # Pfad anpassen zu deinem Python-Code
+- search
+- markdown-exec
+- mkdocstrings:
+    handlers:
+      python:
+        import:
+        - https://docs.python.org/3/objects.inv
+        - https://mkdocstrings.github.io/autorefs/objects.inv
+        - https://www.mkdocs.org/objects.inv
+        - https://python-markdown.github.io/objects.inv
+        paths: [src]
+        options:
+          docstring_options:
+            ignore_init_summary: true
+          docstring_section_style: list
+          filters: ["!^_"]
+          heading_level: 1
+          inherited_members: true
+          merge_init_into_class: true
+          parameter_headings: true
+          separate_signature: true
+          show_root_heading: true
+          show_root_full_path: false
+          show_signature_annotations: true
+          show_symbol_type_heading: true
+          show_symbol_type_toc: true
+          signature_crossrefs: true
+          summary: true

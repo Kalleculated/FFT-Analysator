@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocstrings
+          pip install mkdocs mkdocstrings mkdocstrings-python
 
       - name: Build MkDocs Site
         run: mkdocs build  # Hier wird mkdocs.yml im Root verwendet
