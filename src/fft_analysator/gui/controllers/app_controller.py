@@ -35,7 +35,7 @@ class AppController:
 
         if self.binary_file:
             self.preprocessing = pp.Preprocess(self.binary_file)
-
+            
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_multi_choice(self.preprocessing)
 
@@ -49,11 +49,22 @@ class AppController:
         if (
             event.obj == self.sidebar.accordion.multi_choice.component
             or event.obj == self.sidebar.accordion.stretching_switch.component
+            or event.obj == self.sidebar.accordion.color_picker_ch1.component
+            or event.obj == self.sidebar.accordion.color_picker_ch2.component    
         ):
+            # Update the color picker
+            self.sidebar.accordion.color_picker_ch1.component.visible = False
+            self.sidebar.accordion.color_picker_ch2.component.visible = False
+            self.sidebar.update_color_picker()
+            
+            # Update signal                         
             self.main_view.update_signal(
                 self.preprocessing,
                 self.sidebar.accordion.multi_choice.component.value,
                 self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+                
             )
 
     def servable(self):

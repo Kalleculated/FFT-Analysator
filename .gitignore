@@ -5,4 +5,7 @@ widget_test
 .idea
 *.ipynb
 *.egg*
+*.txt
+*.gitignore
+*.DS_Store
 site

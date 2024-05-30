@@ -7,11 +7,13 @@ class Sidebar:
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
-
+        
         if callback:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.multi_choice.component.param.watch(callback, "value")
+            self.accordion.color_picker_ch1.component.param.watch(callback, "value")
+            self.accordion.color_picker_ch2.component.param.watch(callback, "value")
 
     def update_multi_choice(self, data_callback=None):
         """
@@ -32,6 +34,38 @@ class Sidebar:
         else:
             self.accordion.multi_choice.component.name = "Keine Datei ausgewählt!"
             self.accordion.multi_choice.component.options = []
+
+    def update_color_picker(self):
+          
+        # Get amount of channels
+        if self.accordion.multi_choice.component.value:
+            #self.ch = self.accordion.multi_choice.component.value
+            # values can only be converted through iteration
+            self.ch = [int(item) for item in self.accordion.multi_choice.component.value]                 
+            self.amount_ch = 0
+            for _ in self.accordion.multi_choice.component.value:
+                self.amount_ch += 1
+        
+        print(self.amount_ch)
+        
+        if self.amount_ch == 1:
+            self.accordion.color_picker_ch1.component.visible = True
+            self.accordion.color_picker_ch2.component.visible = False
+            self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
+            self.accordion.color_picker_ch2.component.name = ''
+            self.amount_ch = 0
+        elif self.amount_ch == 2:
+            self.accordion.color_picker_ch1.component.visible = True
+            self.accordion.color_picker_ch2.component.visible = True
+            self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
+            self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
+            self.amount_ch = 0
+        else:
+            self.accordion.color_picker_ch1.component.visible = False
+            self.accordion.color_picker_ch2.component.visible = False
+            self.accordion.color_picker_ch1.component.name = ''
+            self.accordion.color_picker_ch2.component.name = ''
+            self.amount_ch = 0
 
     def servable(self):
         return self.layout.servable(target="sidebar")
