@@ -14,7 +14,7 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
-        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event)
+        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -35,11 +35,13 @@ class AppController:
 
         if self.binary_file:
             self.preprocessing = pp.Preprocess(self.binary_file)
-            
+
             if event.obj == self.sidebar.accordion.file_input.component:
+                self.sidebar.update_selector(self.preprocessing)
                 self.sidebar.update_multi_choice(self.preprocessing)
 
         else:
+            self.sidebar.update_selector()
             self.sidebar.update_multi_choice()
 
     def handle_sidebar_event(self, event):
@@ -50,22 +52,31 @@ class AppController:
             event.obj == self.sidebar.accordion.multi_choice.component
             or event.obj == self.sidebar.accordion.stretching_switch.component
             or event.obj == self.sidebar.accordion.color_picker_ch1.component
-            or event.obj == self.sidebar.accordion.color_picker_ch2.component    
+            or event.obj == self.sidebar.accordion.color_picker_ch2.component
         ):
             # Update the color picker
             self.sidebar.accordion.color_picker_ch1.component.visible = False
             self.sidebar.accordion.color_picker_ch2.component.visible = False
             self.sidebar.update_color_picker()
-            
-            # Update signal                         
+
+            # Update signal
             self.main_view.update_signal(
                 self.preprocessing,
                 self.sidebar.accordion.multi_choice.component.value,
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
-                
+
             )
+
+    def handle_table_choose_event(self, event):
+        # Update the main view when the table chooser event is triggered
+        # Note, we could also split this into multiple functions
+        if event.obj == self.sidebar.accordion.selector.component:
+            if self.sidebar.accordion.selector.component.value:
+                self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
+
+        return True
 
     def servable(self):
         # Serve app layout

@@ -9,6 +9,7 @@ class Preprocess:
     def __init__(self, binary_file=None):
 
         self.binary_file = binary_file
+        self.table_key = self.get_table_names()[0]
 
         if binary_file:
             self.converted_file = self.convert_data(self.binary_file)
@@ -42,6 +43,13 @@ class Preprocess:
         # Erstelle ein file-like object aus den Bytes
         with h5py.File(io.BytesIO(self.binary_file[0]), 'r') as file:
             # Zugriff auf den gewünschten Datensatz
-            data = file['time_data'][:]  # type: ignore
+            data = file[self.table_key][:]  # type: ignore
 
         return data
+
+    def get_table_names(self):
+        with h5py.File(io.BytesIO(self.binary_file[0]), 'r') as file:
+            # Zugriff auf den gewünschten Datensatz
+            keys = list(file.keys())
+
+        return keys
