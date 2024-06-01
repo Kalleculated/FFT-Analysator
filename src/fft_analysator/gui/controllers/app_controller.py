@@ -14,7 +14,7 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
-        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event)
+        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -37,12 +37,12 @@ class AppController:
             self.preprocessing = pp.Preprocess(self.binary_file)
 
             if event.obj == self.sidebar.accordion.file_input.component:
-                self.sidebar.update_multi_choice(self.preprocessing)
                 self.sidebar.update_selector(self.preprocessing)
+                self.sidebar.update_multi_choice(self.preprocessing)
 
         else:
-            self.sidebar.update_multi_choice()
             self.sidebar.update_selector()
+            self.sidebar.update_multi_choice()
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
@@ -68,6 +68,15 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value],
 
             )
+
+    def handle_table_choose_event(self, event):
+        # Update the main view when the table chooser event is triggered
+        # Note, we could also split this into multiple functions
+        if event.obj == self.sidebar.accordion.selector.component:
+            if self.sidebar.accordion.selector.component.value:
+                self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
+
+        return True
 
     def servable(self):
         # Serve app layout

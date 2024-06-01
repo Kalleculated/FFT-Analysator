@@ -3,17 +3,18 @@ from fft_analysator.gui.components.accordion import Accordion
 
 
 class Sidebar:
-    def __init__(self, callback_fileupload=None, callback=None):
+    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
 
-        if callback:
+        if callback or callback_fileupload or callback_table_chooser:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.multi_choice.component.param.watch(callback, "value")
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
+            self.accordion.selector.component.param.watch(callback_table_chooser, "value")
 
     def update_multi_choice(self, data_callback=None):
         """
@@ -28,7 +29,9 @@ class Sidebar:
         """
         if data_callback:
             self.accordion.multi_choice.component.name = "Wähle 1-2 Channel aus!"
-            self.accordion.multi_choice.component.options = list(range(data_callback.get_channel_count()))
+            self.accordion.multi_choice.component.options = (
+                list(range(data_callback.get_channel_count()))
+            )
             self.accordion.multi_choice.component.max_items = 2
 
         else:
@@ -39,7 +42,7 @@ class Sidebar:
 
         # Get amount of channels
         if self.accordion.multi_choice.component.value:
-            #self.ch = self.accordion.multi_choice.component.value
+            # self.ch = self.accordion.multi_choice.component.value
             # values can only be converted through iteration
             self.ch = [int(item) for item in self.accordion.multi_choice.component.value]
             self.amount_ch = 0
