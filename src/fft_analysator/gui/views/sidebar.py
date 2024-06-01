@@ -29,6 +29,7 @@ class Sidebar:
         """
         if data_callback:
             self.accordion.multi_choice.component.name = "Wähle 1-2 Channel aus!"
+            self.accordion. multi_choice.component.value = []
             self.accordion.multi_choice.component.options = (
                 list(range(data_callback.get_channel_count()))
             )
@@ -75,6 +76,8 @@ class Sidebar:
         if data_callback:
             self.accordion.selector.component.options = data_callback.get_table_names()
             self.accordion.selector.component.value = data_callback.get_table_names()[0]
+            if (len(data_callback.get_table_names()) + 2) > 3:
+                self.accordion.selector.component.size = len(data_callback.get_table_names()) + 1
 
         else:
             self.accordion.selector.component.options = []

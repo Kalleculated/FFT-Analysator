@@ -75,8 +75,8 @@ class AppController:
         if event.obj == self.sidebar.accordion.selector.component:
             if self.sidebar.accordion.selector.component.value:
                 self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
-
-        return True
+                self.preprocessing.converted_file = self.preprocessing.convert_data(self.binary_file)
+                self.sidebar.update_multi_choice(self.preprocessing)
 
     def servable(self):
         # Serve app layout

@@ -9,9 +9,9 @@ class Preprocess:
     def __init__(self, binary_file=None):
 
         self.binary_file = binary_file
-        self.table_key = self.get_table_names()[0]
 
         if binary_file:
+            self.table_key = self.get_table_names()[0]
             self.converted_file = self.convert_data(self.binary_file)
 
         self.channel_count = None

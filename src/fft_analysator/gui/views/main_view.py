@@ -21,15 +21,15 @@ class MainView:
 
         if channels:
             for i, channel in enumerate(channels):
-                
+
                 # Assign color_picker_ch1 to signal1 and color_picker_ch2 to signal2
                 color = color_picker_value[i] if i < len(color_picker_value) else "default_color"
 
                 # get sampling rate to determine the time length
-                fig = hv.Curve((np.linspace(0, 1, 51200), data_callback.converted_file[:, channel]),
+                fig = hv.Curve((np.linspace(0, 1, data_callback.get_channel_size(channel)), data_callback.converted_file[:, channel]),
                             kdims="Zeit in Sekunden", vdims="Amplitude",label= f'Channel {channel}').opts(color=color,shared_axes=False, width=800, height=400)
                 # color_picker_value
-            
+
                 if stretch_value:
                     plot_pane = HoloViews(fig, sizing_mode='stretch_width')
                 else:
@@ -38,10 +38,10 @@ class MainView:
                 self.signals.append(plot_pane)
 
                 self.tabs.component[0] = (self.str_signal_tab, self.signals)
-                
+
         else:
             self.tabs.component[0] = (self.str_signal_tab, 'Keine Datei ausgewählt!')
 
-       
+
     def servable(self):
         self.layout.servable(target="main")
