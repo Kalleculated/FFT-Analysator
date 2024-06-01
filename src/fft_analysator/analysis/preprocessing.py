@@ -45,3 +45,10 @@ class Preprocess:
             data = file['time_data'][:]  # type: ignore
 
         return data
+
+    def get_table_names(self):
+        with h5py.File(io.BytesIO(self.binary_file[0]), 'r') as file:
+            # Zugriff auf den gewünschten Datensatz
+            keys = list(file.keys())
+
+        return keys
