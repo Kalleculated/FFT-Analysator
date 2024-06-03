@@ -4,7 +4,10 @@ import panel as pn
 import fft_analysator.analysis.preprocessing as pp
 from fft_analysator.gui.views.main_view import MainView
 from fft_analysator.gui.views.sidebar import Sidebar
+import fft_analysator.analysis.signal_processing as sp
 
+import pathlib as pl
+import os
 
 hv.extension("bokeh", "plotly")  # type: ignore
 
@@ -34,7 +37,10 @@ class AppController:
         self.binary_file = self.sidebar.accordion.file_input.component.value
 
         if self.binary_file:
-            self.preprocessing = pp.Preprocess(self.binary_file)
+            path1 = pl.Path(os.path.realpath(__file__)).parents[4]
+            file_path = pl.Path(str(path1) + "/test_data/three_scources.h5")
+            sp.Signal_process(file_path,file_path).FFT()
+            #self.preprocessing = pp.Preprocess(file_path)
 
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_selector(self.preprocessing)
