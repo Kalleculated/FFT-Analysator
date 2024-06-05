@@ -18,8 +18,10 @@ class Signal_process:
 
     def FFT(self):
         data = ac.TimeSamples(name = self.signal1)
-        data_fft = ac.FFTSpectra
-        print(data_fft.result(self))
+        #data_fft = ac.BaseSpectra(source = data)
+        data_fft2 = ac.FFTSpectra(source = data)
+        a = data_fft2.fftfreq()
+        print(a)
         return None
 
 

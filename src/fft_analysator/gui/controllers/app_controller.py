@@ -38,7 +38,7 @@ class AppController:
 
         if self.binary_file:
             path1 = pl.Path(os.path.realpath(__file__)).parents[4]
-            file_path = pl.Path(str(path1) + "/test_data/three_scources.h5")
+            file_path = pl.Path(str(path1) + "/test_data/three_sources.h5")
             sp.Signal_process(file_path,file_path).FFT()
             #self.preprocessing = pp.Preprocess(file_path)
 
