@@ -1,6 +1,6 @@
 import panel as pn
 
-from fft_analysator.gui.components.file_input import FileInputComponent
+from fft_analysator.gui.components.file_input_tkinter import FileInputComponent
 from fft_analysator.gui.components.multi_choice import MultiChoice
 from fft_analysator.gui.components.switch import Switch
 from fft_analysator.gui.components.color_picker import Colorpicker
