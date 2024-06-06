@@ -37,10 +37,12 @@ class AppController:
             self.preprocessing = pp.Preprocess(self.file_paths)
 
             if event.obj == self.sidebar.accordion.file_input.component:
+                self.sidebar.update_file_list()
                 self.sidebar.update_selector(self.preprocessing)
                 self.sidebar.update_multi_choice(self.preprocessing)
 
         else:
+            self.sidebar.update_file_list()
             self.sidebar.update_selector()
             self.sidebar.update_multi_choice()
 

@@ -6,7 +6,7 @@ import os
 class FileInputComponent:
     def __init__(self):
         self.file_input_button = pn.widgets.Button
-        self._component = self.file_input_button(name="Load file")
+        self._component = self.file_input_button(name="Load file", margin=(20, 0, 10, 10))
         self.file_paths = None
         pn.bind(self.select_files, self._component, watch=True)
 

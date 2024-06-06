@@ -1,5 +1,6 @@
 
 from fft_analysator.gui.components.accordion import Accordion
+from os import path
 
 
 class Sidebar:
@@ -84,6 +85,12 @@ class Sidebar:
             self.accordion.selector.component.value = ""
 
         return True
+
+    def update_file_list(self):
+        if self.accordion.file_input.file_paths:
+            self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
+        else:
+            self.accordion.data_selector.component.options = []
 
     def servable(self):
         return self.layout.servable(target="sidebar")
