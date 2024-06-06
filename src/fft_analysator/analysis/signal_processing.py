@@ -1,5 +1,7 @@
 # Hier kommen unsere Funktionen wie Leistungsdichtespektrum, Korrelation etc.
 import os
+
+import numpy
 import numpy as np
 import fft_analysator.analysis.preprocessing as pp
 import scipy as sc
@@ -18,10 +20,15 @@ class Signal_process:
 
     def FFT(self):
         data = ac.TimeSamples(name = self.signal1)
-        #data_fft = ac.BaseSpectra(source = data)
-        data_fft2 = ac.FFTSpectra(source = data)
-        a = data_fft2.fftfreq()
-        print(a)
+        data_fft2 = ac.FFTSpectra(source = data,block_size = 1024, window = "Blackman",overlap = "50%")
+
+        for idx,ft in enumerate(data_fft2.result()):
+            print(data_fft2.sample_freq)
+
+        print(ft.shape)
+        print(data_fft2.fftfreq().shape)
+        plt.plot(data_fft2.fftfreq(),ft[:,0])
+        plt.show()
         return None
 
 
