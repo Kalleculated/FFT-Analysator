@@ -26,15 +26,15 @@ class AppController:
                                                             )
 
         # Initialization of data preprocessing and binary file
-        self.binary_file = None
+        self.file_paths = None
         self.preprocessing = None
 
     def handle_fileupload_event(self, event):
         # Handle the file upload event and update the preprocessing object
-        self.binary_file = self.sidebar.accordion.file_input.component.value
+        self.file_paths = self.sidebar.accordion.file_input.file_paths
 
-        if self.binary_file:
-            self.preprocessing = pp.Preprocess(self.binary_file)
+        if self.file_paths:
+            self.preprocessing = pp.Preprocess(self.file_paths)
 
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_selector(self.preprocessing)
@@ -75,7 +75,7 @@ class AppController:
         if event.obj == self.sidebar.accordion.selector.component:
             if self.sidebar.accordion.selector.component.value:
                 self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
-                self.preprocessing.converted_file = self.preprocessing.convert_data(self.binary_file)
+                self.preprocessing.converted_file = self.preprocessing.convert_data()
                 self.sidebar.update_multi_choice(self.preprocessing)
 
     def servable(self):
