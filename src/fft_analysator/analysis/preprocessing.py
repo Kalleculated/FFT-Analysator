@@ -31,7 +31,7 @@ class Preprocess:
         for idx, data in enumerate(self.source_result):
             self.selected_channel_data = np.append(self.selected_channel_data, data[:, channel])
 
-    def set_channel_data_block(self,channel):
+    def set_next_channel_data_block(self, channel):
         self.block_idx = self.block_idx + 1
         for idx in range(self.block_idx):
             self.selected_channel_data_block = next(self.source_result)[:, channel]
