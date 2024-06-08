@@ -13,6 +13,7 @@ class Signal_process:
     def FFT(self):
         #plt.plot(data_fft2.fftfreq(),ft[:,0])
         #plt.show()
+        ac.spectra
         return sc.fft(self.current_data)
 
 

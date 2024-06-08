@@ -6,29 +6,33 @@ import acoular as ac
 
 class Preprocess:
 
-    def __init__(self, file_paths=None):
+    def __init__(self, file_paths=None, block_size=512):
 
         self.file_paths = file_paths
-        self.source = ac.sources.TimeSamples(name=file_paths)
+        self.block_size = block_size
+
+        self.source = ac.sources.TimeSamples(name=self.file_paths)
+        self.source_result = self.source.result(num=self.block_size)
 
         if file_paths:
             self.table_key = self.get_table_names()[0]
             self.converted_file = self.convert_data()
 
+        self.data = None
         self.channel_count = None
         self.channel_size = None
-        self.selected_channel_data = []
-        self.data = None
+        self.selected_channel_data = np.array([])
+        self.selected_channel_data_block = None
+        self.block_idx = 0
 
-        self.set_channel_data(0,2560)
+    def set_channel_data(self, channel):
+        for idx, data in enumerate(self.source_result):
+            self.selected_channel_data = np.append(self.selected_channel_data, data[:, channel])
 
-    def set_channel_data(self, channel, block_size):
-        for idx, data in enumerate(self.source.result(num=block_size)):
-            self.selected_channel_data.append(data[:, channel])
-
-    def get_data_block(self):
-
-        return None
+    def set_channel_data_block(self,channel):
+        self.block_idx = self.block_idx + 1
+        for idx in range(self.block_idx):
+            self.selected_channel_data_block = next(self.source_result)[:, channel]
 
     def get_channel_size(self, channel):
         size = np.array(self.converted_file)[:, channel].shape[0]
