@@ -24,8 +24,10 @@ class Preprocess:
         self.selected_channel_data = np.array([])
         self.selected_channel_data_block = None
         self.block_idx = 0
+        self.current_channel = 0
 
     def set_channel_data(self, channel):
+        self.current_channel = channel
         for idx, data in enumerate(self.source_result):
             self.selected_channel_data = np.append(self.selected_channel_data, data[:, channel])
 
