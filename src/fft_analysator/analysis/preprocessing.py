@@ -2,13 +2,14 @@ import io
 
 import h5py
 import numpy as np
-
+import acoular as ac
 
 class Preprocess:
 
     def __init__(self, file_paths=None):
 
         self.file_paths = file_paths
+        self.source = ac.sources.TimeSamples(name=file_paths)
 
         if file_paths:
             self.table_key = self.get_table_names()[0]
@@ -16,13 +17,18 @@ class Preprocess:
 
         self.channel_count = None
         self.channel_size = None
-        self.selected_channel_data = None
+        self.selected_channel_data = []
         self.data = None
 
-    def get_channel_data(self, channel):
-        data = np.array(self.converted_file)[:, channel]
+        self.set_channel_data(0,2560)
 
-        return data
+    def set_channel_data(self, channel, block_size):
+        for idx, data in enumerate(self.source.result(num=block_size)):
+            self.selected_channel_data.append(data[:, channel])
+
+    def get_data_block(self):
+
+        return None
 
     def get_channel_size(self, channel):
         size = np.array(self.converted_file)[:, channel].shape[0]
@@ -30,14 +36,12 @@ class Preprocess:
         return size
 
     def get_channel_count(self):
-        count = np.array(self.converted_file).shape[1]
-
+        count = self.source.numchannels
         return count
 
     def get_abtastrate(self):
-        # Muss noch befüllt werden. Vermutlich bietet Acourlar hier eine Funktion oder es kann aus dem Datenset
-        # gelesen werden
-        return None
+        abtastrate = self.source.sample_freq
+        return abtastrate
 
     def convert_data(self):
         with h5py.File(self.file_paths, 'r') as file:
