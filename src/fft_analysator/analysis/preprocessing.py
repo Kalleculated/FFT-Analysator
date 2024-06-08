@@ -11,33 +11,45 @@ class Preprocess:
         self.file_paths = file_paths
         self.block_size = block_size
 
-        self.source = ac.sources.TimeSamples(name=self.file_paths)
-        self.source_result = self.source.result(num=self.block_size)
-
         if file_paths:
             self.table_key = self.get_table_names()[0]
             self.converted_file = self.convert_data()
+            self.source = ac.sources.TimeSamples(name=self.file_paths)
+            self.source_result = self.source.result(num=self.block_size)
 
         self.data = None
         self.channel_count = None
         self.channel_size = None
+        self.current_channel = None
         self.selected_channel_data = np.array([])
-        self.selected_channel_data_block = None
-        self.block_idx = 0
-        self.current_channel = 0
+        self.selected_channel_data_block = np.array([])
+        self.current_block_idx = 0
 
-    def set_channel_data(self, channel):
+    def reinitialize_source(self):
+        self.source = ac.sources.TimeSamples(name=self.file_paths)
+        self.source_result = self.source.result(num=self.block_size)
+
+    def set_channel_data(self):
+        loop_list = []
+        for data in self.source_result:
+            loop_list = np.append(loop_list, data[:, self.current_channel])
+        self.selected_channel_data = np.array(loop_list)
+
+    def set_next_channel_data_block(self):
+        self.current_block_idx = self.current_block_idx + 1
+        self.selected_channel_data_block = next(self.source_result)[:, self.current_channel]
+
+    def set_current_channel(self, channel):
         self.current_channel = channel
-        for idx, data in enumerate(self.source_result):
-            self.selected_channel_data = np.append(self.selected_channel_data, data[:, channel])
 
-    def set_next_channel_data_block(self, channel):
-        self.block_idx = self.block_idx + 1
-        for idx in range(self.block_idx):
-            self.selected_channel_data_block = next(self.source_result)[:, channel]
+    def set_idx_channel_data_block(self, idx):
+        if idx > 0:
+            self.current_block_idx = self.current_block_idx + idx
+            for i in range(idx):
+                self.selected_channel_data_block = next(self.source_result)[:, self.current_channel]
 
-    def get_channel_size(self, channel):
-        size = np.array(self.converted_file)[:, channel].shape[0]
+    def get_channel_size(self):
+        size = np.array(self.converted_file)[:, self.current_channel].shape[0]
 
         return size
 
