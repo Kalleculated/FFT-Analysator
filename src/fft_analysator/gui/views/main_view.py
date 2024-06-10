@@ -2,7 +2,6 @@ import holoviews as hv
 import numpy as np
 import panel as pn
 from panel.pane import HoloViews
-from fft_analysator.gui.views.plotter import Plotter
 from fft_analysator.gui.components.tabs import Tabs
 
 
@@ -20,7 +19,6 @@ class MainView:
         self.signals = pn.Column(sizing_mode='stretch_width')
         if channels:
             for i, channel in enumerate(channels):
-                pl = Plotter(data_callback,stretch_value,color_picker_value)
                 # Assign color_picker_ch1 to signal1 and color_picker_ch2 to signal2
                 color = color_picker_value[i] if i < len(color_picker_value) else "default_color"
                 # get sampling rate to determine the time length
