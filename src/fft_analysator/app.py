@@ -1,6 +1,6 @@
 import panel as pn
 
-from fft_analysator.gui.controllers.app_controller import AppController
+from src.fft_analysator.gui.controllers.app_controller import AppController
 
 
 class App:

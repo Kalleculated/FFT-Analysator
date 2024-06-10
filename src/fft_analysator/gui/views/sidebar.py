@@ -51,8 +51,6 @@ class Sidebar:
             for _ in self.accordion.multi_choice.component.value:
                 self.amount_ch += 1
 
-        print(self.amount_ch)
-
         if self.amount_ch == 1:
             self.accordion.color_picker_ch1.component.visible = True
             self.accordion.color_picker_ch2.component.visible = False
