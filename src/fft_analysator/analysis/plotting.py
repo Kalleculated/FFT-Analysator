@@ -10,7 +10,7 @@ class Plotter:
 
     def create_plot(self, channel):
         # Generate the figure for the given channel
-        channel_size = self.data_callback.get_channel_size(channel)
+        channel_size = self.data_callback.get_channel_size()
         time_axis = np.linspace(0, 1, channel_size)
         signal_data = self.data_callback.converted_file[:, channel]
         fig = hv.Curve((time_axis, signal_data),
