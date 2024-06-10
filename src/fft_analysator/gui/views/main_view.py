@@ -21,18 +21,17 @@ class MainView:
         if channels:
             for i, channel in enumerate(channels):
                 pl = Plotter(data_callback,stretch_value,color_picker_value)
-                fig2 = pl.update_signal(channel)
                 # Assign color_picker_ch1 to signal1 and color_picker_ch2 to signal2
                 color = color_picker_value[i] if i < len(color_picker_value) else "default_color"
                 # get sampling rate to determine the time length
-                fig1 = hv.Curve((np.linspace(0, 1, data_callback.get_channel_size()), data_callback.converted_file[:, channel]),
+                fig = hv.Curve((np.linspace(0, 1, data_callback.get_channel_size()), data_callback.converted_file[:, channel]),
                             kdims="Zeit in Sekunden", vdims="Amplitude",label= f'Channel {channel}').opts(color=color,shared_axes=False, width=800, height=400)
                 # color_picker_value
 
                 if stretch_value:
-                    plot_pane = HoloViews(fig1, sizing_mode='stretch_width')
+                    plot_pane = HoloViews(fig, sizing_mode='stretch_width')
                 else:
-                    plot_pane = HoloViews(fig1)
+                    plot_pane = HoloViews(fig)
 
                 self.signals.append(plot_pane)
 
