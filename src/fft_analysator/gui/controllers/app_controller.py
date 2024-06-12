@@ -58,11 +58,20 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_ch2.component
         ) and self.file_paths:
             # Update the color picker
-            self.sidebar.accordion.color_picker_ch1.component.visible = False
-            self.sidebar.accordion.color_picker_ch2.component.visible = False
             self.sidebar.update_color_picker()
 
             # Update signal
+            self.main_view.update_signal(
+                self.preprocessing,
+                self.sidebar.accordion.multi_choice.component.value,
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+
+            )
+
+        else:
+            self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
                 self.sidebar.accordion.multi_choice.component.value,

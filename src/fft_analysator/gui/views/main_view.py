@@ -13,7 +13,6 @@ class MainView:
 
 
     def update_signal(self, data_callback, channels, stretch_value, color_picker_value):
-
         plot = Plotter(self.tabs, data_callback)
         plot.create_signalinput_plot(channels, stretch_value, color_picker_value)
 
