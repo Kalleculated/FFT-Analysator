@@ -21,7 +21,6 @@ class Plotter:
               .opts(color=color_value, shared_axes=False, width=800, height=400)
         return fig
 
-
     def create_signalinput_plot(self, channels=None, stretch_value=None, color_picker_value=None):
         signals = pn.Column(sizing_mode='stretch_width')
 

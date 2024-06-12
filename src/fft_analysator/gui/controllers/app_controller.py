@@ -39,11 +39,13 @@ class AppController:
                 self.sidebar.update_file_list()
                 self.sidebar.update_selector(self.preprocessing)
                 self.sidebar.update_multi_choice(self.preprocessing)
+                self.sidebar.update_intslider(self.preprocessing)
 
         else:
             self.sidebar.update_file_list()
             self.sidebar.update_selector()
             self.sidebar.update_multi_choice()
+            self.sidebar.update_intslider()
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
@@ -54,7 +56,7 @@ class AppController:
             or event.obj == self.sidebar.accordion.stretching_switch.component
             or event.obj == self.sidebar.accordion.color_picker_ch1.component
             or event.obj == self.sidebar.accordion.color_picker_ch2.component
-        ):
+        ) and self.file_paths:
             # Update the color picker
             self.sidebar.accordion.color_picker_ch1.component.visible = False
             self.sidebar.accordion.color_picker_ch2.component.visible = False

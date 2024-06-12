@@ -4,6 +4,7 @@ import h5py
 import numpy as np
 import acoular as ac
 
+
 class Preprocess:
 
     def __init__(self, file_paths=None, block_size=512):
@@ -54,7 +55,6 @@ class Preprocess:
 
     def get_channel_size(self):
         size = np.array(self.converted_file)[:, self.current_channel].shape[0]
-
         return size
 
     def get_channel_count(self):

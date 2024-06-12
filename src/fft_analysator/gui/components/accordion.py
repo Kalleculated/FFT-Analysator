@@ -7,6 +7,7 @@ from fft_analysator.gui.components.color_picker import Colorpicker
 from fft_analysator.gui.components.menu_button import MenuButton
 from fft_analysator.gui.components.selector import Selector
 from fft_analysator.gui.components.data_selector import DataSelector
+from fft_analysator.gui.components.int_slider import IntSlider
 
 
 class Accordion:
@@ -19,6 +20,7 @@ class Accordion:
         self.menu = MenuButton()
         self.selector = Selector()
         self.data_selector = DataSelector()
+        self.int_slider= IntSlider()
         self.accordion = pn.Accordion
 
         # Initially hide the color picker
@@ -28,6 +30,7 @@ class Accordion:
         self._component = self.accordion(('Upload', pn.Column(pn.Row(self.file_input.component, self.data_selector.component), self.selector.component)),
                                           ('Plot', pn.Column(self.multi_choice.component, pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component),
                                                               pn.layout.Divider(margin=(5, 0, 5, 0)),
+                                                              self.int_slider.component,
                                                               pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
                                             ('Calculation', self.menu.component),

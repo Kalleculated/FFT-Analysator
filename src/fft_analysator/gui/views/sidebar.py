@@ -29,7 +29,7 @@ class Sidebar:
             data_callback (object): Get the callback to the data object
         """
         if data_callback:
-            self.accordion.multi_choice.component.name = "Wähle 1-2 Channel aus!"
+            self.accordion.multi_choice.component.name = "Choose 1-2 channels!"
             self.accordion. multi_choice.component.value = []
             self.accordion.multi_choice.component.options = (
                 list(range(data_callback.get_channel_count()))
@@ -37,7 +37,7 @@ class Sidebar:
             self.accordion.multi_choice.component.max_items = 2
 
         else:
-            self.accordion.multi_choice.component.name = "Keine Datei ausgewählt!"
+            self.accordion.multi_choice.component.name = "No data chosen!"
             self.accordion.multi_choice.component.options = []
 
     def update_color_picker(self):
@@ -89,6 +89,14 @@ class Sidebar:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
         else:
             self.accordion.data_selector.component.options = []
+
+    def update_intslider(self, data_callback=None):
+        if self.accordion.file_input.file_paths:
+            self.accordion.int_slider.component.disabled = False
+            self.accordion.int_slider.component.value = 0
+        else:
+            self.accordion.int_slider.component.disabled = True
+            self.accordion.int_slider.component.value = 0
 
     def servable(self):
         return self.layout.servable(target="sidebar")

@@ -11,6 +11,7 @@ class MainView:
         self.tabs = Tabs()
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
+
     def update_signal(self, data_callback, channels, stretch_value, color_picker_value):
 
         plot = Plotter(self.tabs, data_callback)
