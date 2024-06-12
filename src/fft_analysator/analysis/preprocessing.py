@@ -29,6 +29,7 @@ class Preprocess:
         self.selected_channel_data = np.array([])
 
     def reinitialize_source(self):
+        self.current_block_idx = 0
         self.source = ac.sources.TimeSamples(name=self.file_paths)
         self.source_result = self.source.result(num=self.block_size)
         self.selected_data_block = next(self.source_result)
@@ -51,9 +52,9 @@ class Preprocess:
         self.current_channel = channel
 
     def set_data_block_to_idx(self, idx):
-        self.current_block_idx = 0
         self.reinitialize_source()
         try:
+            self.current_block_idx = idx
             if idx > 0:
                 for i in range(idx):
                     self.selected_data_block = next(self.source_result)
