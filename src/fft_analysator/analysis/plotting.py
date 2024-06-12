@@ -11,10 +11,8 @@ class Plotter:
 
     def create_plot_ac(self, channel, color_value):
         # Generate the figure for the given channel
-        self.data_callback.current_channel = channel
-        self.data_callback.set_next_channel_data_block()
+        signal_data = self.data_callback.set_channel_on_data_block(channel)
 
-        signal_data = self.data_callback.selected_channel_data_block
         channel_size = signal_data.shape[0]
         time_axis = np.linspace(0, 1, channel_size)
 
