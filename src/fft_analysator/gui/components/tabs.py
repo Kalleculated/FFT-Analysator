@@ -4,6 +4,10 @@ import panel as pn
 class Tabs:
     def __init__(self):
         self.tabs = pn.Tabs
+        self.str_signal_tab = "Signalinput"
+        self.str_Spektrum_tab = "Spektrum"
+        self.str_Impulsantwort_tab = "Impulsantwort"
+        self.str_Analysefuktionen_tab = "Analysefunktionen"
         self._component = self.tabs(('Signalinput', 'Keine Datei ausgewählt!'),
                                     sizing_mode='stretch_width', dynamic=True)
 
