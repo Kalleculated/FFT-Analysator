@@ -31,6 +31,7 @@ class Preprocess:
     def reinitialize_source(self):
         self.source = ac.sources.TimeSamples(name=self.file_paths)
         self.source_result = self.source.result(num=self.block_size)
+        self.selected_data_block = next(self.source_result)
 
     def set_channel_data(self, channel):
         loop_list = []
@@ -42,16 +43,24 @@ class Preprocess:
         return self.selected_data_block[:, channel]
 
     def set_next_data_block(self):
+        self.current_block_idx += 1
         self.selected_data_block = next(self.source_result)
+        print('next')
 
     def set_current_channel(self, channel):
         self.current_channel = channel
 
-    def set_idx_channel_data_block(self, idx):
-        if idx > 0:
-            self.current_block_idx = self.current_block_idx + idx
-            for i in range(idx):
-                self.selected_channel_data_block = next(self.source_result)[:, self.current_channel]
+    def set_data_block_to_idx(self, idx):
+        self.current_block_idx = 0
+        self.reinitialize_source()
+        try:
+            if idx > 0:
+                for i in range(idx):
+                    self.selected_data_block = next(self.source_result)
+            print('previous')
+        except StopIteration:
+            print('End of file reached')
+
 
     def get_channel_size(self):
         size = np.array(self.converted_file)[:, self.current_channel].shape[0]

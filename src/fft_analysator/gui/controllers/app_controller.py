@@ -14,7 +14,8 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
-        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event)
+        self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
+                                self.handle_intslider_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -89,6 +90,31 @@ class AppController:
                 self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
                 self.preprocessing.converted_file = self.preprocessing.convert_data()
                 self.sidebar.update_multi_choice(self.preprocessing)
+
+    def handle_intslider_event(self, event):
+        if self.sidebar.accordion.int_slider.component.value == (self.preprocessing.current_block_idx+1):
+            self.preprocessing.set_next_data_block()
+            self.sidebar.update_color_picker()
+            self.main_view.update_signal(
+                self.preprocessing,
+                self.sidebar.accordion.multi_choice.component.value,
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+
+            )
+        else:
+            self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
+            self.sidebar.update_color_picker()
+            self.main_view.update_signal(
+                self.preprocessing,
+                self.sidebar.accordion.multi_choice.component.value,
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+
+            )
+
 
     def servable(self):
         # Serve app layout

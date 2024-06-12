@@ -4,7 +4,7 @@ from os import path
 
 
 class Sidebar:
-    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None):
+    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
@@ -16,6 +16,7 @@ class Sidebar:
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
+            self.accordion.int_slider.component.param.watch(callback_intslider, "value")
 
     def update_multi_choice(self, data_callback=None):
         """
@@ -94,6 +95,8 @@ class Sidebar:
         if self.accordion.file_input.file_paths:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
+            self.accordion.int_slider.component.start = 0
+            self.accordion.int_slider.component.end = int(51200/data_callback.block_size)
         else:
             self.accordion.int_slider.component.disabled = True
             self.accordion.int_slider.component.value = 0
