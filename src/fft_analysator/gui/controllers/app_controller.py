@@ -15,7 +15,7 @@ class AppController:
         # Initialization of main and side views
         self.main_view = MainView()
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
-                                self.handle_intslider_event)
+                                self.handle_intslider_event, self.handle_blocksize_selector_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -115,6 +115,16 @@ class AppController:
 
             )
 
+    def handle_blocksize_selector_event(self, event):
+        if self.file_paths:
+            # reinitalize the preprocessing object with the new blocksize
+            self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
+
+            # update the sidebar components
+            self.sidebar.update_file_list()
+            self.sidebar.update_selector(self.preprocessing)
+            self.sidebar.update_multi_choice(self.preprocessing)
+            self.sidebar.update_intslider(self.preprocessing)
 
     def servable(self):
         # Serve app layout

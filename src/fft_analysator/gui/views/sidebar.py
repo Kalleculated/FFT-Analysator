@@ -4,7 +4,8 @@ from os import path
 
 
 class Sidebar:
-    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None):
+    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
+                 callback_block_selector=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
@@ -17,6 +18,7 @@ class Sidebar:
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
+            self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
 
     def update_multi_choice(self, data_callback=None):
         """
