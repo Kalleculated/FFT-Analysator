@@ -23,40 +23,56 @@ class Preprocess:
             self.converted_file = self.convert_data()
             self.source = ac.sources.TimeSamples(name=self.file_paths)
             self.source_result = self.source.result(num=self.block_size)
+            self.selected_data_block = next(self.source_result)
 
+        self.current_block_idx = 0
+
+        # brauchen wir das wirklich alles? wir sollten wirklich schauen, was wir als Attribut speichern
+        # oft lohnt sich returnen und in der plot function weiterverarbeiten mehr
         self.data = None
         self.channel_count = None
         self.channel_size = None
-        self.current_channel = None
         self.selected_channel_data = np.array([])
-        self.selected_channel_data_block = np.array([])
-        self.current_block_idx = 0
 
     def reinitialize_source(self):
+
         """
         The reinitialize_source function reinitializes the generator from Acoular. It is used for returning to already
         viewed data blocks.
         """
+        self.current_block_idx = 0
         self.source = ac.sources.TimeSamples(name=self.file_paths)
         self.source_result = self.source.result(num=self.block_size)
+        self.selected_data_block = next(self.source_result)
 
-    def set_channel_data(self):
+    def set_channel_data(self, channel):
         """
-        Set_channel_data sets the attribute selected_channel_data by iteration over the generator of Acoular and
+        Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
         saving the data blocks in a Numpy Array.
+    Args:
+        channel (int): Channel number.
         """
         loop_list = []
         for data in self.source_result:
-            loop_list.append(data[:, self.current_channel])
+            loop_list.append(data[:, channel])
         self.selected_channel_data = np.array(loop_list)
 
-    def set_next_channel_data_block(self):
+    def set_channel_on_data_block(self, channel):
         """
-        Set_next_channel_data_block sets the attribute selected_channel_data_block by selecting the next element of
+        Set_channel_data_on_data_block sets returns the block data of a channel as a Numpy Array.
+    Args:
+        channel (int): Channel number.
+        """
+        return self.selected_data_block[:, channel]
+
+    def set_next_data_block(self):
+        """
+        Set_next_data_block sets the attribute selected_data_block by selecting the next element of
         the generator from Acoular and saving this data blocks in a Numpy Array.
         """
-        self.current_block_idx = self.current_block_idx + 1
-        self.selected_channel_data_block = next(self.source_result)[:, self.current_channel]
+        self.current_block_idx += 1
+        self.selected_data_block = next(self.source_result)
+        print('next')
 
     def set_current_channel(self, channel):
         """
@@ -67,22 +83,28 @@ class Preprocess:
         """
         self.current_channel = channel
 
-    def set_idx_channel_data_block(self, idx):
+    def set_data_block_to_idx(self, idx):
         """
-        Set_idx_channel_data_block sets the attribute selected_channel_data_block by selecting a specific element of
+        Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of
         the generator from Acoular and saving this data blocks in a Numpy Array.
+    Args:
+        idx (int): Idx element to which the generator iterates to.
         """
-        if idx > 0:
-            self.current_block_idx = self.current_block_idx + idx
-            for i in range(idx):
-                self.selected_channel_data_block = next(self.source_result)[:, self.current_channel]
+        self.reinitialize_source()
+        try:
+            self.current_block_idx = idx
+            if idx > 0:
+                for i in range(idx):
+                    self.selected_data_block = next(self.source_result)
+            print('previous')
+        except StopIteration:
+            print('End of file reached')
 
     def get_channel_size(self):
         """
         Get_channel_size returns the size of the current channel
         """
         size = np.array(self.converted_file)[:, self.current_channel].shape[0]
-
         return size
 
     def get_channel_count(self):

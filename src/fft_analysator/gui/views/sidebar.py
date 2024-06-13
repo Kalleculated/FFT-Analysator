@@ -1,10 +1,12 @@
 
 from fft_analysator.gui.components.accordion import Accordion
 from os import path
+import math
 
 
 class Sidebar:
-    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None):
+    def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
+                 callback_block_selector=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
@@ -16,6 +18,8 @@ class Sidebar:
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
+            self.accordion.int_slider.component.param.watch(callback_intslider, "value")
+            self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
 
     def update_multi_choice(self, data_callback=None):
         """
@@ -29,7 +33,7 @@ class Sidebar:
             data_callback (object): Get the callback to the data object
         """
         if data_callback:
-            self.accordion.multi_choice.component.name = "Wähle 1-2 Channel aus!"
+            self.accordion.multi_choice.component.name = "Choose 1-2 channels!"
             self.accordion. multi_choice.component.value = []
             self.accordion.multi_choice.component.options = (
                 list(range(data_callback.get_channel_count()))
@@ -37,7 +41,7 @@ class Sidebar:
             self.accordion.multi_choice.component.max_items = 2
 
         else:
-            self.accordion.multi_choice.component.name = "Keine Datei ausgewählt!"
+            self.accordion.multi_choice.component.name = "No data chosen!"
             self.accordion.multi_choice.component.options = []
 
     def update_color_picker(self):
@@ -89,6 +93,16 @@ class Sidebar:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
         else:
             self.accordion.data_selector.component.options = []
+
+    def update_intslider(self, data_callback=None):
+        if self.accordion.file_input.file_paths:
+            self.accordion.int_slider.component.disabled = False
+            self.accordion.int_slider.component.value = 0
+            self.accordion.int_slider.component.start = 0
+            self.accordion.int_slider.component.end = math.ceil(51200/data_callback.block_size)-1
+        else:
+            self.accordion.int_slider.component.disabled = True
+            self.accordion.int_slider.component.value = 0
 
     def servable(self):
         return self.layout.servable(target="sidebar")
