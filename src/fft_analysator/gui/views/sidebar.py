@@ -1,6 +1,7 @@
 
 from fft_analysator.gui.components.accordion import Accordion
 from os import path
+import math
 
 
 class Sidebar:
@@ -98,7 +99,7 @@ class Sidebar:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
-            self.accordion.int_slider.component.end = int(51200/data_callback.block_size)
+            self.accordion.int_slider.component.end = math.ceil(51200/data_callback.block_size)-1
         else:
             self.accordion.int_slider.component.disabled = True
             self.accordion.int_slider.component.value = 0
