@@ -35,7 +35,6 @@ class Preprocess:
         self.selected_channel_data = np.array([])
 
     def reinitialize_source(self):
-
         """
         The reinitialize_source function reinitializes the generator from Acoular. It is used for returning to already
         viewed data blocks.
@@ -50,8 +49,8 @@ class Preprocess:
         Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
         saving the data blocks in a Numpy Array.
         
-    Args:
-        channel (int): Channel number.
+        Args:
+            channel (int): Channel number.
         """
         loop_list = []
         for data in self.source_result:
@@ -62,8 +61,8 @@ class Preprocess:
         """
         Set_channel_data_on_data_block sets returns the block data of a channel as a Numpy Array.
         
-    Args:
-        channel (int): Channel number.
+        Args:
+            channel (int): Channel number.
         """
         return self.selected_data_block[:, channel]
 
@@ -80,8 +79,8 @@ class Preprocess:
         """
         Set_current_channel sets the attribute current_channel by taking a channel.
 
-    Args:
-        channel (int): Channel number switching to.
+        Args:
+            channel (int): Channel number switching to.
         """
         self.current_channel = channel
 
@@ -90,8 +89,8 @@ class Preprocess:
         Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of
         the generator from Acoular and saving this data blocks in a Numpy Array.
         
-    Args:
-        idx (int): Idx element to which the generator iterates to.
+        Args:
+            idx (int): Idx element to which the generator iterates to.
         """
         self.reinitialize_source()
         try:
