@@ -49,6 +49,7 @@ class Preprocess:
         """
         Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
         saving the data blocks in a Numpy Array.
+        
     Args:
         channel (int): Channel number.
         """
@@ -60,6 +61,7 @@ class Preprocess:
     def set_channel_on_data_block(self, channel):
         """
         Set_channel_data_on_data_block sets returns the block data of a channel as a Numpy Array.
+        
     Args:
         channel (int): Channel number.
         """
@@ -87,6 +89,7 @@ class Preprocess:
         """
         Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of
         the generator from Acoular and saving this data blocks in a Numpy Array.
+        
     Args:
         idx (int): Idx element to which the generator iterates to.
         """
