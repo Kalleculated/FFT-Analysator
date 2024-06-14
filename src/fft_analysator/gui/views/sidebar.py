@@ -113,6 +113,7 @@ class Sidebar:
             self.accordion.int_slider.component.value = 0
 
             # update the navigation buttons as well since they are coupled with the int_slider
+            self.accordion.gen_nav.index_box.value = 0
             self.accordion.gen_nav.index_box.disabled = True
             self.accordion.gen_nav.button_back.disabled = True
             self.accordion.gen_nav.button_forward.disabled = True
