@@ -120,5 +120,11 @@ class Sidebar:
             self.accordion.gen_nav.goto_button.disabled = True
             self.accordion.gen_nav.reset_button.disabled = True
 
+    def update_general_plotting_widgets(self, data_callback=None):
+        if data_callback:
+            self.accordion.stretching_switch.component.disabled = False
+        else:
+            self.accordion.stretching_switch.component.disabled = True
+
     def servable(self):
         return self.layout.servable(target="sidebar")

@@ -41,12 +41,14 @@ class AppController:
                 self.sidebar.update_selector(self.preprocessing)
                 self.sidebar.update_multi_choice(self.preprocessing)
                 self.sidebar.update_intslider(self.preprocessing)
+                self.sidebar.update_general_plotting_widgets(self.preprocessing)
 
         else:
             self.sidebar.update_file_list()
             self.sidebar.update_selector()
             self.sidebar.update_multi_choice()
             self.sidebar.update_intslider()
+            self.sidebar.update_general_plotting_widgets()
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
