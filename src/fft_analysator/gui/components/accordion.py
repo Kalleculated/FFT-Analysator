@@ -4,11 +4,11 @@ from fft_analysator.gui.components.file_input_tkinter import FileInputComponent
 from fft_analysator.gui.components.multi_choice import MultiChoice
 from fft_analysator.gui.components.switch import Switch
 from fft_analysator.gui.components.color_picker import Colorpicker
-from fft_analysator.gui.components.menu_button import MenuButton
+from fft_analysator.gui.components.calculation_menu import MenuButton
 from fft_analysator.gui.components.selector import Selector
 from fft_analysator.gui.components.data_selector import DataSelector
 from fft_analysator.gui.components.int_slider import IntSlider
-from fft_analysator.gui.components.button_cluster import GeneratorNavigator
+from fft_analysator.gui.components.generator_navigator import GeneratorNavigator
 from fft_analysator.gui.components.blocksize_selector import BlocksizeSelector
 
 
@@ -19,7 +19,7 @@ class Accordion:
         self.color_picker_ch1 = Colorpicker()
         self.color_picker_ch2 = Colorpicker()
         self.stretching_switch = Switch()
-        self.menu = MenuButton()
+        self.calculation_menu = MenuButton()
         self.selector = Selector()
         self.data_selector = DataSelector()
         self.int_slider= IntSlider()
@@ -38,7 +38,7 @@ class Accordion:
                                                               self.gen_nav.component,
                                                               pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
-                                            ('Calculation', self.menu.component),
+                                            ('Calculation', self.calculation_menu.component),
                                           sizing_mode='stretch_width')
 
 
