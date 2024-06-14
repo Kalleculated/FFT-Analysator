@@ -55,18 +55,18 @@ class Sidebar:
             for _ in self.accordion.multi_choice.component.value:
                 self.amount_ch += 1
 
-        if self.amount_ch == 1:
-            self.accordion.color_picker_ch1.component.visible = True
-            self.accordion.color_picker_ch2.component.visible = False
-            self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
-            self.accordion.color_picker_ch2.component.name = ''
-            self.amount_ch = 0
-        elif self.amount_ch == 2:
-            self.accordion.color_picker_ch1.component.visible = True
-            self.accordion.color_picker_ch2.component.visible = True
-            self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
-            self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
-            self.amount_ch = 0
+            if self.amount_ch == 1:
+                self.accordion.color_picker_ch1.component.visible = True
+                self.accordion.color_picker_ch2.component.visible = False
+                self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
+                self.accordion.color_picker_ch2.component.name = ''
+                self.amount_ch = 0
+            elif self.amount_ch == 2:
+                self.accordion.color_picker_ch1.component.visible = True
+                self.accordion.color_picker_ch2.component.visible = True
+                self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
+                self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
+                self.amount_ch = 0
         else:
             self.accordion.color_picker_ch1.component.visible = False
             self.accordion.color_picker_ch2.component.visible = False
@@ -103,6 +103,8 @@ class Sidebar:
 
             # update the navigation buttons as well since they are coupled with the int_slider
             self.accordion.gen_nav.index_box.disabled = False
+            self.accordion.gen_nav.index_box.start = self.accordion.int_slider.component.start
+            self.accordion.gen_nav.index_box.end = self.accordion.int_slider.component.end
             self.accordion.gen_nav.button_back.disabled = False
             self.accordion.gen_nav.button_forward.disabled = False
             self.accordion.gen_nav.goto_button.disabled = False
@@ -113,11 +115,18 @@ class Sidebar:
             self.accordion.int_slider.component.value = 0
 
             # update the navigation buttons as well since they are coupled with the int_slider
+            self.accordion.gen_nav.index_box.value = 0
             self.accordion.gen_nav.index_box.disabled = True
             self.accordion.gen_nav.button_back.disabled = True
             self.accordion.gen_nav.button_forward.disabled = True
             self.accordion.gen_nav.goto_button.disabled = True
             self.accordion.gen_nav.reset_button.disabled = True
+
+    def update_general_plotting_widgets(self, data_callback=None):
+        if data_callback:
+            self.accordion.stretching_switch.component.disabled = False
+        else:
+            self.accordion.stretching_switch.component.disabled = True
 
     def servable(self):
         return self.layout.servable(target="sidebar")
