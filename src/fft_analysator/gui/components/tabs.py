@@ -8,8 +8,12 @@ class Tabs:
         self.str_Spektrum_tab = "Spektrum"
         self.str_Impulsantwort_tab = "Impulsantwort"
         self.str_Analysefuktionen_tab = "Analysefunktionen"
-        self._component = self.tabs(('Signalinput', 'No data chosen!'),
-                                    sizing_mode='stretch_width', dynamic=True)
+        self._component = self.tabs(
+            (self.str_signal_tab, 'No data chosen!'),
+            (self.str_Spektrum_tab, 'No data chosen!'),
+            (self.str_Impulsantwort_tab, 'No data chosen!'),
+            (self.str_Analysefuktionen_tab, 'No data chosen!'),
+            sizing_mode='stretch_width', dynamic=True)
 
     @property
     def component(self):

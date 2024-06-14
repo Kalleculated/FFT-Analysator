@@ -45,6 +45,3 @@ class Accordion:
     @property
     def component(self):
         return self._component
-
-
-    # ('Plot',pn.Column(self.color_picker.component)),
