@@ -92,8 +92,10 @@ class AppController:
                 self.sidebar.update_multi_choice(self.preprocessing)
 
     def handle_intslider_event(self, event):
-        if self.sidebar.accordion.int_slider.component.value == (self.preprocessing.current_block_idx+1):
-            self.preprocessing.set_next_data_block()
+        if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
+            for _ in range(self.sidebar.accordion.int_slider.component.value - self.preprocessing.current_block_idx):
+                self.preprocessing.set_next_data_block()
+
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,

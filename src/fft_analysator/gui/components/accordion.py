@@ -23,7 +23,7 @@ class Accordion:
         self.selector = Selector()
         self.data_selector = DataSelector()
         self.int_slider= IntSlider()
-        self.gen_nav = GeneratorNavigator()
+        self.gen_nav = GeneratorNavigator(self.int_slider)
         self.blocksize_selector = BlocksizeSelector()
         self.accordion = pn.Accordion
 

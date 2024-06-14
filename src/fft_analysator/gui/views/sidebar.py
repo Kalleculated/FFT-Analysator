@@ -100,9 +100,24 @@ class Sidebar:
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
             self.accordion.int_slider.component.end = math.ceil(data_callback.get_abtastrate()/data_callback.block_size)-1
+
+            # update the navigation buttons as well since they are coupled with the int_slider
+            self.accordion.gen_nav.index_box.disabled = False
+            self.accordion.gen_nav.button_back.disabled = False
+            self.accordion.gen_nav.button_forward.disabled = False
+            self.accordion.gen_nav.goto_button.disabled = False
+            self.accordion.gen_nav.reset_button.disabled = False
+
         else:
             self.accordion.int_slider.component.disabled = True
             self.accordion.int_slider.component.value = 0
+
+            # update the navigation buttons as well since they are coupled with the int_slider
+            self.accordion.gen_nav.index_box.disabled = True
+            self.accordion.gen_nav.button_back.disabled = True
+            self.accordion.gen_nav.button_forward.disabled = True
+            self.accordion.gen_nav.goto_button.disabled = True
+            self.accordion.gen_nav.reset_button.disabled = True
 
     def servable(self):
         return self.layout.servable(target="sidebar")
