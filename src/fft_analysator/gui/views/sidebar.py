@@ -99,7 +99,7 @@ class Sidebar:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
-            self.accordion.int_slider.component.end = math.ceil(51200/data_callback.block_size)-1
+            self.accordion.int_slider.component.end = math.ceil(data_callback.get_abtastrate()/data_callback.block_size)-1
         else:
             self.accordion.int_slider.component.disabled = True
             self.accordion.int_slider.component.value = 0
