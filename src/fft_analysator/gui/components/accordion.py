@@ -19,7 +19,7 @@ class Accordion:
         self.color_picker_ch1 = Colorpicker()
         self.color_picker_ch2 = Colorpicker()
         self.stretching_switch = Switch()
-        self.menu = MenuButton()
+        self.calculation_menu = MenuButton()
         self.selector = Selector()
         self.data_selector = DataSelector()
         self.int_slider= IntSlider()
@@ -38,7 +38,7 @@ class Accordion:
                                                               self.gen_nav.component,
                                                               pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
-                                            ('Calculation', self.menu.component),
+                                            ('Calculation', self.calculation_menu.component),
                                           sizing_mode='stretch_width')
 
 
