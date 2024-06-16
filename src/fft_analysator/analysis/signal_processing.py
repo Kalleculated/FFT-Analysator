@@ -23,24 +23,24 @@ class SignalProcess:
         freqs , power_spectrum = ss.welch(self.current_data, window= "hann", nperseg =512 )
         return  freqs, power_spectrum
 
-    def plot_power_spectrum(self, power_spectrum, freqs):
-        plt.figure(figsize=(10, 6))
-        plt.semilogy(freqs, power_spectrum)
-        plt.title("Power Spectrum of the Signal")
-        plt.xlabel("Frequency (Hz)")
-        plt.ylabel("Power")
-        plt.grid(True)
-        plt.show()
+    #def plot_power_spectrum(self, power_spectrum, freqs):
+        #plt.figure(figsize=(10, 6))
+        #plt.semilogy(freqs, power_spectrum)
+        #plt.title("Power Spectrum of the Signal")
+        #plt.xlabel("Frequency (Hz)")
+        #plt.ylabel("Power")
+        #plt.grid(True)
+        #plt.show()
         
-    def plot_fft(self):
-        fft_result, freqs = self.calculate_fft()
-        plt.figure(figsize=(10, 6))
-        plt.plot(freqs, np.abs(fft_result))
-        plt.title("FFT of Channel")
-        plt.xlabel("Frequency (Hz)")
-        plt.ylabel("Magnitude")
-        plt.grid(True)
-        plt.show()
+    #def plot_fft(self):
+        #fft_result, freqs = self.calculate_fft()
+        #plt.figure(figsize=(10, 6))
+        #plt.plot(freqs, np.abs(fft_result))
+        #plt.title("FFT of Channel")
+        #plt.xlabel("Frequency (Hz)")
+        #plt.ylabel("Magnitude")
+        #plt.grid(True)
+        #plt.show()
     
 
 # Beispielhafte Verwendung mit der Preprocess-Klasse
