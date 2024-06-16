@@ -10,9 +10,10 @@ class SignalProcess:
         self.current_data = data
 
     def calculate_fft(self):
-        # Perform the FFT
-        fft_result = np.fft.fft(self.current_data)
-        freqs = np.fft.fftfreq(len(self.current_data))
+        fft_result = fft.fft(self.current_data)
+        freqs = fft.fftfreq(len(self.current_data))
+        freqs = freqs[:len(freqs)//2]  #es werdeb nur positive Frequenzen betrachtet
+        fft_result = fft.fft(self.current_data)[:len(freqs)]       
         return fft_result, freqs
 
     def calculate_power_spectrum(self):
