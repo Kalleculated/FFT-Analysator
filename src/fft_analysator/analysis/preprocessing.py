@@ -1,6 +1,6 @@
 import h5py
 import numpy as np
-import acoular as ac
+from acoular import sources as ac
 
 
 class Preprocess:
@@ -21,7 +21,7 @@ class Preprocess:
         if file_paths:
             self.table_key = self.get_table_names()[0]
             self.converted_file = self.convert_data()
-            self.source = ac.sources.TimeSamples(name=self.file_paths)
+            self.source = ac.TimeSamples(name=self.file_paths)
             self.source_result = self.source.result(num=self.block_size)
             self.selected_data_block = next(self.source_result)
 
@@ -40,7 +40,7 @@ class Preprocess:
         viewed data blocks.
         """
         self.current_block_idx = 0
-        self.source = ac.sources.TimeSamples(name=self.file_paths)
+        self.source = ac.TimeSamples(name=self.file_paths)
         self.source_result = self.source.result(num=self.block_size)
         self.selected_data_block = next(self.source_result)
 
@@ -48,7 +48,7 @@ class Preprocess:
         """
         Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
         saving the data blocks in a Numpy Array.
-        
+
         Args:
             channel (int): Channel number.
         """
@@ -60,7 +60,7 @@ class Preprocess:
     def set_channel_on_data_block(self, channel):
         """
         Set_channel_data_on_data_block sets returns the block data of a channel as a Numpy Array.
-        
+
         Args:
             channel (int): Channel number.
         """
@@ -88,7 +88,7 @@ class Preprocess:
         """
         Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of
         the generator from Acoular and saving this data blocks in a Numpy Array.
-        
+
         Args:
             idx (int): Idx element to which the generator iterates to.
         """
