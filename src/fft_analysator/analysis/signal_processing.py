@@ -20,6 +20,7 @@ class Signal_Process:
                         noverlap=overlap)
         return f, Pxy
 
+
     def calculate_correlation(self):
         corr = sc.correlate(self.current_data_input, self.current_data_output, mode='same')
         return corr
