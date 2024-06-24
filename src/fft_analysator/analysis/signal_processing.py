@@ -5,61 +5,62 @@ import scipy.signal as sc
 import acoular as ac
 
 class Signal_Process:
-    def __init__(self, TimeSamples, abtastrate, window='Hanning',block_size=1024,overlap='50%'):
-
-        self.current_data_abtastrate = abtastrate
-        self.current_block_idx = 0
-        self.timesamples = TimeSamples
-        self.abtastrate = abtastrate
+    def __init__(self, file_path, channel_x, channel_y, window='Hanning', block_size=1024, overlap='50%'):
+        self.file_path = file_path
         self.window = window
         self.block_size = block_size
         self.overlap = overlap
+        self.channel_x = channel_x
+        self.channel_y = channel_y
 
-        if TimeSamples:
-            self.FFT_gen = ac.FFTSpectra(source=self.timesamples, window=self.window, block_size=self.block_size, overlap=self.overlap)
-            self.FFT_gen_current_result = next(self.FFT_gen.result())
-            self.Power_gen = ac.PowerSpectra(time_data=self.timesamples,window=self.window, block_size=self.block_size, overlap=self.overlap)
-            self.Power_gen_csm = self.Power_gen.csm
+        if file_path:
+            self.source = ac.MaskedTimeSamples(name=self.file_path)
+            self.abtastrate = self.source.sample_freq
+            self.numchannels_total = self.source.numchannels_total
+            self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in [self.channel_x, self.channel_y]] # type: ignore
+            self.source.invalid_channels = self.invalid_channel_list
+            
+    
+    def update_invalid_channels(self, valid_channels):
+        self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in valid_channels] # type: ignore
+        self.source.invalid_channels = self.invalid_channel_list
+    
+    def csm_x_x(self):
+        self.update_invalid_channels([self.channel_x])
+        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
+        freq = powerspektren.fftfreq()
+        return powerspektren.csm[:, 0, 0], freq
+    
+    def csm_y_y(self):
+        self.update_invalid_channels([self.channel_y])
+        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
+        freq = powerspektren.fftfreq()
+        return powerspektren.csm[:, 0, 0], freq
+    
+    def csm_x_y(self):
+        self.update_invalid_channels([self.channel_x, self.channel_y])
+        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
+        freq = powerspektren.fftfreq()
+        return powerspektren.csm[:, 0, 1], freq
+    
+    def coherence(self):    
+        csm_xx, freq = self.csm_x_x()  #unsicher wegen den frequenzen
+        csm_yy, _ = self.csm_y_y()  
+        csm_xy, _ = self.csm_x_y()  
+        coherence = np.abs(csm_xy)**2 / (csm_xx * csm_yy)
+        return coherence, freq
+    
+    def frequency_response(self):
+        csm_xy, freq = self.csm_x_y() 
+        csm_xx, _ = self.csm_y_y()  
+        H = np.divide(csm_xy,csm_xx, out=np.zeros_like(csm_xx), where=(np.abs(csm_xy) > 1e-10))
+        return H, freq
+    
+    
+    
+    
+    
 
-    def reinitialize_source(self):
-        self.current_block_idx = 0
-        self.FFT_gen = ac.FFTSpectra(source=self.timesamples, window=self.window, block_size=self.block_size, overlap=self.overlap)
-        self.FFT_gen_current_result = next(self.FFT_gen.result())
-        self.Power_gen = ac.PowerSpectra(time_data=self.timesamples, window=self.window, block_size=self.block_size, overlap=self.overlap)
-        self.Power_gen_csm = self.Power_gen.csm
-    def get_next_FFT_block(self):
-        self.FFT_gen_current_result = next(self.FFT_gen.result())
-        self.current_block_idx = self.current_block_idx + 1
-        return self.FFT_gen_current_result
-
-    def get_average_FFT(self):
-        all_blocks = np.array([np.abs(block) for block in self.FFT_gen.result()])
-        average_FFT = np.mean(all_blocks, axis=0)
-        return average_FFT
-
-    def get_csm(self,x,y):
-        return self.Power_gen_csm[:,x,y]
-
-    def get_frequencies(self):
-        return np.fft.rfftfreq(self.FFT_gen.block_size, d=1/self.timesamples.sample_freq)
-    def get_coherence(self,x,y):
-        return abs(2*self.get_csm(x,y))/(self.get_csm(x,x)*self.get_csm(y,y))
-
-    def get_impulse_response(self,x,y):
-        FFT_x = self.get_average_FFT()[:,x]
-        FFT_y = self.get_average_FFT()[:,y]
-        H = np.divide(FFT_x, FFT_y, out=np.zeros_like(FFT_x), where=(np.abs(FFT_y) > 1e-10))
-        n = len(FFT_x)
-        h = fft.irfft(H, n=n)
-        time_axis = np.arange(n) / self.abtastrate
-        return time_axis, h
-
-    def get_impulse_response(self,x,y):
-        FFT_x = self.get_average_FFT()[:,x]
-        FFT_y = self.get_average_FFT()[:,y]
-        H = np.divide(FFT_x, FFT_y, out=np.zeros_like(FFT_x), where=(np.abs(FFT_y) > 1e-10))
-        time_axis = self.get_frequencies()
-        return time_axis, H
 
 """
     def calculate_fft(self, data):
