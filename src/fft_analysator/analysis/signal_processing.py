@@ -5,62 +5,65 @@ import scipy.signal as sc
 import acoular as ac
 
 class Signal_Process:
-    def __init__(self, file_path, channel_x, channel_y, window='Hanning', block_size=1024, overlap='50%'):
+    def __init__(self, file_path, window='Hanning', block_size=1024, overlap='50%'):
         self.file_path = file_path
         self.window = window
         self.block_size = block_size
         self.overlap = overlap
-        self.channel_x = channel_x
-        self.channel_y = channel_y
 
         if file_path:
             self.source = ac.MaskedTimeSamples(name=self.file_path)
             self.abtastrate = self.source.sample_freq
             self.numchannels_total = self.source.numchannels_total
-            self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in [self.channel_x, self.channel_y]] # type: ignore
-            self.source.invalid_channels = self.invalid_channel_list
-            
+            self.invalid_channel_list = []
+            self.powerspectra = None
     
-    def update_invalid_channels(self, valid_channels):
-        self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in valid_channels] # type: ignore
+    def invalid_channels(self, valid_channels):
+        self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in valid_channels] 
         self.source.invalid_channels = self.invalid_channel_list
     
-    def csm_x_x(self):
-        self.update_invalid_channels([self.channel_x])
-        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
-        freq = powerspektren.fftfreq()
-        return powerspektren.csm[:, 0, 0], freq
-    
-    def csm_y_y(self):
-        self.update_invalid_channels([self.channel_y])
-        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
-        freq = powerspektren.fftfreq()
-        return powerspektren.csm[:, 0, 0], freq
-    
-    def csm_x_y(self):
-        self.update_invalid_channels([self.channel_x, self.channel_y])
-        powerspektren = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
-        freq = powerspektren.fftfreq()
-        return powerspektren.csm[:, 0, 1], freq
-    
-    def coherence(self):    
-        csm_xx, freq = self.csm_x_x()  #unsicher wegen den frequenzen
-        csm_yy, _ = self.csm_y_y()  
-        csm_xy, _ = self.csm_x_y()  
-        coherence = np.abs(csm_xy)**2 / (csm_xx * csm_yy)
-        return coherence, freq
-    
-    def frequency_response(self):
-        csm_xy, freq = self.csm_x_y() 
-        csm_xx, _ = self.csm_y_y()  
-        H = np.divide(csm_xy,csm_xx, out=np.zeros_like(csm_xx), where=(np.abs(csm_xy) > 1e-10))
-        return H, freq
+    def csm(self, signal_x, signal_y, window='Hanning', block_size=1024, overlap='50%'):
+        self.invalid_channels([signal_x, signal_y])
+        self.powerspectra = ac.PowerSpectra(time_data=self.source, block_size=block_size, window=window, overlap=overlap)
+        return self.powerspectra.csm
+    #self.powerspectra[:,0,0]-> Autopowerspec from signal_x
+    #self.powerspectra[:,1,1]-> Autopowerspec from signal_y
+    #self.powerspectra[:,0,1]-> Crosspowerspec
     
     
-    
-    
-    
+    def frequency(self):
+        return self.powerspectra.fftfreq()
 
+    def coherence(self, signal_x, signal_y):
+        csm_matrix = self.csm(signal_x, signal_y)
+        coherence = np.abs(csm_matrix[:, 0, 1])**2 / (csm_matrix[:, 0, 0] * csm_matrix[:, 1, 1])
+        return coherence
+    
+    def frequency_response(self, signal_x, signal_y):
+        csm_matrix = self.csm(signal_x, signal_y)
+        H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
+        return H
+    
+    def impuls_response(self, signal_x, signal_y):
+        csm_matrix = self.csm(signal_x, signal_y)
+        H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
+        n = len(csm_matrix[:, 0, 0])
+        h = fft.irfft(H, n=n)
+        time_axis = np.arange(n) / self.abtastrate
+        return h, time_axis
+        
+        
+    def corr(self, signal_x, signal_y):
+        csm_matrix = self.csm(signal_x, signal_y)
+        n = len(csm_matrix[:, 0, 0])
+        
+        corr_xx = fft.irfft(csm_matrix[:, 0, 0], n=n)
+        corr_yy = fft.irfft(csm_matrix[:, 1, 1], n=n)
+        corr_xy = fft.irfft(csm_matrix[:, 0, 1], n=n)
+        
+        time_axis = np.arange(n) / self.abtastrate
+        
+        return corr_xx, corr_yy, corr_xy, time_axis
 
 """
     def calculate_fft(self, data):
