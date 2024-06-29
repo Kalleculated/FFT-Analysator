@@ -9,3 +9,4 @@ widget_test
 *.gitignore
 *.DS_Store
 site
+cache
