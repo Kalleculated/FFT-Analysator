@@ -72,7 +72,6 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
-
             )
 
         else:
@@ -134,6 +133,14 @@ class AppController:
             self.sidebar.update_selector(self.preprocessing)
             self.sidebar.update_channel_selector(self.preprocessing)
             self.sidebar.update_intslider(self.preprocessing)
+            self.main_view.update_signal(
+                self.preprocessing,
+                {self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value},
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+            )
 
     def servable(self):
         # Serve app layout
