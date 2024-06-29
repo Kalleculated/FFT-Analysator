@@ -59,6 +59,8 @@ class AppController:
             or event.obj == self.sidebar.accordion.stretching_switch.component
             or event.obj == self.sidebar.accordion.color_picker_ch1.component
             or event.obj == self.sidebar.accordion.color_picker_ch2.component
+            or event.obj == self.sidebar.accordion.channel_selector_input.component
+            or event.obj == self.sidebar.accordion.channel_selector_output.component
         ) and self.file_paths:
             # Update the color picker
             self.sidebar.update_color_picker()

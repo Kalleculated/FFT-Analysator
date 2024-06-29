@@ -15,6 +15,8 @@ class Sidebar:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.multi_choice.component.param.watch(callback, "value")
+            self.accordion.channel_selector_input.component.param.watch(callback, "value")
+            self.accordion.channel_selector_output.component.param.watch(callback, "value")
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
@@ -56,13 +58,16 @@ class Sidebar:
 
     def update_color_picker(self):
 
-        # Get amount of channels
-        if self.accordion.multi_choice.component.value:
+        # The selector always has a value, so we can check if the options are set
+        if (self.accordion.channel_selector_input.component.options
+            and self.accordion.channel_selector_output.component.options):
             # self.ch = self.accordion.multi_choice.component.value
             # values can only be converted through iteration
-            self.ch = [int(item) for item in self.accordion.multi_choice.component.value]
+            self.ch = list({self.accordion.channel_selector_input.component.value,
+                            self.accordion.channel_selector_output.component.value})
+            print(self.ch)
             self.amount_ch = 0
-            for _ in self.accordion.multi_choice.component.value:
+            for _ in self.ch:
                 self.amount_ch += 1
 
             if self.amount_ch == 1:
