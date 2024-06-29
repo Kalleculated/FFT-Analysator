@@ -16,7 +16,6 @@ from fft_analysator.gui.components.channel_selector import ChannelSelector
 class Accordion:
     def __init__(self):
         self.file_input = FileInputComponent()
-        self.multi_choice = MultiChoice()
         self.color_picker_ch1 = Colorpicker()
         self.color_picker_ch2 = Colorpicker()
         self.stretching_switch = Switch()
@@ -36,8 +35,7 @@ class Accordion:
         self.color_picker_ch2.component.visible = False
 
         self._component = self.accordion(('Upload', pn.Column(pn.Row(self.file_input.component, self.data_selector.component), self.selector.component, self.blocksize_selector.component)),
-                                          ('Plot', pn.Column(self.multi_choice.component,
-                                                            pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
+                                          ('Plot', pn.Column(pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
                                                             pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component),
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
                                                             self.int_slider.component,
