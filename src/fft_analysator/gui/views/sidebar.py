@@ -55,8 +55,8 @@ class Sidebar:
         if (self.accordion.channel_selector_input.component.value is not None
             and self.accordion.channel_selector_output.component.value is not None):
 
-            self.ch = list({self.accordion.channel_selector_input.component.value,
-                            self.accordion.channel_selector_output.component.value})
+            self.ch = list(dict.fromkeys([self.accordion.channel_selector_input.component.value,
+                self.accordion.channel_selector_output.component.value]))
             self.amount_ch = len(self.ch)
 
             if self.amount_ch == 1:
