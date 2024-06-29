@@ -75,7 +75,6 @@ class AppController:
             )
 
         else:
-            print('funktioniert')
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
