@@ -627,9 +627,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fft_analysator.gui.views.sidebar.Sidebar.update_multi_choice" class="md-nav__link">
+  <a href="#fft_analysator.gui.views.sidebar.Sidebar.update_channel_selector" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;update_multi_choice
+      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;update_channel_selector
     </span>
   </a>
   
@@ -693,9 +693,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fft_analysator.gui.views.sidebar.Sidebar.update_multi_choice" class="md-nav__link">
+  <a href="#fft_analysator.gui.views.sidebar.Sidebar.update_channel_selector" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;update_multi_choice
+      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;update_channel_selector
     </span>
   </a>
   
@@ -778,7 +778,8 @@
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span> <span class="o">=</span> <span class="n">Accordion</span><span class="p">()</span>
@@ -787,7 +788,8 @@
     <span class="k">if</span> <span class="n">callback</span> <span class="ow">or</span> <span class="n">callback_fileupload</span> <span class="ow">or</span> <span class="n">callback_table_chooser</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">file_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_fileupload</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">stretching_switch</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">color_picker_ch1</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">color_picker_ch2</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_table_chooser</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
@@ -811,18 +813,18 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="fft_analysator.gui.views.sidebar.Sidebar.update_multi_choice" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">update_multi_choice</span>
+<h3 id="fft_analysator.gui.views.sidebar.Sidebar.update_channel_selector" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">update_channel_selector</span>
 
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_multi_choice</span><span class="p">(</span><span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_channel_selector</span><span class="p">(</span><span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-      <p>The update_multi_choice function is used to update the multi_choice component with new data.
-If a data_callback is provided, then the options of the multi_choice component are set to be
+      <p>The update_channel_selector function is used to update the update_channel_selector component with new data.
+If a data_callback is provided, then the options of the update_channel_selector component are set to be
 the number of channels in that callback. The name of the component is also updated accordingly.
 Otherwise, if no data_callback was provided, then we assume that there's no file selected and
 we set both options and name to empty lists/strings respectively.</p>
@@ -858,8 +860,7 @@ we set both options and name to empty lists/strings respectively.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
-<span class="normal">25</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
@@ -879,10 +880,15 @@ we set both options and name to empty lists/strings respectively.</p>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_multi_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_channel_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The update_multi_choice function is used to update the multi_choice component with new data.</span>
-<span class="sd">    If a data_callback is provided, then the options of the multi_choice component are set to be</span>
+<span class="sd">    The update_channel_selector function is used to update the update_channel_selector component with new data.</span>
+<span class="sd">    If a data_callback is provided, then the options of the update_channel_selector component are set to be</span>
 <span class="sd">    the number of channels in that callback. The name of the component is also updated accordingly.</span>
 <span class="sd">    Otherwise, if no data_callback was provided, then we assume that there&#39;s no file selected and</span>
 <span class="sd">    we set both options and name to empty lists/strings respectively.</span>
@@ -891,16 +897,20 @@ we set both options and name to empty lists/strings respectively.</p>
 <span class="sd">        data_callback (object): Get the callback to the data object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">data_callback</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Choose 1-2 channels!&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span> <span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">get_channel_count</span><span class="p">()))</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">max_items</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Output channel:&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Input channel:&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">get_channel_count</span><span class="p">())))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">get_channel_count</span><span class="p">())))</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No data chosen!&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">multi_choice</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No data chosen!&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No data chosen!&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
