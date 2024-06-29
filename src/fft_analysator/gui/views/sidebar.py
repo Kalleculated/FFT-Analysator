@@ -33,16 +33,26 @@ class Sidebar:
             data_callback (object): Get the callback to the data object
         """
         if data_callback:
-            self.accordion.multi_choice.component.name = "Choose 1-2 channels!"
-            self.accordion. multi_choice.component.value = []
+            self.accordion.multi_choice.component.name = "Choose input channel:"
+            self.accordion.multi_choice.component.value = []
             self.accordion.multi_choice.component.options = (
                 list(range(data_callback.get_channel_count()))
             )
             self.accordion.multi_choice.component.max_items = 2
 
+            self.accordion.channel_selector_output.component.disabled = False
+            self.accordion.channel_selector_input.component.disabled = False
+            self.accordion.channel_selector_output.component.name = "Output channel:"
+            self.accordion.channel_selector_input.component.name = "Input channel:"
+            self.accordion.channel_selector_input.component.options = (list(range(data_callback.get_channel_count())))
+            self.accordion.channel_selector_output.component.options = (list(range(data_callback.get_channel_count())))
+
         else:
             self.accordion.multi_choice.component.name = "No data chosen!"
             self.accordion.multi_choice.component.options = []
+
+            self.accordion.channel_selector_output.component.name = "No data chosen!"
+            self.accordion.channel_selector_input.component.name = "No data chosen!"
 
     def update_color_picker(self):
 

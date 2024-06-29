@@ -10,6 +10,7 @@ from fft_analysator.gui.components.data_selector import DataSelector
 from fft_analysator.gui.components.int_slider import IntSlider
 from fft_analysator.gui.components.generator_navigator import GeneratorNavigator
 from fft_analysator.gui.components.blocksize_selector import BlocksizeSelector
+from fft_analysator.gui.components.channel_selector import ChannelSelector
 
 
 class Accordion:
@@ -24,7 +25,10 @@ class Accordion:
         self.data_selector = DataSelector()
         self.int_slider= IntSlider()
         self.gen_nav = GeneratorNavigator(self.int_slider)
+        self.gen_nav = GeneratorNavigator(self.int_slider)
         self.blocksize_selector = BlocksizeSelector()
+        self.channel_selector_input = ChannelSelector()
+        self.channel_selector_output = ChannelSelector()
         self.accordion = pn.Accordion
 
         # Initially hide the color picker
@@ -32,11 +36,13 @@ class Accordion:
         self.color_picker_ch2.component.visible = False
 
         self._component = self.accordion(('Upload', pn.Column(pn.Row(self.file_input.component, self.data_selector.component), self.selector.component, self.blocksize_selector.component)),
-                                          ('Plot', pn.Column(self.multi_choice.component, pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component),
-                                                              pn.layout.Divider(margin=(5, 0, 5, 0)),
-                                                              self.int_slider.component,
-                                                              self.gen_nav.component,
-                                                              pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
+                                          ('Plot', pn.Column(self.multi_choice.component,
+                                                            pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
+                                                            pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component),
+                                                            pn.layout.Divider(margin=(5, 0, 5, 0)),
+                                                            self.int_slider.component,
+                                                            self.gen_nav.component,
+                                                            pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
                                             ('Calculation', self.calculation_menu.component),
                                           sizing_mode='stretch_width')
