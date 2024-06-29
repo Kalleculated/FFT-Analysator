@@ -39,45 +39,46 @@ class AppController:
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_file_list()
                 self.sidebar.update_selector(self.preprocessing)
-                self.sidebar.update_multi_choice(self.preprocessing)
+                self.sidebar.update_channel_selector(self.preprocessing)
                 self.sidebar.update_intslider(self.preprocessing)
                 self.sidebar.update_general_plotting_widgets(self.preprocessing)
 
         else:
             self.sidebar.update_file_list()
             self.sidebar.update_selector()
-            self.sidebar.update_multi_choice()
+            self.sidebar.update_channel_selector()
             self.sidebar.update_intslider()
             self.sidebar.update_general_plotting_widgets()
 
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
-        # Note, we could also split this into multiple functions
-
-        if (
-            event.obj == self.sidebar.accordion.multi_choice.component
-            or event.obj == self.sidebar.accordion.stretching_switch.component
+        if ((
+            event.obj == self.sidebar.accordion.stretching_switch.component
             or event.obj == self.sidebar.accordion.color_picker_ch1.component
             or event.obj == self.sidebar.accordion.color_picker_ch2.component
-        ) and self.file_paths:
+            or event.obj == self.sidebar.accordion.channel_selector_input.component
+            or event.obj == self.sidebar.accordion.channel_selector_output.component)
+            and self.file_paths
+            and self.sidebar.accordion.channel_selector_input.component.value is not None
+            and self.sidebar.accordion.channel_selector_output.component.value is not None):
             # Update the color picker
             self.sidebar.update_color_picker()
 
             # Update signal
             self.main_view.update_signal(
                 self.preprocessing,
-                self.sidebar.accordion.multi_choice.component.value,
+                {self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value},
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
-
             )
 
         else:
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
-                self.sidebar.accordion.multi_choice.component.value,
+                [],
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
@@ -91,7 +92,7 @@ class AppController:
             if self.sidebar.accordion.selector.component.value:
                 self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
                 self.preprocessing.converted_file = self.preprocessing.convert_data()
-                self.sidebar.update_multi_choice(self.preprocessing)
+                self.sidebar.update_channel_selector(self.preprocessing)
 
     def handle_intslider_event(self, event):
         if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
@@ -101,7 +102,8 @@ class AppController:
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
-                self.sidebar.accordion.multi_choice.component.value,
+                {self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value},
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
@@ -112,7 +114,8 @@ class AppController:
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
-                self.sidebar.accordion.multi_choice.component.value,
+                {self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value},
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value],
@@ -127,8 +130,16 @@ class AppController:
             # update the sidebar components
             self.sidebar.update_file_list()
             self.sidebar.update_selector(self.preprocessing)
-            self.sidebar.update_multi_choice(self.preprocessing)
+            self.sidebar.update_channel_selector(self.preprocessing)
             self.sidebar.update_intslider(self.preprocessing)
+            self.main_view.update_signal(
+                self.preprocessing,
+                {self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value},
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value],
+            )
 
     def servable(self):
         # Serve app layout
