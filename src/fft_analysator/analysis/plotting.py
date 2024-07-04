@@ -60,7 +60,7 @@ class Plotter:
             self.tabs.component[0] = (self.tabs.str_signal_tab, 'Keine Datei ausgewählt!')
             return
 
-        for i, channel in enumerate(channels):
+        for i, channel in enumerate(list(dict.fromkeys(channels))):
             color_value = color_picker_value[i] if i < len(color_picker_value) else "default_color"
             fig = self.create_plot_ac(channel, color_value)
 
@@ -80,7 +80,7 @@ class Plotter:
             self.tabs.component[1] = (self.tabs.str_Spektrum_tab, 'Keine Datei ausgewählt!')
             return
 
-        for i, channel in enumerate(channels):
+        for i, channel in enumerate(list(dict.fromkeys(channels))):
             color_value = color_picker_value[i] if i < len(color_picker_value) else "default_color"
             fig = self.creat_plot_ac_spectrum(channel, color_value)
 

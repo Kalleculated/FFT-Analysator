@@ -12,9 +12,13 @@ class MainView:
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
     def update_signal(self, data_callback, channels, stretch_value, color_picker_value):
-        plot = Plotter(self.tabs, data_callback)
-        plot.create_signalinput_plot(channels, stretch_value, color_picker_value)
-        plot.create_Spektrum_plot(channels, stretch_value, color_picker_value)
+        if channels and len(channels) == 2:
+            plot = Plotter(self.tabs, data_callback)
+            plot.create_signalinput_plot(channels, stretch_value, color_picker_value)
+            plot.create_Spektrum_plot(channels, stretch_value, color_picker_value)
+
+        else:
+            return
 
     def servable(self):
         self.layout.servable(target="main")
