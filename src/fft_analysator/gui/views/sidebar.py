@@ -14,17 +14,18 @@ class Sidebar:
         if callback or callback_fileupload or callback_table_chooser:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
-            self.accordion.multi_choice.component.param.watch(callback, "value")
+            self.accordion.channel_selector_input.component.param.watch(callback, "value")
+            self.accordion.channel_selector_output.component.param.watch(callback, "value")
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
             self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
 
-    def update_multi_choice(self, data_callback=None):
+    def update_channel_selector(self, data_callback=None):
         """
-        The update_multi_choice function is used to update the multi_choice component with new data.
-        If a data_callback is provided, then the options of the multi_choice component are set to be
+        The update_channel_selector function is used to update the update_channel_selector component with new data.
+        If a data_callback is provided, then the options of the update_channel_selector component are set to be
         the number of channels in that callback. The name of the component is also updated accordingly.
         Otherwise, if no data_callback was provided, then we assume that there's no file selected and
         we set both options and name to empty lists/strings respectively.
@@ -33,27 +34,30 @@ class Sidebar:
             data_callback (object): Get the callback to the data object
         """
         if data_callback:
-            self.accordion.multi_choice.component.name = "Choose 1-2 channels!"
-            self.accordion. multi_choice.component.value = []
-            self.accordion.multi_choice.component.options = (
-                list(range(data_callback.get_channel_count()))
-            )
-            self.accordion.multi_choice.component.max_items = 2
+            self.accordion.channel_selector_output.component.disabled = False
+            self.accordion.channel_selector_input.component.disabled = False
+            self.accordion.channel_selector_output.component.name = "Output channel:"
+            self.accordion.channel_selector_input.component.name = "Input channel:"
+            self.accordion.channel_selector_input.component.options = (list(range(data_callback.get_channel_count())))
+            self.accordion.channel_selector_output.component.options = (list(range(data_callback.get_channel_count())))
 
         else:
-            self.accordion.multi_choice.component.name = "No data chosen!"
-            self.accordion.multi_choice.component.options = []
+            self.accordion.channel_selector_output.component.name = "No data chosen!"
+            self.accordion.channel_selector_input.component.name = "No data chosen!"
+            self.accordion.channel_selector_input.component.options = []
+            self.accordion.channel_selector_output.component.options = []
+            self.accordion.channel_selector_output.component.disabled = True
+            self.accordion.channel_selector_input.component.disabled = True
 
     def update_color_picker(self):
 
-        # Get amount of channels
-        if self.accordion.multi_choice.component.value:
-            # self.ch = self.accordion.multi_choice.component.value
-            # values can only be converted through iteration
-            self.ch = [int(item) for item in self.accordion.multi_choice.component.value]
-            self.amount_ch = 0
-            for _ in self.accordion.multi_choice.component.value:
-                self.amount_ch += 1
+        # The selector always has a value, so we can check if the options are set
+        if (self.accordion.channel_selector_input.component.value is not None
+            and self.accordion.channel_selector_output.component.value is not None):
+
+            self.ch = list(dict.fromkeys([self.accordion.channel_selector_input.component.value,
+                self.accordion.channel_selector_output.component.value]))
+            self.amount_ch = len(self.ch)
 
             if self.amount_ch == 1:
                 self.accordion.color_picker_ch1.component.visible = True
