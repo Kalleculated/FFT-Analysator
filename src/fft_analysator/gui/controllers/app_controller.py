@@ -63,7 +63,6 @@ class AppController:
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
             # Update the color picker
             self.sidebar.update_color_picker()
-
             # Update signal
             self.main_view.update_signal(
                 self.preprocessing,

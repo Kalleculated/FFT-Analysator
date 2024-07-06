@@ -10,6 +10,7 @@ from fft_analysator.gui.components.int_slider import IntSlider
 from fft_analysator.gui.components.generator_navigator import GeneratorNavigator
 from fft_analysator.gui.components.blocksize_selector import BlocksizeSelector
 from fft_analysator.gui.components.channel_selector import ChannelSelector
+from fft_analysator.gui.components.exporter import FileExporter
 
 
 class Accordion:
@@ -27,6 +28,7 @@ class Accordion:
         self.blocksize_selector = BlocksizeSelector()
         self.channel_selector_input = ChannelSelector()
         self.channel_selector_output = ChannelSelector()
+        self.file_exporter = FileExporter()
         self.accordion = pn.Accordion
 
         # Initially hide the color picker
@@ -42,8 +44,9 @@ class Accordion:
                                                             pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
                                             ('Calculation', self.calculation_menu.component),
+                                            ('Export',self.file_exporter.component),
                                           sizing_mode='stretch_width')
-
+# Hier noch ein Dropdown Menu für die Extension.
 
     @property
     def component(self):
