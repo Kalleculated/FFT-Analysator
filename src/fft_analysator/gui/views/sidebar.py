@@ -75,7 +75,7 @@ class Sidebar:
                 self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
                 self.accordion.color_picker_result.component.name = f'Result'
                 self.amount_ch = 0
-                
+
         else:
             self.accordion.color_picker_ch1.component.visible = False
             self.accordion.color_picker_ch2.component.visible = False
@@ -102,7 +102,7 @@ class Sidebar:
     def update_file_list(self):
         if self.accordion.file_input.file_paths:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
-            
+
         else:
             self.accordion.data_selector.component.options = []
 
@@ -142,12 +142,11 @@ class Sidebar:
         else:
             self.accordion.stretching_switch.component.disabled = True
 
-    def update_analysis_event(self,callback_analysis_event):
+    def update_analysis_event(self, callback_analysis_event):
         if callback_analysis_event:
             analyses_func = self.accordion.calculation_menu.signal_menu.clicked
-        
-        return analyses_func
-    
 
-    def servable(self):     
+            return analyses_func
+
+    def servable(self):
         return self.layout.servable(target="sidebar")
