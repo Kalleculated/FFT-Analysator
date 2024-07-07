@@ -6,11 +6,6 @@ from fft_analysator.gui.components.tabs import Tabs
 from fft_analysator.analysis.plotting import Plotter
 
 
-#from fft_analysator.gui.views.sidebar import Sidebar
-
-#from fft_analysator.gui.components.accordion import Accordion
-#from fft_analysator.gui.components.calculation_menu import MenuButton
-
 
 class MainView:
     def __init__(self):
@@ -23,7 +18,6 @@ class MainView:
         # Create a new plotter object
         plot = Plotter(channels,self.tabs, data_callback)
                 
-   
         # generate time plot
         plot.create_time_plot(channels, stretch_value, color_picker_value)
             
@@ -64,6 +58,7 @@ class MainView:
             
         elif analysis_callback == "No Analysis Function":
             self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function choosen")
+            
             
     def servable(self):
         self.layout.servable(target="main")

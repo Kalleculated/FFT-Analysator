@@ -9,7 +9,6 @@ class Plotter:
     
     def __init__(self,channels,tabs_callback,data_callback):
         self.data_callback = data_callback
-        #self.file_path = file_path_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
@@ -35,10 +34,9 @@ class Plotter:
             self.tabs.component[0] = (self.tabs.str_signal_tab, 'no data chosen!')
             return
 
-        # iterate over the selected channels
-        for i, channel in enumerate(channels):
-            
-            # Get the color value for the given channel
+
+        for i, channel in enumerate(list(dict.fromkeys(channels))):
+
             color_value = color_picker_value[i] if i < len(color_picker_value) else "default_color"
             
             # Get the time_data block wise for the given channel

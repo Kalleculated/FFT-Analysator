@@ -11,12 +11,14 @@ class Signal_Process:
         self.block_size = block_size
         self.overlap = overlap
 
-        if self.file_path:
+        if file_path:
+
             self.source = ac.MaskedTimeSamples(name=self.file_path)
             self.abtastrate = self.source.sample_freq
             self.numchannels_total = self.source.numchannels_total
             self.invalid_channel_list = []
             self.powerspectra = None
+
     
     # sort out invalid channels
     def invalid_channels(self, valid_channels):
