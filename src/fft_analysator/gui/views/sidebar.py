@@ -142,11 +142,5 @@ class Sidebar:
         else:
             self.accordion.stretching_switch.component.disabled = True
 
-    def update_analysis_event(self, callback_analysis_event):
-        if callback_analysis_event:
-            analyses_func = self.accordion.calculation_menu.signal_menu.clicked
-
-            return analyses_func
-
     def servable(self):
         return self.layout.servable(target="sidebar")

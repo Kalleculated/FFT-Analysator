@@ -29,12 +29,6 @@ class Plotter:
         # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
 
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[0] = (self.tabs.str_signal_tab, 'no data chosen!')
-            return
-
-
         for i, channel in enumerate(list(dict.fromkeys(channels))):
 
             color_value = color_picker_value[i] if i < len(color_picker_value) else "default_color"
@@ -75,11 +69,6 @@ class Plotter:
         # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
 
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[1] = (self.tabs.str_frequency_response_tab, 'no data chosen!')
-            return
-
         # set a own color picker for results
         color_value = color_picker_value[2]
 
@@ -106,16 +95,10 @@ class Plotter:
             signals.append(plot_pane)
 
         # Update the corresponding tab with new signals
-        self.tabs.component[1] = (self.tabs.str_frequency_response_tab,  signals)
+        self.tabs.component[1] = (self.tabs.str_frequency_response_tab, signals)
 
 
     def create_impulse_response_plot(self, channels=None, stretch_value=None, color_picker_value=None):
-
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[2] = (self.tabs.str_impulse_response_tab, 'no data chosen!')
-            return
-
         # set a own color picker for results
         color_value = color_picker_value[2]
 
@@ -126,23 +109,17 @@ class Plotter:
 
         # Create frequency response fig
         fig = hv.Curve((t,h),
-                    kdims="Time in s", vdims="Amplitude", label=f' Impulse Response') \
+                    kdims="Time in s", vdims="Amplitude", label = f'Impulse Response') \
                 .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
 
         # Update the corresponding tab with new signals
-        self.tabs.component[2] = (self.tabs.str_impulse_response_tab,  plot_pane)
+        self.tabs.component[2] = (self.tabs.str_impulse_response_tab, plot_pane)
 
 
     def create_coherence_plot(self, channels=None, stretch_value=None, color_picker_value=None):
-
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'no data chosen!')
-            return
-
         # set a own color picker for results
         color_value = color_picker_value[2]
 
@@ -152,22 +129,16 @@ class Plotter:
         # Create frequency response fig r'$\gamma_{XY}^2$'
         fig = hv.Curve((f,coherence),
                     kdims="Frequency in Hz", vdims="coherence", label="Coherence ") \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
 
         # Update the corresponding tab with new signals
-        self.tabs.component[3] = (self.tabs.str_analysis_function_tab,  plot_pane)
+        self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
 
 
-    def create_auto_and_cross_power_spectrum_plot(self, channels=None, stretch_value=None, color_picker_value=None,type=None):
-
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'no data chosen!')
-            return
-
+    def create_auto_and_cross_power_spectrum_plot(self, channels=None, stretch_value=None, color_picker_value=None, type=None):
         # set a own color picker for results
         color_value = color_picker_value[2]
 
@@ -190,22 +161,16 @@ class Plotter:
 
         fig = hv.Curve((f,np.abs(csm_value)),
                     kdims="Frequency in Hz", vdims=" Power density in Pa^2/Hz", label=title ) \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
 
         # Update the corresponding tab with new signals
-        self.tabs.component[3] = (self.tabs.str_analysis_function_tab,  plot_pane)
+        self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
 
 
-    def create_correlation_plot(self, channels=None, stretch_value=None, color_picker_value=None,type=None):
-
-        # If no channels are selected, display a message
-        if not channels:
-            self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'no data chosen!')
-            return
-
+    def create_correlation_plot(self, channels=None, stretch_value=None, color_picker_value=None, type=None):
         # set a own color picker for results
         color_value = color_picker_value[2]
 
@@ -232,4 +197,4 @@ class Plotter:
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
 
         # Update the corresponding tab with new signals
-        self.tabs.component[3] = (self.tabs.str_analysis_function_tab,  plot_pane)
+        self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
