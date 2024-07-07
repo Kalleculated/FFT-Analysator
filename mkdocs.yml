@@ -17,9 +17,9 @@ nav:
 - Getting Started:
   - Installation: installation.md
 - User Documentation:
-  - Main functions: user_documentation.md
-  - Screenshots and Examples: screenshots_and_examples.md
+  - User Guide and Screenshots: user_guide_and_screenshots.md
 - Developer Documentation:
+  - API Documentation: api_documentation.md
   - Backend Documentation: dev_backend_documentation.md
   - Frontend Documentation: dev_frontend_documentation.md
 

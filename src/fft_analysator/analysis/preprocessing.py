@@ -54,7 +54,7 @@ class Preprocess:
         """
         loop_list = []
         for data in self.source_result:
-            loop_list.append(data[:, channel])
+            loop_list.extend(data[:, channel])
         self.selected_channel_data = np.array(loop_list)
 
     def set_channel_on_data_block(self, channel):
