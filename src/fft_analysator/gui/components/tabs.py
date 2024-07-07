@@ -4,15 +4,15 @@ import panel as pn
 class Tabs:
     def __init__(self):
         self.tabs = pn.Tabs
-        self.str_signal_tab = "Signalinput"
-        self.str_Spektrum_tab = "Frequenzgang"
-        self.str_Impulsantwort_tab = "Impulsantwort"
-        self.str_Analysefuktionen_tab = "Analysefunktionen"
+        self.str_signal_tab = "Input/Output"
+        self.str_frequency_response_tab = "Frequency Response"
+        self.str_impulse_response_tab = "Impulse Response"
+        self.str_analysis_function_tab = "Analysis Functions"
         self._component = self.tabs(
             (self.str_signal_tab, 'No data chosen!'),
-            (self.str_Spektrum_tab, 'No data chosen!'),
-            (self.str_Impulsantwort_tab, 'No data chosen!'),
-            (self.str_Analysefuktionen_tab, 'No data chosen!'),
+            (self.str_frequency_response_tab, 'No data chosen!'),
+            (self.str_impulse_response_tab, 'No data chosen!'),
+            (self.str_analysis_function_tab, 'No data chosen!'),
             sizing_mode='stretch_width', dynamic=True)
 
     @property

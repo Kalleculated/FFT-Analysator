@@ -6,21 +6,23 @@ import math
 
 class Sidebar:
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
-                 callback_block_selector=None):
+                 callback_block_selector=None, callback_analysis_event=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
 
-        if callback or callback_fileupload or callback_table_chooser:
+        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.channel_selector_input.component.param.watch(callback, "value")
             self.accordion.channel_selector_output.component.param.watch(callback, "value")
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
             self.accordion.color_picker_ch2.component.param.watch(callback, "value")
+            self.accordion.color_picker_result.component.param.watch(callback, "value")
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
             self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
+            self.accordion.calculation_menu.signal_menu.param.watch(callback_analysis_event, "clicked")
 
     def update_channel_selector(self, data_callback=None):
         """
@@ -68,14 +70,19 @@ class Sidebar:
             elif self.amount_ch == 2:
                 self.accordion.color_picker_ch1.component.visible = True
                 self.accordion.color_picker_ch2.component.visible = True
+                self.accordion.color_picker_result.component.visible = True
                 self.accordion.color_picker_ch1.component.name = f'CH: {self.ch[0]}'
                 self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
+                self.accordion.color_picker_result.component.name = f'Result'
                 self.amount_ch = 0
+                
         else:
             self.accordion.color_picker_ch1.component.visible = False
             self.accordion.color_picker_ch2.component.visible = False
+            self.accordion.color_picker_result.component.visible = False
             self.accordion.color_picker_ch1.component.name = ''
             self.accordion.color_picker_ch2.component.name = ''
+            self.accordion.color_picker_result.component.name = ''
             self.amount_ch = 0
 
     def update_selector(self, data_callback=None):
@@ -84,7 +91,7 @@ class Sidebar:
             self.accordion.selector.component.options = data_callback.get_table_names()
             self.accordion.selector.component.value = data_callback.get_table_names()[0]
             if (len(data_callback.get_table_names()) + 2) > 3:
-                self.accordion.selector.component.size = len(data_callback.get_table_names()) + 1
+                self.accordion.selector.component.size = len(data_callback.get_table_names()) + 2
 
         else:
             self.accordion.selector.component.options = []
@@ -95,6 +102,7 @@ class Sidebar:
     def update_file_list(self):
         if self.accordion.file_input.file_paths:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
+            
         else:
             self.accordion.data_selector.component.options = []
 
@@ -134,5 +142,12 @@ class Sidebar:
         else:
             self.accordion.stretching_switch.component.disabled = True
 
-    def servable(self):
+    def update_analysis_event(self,callback_analysis_event):
+        if callback_analysis_event:
+            analyses_func = self.accordion.calculation_menu.signal_menu.clicked
+        
+        return analyses_func
+    
+
+    def servable(self):     
         return self.layout.servable(target="sidebar")
