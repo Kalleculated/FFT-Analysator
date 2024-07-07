@@ -3,7 +3,8 @@ import panel as pn
 
 class MenuButton:
     def __init__(self):
-        self.file_items = ["\U0001F4BE Save", "Korrelation", "Leistungsdichte", "Kohärenz", "Impulsantwort", "Frequenzgang"]
+        self.file_items = ["\U0001F4BE Save","No Analysis Function", "Auto Spectral Density - Input", "Auto Spectral Density - Output",
+                           "Cross Spectral Density", "Coherence","Auto Correlation - Input", "Auto Correlation - Output", "Cross Correlation"]
         self.help_items = ["🧮 Calculations", "\U0001F6C8 About"]
         self.signal_menu = pn.widgets.MenuButton(name="Signal", icon="file", items=self.file_items, width=150, button_type="default")
         self.help_menu = pn.widgets.MenuButton(name="🔍 Help", items=self.help_items, width=125, button_type="default")
@@ -21,12 +22,11 @@ class MenuButton:
     def handle_selection(self, clicked):
         if clicked == self.file_items[0]:
             return pn.widgets.Button(name="Save", button_type="default", width=150)
-
-        if clicked == self.file_items[1]:
+        
+        else:
+            
             return f'You clicked menu item: "{clicked}"'
 
-        else:
-            return
 
     @property
     def component(self):
