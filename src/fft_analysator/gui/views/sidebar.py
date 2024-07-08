@@ -117,7 +117,7 @@ class Sidebar:
             self.accordion.gen_nav.index_box.disabled = False
             self.accordion.gen_nav.index_box.start = self.accordion.int_slider.component.start
             self.accordion.gen_nav.index_box.end = self.accordion.int_slider.component.end
-            self.accordion.gen_nav.index_box.name = f'{self.accordion.gen_nav.index_box.start} - {self.accordion.gen_nav.index_box.end} / {self.accordion.int_slider.component.value}'
+            self.accordion.gen_nav.index_box.name = f'{self.accordion.int_slider.component.value}/{self.accordion.gen_nav.index_box.start}-{self.accordion.gen_nav.index_box.end}'
             self.accordion.gen_nav.button_back.disabled = False
             self.accordion.gen_nav.button_forward.disabled = False
             self.accordion.gen_nav.goto_button.disabled = False
@@ -137,7 +137,7 @@ class Sidebar:
             self.accordion.gen_nav.reset_button.disabled = True
 
     def update_nav_index(self):
-        self.accordion.gen_nav.index_box.name = f'{self.accordion.gen_nav.index_box.start} - {self.accordion.gen_nav.index_box.end} / {self.accordion.int_slider.component.value}'
+        self.accordion.gen_nav.index_box.name = f'{self.accordion.int_slider.component.value}/{self.accordion.gen_nav.index_box.start}-{self.accordion.gen_nav.index_box.end}'
 
     def update_general_plotting_widgets(self, data_callback=None):
         if data_callback:

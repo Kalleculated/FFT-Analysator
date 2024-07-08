@@ -44,7 +44,7 @@ class Accordion:
                                           ('Plot', pn.Column(pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
                                                             pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component,self.color_picker_result.component),
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
-                                                            self.int_slider.component,
+                                                            #self.int_slider.component,
                                                             self.gen_nav.component,
                                                             pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
