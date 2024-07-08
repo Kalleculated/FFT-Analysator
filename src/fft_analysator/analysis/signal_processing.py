@@ -19,7 +19,7 @@ class Signal_Process:
             self.invalid_channel_list = []
             self.powerspectra = None
 
-    
+
     # sort out invalid channels
     def invalid_channels(self, valid_channels):
         self.invalid_channel_list = [k for k in range(self.numchannels_total) if k not in valid_channels] 
@@ -57,7 +57,7 @@ class Signal_Process:
         csm_matrix = self.csm(signal_x, signal_y)
         
         if signal_x == signal_y:
-            coherence = np.abs(csm_matrix[:, 0, 0])**2 / (csm_matrix[:, 0, 0].real * csm_matrix[:, 0, 0].real)
+            coherence = np.abs(csm_matrix[:, 0, 0].real)**2 / (csm_matrix[:, 0, 0].real * csm_matrix[:, 0, 0].real)
         else:
             coherence = np.abs(csm_matrix[:, 0, 1])**2 / (csm_matrix[:, 0, 0].real * csm_matrix[:, 1, 1].real)
             
@@ -69,9 +69,9 @@ class Signal_Process:
         csm_matrix = self.csm(signal_x, signal_y)
         
         if signal_x == signal_y:
-            H = np.divide(np.abs(csm_matrix[:, 0, 0]), np.abs(csm_matrix[:, 0, 0]), out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 0]) > 1e-10))
+            H = np.divide(csm_matrix[:, 0, 0].real, csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 0]) > 1e-10))
         else:    
-            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
+            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
         if dB:
             return 20*np.log10(abs(np.squeeze(H)))
         else:
@@ -82,9 +82,9 @@ class Signal_Process:
         csm_matrix = self.csm(signal_x, signal_y)
         
         if signal_x == signal_y:
-            H = np.divide(csm_matrix[:, 0, 0], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 0]) > 1e0))
+            H = np.divide(csm_matrix[:, 0, 0].real, csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 0]) > 1e0))
         else:
-            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
+            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
             
         phase = np.angle(H,deg=deg)
         return phase
@@ -93,9 +93,9 @@ class Signal_Process:
     def impuls_response(self, signal_x, signal_y):
         csm_matrix = self.csm(signal_x, signal_y)
         if signal_x == signal_y:
-            H = np.divide(csm_matrix[:, 0, 0], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 0]) > 1e-10))
+            H = np.divide(csm_matrix[:, 0, 0].real, csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 0]) > 1e-10))
         else:
-            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0], out=np.zeros_like(csm_matrix[:, 0, 0]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
+            H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
             
         N = len(csm_matrix[:, 0, 0])
         #h = fft.irfft(H, n=N)
@@ -108,15 +108,15 @@ class Signal_Process:
         N = len(csm_matrix[:, 0, 0])
 
         if type == 'xx':
-            corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0], n=N))
+            corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0].real, n=N))
         elif type == 'yy':
             if signal_x == signal_y:
-                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0], n=N))
+                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0].real, n=N))
             else:
-                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 1, 1], n=N))
+                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 1, 1].real, n=N))
         elif type == 'xy':
             if signal_x == signal_y:
-                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0], n=N))
+                corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 0].real, n=N))
             else:
                 corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 1], n=N))
               

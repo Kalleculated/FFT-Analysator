@@ -5,8 +5,21 @@ from panel.pane import HoloViews
 import acoular as ac
 from fft_analysator.analysis.signal_processing import Signal_Process
 
+
 class Plotter:
-    
+    """
+    The plotter class is needed for creating and visualize the plots for the input/output time signals, frequency response, impulse response 
+    and also for the different analysis functions. The class is initialized with the channels, tabs_callback and data_callback. 
+    The Signal_Process class, which is called in the ploter class, will be used here for the calculations of the frequency response, impulse response,
+    analysis functions, time and frequency axis,
+
+    Args:
+        channels (list): A list of two channels to be used to access the desired channels
+        tabs_callback (list): A callback that manages the tabs in the UI for visualize the plot results
+        data_callback: A callback that hands over the file path of the .h5 data and the block_size to the Signal_Process class.
+        
+    """
+
     def __init__(self,channels,tabs_callback,data_callback):
         self.data_callback = data_callback
         self.tabs = tabs_callback
@@ -16,6 +29,8 @@ class Plotter:
             block_size=data_callback.block_size, window='Hanning', overlap='50%')
         self.channels = channels
         
+        print(type(self.tabs),type(self.channels),type(self.data_callback))
+        
         if channels:
             if len(channels) ==1:
                 self.input_channel = self.channels[0]
@@ -23,9 +38,14 @@ class Plotter:
             else:
                 self.input_channel = self.channels[0]
                 self.output_channel = self.channels[1]
-       
+    
+
     def create_time_plot(self, channels=None, stretch_value=None, color_picker_value=None):
-        
+        """
+        Creating a time plot of the input/output signal. The function generats a separate plot for each channel
+        and is called with the channels, stretch_value and color_picker_value as input parameters
+        """ 
+            
         # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
 
@@ -71,6 +91,11 @@ class Plotter:
     
     
     def create_frequency_response_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+        """
+        Creating the frequency response plot based on the input and output signal. The amplitude and phase response,
+        will be visualized in separate plots. The function is called with the channels, stretch_value and 
+        color_picker_value as input parameters
+        """ 
         
          # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
@@ -110,6 +135,11 @@ class Plotter:
     
 
     def create_impulse_response_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+        """
+        Creating the impulse response plot based on the input and output signal.
+        The function is called with the channels, stretch_value and 
+        color_picker_value as input parameters
+        """
         
         # If no channels are selected, display a message
         if not channels:
@@ -137,7 +167,11 @@ class Plotter:
         
     
     def create_coherence_plot(self, channels=None, stretch_value=None, color_picker_value=None):
-        
+        """
+        Creating the coherence plot based on the input and output signal.
+        The function is called with the channels, stretch_value and 
+        color_picker_value as input parameters
+        """
         # If no channels are selected, display a message
         if not channels:
             self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'no data chosen!')
@@ -162,6 +196,12 @@ class Plotter:
         
         
     def create_auto_and_cross_power_spectrum_plot(self, channels=None, stretch_value=None, color_picker_value=None,type=None):
+        """
+        Creating the auto and cross power spectrum based on the input and output signal.
+        Depending on the selection of the analysis function, a plot for auto power spectrum
+        or cross power spectrum is generated. The function is called with the channels, stretch_value and 
+        color_picker_value as input parameters
+        """
         
         # If no channels are selected, display a message
         if not channels:
@@ -200,6 +240,12 @@ class Plotter:
     
     
     def create_correlation_plot(self, channels=None, stretch_value=None, color_picker_value=None,type=None):
+        """
+        Creating the auto and cross correlation plot based on the input and output signal.
+        Depending on the selection of the analysis function, a plot for autocorrelation 
+        or cross-correlation is generated. The function is called with the channels, stretch_value and 
+        color_picker_value as input parameters
+        """
         
         # If no channels are selected, display a message
         if not channels:
