@@ -124,33 +124,35 @@ class AppController:
                 self.sidebar.update_channel_selector(self.preprocessing)
 
     def handle_intslider_event(self, event):
-        if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
-            for _ in range(self.sidebar.accordion.int_slider.component.value - self.preprocessing.current_block_idx):
-                self.preprocessing.set_next_data_block()
+        if self.file_paths:
+            if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
+                for _ in range(self.sidebar.accordion.int_slider.component.value - self.preprocessing.current_block_idx):
+                    self.preprocessing.set_next_data_block()
 
-            self.sidebar.update_color_picker()
-            self.main_view.update_signal(
-                self.preprocessing,
-                [self.sidebar.accordion.channel_selector_input.component.value,
-                self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
-                [self.sidebar.accordion.color_picker_ch1.component.value,
-                self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
-
-            )
-        else:
-            self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
-            self.sidebar.update_color_picker()
-            self.main_view.update_signal(
-                self.preprocessing,
-                [self.sidebar.accordion.channel_selector_input.component.value,
-                self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
-                [self.sidebar.accordion.color_picker_ch1.component.value,
-                self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
-            )
+                self.sidebar.update_color_picker()
+                self.sidebar.update_nav_index()
+                self.main_view.update_signal(
+                    self.preprocessing,
+                    [self.sidebar.accordion.channel_selector_input.component.value,
+                    self.sidebar.accordion.channel_selector_output.component.value],
+                    self.sidebar.accordion.stretching_switch.component.value,
+                    [self.sidebar.accordion.color_picker_ch1.component.value,
+                    self.sidebar.accordion.color_picker_ch2.component.value,
+                    self.sidebar.accordion.color_picker_result.component.value]
+                )
+            else:
+                self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
+                self.sidebar.update_color_picker()
+                self.sidebar.update_nav_index()
+                self.main_view.update_signal(
+                    self.preprocessing,
+                    [self.sidebar.accordion.channel_selector_input.component.value,
+                    self.sidebar.accordion.channel_selector_output.component.value],
+                    self.sidebar.accordion.stretching_switch.component.value,
+                    [self.sidebar.accordion.color_picker_ch1.component.value,
+                    self.sidebar.accordion.color_picker_ch2.component.value,
+                    self.sidebar.accordion.color_picker_result.component.value]
+                )
 
     def handle_blocksize_selector_event(self, event):
         if self.file_paths:
