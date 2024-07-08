@@ -34,17 +34,17 @@ class Accordion:
         self.color_picker_ch1.component.value = '#FF0000' # Red for channel 1
         self.color_picker_ch2.component.value = '#0000FF'  # Blue for channel 2
         self.color_picker_result.component.value = '#00FF00'  # Green for result
-        
+
         # Initially hide the color picker
         self.color_picker_ch1.component.visible = False
         self.color_picker_ch2.component.visible = False
         self.color_picker_result.component.visible = False
-        
+
         self._component = self.accordion(('Upload', pn.Column(pn.Row(self.file_input.component, self.data_selector.component), self.selector.component, self.blocksize_selector.component)),
                                           ('Plot', pn.Column(pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
                                                             pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component,self.color_picker_result.component),
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
-                                                            self.int_slider.component,
+                                                            #self.int_slider.component,
                                                             self.gen_nav.component,
                                                             pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
                                                                      self.stretching_switch.component))),

@@ -75,7 +75,7 @@ class Sidebar:
                 self.accordion.color_picker_ch2.component.name = f'CH: {self.ch[1]}'
                 self.accordion.color_picker_result.component.name = f'Result'
                 self.amount_ch = 0
-                
+
         else:
             self.accordion.color_picker_ch1.component.visible = False
             self.accordion.color_picker_ch2.component.visible = False
@@ -102,12 +102,12 @@ class Sidebar:
     def update_file_list(self):
         if self.accordion.file_input.file_paths:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
-            
+
         else:
             self.accordion.data_selector.component.options = []
 
     def update_intslider(self, data_callback=None):
-        if self.accordion.file_input.file_paths:
+        if self.accordion.file_input.file_paths and data_callback:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
@@ -117,7 +117,7 @@ class Sidebar:
             self.accordion.gen_nav.index_box.disabled = False
             self.accordion.gen_nav.index_box.start = self.accordion.int_slider.component.start
             self.accordion.gen_nav.index_box.end = self.accordion.int_slider.component.end
-            self.accordion.gen_nav.index_box.name = f'{self.accordion.gen_nav.index_box.start} - {self.accordion.gen_nav.index_box.end}'
+            self.accordion.gen_nav.index_box.name = f'{self.accordion.int_slider.component.value}/{self.accordion.gen_nav.index_box.start}-{self.accordion.gen_nav.index_box.end}'
             self.accordion.gen_nav.button_back.disabled = False
             self.accordion.gen_nav.button_forward.disabled = False
             self.accordion.gen_nav.goto_button.disabled = False
@@ -136,18 +136,14 @@ class Sidebar:
             self.accordion.gen_nav.goto_button.disabled = True
             self.accordion.gen_nav.reset_button.disabled = True
 
+    def update_nav_index(self):
+        self.accordion.gen_nav.index_box.name = f'{self.accordion.int_slider.component.value}/{self.accordion.gen_nav.index_box.start}-{self.accordion.gen_nav.index_box.end}'
+
     def update_general_plotting_widgets(self, data_callback=None):
         if data_callback:
             self.accordion.stretching_switch.component.disabled = False
         else:
             self.accordion.stretching_switch.component.disabled = True
 
-    def update_analysis_event(self,callback_analysis_event):
-        if callback_analysis_event:
-            analyses_func = self.accordion.calculation_menu.signal_menu.clicked
-        
-        return analyses_func
-    
-
-    def servable(self):     
+    def servable(self):
         return self.layout.servable(target="sidebar")
