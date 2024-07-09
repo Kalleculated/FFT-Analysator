@@ -781,7 +781,9 @@
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_analysis_event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span> <span class="o">=</span> <span class="n">Accordion</span><span class="p">()</span>
@@ -799,6 +801,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_intslider</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">blocksize_selector</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_block_selector</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">calculation_menu</span><span class="o">.</span><span class="n">signal_menu</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_analysis_event</span><span class="p">,</span> <span class="s2">&quot;clicked&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">overlap_menu</span><span class="o">.</span><span class="n">overlap_menu</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_analysis_event</span><span class="p">,</span> <span class="s2">&quot;clicked&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">window_menu</span><span class="o">.</span><span class="n">window_menu</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_analysis_event</span><span class="p">,</span> <span class="s2">&quot;clicked&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 
@@ -864,10 +868,7 @@ we set both options and name to empty lists/strings respectively.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -889,7 +890,10 @@ we set both options and name to empty lists/strings respectively.</p>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_channel_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_channel_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The update_channel_selector function is used to update the update_channel_selector component with new data.</span>
 <span class="sd">    If a data_callback is provided, then the options of the update_channel_selector component are set to be</span>

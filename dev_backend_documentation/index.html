@@ -1983,7 +1983,7 @@ given signals.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>file_paths</code></td>
+            <td><code>file_path</code></td>
             <td>
                   <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a></code>
             </td>
@@ -2043,7 +2043,8 @@ given signals.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+<span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
@@ -2054,8 +2055,7 @@ given signals.</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">):</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">block_size</span>
@@ -2143,7 +2143,9 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
@@ -2156,9 +2158,7 @@ given signals.</p>
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">):</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The coherence function calculates the coherence between two given signals.</span>
 
@@ -2254,7 +2254,9 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
@@ -2278,9 +2280,7 @@ given signals.</p>
 <span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">216</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The correlation function calculates the correlation response between the two given signals.</span>
 
@@ -2332,15 +2332,15 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_correlation_axis function creates the x-Axis for the correlation function</span>
 <span class="sd">    Args:</span>
@@ -2372,12 +2372,12 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_frequency_axis function creates the x-Axis for the frequency function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2408,15 +2408,15 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_time_axis function creates a time axis for the x-Axis</span>
 <span class="sd">    Args:</span>
@@ -2549,7 +2549,9 @@ Cross spectral density between signal1 and signal2.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 81</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
 <span class="normal"> 82</span>
 <span class="normal"> 83</span>
 <span class="normal"> 84</span>
@@ -2573,9 +2575,7 @@ Cross spectral density between signal1 and signal2.</p>
 <span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">105</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The csm function calculates the csm (Cross Spectral Matrix) of Acoular for the valid signals. It returns a</span>
 <span class="sd">    three-dimensional array with size (number of frequencies,2,2) where [:, signal1, signal2] is the</span>
@@ -2683,7 +2683,9 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
@@ -2700,9 +2702,7 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The frequency_response function calculates the frequency response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density between signal i and signal j.</span>
@@ -2789,7 +2789,9 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
@@ -2805,9 +2807,7 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">):</span>
+<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The impulse_response function calculates the impulse response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density between signal i and signal j.</span>
@@ -2851,15 +2851,15 @@ Args:
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.</span>
 <span class="sd">    Args:</span>
@@ -2949,7 +2949,9 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
@@ -2965,9 +2967,7 @@ It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density betwe
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal_x</span><span class="p">,</span> <span class="n">signal_y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The phase_response function calculates the phase response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gij is the Spectral density between signal i and signal j.</span>
