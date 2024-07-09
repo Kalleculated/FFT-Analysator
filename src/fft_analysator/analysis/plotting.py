@@ -131,7 +131,8 @@ class Plotter:
         # Create frequency response fig r'$\gamma_{XY}^2$'
         fig = hv.Curve((f,coherence),
                     kdims="Frequency in Hz", vdims="Coherence", label="Coherence ") \
-                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True,
+                   ylim=(-0.1,1.1))
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
@@ -195,7 +196,7 @@ class Plotter:
                       #xlim=(np.min(tau)+0.1*np.min(tau), max(tau)+0.1*np.max(tau)))
 
         # Create a HoloViews pane for the figure
-        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
+        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
         # Update the corresponding tab with new signals
         self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
