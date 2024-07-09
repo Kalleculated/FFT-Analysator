@@ -10,6 +10,8 @@ from fft_analysator.gui.components.int_slider import IntSlider
 from fft_analysator.gui.components.generator_navigator import GeneratorNavigator
 from fft_analysator.gui.components.blocksize_selector import BlocksizeSelector
 from fft_analysator.gui.components.channel_selector import ChannelSelector
+from fft_analysator.gui.components.window_menu import Window_MenuButton
+from fft_analysator.gui.components.overlap_menu import Overlap_MenuButton
 
 
 class Accordion:
@@ -28,6 +30,8 @@ class Accordion:
         self.blocksize_selector = BlocksizeSelector()
         self.channel_selector_input = ChannelSelector()
         self.channel_selector_output = ChannelSelector()
+        self.window_menu = Window_MenuButton()
+        self.overlap_menu = Overlap_MenuButton()
         self.accordion = pn.Accordion
 
         # Set default colors
@@ -46,10 +50,12 @@ class Accordion:
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
                                                             #self.int_slider.component,
                                                             self.gen_nav.component,
-                                                            pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0,15)),  # noqa: E501
+                                                            pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0, 15)),  # noqa: E501
                                                                      self.stretching_switch.component))),
-                                            ('Calculation', self.calculation_menu.component),
-                                          sizing_mode='stretch_width')
+
+                                            ('Calculation', pn.Column(pn.Row(self.window_menu.component,
+                                                            self.overlap_menu.component),self.calculation_menu.component)
+                                             ), sizing_mode='stretch_width')
 
 
     @property

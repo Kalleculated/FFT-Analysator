@@ -31,18 +31,23 @@ class MainView:
             self.tabs.component[2] = (self.tabs.str_impulse_response_tab, 'No data chosen!')
 
 
-    def update_analysis_plot(self, data_callback, channels, stretch_value, color_picker_value, analysis_callback):
+    def update_analysis_plot(self, data_callback, channels, stretch_value, color_picker_value, analysis_callback,
+                             window, overlap):
         if channels:
             plot = Plotter(channels,self.tabs, data_callback)
 
             # plot analysis function
             if analysis_callback == "Auto Spectral Density - Input":
                 # generate Auto Spectral Density plot
-                plot.create_auto_and_cross_power_spectrum_plot(channels, stretch_value, color_picker_value,type='xx')
+                plot.create_auto_and_cross_power_spectrum_plot(window,overlap, channels, stretch_value, color_picker_value,type='xx')
 
             elif analysis_callback == "Auto Spectral Density - Output":
                 # generate Auto Spectral Density plot
-                plot.create_auto_and_cross_power_spectrum_plot(channels, stretch_value, color_picker_value,type='yy')
+                plot.create_auto_and_cross_power_spectrum_plot(window,overlap, channels, stretch_value, color_picker_value,type='yy')
+
+            elif analysis_callback == "Cross Spectral Density":
+                # generate Cross Spectral Density plot
+                plot.create_auto_and_cross_power_spectrum_plot(window, overlap, channels, stretch_value, color_picker_value, type='xy')
 
             elif analysis_callback == "Auto Correlation - Input":
                 # generate Auto Correlation - Input plot
@@ -52,13 +57,9 @@ class MainView:
                 # generate Auto Correlation - Output plot
                 plot.create_correlation_plot(channels, stretch_value, color_picker_value, type='yy')
 
-            elif analysis_callback == "Cross Spectral Density":
-                # generate Cross Spectral Density plot
-                plot.create_auto_and_cross_power_spectrum_plot(channels, stretch_value, color_picker_value,type='xy')
-
             elif analysis_callback == "Cross Correlation":
                 # generate Cross Spectral Density plot
-                plot.create_correlation_plot(channels, stretch_value, color_picker_value,type='xy')
+                plot.create_correlation_plot(channels, stretch_value, color_picker_value, type='xy')
 
             elif analysis_callback == "Coherence":
                 # generate coherence plot
