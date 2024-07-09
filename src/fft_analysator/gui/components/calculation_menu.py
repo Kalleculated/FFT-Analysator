@@ -2,16 +2,17 @@ import panel as pn
 
 
 class MenuButton:
+    #"\U0001F4BE Save" <-- Save icon und name
     def __init__(self):
-        self.file_items = ["\U0001F4BE Save","No Analysis Function", "Auto Spectral Density - Input", "Auto Spectral Density - Output",
+        self.file_items = ["No Analysis Function", "Auto Spectral Density - Input", "Auto Spectral Density - Output",
                            "Cross Spectral Density", "Coherence","Auto Correlation - Input", "Auto Correlation - Output", "Cross Correlation"]
-        self.help_items = ["🧮 Calculations", "\U0001F6C8 About"]
-        self.signal_menu = pn.widgets.MenuButton(name="Signal", icon="file", items=self.file_items, width=150, button_type="default")
-        self.help_menu = pn.widgets.MenuButton(name="🔍 Help", items=self.help_items, width=125, button_type="default")
+        #self.help_items = ["🧮 Calculations", "\U0001F6C8 About"]
+        self.signal_menu = pn.widgets.MenuButton(name="Method", icon="file", items=self.file_items, width=300, button_type="default")
+        #self.help_menu = pn.widgets.MenuButton(name="🔍 Help", items=self.help_items, width=125, button_type="default")
 
         self._component = pn.Column(pn.Row(
                                 self.signal_menu,
-                                self.help_menu,
+                                #self.help_menu,
                                 height = 30,
                                 sizing_mode='stretch_width'
                                 ),
@@ -22,11 +23,10 @@ class MenuButton:
     def handle_selection(self, clicked):
         if clicked == self.file_items[0]:
             return pn.widgets.Button(name="Save", button_type="default", width=150)
-        
-        else:
-            
-            return f'You clicked menu item: "{clicked}"'
 
+        else:
+
+            return f'Go to the Analysis Functions tab to view: "{clicked}"'
 
     @property
     def component(self):

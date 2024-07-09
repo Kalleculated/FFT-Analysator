@@ -128,7 +128,7 @@ class Plotter:
 
         # Create frequency response fig r'$\gamma_{XY}^2$'
         fig = hv.Curve((f,coherence),
-                    kdims="Frequency in Hz", vdims="coherence", label="Coherence ") \
+                    kdims="Frequency in Hz", vdims="Coherence", label="Coherence ") \
                 .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
 
         # Create a HoloViews pane for the figure
@@ -138,12 +138,11 @@ class Plotter:
         self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
 
 
-    def create_auto_and_cross_power_spectrum_plot(self, channels=None, stretch_value=None, color_picker_value=None, type=None):
+    def create_auto_and_cross_power_spectrum_plot(self,window,overlap,channels=None, stretch_value=None, color_picker_value=None, type=None,):
         # set a own color picker for results
         color_value = color_picker_value[2]
 
-
-        csm =  self.signal_process.csm(self.input_channel, self.output_channel)
+        csm =  self.signal_process.csm(self.input_channel, self.output_channel, window=window, overlap=overlap)
         f = self.signal_process.create_frequency_axis()
 
         if type == 'xx':
@@ -189,7 +188,7 @@ class Plotter:
 
 
         fig = hv.Curve((tau,corr),
-                    kdims="Time delay in s", vdims="correlation", label=title ) \
+                    kdims="Time delay in s", vdims="Correlation", label=title ) \
                 .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
                       #xlim=(np.min(tau)+0.1*np.min(tau), max(tau)+0.1*np.max(tau)))
 

@@ -12,13 +12,12 @@ class Signal_Process:
     given signals.
 
     Args:
-        file_paths (object): Get the callback to the data object
+        file_path (object): Get the callback to the data object
         window (string): window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',
         'Hamming', 'Bartlett', 'Blackman'
         block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
         overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',
         '75%','87.5%'
-
     """
 
     def __init__(self, file_path, window='Hanning', block_size=1024, overlap='50%'):
@@ -34,7 +33,6 @@ class Signal_Process:
             self.numchannels_total = self.source.numchannels_total
             self.invalid_channel_list = []
             self.powerspectra = None
-
 
     # sort out invalid channels
     def invalid_channels(self, valid_channels):
