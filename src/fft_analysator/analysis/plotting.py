@@ -7,15 +7,17 @@ from fft_analysator.analysis.signal_processing import Signal_Process
 
 class Plotter:
 
-    def __init__(self, channels, tabs_callback, data_callback):
+    def __init__(self, channels, tabs_callback, data_callback,window,overlap, color_picker_value,stretch_value=None):
         self.data_callback = data_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
-        self.signal_process = Signal_Process(data_callback.file_paths,
-            block_size=data_callback.block_size, window='Hanning', overlap='50%')
+        self.signal_process = Signal_Process(channels,data_callback.file_paths,
+            block_size=data_callback.block_size, window=window, overlap=overlap)
         self.channels = channels
-
+        self.color_picker_value = color_picker_value
+        self.stretch_value = stretch_value
+        
         if channels:
             if len(channels) == 1:
                 self.input_channel = self.channels[0]
@@ -24,14 +26,14 @@ class Plotter:
                 self.input_channel = self.channels[0]
                 self.output_channel = self.channels[1]
 
-    def create_time_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+    def create_time_plot(self):
 
         # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
 
-        for i, channel in enumerate(list(dict.fromkeys(channels))):
+        for i, channel in enumerate(list(dict.fromkeys(self.channels))):
 
-            color_value = color_picker_value[i] if i < len(color_picker_value) else "default_color"
+            color_value = self.color_picker_value[i] if i < len(self.color_picker_value) else "default_color"
 
             # Get the time_data block wise for the given channel
             time_data = self.data_callback.set_channel_on_data_block(channel)
@@ -55,7 +57,7 @@ class Plotter:
                   .opts(color=color_value, shared_axes=False, width=800, height=350,show_grid=True)
 
             # Create a HoloViews pane for the figure
-            plot_pane = HoloViews(fig, sizing_mode='stretch_width' if stretch_value else None)
+            plot_pane = HoloViews(fig, sizing_mode='stretch_width' if self.stretch_value else None)
 
             # Append the plot pane to the signals column
             signals.append(plot_pane)
@@ -64,16 +66,16 @@ class Plotter:
         self.tabs.component[0] = (self.tabs.str_signal_tab, signals)
 
 
-    def create_frequency_response_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+    def create_frequency_response_plot(self):
 
         # set the signals column
         signals = pn.Column(sizing_mode='stretch_width')
 
         # set a own color picker for results
-        color_value = color_picker_value[2]
+        color_value = self.color_picker_value[2]
 
-        H =  self.signal_process.frequency_response(self.input_channel ,self.output_channel,dB=True)
-        phi = self.signal_process.phase_response(self.input_channel ,self.output_channel,deg=True)
+        H =  self.signal_process.frequency_response(frq_rsp_dB=True)
+        phi = self.signal_process.phase_response(deg=True)
         f = self.signal_process.create_frequency_axis()
 
         # Create frequency response fig
@@ -89,7 +91,7 @@ class Plotter:
         for fig in [fig1, fig2]:
 
             # Create a HoloViews pane for the figure
-            plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
+            plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
             # Append the plot pane to the signals column
             signals.append(plot_pane)
@@ -98,11 +100,11 @@ class Plotter:
         self.tabs.component[1] = (self.tabs.str_frequency_response_tab, signals)
 
 
-    def create_impulse_response_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+    def create_impulse_response_plot(self):
         # set a own color picker for results
-        color_value = color_picker_value[2]
+        color_value = self.color_picker_value[2]
 
-        h = self.signal_process.impuls_response(self.input_channel, self.output_channel)
+        h = self.signal_process.impuls_response()
 
         # Create the dynamic time axis for the given blocks
         t = self.signal_process.create_time_axis(len(h)) * 100
@@ -113,17 +115,17 @@ class Plotter:
                 .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
 
         # Create a HoloViews pane for the figure
-        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
+        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
         # Update the corresponding tab with new signals
         self.tabs.component[2] = (self.tabs.str_impulse_response_tab, plot_pane)
 
 
-    def create_coherence_plot(self, channels=None, stretch_value=None, color_picker_value=None):
+    def create_coherence_plot(self):
         # set a own color picker for results
-        color_value = color_picker_value[2]
+        color_value = self.color_picker_value[2]
 
-        coherence =  self.signal_process.coherence(self.input_channel, self.output_channel)
+        coherence =  self.signal_process.coherence()
         f = self.signal_process.create_frequency_axis()
 
         # Create frequency response fig r'$\gamma_{XY}^2$'
@@ -132,17 +134,17 @@ class Plotter:
                 .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
 
         # Create a HoloViews pane for the figure
-        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
+        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
         # Update the corresponding tab with new signals
         self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
 
 
-    def create_auto_and_cross_power_spectrum_plot(self,window,overlap,channels=None, stretch_value=None, color_picker_value=None, type=None,):
+    def create_auto_and_cross_power_spectrum_plot(self,type=None):
         # set a own color picker for results
-        color_value = color_picker_value[2]
+        color_value = self.color_picker_value[2]
 
-        csm =  self.signal_process.csm(self.input_channel, self.output_channel, window=window, overlap=overlap)
+        csm =  self.signal_process.csm()
         f = self.signal_process.create_frequency_axis()
 
         if type == 'xx':
@@ -163,25 +165,25 @@ class Plotter:
                 .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
 
         # Create a HoloViews pane for the figure
-        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if stretch_value else None)
+        plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
         # Update the corresponding tab with new signals
         self.tabs.component[3] = (self.tabs.str_analysis_function_tab, plot_pane)
 
 
-    def create_correlation_plot(self, channels=None, stretch_value=None, color_picker_value=None, type=None):
+    def create_correlation_plot(self,type=None):
         # set a own color picker for results
-        color_value = color_picker_value[2]
+        color_value = self.color_picker_value[2]
 
         if type == 'xx':
             title = "Auto Correlation - Input"
-            corr = self.signal_process.correlation(self.input_channel, self.input_channel,type='xx')
+            corr = self.signal_process.correlation(type='xx')
         elif type == 'yy':
             title = "Auto Correlation - Output"
-            corr = self.signal_process.correlation(self.output_channel, self.output_channel,type='yy')
+            corr = self.signal_process.correlation(type='yy')
         elif type == 'xy':
             title = "Cross Correlation"
-            corr = self.signal_process.correlation(self.input_channel, self.output_channel,type='xy')
+            corr = self.signal_process.correlation(type='xy')
 
         # create time delay axis
         tau = self.signal_process.create_correlation_axis(len(corr))

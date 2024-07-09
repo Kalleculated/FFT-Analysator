@@ -82,7 +82,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
 
             self.main_view.update_analysis_plot(
@@ -106,7 +108,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
 
             self.main_view.update_analysis_plot(
@@ -145,7 +149,9 @@ class AppController:
                     self.sidebar.accordion.stretching_switch.component.value,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
-                    self.sidebar.accordion.color_picker_result.component.value]
+                    self.sidebar.accordion.color_picker_result.component.value],
+                    self.sidebar.accordion.window_menu.window_menu.clicked,
+                    self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                 )
             else:
                 self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
@@ -158,7 +164,9 @@ class AppController:
                     self.sidebar.accordion.stretching_switch.component.value,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
-                    self.sidebar.accordion.color_picker_result.component.value]
+                    self.sidebar.accordion.color_picker_result.component.value],
+                    self.sidebar.accordion.window_menu.window_menu.clicked,
+                    self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                 )
 
     def handle_blocksize_selector_event(self, event):
@@ -178,7 +186,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
