@@ -22,7 +22,7 @@ class Sidebar:
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
             self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
-            self.accordion.calculation_menu.signal_menu.param.watch(callback_analysis_event, "clicked")
+            self.accordion.method_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.overlap_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
 
@@ -147,10 +147,12 @@ class Sidebar:
             self.accordion.stretching_switch.component.disabled = False
             self.accordion.window_selector.component.disabled = False
             self.accordion.overlap_selector.component.disabled = False
+            self.accordion.method_selector.component.disabled = False
         else:
             self.accordion.stretching_switch.component.disabled = True
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
+            self.accordion.method_selector.component.disabled = True
 
     def servable(self):
         return self.layout.servable(target="sidebar")

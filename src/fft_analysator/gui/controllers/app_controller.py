@@ -63,7 +63,7 @@ class AppController:
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
 
-            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
+            or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
         )
@@ -95,7 +95,7 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value
                     )
@@ -120,7 +120,7 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value
                     )
@@ -198,7 +198,7 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value
                     )
@@ -217,7 +217,7 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value
                     )
@@ -229,7 +229,7 @@ class AppController:
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
-                self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                self.sidebar.accordion.method_selector.component.value,
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value
             )

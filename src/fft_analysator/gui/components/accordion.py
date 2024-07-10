@@ -3,7 +3,7 @@ import panel as pn
 from fft_analysator.gui.components.file_input_tkinter import FileInputComponent
 from fft_analysator.gui.components.switch import Switch
 from fft_analysator.gui.components.color_picker import Colorpicker
-from fft_analysator.gui.components.calculation_menu import MenuButton
+from fft_analysator.gui.components.method_selector import MethodSelector
 from fft_analysator.gui.components.selector import Selector
 from fft_analysator.gui.components.data_selector import DataSelector
 from fft_analysator.gui.components.int_slider import IntSlider
@@ -46,7 +46,7 @@ class Accordion:
         self.color_picker_ch2 = Colorpicker()
         self.color_picker_result = Colorpicker()
         self.stretching_switch = Switch()
-        self.calculation_menu = MenuButton()
+        self.method_selector = MethodSelector()
         self.selector = Selector()
         self.data_selector = DataSelector()
         self.int_slider= IntSlider()
@@ -79,7 +79,8 @@ class Accordion:
                                                                      self.stretching_switch.component))),
 
                                             ('Calculation', pn.Column(pn.Row(self.window_selector.component,
-                                                            self.overlap_selector.component),self.calculation_menu.component)
+                                                                            self.overlap_selector.component),
+                                                                            self.method_selector.component)
                                              ), sizing_mode='stretch_width')
 
 
