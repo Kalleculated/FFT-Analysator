@@ -15,7 +15,7 @@ class MainView:
 
     def update_signal(self, data_callback, channels, stretch_value, color_picker_value, window, overlap):
         if channels:
-            plot = Plotter(channels,self.tabs, data_callback, window, overlap,color_picker_value,stretch_value)
+            plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
 
             # generate time plot
             plot.create_time_plot()
@@ -34,7 +34,7 @@ class MainView:
     def update_analysis_plot(self, data_callback, channels, stretch_value, color_picker_value, analysis_callback,
                              window, overlap):
         if channels:
-            plot = Plotter(channels,self.tabs, data_callback, window, overlap, color_picker_value,stretch_value)
+            plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
 
             # plot analysis function
             if analysis_callback == "Auto Spectral Density - Input":

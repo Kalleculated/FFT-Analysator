@@ -12,12 +12,12 @@ class Plotter:
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
-        self.signal_process = Signal_Process(channels,data_callback.file_paths,
+        self.signal_process = Signal_Process(channels, data_callback.file_paths,
             block_size=data_callback.block_size, window=window, overlap=overlap)
         self.channels = channels
         self.color_picker_value = color_picker_value
         self.stretch_value = stretch_value
-        
+
         if channels:
             if len(channels) == 1:
                 self.input_channel = self.channels[0]
@@ -192,7 +192,7 @@ class Plotter:
 
         fig = hv.Curve((tau,corr),
                     kdims="Time delay in s", vdims="Correlation", label=title ) \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
                       #xlim=(np.min(tau)+0.1*np.min(tau), max(tau)+0.1*np.max(tau)))
 
         # Create a HoloViews pane for the figure
