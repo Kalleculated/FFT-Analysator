@@ -2,13 +2,10 @@ import panel as pn
 
 
 class MenuButton:
-    #"\U0001F4BE Save" <-- Save icon und name
     def __init__(self):
         self.file_items = ["No Analysis Function", "Auto Spectral Density - Input", "Auto Spectral Density - Output",
                            "Cross Spectral Density", "Coherence","Auto Correlation - Input", "Auto Correlation - Output", "Cross Correlation"]
-        #self.help_items = ["🧮 Calculations", "\U0001F6C8 About"]
         self.signal_menu = pn.widgets.MenuButton(name="Method", icon="file", items=self.file_items, width=300, button_type="default")
-        #self.help_menu = pn.widgets.MenuButton(name="🔍 Help", items=self.help_items, width=125, button_type="default")
 
         self._component = pn.Column(pn.Row(
                                 self.signal_menu,
