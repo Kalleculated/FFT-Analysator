@@ -1,7 +1,9 @@
 import holoviews as hv
 import panel as pn
+import numpy as np
 
 import fft_analysator.analysis.preprocessing as pp
+import fft_analysator.analysis.signal_processing as sp
 from fft_analysator.gui.views.main_view import MainView
 from fft_analysator.gui.views.sidebar import Sidebar
 from fft_analysator.analysis.plotting import Plotter
@@ -17,7 +19,8 @@ class AppController:
         self.main_view = MainView()
         self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
-                                self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event)
+                                self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event,
+                                self.handle_export_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -62,7 +65,6 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
-
             or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
             or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
             or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
@@ -232,6 +234,16 @@ class AppController:
                 self.sidebar.accordion.window_menu.window_menu.clicked,
                 self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
+
+    def handle_export_event(self, event):
+        if (event.obj == self.sidebar.accordion.file_exporter.component):
+
+            sig_pro = sp.Signal_Process()
+            self.sidebar.accordion.file_exporter.select_directory(event,np.array([1,2,3,4,5]),
+                        self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value,
+                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.exporter_menu.export_menu.clicked)
 
     def servable(self):
         # Serve app layout

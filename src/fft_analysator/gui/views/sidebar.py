@@ -6,12 +6,12 @@ import math
 
 class Sidebar:
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
-                 callback_block_selector=None, callback_analysis_event=None):
+                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None):
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
 
-        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event:
+        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event or callback_exporter_event:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.channel_selector_input.component.param.watch(callback, "value")
@@ -25,6 +25,9 @@ class Sidebar:
             self.accordion.calculation_menu.signal_menu.param.watch(callback_analysis_event, "clicked")
             self.accordion.overlap_menu.overlap_menu.param.watch(callback_analysis_event, "clicked")
             self.accordion.window_menu.window_menu.param.watch(callback_analysis_event, "clicked")
+            self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
+
+
 
 
     def update_channel_selector(self, data_callback=None):

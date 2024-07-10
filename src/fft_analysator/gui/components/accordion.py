@@ -13,6 +13,7 @@ from fft_analysator.gui.components.channel_selector import ChannelSelector
 from fft_analysator.gui.components.window_menu import Window_MenuButton
 from fft_analysator.gui.components.overlap_menu import Overlap_MenuButton
 from fft_analysator.gui.components.exporter import FileExporter
+from fft_analysator.gui.components.exporter_menu import Exporter_MenuButton
 
 
 class Accordion:
@@ -34,6 +35,7 @@ class Accordion:
         self.window_menu = Window_MenuButton()
         self.overlap_menu = Overlap_MenuButton()
         self.file_exporter = FileExporter()
+        self.exporter_menu = Exporter_MenuButton()
         self.accordion = pn.Accordion
 
         # Set default colors
@@ -62,13 +64,9 @@ class Accordion:
                                                                      self.stretching_switch.component))),
 
                                             ('Calculation', pn.Column(pn.Row(self.window_menu.component,
-                                                            self.overlap_menu.component),self.calculation_menu.component)
-                                             ), sizing_mode='stretch_width')
-
-                                            ('Calculation', self.calculation_menu.component),
-                                            ('Export',self.file_exporter.component),
-                                          sizing_mode='stretch_width')
-# Hier noch ein Dropdown Menu für die Extension.
+                                                            self.overlap_menu.component),self.calculation_menu.component)),
+                                            ('Export', pn.Column(self.exporter_menu.component,self.file_exporter.component)),
+                                            sizing_mode='stretch_width')
 
     @property
     def component(self):
