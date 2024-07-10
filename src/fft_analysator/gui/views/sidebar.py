@@ -22,9 +22,9 @@ class Sidebar:
             self.accordion.selector.component.param.watch(callback_table_chooser, "value")
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
             self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
-            self.accordion.calculation_menu.signal_menu.param.watch(callback_analysis_event, "clicked")
-            self.accordion.overlap_menu.overlap_menu.param.watch(callback_analysis_event, "clicked")
-            self.accordion.window_menu.window_menu.param.watch(callback_analysis_event, "clicked")
+            self.accordion.method_selector.component.param.watch(callback_analysis_event, "value")
+            self.accordion.overlap_selector.component.param.watch(callback_analysis_event, "value")
+            self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
 
 
     def update_channel_selector(self, data_callback=None):
@@ -36,7 +36,7 @@ class Sidebar:
         we set both options and name to empty lists/strings respectively.
 
         Args:
-            data_callback (object): Get the callback to the data object
+            data_callback (object, optional): Get the callback to the data object
         """
         if data_callback:
             self.accordion.channel_selector_output.component.disabled = False
@@ -145,8 +145,14 @@ class Sidebar:
     def update_general_plotting_widgets(self, data_callback=None):
         if data_callback:
             self.accordion.stretching_switch.component.disabled = False
+            self.accordion.window_selector.component.disabled = False
+            self.accordion.overlap_selector.component.disabled = False
+            self.accordion.method_selector.component.disabled = False
         else:
             self.accordion.stretching_switch.component.disabled = True
+            self.accordion.window_selector.component.disabled = True
+            self.accordion.overlap_selector.component.disabled = True
+            self.accordion.method_selector.component.disabled = True
 
     def servable(self):
         return self.layout.servable(target="sidebar")
