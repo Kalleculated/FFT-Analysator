@@ -11,8 +11,50 @@ hv.extension("bokeh", "plotly")  # type: ignore
 
 
 class AppController:
-    def __init__(self):
+    """
+    A class used to control the application's logic.
 
+    This class is responsible for handling user interactions and updating the application's state accordingly.
+
+    Attributes
+    ----------
+    main_view : object
+        An instance of the MainView class.
+    current_method : str
+        The currently selected analysis method.
+    sidebar : object
+        An instance of the Sidebar class.
+    template_layout : object
+        A FastListTemplate instance for the application layout.
+    file_paths : str
+        The paths to the data files.
+
+    Methods
+    -------
+    handle_fileupload_event()
+        Handles the file upload event.
+    handle_sidebar_event()
+        Handles the sidebar event.
+    handle_table_choose_event()
+        Handles the table choose event.
+    handle_intslider_event()
+        Handles the intslider event.
+    handle_blocksize_selector_event()
+        Handles the blocksize selector event.
+    handle_update_analysis_event()
+        Handles the update analysis event.
+    """
+
+    def __init__(self):
+        """
+        Constructs all the necessary attributes for the AppController object.
+
+        The main_view attribute is initialized as a MainView instance.
+        The current_method attribute is initialized with a string value.
+        The sidebar attribute is initialized as a Sidebar instance with specific event handlers.
+        The template_layout attribute is initialized as a FastListTemplate instance with specific parameters.
+        The file_paths attribute is initialized as None.
+        """
         # Initialization of main and side views
         self.main_view = MainView()
         self.current_method = 'No Analysis Function'
@@ -33,6 +75,11 @@ class AppController:
         self.preprocessing = None
 
     def handle_fileupload_event(self, event):
+        """
+        Handles the file upload event.
+
+        This method is called when a file upload event occurs.
+        """
         # Handle the file upload event and update the preprocessing object
         self.file_paths = self.sidebar.accordion.file_input.file_paths
 
@@ -54,6 +101,11 @@ class AppController:
             self.sidebar.update_general_plotting_widgets()
 
     def handle_sidebar_event(self, event):
+        """
+        Handles the sidebar event.
+
+        This method is called when a sidebar event occurs.
+        """
         # Update the main view when the sidebar event is triggered
         if ((
             event.obj == self.sidebar.accordion.stretching_switch.component
@@ -126,6 +178,11 @@ class AppController:
                     )
 
     def handle_table_choose_event(self, event):
+        """
+        Handles the table choose event.
+
+        This method is called when a table choose event occurs.
+        """
         # Update the main view when the table chooser event is triggered
         # Note, we could also split this into multiple functions
         if event.obj == self.sidebar.accordion.selector.component:
@@ -135,6 +192,11 @@ class AppController:
                 self.sidebar.update_channel_selector(self.preprocessing)
 
     def handle_intslider_event(self, event):
+        """
+        Handles the intslider event.
+
+        This method is called when an intslider event occurs.
+        """
         if self.file_paths:
             if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
                 for _ in range(self.sidebar.accordion.int_slider.component.value - self.preprocessing.current_block_idx):
@@ -170,6 +232,11 @@ class AppController:
                 )
 
     def handle_blocksize_selector_event(self, event):
+        """
+        Handles the blocksize selector event.
+
+        This method is called when a blocksize selector event occurs.
+        """
         if self.file_paths:
             # reinitalize the preprocessing object with the new blocksize
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
@@ -204,7 +271,11 @@ class AppController:
                     )
 
     def handle_update_analysis_event(self, event):
+        """
+        Handles the update analysis event.
 
+        This method is called when an update analysis event occurs.
+        """
         if (self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
@@ -235,5 +306,8 @@ class AppController:
             )
 
     def servable(self):
+        """
+        Makes the application servable.
+        """
         # Serve app layout
         self.template_layout.servable()
