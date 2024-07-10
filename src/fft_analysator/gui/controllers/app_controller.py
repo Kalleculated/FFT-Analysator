@@ -15,6 +15,7 @@ class AppController:
 
         # Initialization of main and side views
         self.main_view = MainView()
+        self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
                                 self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event)
 
@@ -52,7 +53,6 @@ class AppController:
             self.sidebar.update_intslider()
             self.sidebar.update_general_plotting_widgets()
 
-
     def handle_sidebar_event(self, event):
         # Update the main view when the sidebar event is triggered
         if ((
@@ -62,7 +62,11 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
-            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked)
+
+            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
+            or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
+            or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
+        )
             and self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
@@ -77,7 +81,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
 
             self.main_view.update_analysis_plot(
@@ -88,9 +94,10 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked
+                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.window_menu.window_menu.clicked,
+                        self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                     )
-
         else:
 
             self.sidebar.update_color_picker()
@@ -100,7 +107,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
 
             self.main_view.update_analysis_plot(
@@ -110,7 +119,9 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked
+                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.window_menu.window_menu.clicked,
+                        self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                     )
 
     def handle_table_choose_event(self, event):
@@ -137,7 +148,9 @@ class AppController:
                     self.sidebar.accordion.stretching_switch.component.value,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
-                    self.sidebar.accordion.color_picker_result.component.value]
+                    self.sidebar.accordion.color_picker_result.component.value],
+                    self.sidebar.accordion.window_menu.window_menu.clicked,
+                    self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                 )
             else:
                 self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
@@ -150,7 +163,9 @@ class AppController:
                     self.sidebar.accordion.stretching_switch.component.value,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
-                    self.sidebar.accordion.color_picker_result.component.value]
+                    self.sidebar.accordion.color_picker_result.component.value],
+                    self.sidebar.accordion.window_menu.window_menu.clicked,
+                    self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                 )
 
     def handle_blocksize_selector_event(self, event):
@@ -170,7 +185,9 @@ class AppController:
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
-                self.sidebar.accordion.color_picker_result.component.value]
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
@@ -180,7 +197,9 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked
+                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.window_menu.window_menu.clicked,
+                        self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                     )
 
     def handle_update_analysis_event(self, event):
@@ -197,7 +216,9 @@ class AppController:
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked
+                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                        self.sidebar.accordion.window_menu.window_menu.clicked,
+                        self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
                     )
         else:
             self.main_view.update_analysis_plot(
@@ -207,7 +228,9 @@ class AppController:
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
-                self.sidebar.accordion.calculation_menu.signal_menu.clicked
+                self.sidebar.accordion.calculation_menu.signal_menu.clicked,
+                self.sidebar.accordion.window_menu.window_menu.clicked,
+                self.sidebar.accordion.overlap_menu.overlap_menu.clicked,
             )
 
     def servable(self):

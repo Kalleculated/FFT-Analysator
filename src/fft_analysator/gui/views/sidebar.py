@@ -23,6 +23,9 @@ class Sidebar:
             self.accordion.int_slider.component.param.watch(callback_intslider, "value")
             self.accordion.blocksize_selector.component.param.watch(callback_block_selector, "value")
             self.accordion.calculation_menu.signal_menu.param.watch(callback_analysis_event, "clicked")
+            self.accordion.overlap_menu.overlap_menu.param.watch(callback_analysis_event, "clicked")
+            self.accordion.window_menu.window_menu.param.watch(callback_analysis_event, "clicked")
+
 
     def update_channel_selector(self, data_callback=None):
         """
