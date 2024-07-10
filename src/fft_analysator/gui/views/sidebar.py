@@ -36,7 +36,7 @@ class Sidebar:
         we set both options and name to empty lists/strings respectively.
 
         Args:
-            data_callback (object): Get the callback to the data object
+            data_callback (object, optional): Get the callback to the data object
         """
         if data_callback:
             self.accordion.channel_selector_output.component.disabled = False

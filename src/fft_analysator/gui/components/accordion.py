@@ -25,7 +25,7 @@ class Accordion:
         color_picker_ch2 (Colorpicker): The color picker for channel 2.
         color_picker_result (Colorpicker): The color picker for the result.
         stretching_switch (Switch): The switch for stretching.
-        calculation_menu (MenuButton): The menu button for calculations.
+        calculation_selector (CalculationSelector): The selector for calculations.
         selector (Selector): The selector component.
         data_selector (DataSelector): The data selector component.
         int_slider (IntSlider): The integer slider component.
@@ -33,14 +33,13 @@ class Accordion:
         blocksize_selector (BlocksizeSelector): The blocksize selector component.
         channel_selector_input (ChannelSelector): The channel selector for input.
         channel_selector_output (ChannelSelector): The channel selector for output.
-        window_menu (Window_MenuButton): The menu button for window selection.
-        overlap_menu (Overlap_MenuButton): The menu button for overlap selection.
+        window_selector (WindowSelector): The selector for the windows.
+        overlap_selectgor (OverlapSelector): The selector for the overlaps.
         accordion (pn.Accordion): The accordion component.
 
     """
 
     def __init__(self):
-        """Initialize the Accordion class."""
         self.file_input = FileInputComponent()
         self.color_picker_ch1 = Colorpicker()
         self.color_picker_ch2 = Colorpicker()
