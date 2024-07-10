@@ -21,6 +21,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/frontend_components/</loc>
+         <lastmod>2024-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/frontend_controllers/</loc>
+         <lastmod>2024-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kalleculated.github.io/FFT-Analysator/frontend_views/</loc>
+         <lastmod>2024-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kalleculated.github.io/FFT-Analysator/installation/</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
