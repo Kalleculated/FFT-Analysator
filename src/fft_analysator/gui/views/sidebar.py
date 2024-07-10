@@ -145,8 +145,12 @@ class Sidebar:
     def update_general_plotting_widgets(self, data_callback=None):
         if data_callback:
             self.accordion.stretching_switch.component.disabled = False
+            self.accordion.window_selector.component.disabled = False
+            self.accordion.overlap_selector.component.disabled = False
         else:
             self.accordion.stretching_switch.component.disabled = True
+            self.accordion.window_selector.component.disabled = True
+            self.accordion.overlap_selector.component.disabled = True
 
     def servable(self):
         return self.layout.servable(target="sidebar")

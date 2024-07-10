@@ -5,7 +5,8 @@ class WindowSelector:
     def __init__(self):
         self.selector = pn.widgets.Select
         self.options = ['Hanning', 'Rectangular', 'Hamming', 'Bartlett', 'Blackman']
-        self._component = self.selector(name='Choose window:', options=self.options, width=140, value='Hanning')
+        self._component = self.selector(name='Choose window:', options=self.options, width=140, value='Hanning',
+                                        disabled=True)
 
     @property
     def component(self):
