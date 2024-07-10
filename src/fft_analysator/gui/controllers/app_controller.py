@@ -242,12 +242,21 @@ class AppController:
     def handle_export_event(self, event):
         if (event.obj == self.sidebar.accordion.file_exporter.component):
 
-            sig_pro = sp.Signal_Process()
-            self.sidebar.accordion.file_exporter.select_directory(event,np.array([1,2,3,4,5]),
+            sig_pro = sp.Signal_Process([self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value],
+                        self.preprocessing.file_paths,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.blocksize_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value)
+
+            if self.sidebar.accordion.method_selector.component.value == "Cross Spectral Density":
+                data = sig_pro.csm()
+
+            self.sidebar.accordion.file_exporter.select_directory(event,data,
                         self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value,
-                        self.sidebar.accordion.calculation_menu.signal_menu.clicked,
-                        self.sidebar.accordion.exporter_menu.export_menu.clicked)
+                        self.sidebar.accordion.method_selector.component.value,
+                        self.sidebar.accordion.exporter_selector.component.value)
 
     def servable(self):
         # Serve app layout

@@ -13,7 +13,7 @@ from fft_analysator.gui.components.channel_selector import ChannelSelector
 from fft_analysator.gui.components.window_selector import WindowSelector
 from fft_analysator.gui.components.overlap_selector import OverlapSelector
 from fft_analysator.gui.components.exporter import FileExporter
-from fft_analysator.gui.components.exporter_menu import Exporter
+from fft_analysator.gui.components.exporter_selector import ExporterSelector
 
 
 class Accordion:
@@ -59,7 +59,7 @@ class Accordion:
         self.window_selector = WindowSelector()
         self.overlap_selector = OverlapSelector()
         self.file_exporter = FileExporter()
-        self.exporter_menu = Exporter_MenuButton()
+        self.exporter_selector = ExporterSelector()
         self.accordion = pn.Accordion
 
         # Set default colors
@@ -85,7 +85,7 @@ class Accordion:
                                                                             self.overlap_selector.component),
                                                                             self.method_selector.component)
                                              ),
-                                            ('Export', pn.Column(self.exporter_menu.component,self.file_exporter.component)),
+                                            ('Export', pn.Column(self.exporter_selector.component,self.file_exporter.component)),
                                             sizing_mode='stretch_width')
 
     @property
