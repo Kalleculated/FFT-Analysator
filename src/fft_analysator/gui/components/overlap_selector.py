@@ -1,6 +1,5 @@
 import panel as pn
 
-
 class OverlapSelector:
     def __init__(self):
         self.selector = pn.widgets.Select

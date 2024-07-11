@@ -240,6 +240,7 @@ class AppController:
             )
 
     def handle_export_event(self, event):
+        data = np.array([1, 2, 3, 4])
         if (event.obj == self.sidebar.accordion.file_exporter.component):
 
             sig_pro = sp.Signal_Process([self.sidebar.accordion.channel_selector_input.component.value,
@@ -256,7 +257,10 @@ class AppController:
                         self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value,
                         self.sidebar.accordion.method_selector.component.value,
-                        self.sidebar.accordion.exporter_selector.component.value)
+                        self.sidebar.accordion.exporter_selector.component.value,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value,
+                                                                  )
 
     def servable(self):
         # Serve app layout

@@ -8,24 +8,15 @@ class FileExporter:
         self._component = self.file_input_button(name='\U0001F4BE ' 'Save and Export', margin=(10, 0, 10, 10), width=150)
         self.dir_path = None
 
-        # Reference müssen rein.
-        #self.chn1 = None
-        #self.chn2 = None
-        #self.method = None
-        #self.ext = None
-        #self.data = None
-        #pn.bind(self.select_directory, self._component, watch=True)
-
-    def select_directory(self, event, data, chn1, chn2, method, ext):
+    def select_directory(self, event, data, chn1, chn2, method, ext, window, overlap):
         root = Tk()
         root.withdraw()
         root.call('wm', 'attributes', '.', '-topmost', True)
         dir = filedialog.askdirectory(initialdir=os.getcwd())
-        method = method.replace(" ", "_")
-        print(ext)
+        method = method.replace(" ", "")
         if dir:
             self.dir_path = dir
-            file_name = str(dir) + "/" + str(method) + "_" + str(chn1) + "_" + str(chn2)
+            file_name = str(dir) + "/" + str(method) + "_" + str(chn1) + "_" + str(chn2) + "_" + str(window) + "_" + str(overlap)
             print(file_name)
             if ext == "Numpy Array":
                 np.save(file_name, data)
