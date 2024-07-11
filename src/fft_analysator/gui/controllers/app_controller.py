@@ -280,6 +280,18 @@ class AppController:
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
 
+            self.main_view.update_signal(
+                self.preprocessing,
+                [self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value],
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value,
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_selector.component.value,
+                self.sidebar.accordion.overlap_selector.component.value
+            )
+
             self.main_view.update_analysis_plot(
                         self.preprocessing,
                         [self.sidebar.accordion.channel_selector_input.component.value,
@@ -293,6 +305,18 @@ class AppController:
                         self.sidebar.accordion.overlap_selector.component.value
                     )
         else:
+            self.main_view.update_signal(
+                self.preprocessing,
+                [self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value],
+                self.sidebar.accordion.stretching_switch.component.value,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value,
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_selector.component.value,
+                self.sidebar.accordion.overlap_selector.component.value
+            )
+
             self.main_view.update_analysis_plot(
                 self.preprocessing,
                 [],
