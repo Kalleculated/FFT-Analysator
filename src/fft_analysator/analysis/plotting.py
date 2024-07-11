@@ -6,8 +6,43 @@ import acoular as ac
 from fft_analysator.analysis.signal_processing import Signal_Process
 
 class Plotter:
+    """
+    A class used to process and plot signals.
+
+    Attributes
+    ----------
+    signal_process : Signal_Process
+        An instance of the Signal_Process class.
+    channels : list
+        A list of channels.
+    color_picker_value : list
+        A list of color values for each channel.
+    stretch_value : bool
+        A flag indicating whether to stretch the plot width.
+    input_channel : int
+        The input channel number.
+    output_channel : int
+        The output channel number.
+    """
 
     def __init__(self, channels, tabs_callback, data_callback,window,overlap, color_picker_value,stretch_value=None):
+        """
+        Constructs all the necessary attributes for the ClassName object.
+
+        Args:
+            channels : list
+                A list of channels.
+            data_callback : DataCallback
+                An instance of the DataCallback class.
+            color_picker_value : list
+                A list of color values for each channel.
+            stretch_value : bool
+                A flag indicating whether to stretch the plot width.
+            window : str
+                The window type for the signal processing.
+            overlap : float
+                The overlap value for the signal processing.
+        """
         self.data_callback = data_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
