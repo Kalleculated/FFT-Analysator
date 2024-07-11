@@ -3251,9 +3251,7 @@
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/gui/components/accordion.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
@@ -3292,7 +3290,13 @@
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">file_input</span> <span class="o">=</span> <span class="n">FileInputComponent</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">color_picker_ch1</span> <span class="o">=</span> <span class="n">Colorpicker</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">color_picker_ch2</span> <span class="o">=</span> <span class="n">Colorpicker</span><span class="p">()</span>
@@ -3309,6 +3313,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">channel_selector_output</span> <span class="o">=</span> <span class="n">ChannelSelector</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">window_selector</span> <span class="o">=</span> <span class="n">WindowSelector</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">overlap_selector</span> <span class="o">=</span> <span class="n">OverlapSelector</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">file_exporter</span> <span class="o">=</span> <span class="n">FileExporter</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">exporter_selector</span> <span class="o">=</span> <span class="n">ExporterSelector</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Accordion</span>
 
     <span class="c1"># Set default colors</span>
@@ -3333,7 +3339,9 @@
                                         <span class="p">(</span><span class="s1">&#39;Calculation&#39;</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window_selector</span><span class="o">.</span><span class="n">component</span><span class="p">,</span>
                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">overlap_selector</span><span class="o">.</span><span class="n">component</span><span class="p">),</span>
                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">method_selector</span><span class="o">.</span><span class="n">component</span><span class="p">)</span>
-                                         <span class="p">),</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">&#39;stretch_width&#39;</span><span class="p">)</span>
+                                         <span class="p">),</span>
+                                        <span class="p">(</span><span class="s1">&#39;Export&#39;</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exporter_selector</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">file_exporter</span><span class="o">.</span><span class="n">component</span><span class="p">)),</span>
+                                        <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">&#39;stretch_width&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 
@@ -4866,9 +4874,9 @@ The _component attribute is initialized as a panel Select widget with specific p
     <span class="bp">self</span><span class="o">.</span><span class="n">selector</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;No Analysis Function&quot;</span><span class="p">,</span> <span class="s2">&quot;Auto Spectral Density - Input&quot;</span><span class="p">,</span> <span class="s2">&quot;Auto Spectral Density - Output&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;Cross Spectral Density&quot;</span><span class="p">,</span> <span class="s2">&quot;Coherence&quot;</span><span class="p">,</span><span class="s2">&quot;Auto Correlation - Input&quot;</span><span class="p">,</span> <span class="s2">&quot;Auto Correlation - Output&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;Cross Correlation&quot;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_component</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Choose analysis method:&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;No Analysis Function&#39;</span><span class="p">,</span>
-                                    <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="s2">&quot;Cross Correlation&quot;</span><span class="p">,</span> <span class="s2">&quot;Impulse response&quot;</span><span class="p">,</span> <span class="s2">&quot;Frequency Response&quot;</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_component</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Choose analysis and saving method:&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;No Analysis Function&#39;</span><span class="p">,</span> <span class="n">disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 
@@ -4984,7 +4992,8 @@ The _component attribute is initialized as a panel Select widget with specific p
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/gui/components/overlap_selector.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
@@ -4994,8 +5003,7 @@ The _component attribute is initialized as a panel Select widget with specific p
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructs all the necessary attributes for the OverlapSelector object.</span>
 
