@@ -8,12 +8,56 @@ from fft_analysator.analysis.plotting import Plotter
 
 
 class MainView:
+    """
+    A class used to represent the main view of the application.
+
+    This class is responsible for updating the signal and analysis plots based on the provided data.
+
+    Attributes
+    ----------
+    tabs : object
+        An instance of the Tabs class.
+    layout : object
+        A panel Column layout containing the tabs component.
+
+    Methods
+    -------
+    update_signal(data_callback, channels, stretch_value, color_picker_value, window, overlap)
+        Updates the signal plots based on the provided data.
+    update_analysis_plot(data_callback, channels, stretch_value, color_picker_value, analysis_callback, window, overlap)
+        Updates the analysis plots based on the provided data.
+    """
+
     def __init__(self):
+        """
+        Constructs all the necessary attributes for the MainView object.
+
+        The tabs attribute is initialized as a Tabs instance.
+        The layout attribute is initialized as a panel Column layout containing the tabs component.
+        """
         self.tabs = Tabs()
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
 
     def update_signal(self, data_callback, channels, stretch_value, color_picker_value, window, overlap):
+        """
+        Updates the signal plots based on the provided data.
+
+        Parameters
+        ----------
+        data_callback : function
+            A callback function to retrieve the data.
+        channels : list
+            A list of channels to plot.
+        stretch_value : int
+            The stretch value for the plot.
+        color_picker_value : str
+            The selected color for the plot.
+        window : str
+            The selected window function.
+        overlap : int
+            The overlap value for the plot.
+        """
         if channels:
             plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
 
@@ -33,6 +77,26 @@ class MainView:
 
     def update_analysis_plot(self, data_callback, channels, stretch_value, color_picker_value, analysis_callback,
                              window, overlap):
+        """
+        Updates the analysis plots based on the provided data.
+
+        Parameters
+        ----------
+        data_callback : function
+            A callback function to retrieve the data.
+        channels : list
+            A list of channels to plot.
+        stretch_value : int
+            The stretch value for the plot.
+        color_picker_value : str
+            The selected color for the plot.
+        analysis_callback : function
+            A callback function to perform the analysis.
+        window : str
+            The selected window function.
+        overlap : int
+            The overlap value for the plot.
+        """
         if channels:
             plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
 
@@ -72,6 +136,9 @@ class MainView:
 
 
     def servable(self):
+        """
+        Makes the main view servable.
+        """
         self.layout.servable(target="main")
 
 

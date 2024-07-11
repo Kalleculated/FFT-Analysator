@@ -17,6 +17,9 @@ class ChannelSelector:
     """
 
     def __init__(self):
+        """
+        The selector attribute is initialized as a panel Select widget.
+        """
         self.selector = pn.widgets.Select
         self.options = []
         self._component = self.selector(name='No data chosen!', options=self.options, width=135, margin=(10,15),
@@ -32,5 +35,4 @@ class ChannelSelector:
         object
             The stored widget.
         """
-        # Der Getter gibt das gespeicherte Widget zurück
         return self._component

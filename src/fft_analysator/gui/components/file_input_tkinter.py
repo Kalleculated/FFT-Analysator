@@ -23,7 +23,15 @@ class FileInputComponent:
     component()
         Gets the stored widget.
     """
+
     def __init__(self):
+        """
+        Constructs all the necessary attributes for the FileInputComponent object.
+
+        The file_input_button attribute is initialized as a panel Button widget.
+        The _component attribute is initialized as a panel Button widget with specific parameters.
+        The file_paths attribute is initialized as None.
+        """
         self.file_input_button = pn.widgets.Button
         self._component = self.file_input_button(name="Load file", margin=(20, 0, 10, 10))
         self.file_paths = None

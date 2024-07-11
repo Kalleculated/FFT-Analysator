@@ -19,9 +19,13 @@ nav:
 - User Documentation:
   - User Guide and Screenshots: user_guide_and_screenshots.md
 - Developer Documentation:
-  - API Documentation: api_documentation.md
-  - Backend Documentation: dev_backend_documentation.md
-  - Frontend Documentation: dev_frontend_documentation.md
+    - API Documentation: api_documentation.md
+    - Backend Documentation: dev_backend_documentation.md
+    - Frontend Documentation:
+        - Overview: dev_frontend_documentation.md
+        - Controllers: frontend_controllers.md
+        - Views: frontend_views.md
+        - Components: frontend_components.md
 
 theme:
   name: material
@@ -35,6 +39,8 @@ theme:
   - content.code.copy
   - content.tooltips
   - navigation.indexes
+  - navigation.expand
+  # - navigation.tabs
   # - navigation.sections
   # - navigation.top
   - search.highlight
@@ -65,6 +71,7 @@ plugins:
 - search
 - markdown-exec
 - mkdocstrings:
+    default_handler: python
     handlers:
       python:
         import:

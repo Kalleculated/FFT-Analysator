@@ -5,8 +5,40 @@ import math
 
 
 class Sidebar:
+    """
+    A class used to represent the sidebar of the application.
+
+    This class is responsible for handling user interactions with the sidebar and updating the sidebar's state accordingly.
+
+    Attributes
+    ----------
+    accordion : object
+        An instance of the Accordion class.
+    layout : object
+        A panel Column layout containing the accordion component.
+    ch : list
+        A list of selected channels.
+    amount_ch : int
+        The number of selected channels.
+
+    Methods
+    -------
+    update_channel_selector(data_callback)
+        Updates the channel selector based on the provided data.
+    update_color_picker()
+        Updates the color picker based on the selected channels.
+    """
+
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
                  callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None):
+        """
+                Constructs all the necessary attributes for the Sidebar object.
+
+                The accordion attribute is initialized as an Accordion instance.
+                The layout attribute is initialized as a panel Column layout containing the accordion component.
+                The ch attribute is initialized as an empty list.
+                The amount_ch attribute is initialized as 0.
+                """
 
         self.accordion = Accordion()
         self.layout = self.accordion.component
@@ -31,14 +63,12 @@ class Sidebar:
 
     def update_channel_selector(self, data_callback=None):
         """
-        The update_channel_selector function is used to update the update_channel_selector component with new data.
-        If a data_callback is provided, then the options of the update_channel_selector component are set to be
-        the number of channels in that callback. The name of the component is also updated accordingly.
-        Otherwise, if no data_callback was provided, then we assume that there's no file selected and
-        we set both options and name to empty lists/strings respectively.
+        Updates the channel selector based on the provided data.
 
-        Args:
-            data_callback (object, optional): Get the callback to the data object
+        Parameters
+        ----------
+        data_callback : function
+            A callback function to retrieve the data.
         """
         if data_callback:
             self.accordion.channel_selector_output.component.disabled = False
@@ -57,7 +87,9 @@ class Sidebar:
             self.accordion.channel_selector_input.component.disabled = True
 
     def update_color_picker(self):
-
+        """
+        Updates the color picker based on the selected channels.
+        """
         # The selector always has a value, so we can check if the options are set
         if (self.accordion.channel_selector_input.component.value is not None
             and self.accordion.channel_selector_output.component.value is not None):
@@ -91,7 +123,14 @@ class Sidebar:
             self.amount_ch = 0
 
     def update_selector(self, data_callback=None):
+        """
+        Updates the selector based on the provided data.
 
+        Parameters
+        ----------
+        data_callback : function, optional
+            A callback function to retrieve the data. If not provided, the selector is cleared.
+        """
         if data_callback:
             self.accordion.selector.component.options = data_callback.get_table_names()
             self.accordion.selector.component.value = data_callback.get_table_names()[0]
@@ -105,6 +144,9 @@ class Sidebar:
         return True
 
     def update_file_list(self):
+        """
+        Updates the file list based on the file paths in the file input component.
+        """
         if self.accordion.file_input.file_paths:
             self.accordion.data_selector.component.options = [path.basename(self.accordion.file_input.file_paths)]
 
@@ -112,6 +154,14 @@ class Sidebar:
             self.accordion.data_selector.component.options = []
 
     def update_intslider(self, data_callback=None):
+        """
+        Updates the integer slider and the navigation buttons based on the provided data.
+
+        Parameters
+        ----------
+        data_callback : function, optional
+            A callback function to retrieve the data. If not provided, the integer slider and the navigation buttons are disabled.
+        """
         if self.accordion.file_input.file_paths and data_callback:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
@@ -142,9 +192,25 @@ class Sidebar:
             self.accordion.gen_nav.reset_button.disabled = True
 
     def update_nav_index(self):
+        """
+        Updates the navigation index based on the provided index.
+
+        Parameters
+        ----------
+        index : int
+            The index to update the navigation index to.
+        """
         self.accordion.gen_nav.index_box.name = f'{self.accordion.int_slider.component.value}/{self.accordion.gen_nav.index_box.start}-{self.accordion.gen_nav.index_box.end}'
 
     def update_general_plotting_widgets(self, data_callback=None):
+        """
+        Updates the general plotting widgets based on the provided data.
+
+        Parameters
+        ----------
+        data_callback : function, optional
+            A callback function to retrieve the data. If not provided, the widgets are disabled.
+        """
         if data_callback:
             self.accordion.stretching_switch.component.disabled = False
             self.accordion.window_selector.component.disabled = False
@@ -157,4 +223,7 @@ class Sidebar:
             self.accordion.method_selector.component.disabled = True
 
     def servable(self):
+        """
+        Makes the sidebar servable.
+        """
         return self.layout.servable(target="sidebar")
