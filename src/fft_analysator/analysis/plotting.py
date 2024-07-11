@@ -7,13 +7,13 @@ from fft_analysator.analysis.signal_processing import Signal_Process
 
 class Plotter:
 
-    def __init__(self, channels, tabs_callback, data_callback,window,overlap, color_picker_value,stretch_value=None):
+    def __init__(self, signal_process_callback, channels, tabs_callback, data_callback,
+                window, overlap, color_picker_value,stretch_value=None):
         self.data_callback = data_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
-        self.signal_process = Signal_Process(channels, data_callback.file_paths,
-            block_size=data_callback.block_size, window=window, overlap=overlap)
+        self.signal_process = signal_process_callback
         self.channels = channels
         self.color_picker_value = color_picker_value
         self.stretch_value = stretch_value

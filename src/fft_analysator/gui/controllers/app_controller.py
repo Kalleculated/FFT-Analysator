@@ -4,7 +4,7 @@ import panel as pn
 import fft_analysator.analysis.preprocessing as pp
 from fft_analysator.gui.views.main_view import MainView
 from fft_analysator.gui.views.sidebar import Sidebar
-from fft_analysator.analysis.plotting import Plotter
+from fft_analysator.analysis.signal_processing import Signal_Process
 
 
 hv.extension("bokeh", "plotly")  # type: ignore
@@ -85,6 +85,8 @@ class AppController:
 
         if self.file_paths:
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
+            self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
+                                                block_size=self.sidebar.accordion.blocksize_selector.component.value)
             # signal_process insert
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_file_list()
@@ -129,6 +131,7 @@ class AppController:
             # Update signal
             self.main_view.update_signal(
                 self.preprocessing,
+                self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
                 self.sidebar.accordion.stretching_switch.component.value,
@@ -141,6 +144,7 @@ class AppController:
 
             self.main_view.update_analysis_plot(
                         self.preprocessing,
+                        self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
                         self.sidebar.accordion.stretching_switch.component.value,
@@ -156,6 +160,7 @@ class AppController:
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
+                self.signal_process,
                 [],
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
@@ -167,6 +172,7 @@ class AppController:
 
             self.main_view.update_analysis_plot(
                         self.preprocessing,
+                        self.signal_process,
                         [],
                         self.sidebar.accordion.stretching_switch.component.value,
                         [self.sidebar.accordion.color_picker_ch1.component.value,
@@ -206,6 +212,7 @@ class AppController:
                 self.sidebar.update_nav_index()
                 self.main_view.update_signal(
                     self.preprocessing,
+                    self.signal_process,
                     [self.sidebar.accordion.channel_selector_input.component.value,
                     self.sidebar.accordion.channel_selector_output.component.value],
                     self.sidebar.accordion.stretching_switch.component.value,
@@ -221,6 +228,7 @@ class AppController:
                 self.sidebar.update_nav_index()
                 self.main_view.update_signal(
                     self.preprocessing,
+                    self.signal_process,
                     [self.sidebar.accordion.channel_selector_input.component.value,
                     self.sidebar.accordion.channel_selector_output.component.value],
                     self.sidebar.accordion.stretching_switch.component.value,
@@ -240,6 +248,8 @@ class AppController:
         if self.file_paths:
             # reinitalize the preprocessing object with the new blocksize
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
+            self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
+                                                block_size=self.sidebar.accordion.blocksize_selector.component.value)
 
             # update the sidebar components
             self.sidebar.update_file_list()
@@ -248,6 +258,7 @@ class AppController:
             self.sidebar.update_intslider(self.preprocessing)
             self.main_view.update_signal(
                 self.preprocessing,
+                self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
                 self.sidebar.accordion.stretching_switch.component.value,
@@ -259,6 +270,7 @@ class AppController:
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
+                        self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
                         self.sidebar.accordion.stretching_switch.component.value,
@@ -282,6 +294,7 @@ class AppController:
 
             self.main_view.update_signal(
                 self.preprocessing,
+                self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
                 self.sidebar.accordion.stretching_switch.component.value,
@@ -294,6 +307,7 @@ class AppController:
 
             self.main_view.update_analysis_plot(
                         self.preprocessing,
+                        self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
                         self.sidebar.accordion.stretching_switch.component.value,
@@ -307,6 +321,7 @@ class AppController:
         else:
             self.main_view.update_signal(
                 self.preprocessing,
+                self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
                 self.sidebar.accordion.stretching_switch.component.value,
@@ -319,6 +334,7 @@ class AppController:
 
             self.main_view.update_analysis_plot(
                 self.preprocessing,
+                self.signal_process,
                 [],
                 self.sidebar.accordion.stretching_switch.component.value,
                 [self.sidebar.accordion.color_picker_ch1.component.value,

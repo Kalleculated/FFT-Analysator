@@ -39,7 +39,7 @@ class MainView:
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
 
-    def update_signal(self, data_callback, channels, stretch_value, color_picker_value, window, overlap):
+    def update_signal(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, window, overlap):
         """
         Updates the signal plots based on the provided data.
 
@@ -59,7 +59,10 @@ class MainView:
             The overlap value for the plot.
         """
         if channels:
-            plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
+            signal_process_callback.set_parameters(channels, window, overlap)
+
+            plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
+                            color_picker_value, stretch_value)
 
             # generate time plot
             plot.create_time_plot()
@@ -75,7 +78,7 @@ class MainView:
             self.tabs.component[2] = (self.tabs.str_impulse_response_tab, 'No data chosen!')
 
 
-    def update_analysis_plot(self, data_callback, channels, stretch_value, color_picker_value, analysis_callback,
+    def update_analysis_plot(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, analysis_callback,
                              window, overlap):
         """
         Updates the analysis plots based on the provided data.
@@ -98,7 +101,10 @@ class MainView:
             The overlap value for the plot.
         """
         if channels:
-            plot = Plotter(channels, self.tabs, data_callback, window, overlap, color_picker_value, stretch_value)
+            signal_process_callback.set_parameters(channels, window, overlap)
+
+            plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
+                            color_picker_value, stretch_value)
 
             # plot analysis function
             if analysis_callback == "Auto Spectral Density - Input":
