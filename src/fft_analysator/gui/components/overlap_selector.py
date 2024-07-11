@@ -1,6 +1,5 @@
 import panel as pn
 
-
 class OverlapSelector:
     """
     A class used to represent an Overlap Selector widget.

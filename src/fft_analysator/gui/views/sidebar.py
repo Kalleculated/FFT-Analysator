@@ -30,19 +30,20 @@ class Sidebar:
     """
 
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
-                 callback_block_selector=None, callback_analysis_event=None):
+                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None):
         """
-        Constructs all the necessary attributes for the Sidebar object.
+                Constructs all the necessary attributes for the Sidebar object.
 
-        The accordion attribute is initialized as an Accordion instance.
-        The layout attribute is initialized as a panel Column layout containing the accordion component.
-        The ch attribute is initialized as an empty list.
-        The amount_ch attribute is initialized as 0.
-        """
+                The accordion attribute is initialized as an Accordion instance.
+                The layout attribute is initialized as a panel Column layout containing the accordion component.
+                The ch attribute is initialized as an empty list.
+                The amount_ch attribute is initialized as 0.
+                """
+
         self.accordion = Accordion()
         self.layout = self.accordion.component
 
-        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event:
+        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event or callback_exporter_event:
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.channel_selector_input.component.param.watch(callback, "value")
@@ -56,6 +57,8 @@ class Sidebar:
             self.accordion.method_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.overlap_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
+            self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
+
 
 
     def update_channel_selector(self, data_callback=None):

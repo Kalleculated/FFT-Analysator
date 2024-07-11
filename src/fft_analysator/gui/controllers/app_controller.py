@@ -1,7 +1,9 @@
 import holoviews as hv
 import panel as pn
+import numpy as np
 
 import fft_analysator.analysis.preprocessing as pp
+import fft_analysator.analysis.signal_processing as sp
 from fft_analysator.gui.views.main_view import MainView
 from fft_analysator.gui.views.sidebar import Sidebar
 from fft_analysator.analysis.signal_processing import Signal_Process
@@ -59,7 +61,8 @@ class AppController:
         self.main_view = MainView()
         self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
-                                self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event)
+                                self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event,
+                                self.handle_export_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -116,6 +119,9 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
+            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
+            or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
+            or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
 
             or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
@@ -127,7 +133,6 @@ class AppController:
 
             # Update the color picker
             self.sidebar.update_color_picker()
-
             # Update signal
             self.main_view.update_signal(
                 self.preprocessing,
@@ -344,6 +349,29 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value
             )
+
+    def handle_export_event(self, event):
+        data = np.array([1, 2, 3, 4])
+        if (event.obj == self.sidebar.accordion.file_exporter.component):
+
+            sig_pro = sp.Signal_Process([self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value],
+                        self.preprocessing.file_paths,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.blocksize_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value)
+
+            if self.sidebar.accordion.method_selector.component.value == "Cross Spectral Density":
+                data = sig_pro.csm()
+
+            self.sidebar.accordion.file_exporter.select_directory(event,data,
+                        self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value,
+                        self.sidebar.accordion.method_selector.component.value,
+                        self.sidebar.accordion.exporter_selector.component.value,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value,
+                                                                  )
 
     def servable(self):
         """
