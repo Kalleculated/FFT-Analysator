@@ -349,21 +349,34 @@ class AppController:
                 self.sidebar.accordion.overlap_selector.component.value
             )
 
+    def data_selection(self, method):
+        data = self.signal_process.current_data
+
+        if method == "Cross Spectral Density":
+            data = np.abs(self.signal_process.current_data[:, 0, 1])
+
+        if method == "Auto Spectral Density - Input":
+            data = np.abs(self.signal_process.current_data[:, 0, 0])
+
+        if method == "Auto Spectral Density - Output":
+            data = np.abs(self.signal_process.current_data[:, 1, 1])
+
+        if method == "Impulse Response":
+            data = self.signal_process.impulse_response_data
+
+        if method == "Amplitude Response":
+            data = self.signal_process.amplitude_response_data
+
+        if method == "Phase Response":
+            data = self.signal_process.phase_response_data
+
+        return data
+
     def handle_export_event(self, event):
-        data = np.array([1, 2, 3, 4])
         if (event.obj == self.sidebar.accordion.file_exporter.component):
+            data = self.data_selection(self.sidebar.accordion.method_selector.component.value)
 
-            sig_pro = sp.Signal_Process([self.sidebar.accordion.channel_selector_input.component.value,
-                        self.sidebar.accordion.channel_selector_output.component.value],
-                        self.preprocessing.file_paths,
-                        self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.blocksize_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value)
-
-            if self.sidebar.accordion.method_selector.component.value == "Cross Spectral Density":
-                data = sig_pro.csm()
-
-            self.sidebar.accordion.file_exporter.select_directory(event,data,
+            self.sidebar.accordion.file_exporter.select_directory(event, data,
                         self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value,
                         self.sidebar.accordion.method_selector.component.value,

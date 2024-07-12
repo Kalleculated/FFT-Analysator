@@ -14,6 +14,7 @@ class FileExporter:
         root.call('wm', 'attributes', '.', '-topmost', True)
         dir = filedialog.askdirectory(initialdir=os.getcwd())
         method = method.replace(" ", "")
+        #data = np.array(data)
         if dir:
             self.dir_path = dir
             file_name = str(dir) + "/" + str(method) + "_" + str(chn1) + "_" + str(chn2) + "_" + str(window) + "_" + str(overlap)
@@ -21,7 +22,8 @@ class FileExporter:
             if ext == "Numpy Array":
                 np.save(file_name, data)
             if ext == "Binary":
-                data.astype(np.int64).tofile(file_name)
+                data = np.abs(data[:,0,1])
+                data.tofile(file_name)
         else:
             self.dir_path = None
         root.destroy()
