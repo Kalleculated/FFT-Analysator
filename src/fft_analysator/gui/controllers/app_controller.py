@@ -118,9 +118,6 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
-            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
-            or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
-            or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
             or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
