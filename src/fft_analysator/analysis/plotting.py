@@ -26,7 +26,7 @@ class Plotter:
     """
 
     def __init__(self, signal_process_callback, channels, tabs_callback, data_callback,
-                window, overlap, color_picker_value,stretch_value=None):
+                window, overlap, color_picker_value,stretch_value=None,show_grid=None):
         self.data_callback = data_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
@@ -35,6 +35,8 @@ class Plotter:
         self.channels = channels
         self.color_picker_value = color_picker_value
         self.stretch_value = stretch_value
+        self.show_grid = show_grid
+       
 
         if channels:
             if len(channels) == 1:
@@ -72,7 +74,7 @@ class Plotter:
             # Create the figure
             fig = hv.Curve((t, time_data),
                        kdims="Time in s", vdims="Amplitude", label=  title) \
-                  .opts(color=color_value, shared_axes=False, width=800, height=350,show_grid=True)
+                  .opts(color=color_value, shared_axes=False, width=800, height=350,show_grid=self.show_grid)
 
             # Create a HoloViews pane for the figure
             plot_pane = HoloViews(fig, sizing_mode='stretch_width' if self.stretch_value else None)
@@ -99,12 +101,12 @@ class Plotter:
         # Create frequency response fig
         fig1 = hv.Curve((f,H),
                     kdims="Frequency in Hz", vdims="Magnitude in dB", label=f'Amplitude Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid)
 
         # Create phase response fig
         fig2 = hv.Curve((f,phi),
                     kdims="Frequency in Hz", vdims="Phase in degree ° ", label=f'Phase Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid)
 
         for fig in [fig1, fig2]:
 
@@ -130,7 +132,7 @@ class Plotter:
         # Create frequency response fig
         fig = hv.Curve((t,h),
                     kdims="Time in s", vdims="Amplitude", label = f'Impulse Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
@@ -149,7 +151,7 @@ class Plotter:
         # Create frequency response fig r'$\gamma_{XY}^2$'
         fig = hv.Curve((f,coherence),
                     kdims="Frequency in Hz", vdims="Coherence", label="Coherence ") \
-                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True,
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid,
                    ylim=(-0.1,1.1))
 
         # Create a HoloViews pane for the figure
@@ -181,7 +183,7 @@ class Plotter:
 
         fig = hv.Curve((f,np.abs(csm_value)),
                     kdims="Frequency in Hz", vdims=" Power density in Pa^2/Hz", label=title ) \
-                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
@@ -210,7 +212,7 @@ class Plotter:
 
         fig = hv.Curve((tau,corr),
                     kdims="Time delay in s", vdims="Correlation", label=title ) \
-                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid)
                       #xlim=(np.min(tau)+0.1*np.min(tau), max(tau)+0.1*np.max(tau)))
 
         # Create a HoloViews pane for the figure

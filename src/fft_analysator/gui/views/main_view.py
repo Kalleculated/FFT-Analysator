@@ -39,7 +39,7 @@ class MainView:
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
 
-    def update_signal(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, window, overlap):
+    def update_signal(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, window, overlap, show_grid):
         """
         Updates the signal plots based on the provided data.
 
@@ -60,9 +60,10 @@ class MainView:
         """
         if channels:
             signal_process_callback.set_parameters(channels, window, overlap)
-
+            
+            print(show_grid)
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
-                            color_picker_value, stretch_value)
+                            color_picker_value, stretch_value, show_grid)
 
             # generate time plot
             plot.create_time_plot()
@@ -79,7 +80,7 @@ class MainView:
 
 
     def update_analysis_plot(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, analysis_callback,
-                             window, overlap):
+                             window, overlap, show_grid):
         """
         Updates the analysis plots based on the provided data.
 
@@ -104,7 +105,7 @@ class MainView:
             signal_process_callback.set_parameters(channels, window, overlap)
 
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
-                            color_picker_value, stretch_value)
+                            color_picker_value, stretch_value, show_grid)
 
             # plot analysis function
             if analysis_callback == "Auto Spectral Density - Input":

@@ -126,7 +126,10 @@ class AppController:
             and self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
+            
+            
             self.sidebar.update_toggle_group()
+            print(self.sidebar.accordion.toggle_group.component.value)
             # Update the color picker
             self.sidebar.update_color_picker()
             # Update signal
@@ -140,7 +143,9 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
+                
             )
 
             self.main_view.update_analysis_plot(
@@ -154,7 +159,8 @@ class AppController:
                         self.sidebar.accordion.color_picker_result.component.value],
                         self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value
+                        self.sidebar.accordion.overlap_selector.component.value,
+                        self.sidebar.accordion.toggle_group.grid,
                     )
         else:
             self.sidebar.update_color_picker()
@@ -167,7 +173,8 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
             )
 
             self.main_view.update_analysis_plot(
@@ -180,7 +187,8 @@ class AppController:
                         self.sidebar.accordion.color_picker_result.component.value],
                         self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value
+                        self.sidebar.accordion.overlap_selector.component.value,
+                        self.sidebar.accordion.toggle_group.grid,
                     )
 
     def handle_table_choose_event(self, event):
@@ -219,7 +227,8 @@ class AppController:
                     self.sidebar.accordion.color_picker_ch2.component.value,
                     self.sidebar.accordion.color_picker_result.component.value],
                     self.sidebar.accordion.window_selector.component.value,
-                    self.sidebar.accordion.overlap_selector.component.value
+                    self.sidebar.accordion.overlap_selector.component.value,
+                    self.sidebar.accordion.toggle_group.grid,
                 )
             else:
                 self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
@@ -235,7 +244,8 @@ class AppController:
                     self.sidebar.accordion.color_picker_ch2.component.value,
                     self.sidebar.accordion.color_picker_result.component.value],
                     self.sidebar.accordion.window_selector.component.value,
-                    self.sidebar.accordion.overlap_selector.component.value
+                    self.sidebar.accordion.overlap_selector.component.value,
+                    self.sidebar.accordion.toggle_group.grid,
                 )
 
     def handle_blocksize_selector_event(self, event):
@@ -265,7 +275,8 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
@@ -278,7 +289,8 @@ class AppController:
                         self.sidebar.accordion.color_picker_result.component.value],
                         self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value
+                        self.sidebar.accordion.overlap_selector.component.value,
+                        self.sidebar.accordion.toggle_group.grid,
                     )
 
     def handle_update_analysis_event(self, event):
@@ -301,7 +313,8 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
             )
 
             self.main_view.update_analysis_plot(
@@ -315,7 +328,8 @@ class AppController:
                         self.sidebar.accordion.color_picker_result.component.value],
                         self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value
+                        self.sidebar.accordion.overlap_selector.component.value,
+                        self.sidebar.accordion.toggle_group.grid,
                     )
         else:
             self.main_view.update_signal(
@@ -328,7 +342,8 @@ class AppController:
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
             )
 
             self.main_view.update_analysis_plot(
@@ -341,7 +356,8 @@ class AppController:
                 self.sidebar.accordion.color_picker_result.component.value],
                 self.sidebar.accordion.method_selector.component.value,
                 self.sidebar.accordion.window_selector.component.value,
-                self.sidebar.accordion.overlap_selector.component.value
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
             )
 
     def handle_export_event(self, event):

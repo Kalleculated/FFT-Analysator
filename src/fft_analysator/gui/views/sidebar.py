@@ -223,22 +223,24 @@ class Sidebar:
             self.accordion.method_selector.component.disabled = True
 
     def update_toggle_group(self):
-        print(self.accordion.toggle_group.component.value)
-        if 'Stretch' in self.accordion.toggle_group.component.value:
-            self.accordion.toggle_group.stretch = True
-        else:
-            self.accordion.toggle_group.stretch = False
+        if (self.accordion.channel_selector_input.component.value is not None
+            or self.accordion.channel_selector_output.component.value is not None):
+            
+            if 'Stretch' in self.accordion.toggle_group.component.value:
+                self.accordion.toggle_group.stretch = True
+            else:
+                self.accordion.toggle_group.stretch = False
 
-        if 'Log' in self.accordion.toggle_group.component.value:
-            self.accordion.toggle_group.log = True
-        else:
-            self.accordion.toggle_group.log = False
+            if 'Grid' in self.accordion.toggle_group.component.value:
+                self.accordion.toggle_group.grid = True
+            else:
+                self.accordion.toggle_group.grid = False
 
-        if 'Grid' in self.accordion.toggle_group.component.value:
-            self.accordion.toggle_group.grid = True
-        else:
-            self.accordion.toggle_group.grid = False
-
+        #if 'Log' in self.accordion.toggle_group.component.value:
+        #    self.accordion.toggle_group.log = True
+        #else:
+        #    self.accordion.toggle_group.log = False
+        
     def servable(self):
         """
         Makes the sidebar servable.

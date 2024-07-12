@@ -1,7 +1,7 @@
 import panel as pn
 
 
-class ToggleGroup:
+class ToggleYAxis:
     """
     A class used to represent a ToggleGroup widget.
 
@@ -30,12 +30,11 @@ class ToggleGroup:
         The options attribute is initialized as an empty list.
         The _component attribute is initialized as a panel Select widget with specific parameters.
         """
-        self.stretch = False
-        self.grid = False
-        self.log = False
+        self.y_log = False
         self.toggle_group = pn.widgets.ToggleGroup
-        self.options = ['Stretch', 'Grid']
-        self._component = self.toggle_group(name='Choose table:', options=self.options, width=300, disabled=True)
+        self.options = ['y-linear', 'y-log']
+        self._component = self.toggle_group(name='Choose table:', options=self.options, width=140, disabled=True,
+                                            behavior="radio", value='y-linear')
 
     @property
     def component(self):
