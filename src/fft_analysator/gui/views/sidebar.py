@@ -166,7 +166,7 @@ class Sidebar:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
-            self.accordion.int_slider.component.end = math.ceil(data_callback.get_abtastrate()/data_callback.block_size)-1
+            self.accordion.int_slider.component.end = math.ceil((data_callback.source.numsamples)/data_callback.block_size)-1
 
             # update the navigation buttons as well since they are coupled with the int_slider
             self.accordion.gen_nav.index_box.disabled = False
