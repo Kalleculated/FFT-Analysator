@@ -62,7 +62,7 @@ class AppController:
         self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
                                 self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event,
-                                self.handle_export_event)
+                                self.handle_export_event, self.handle_method_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -118,6 +118,9 @@ class AppController:
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
+            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
+            or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
+            or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
             or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
@@ -344,21 +347,14 @@ class AppController:
                 self.sidebar.accordion.overlap_selector.component.value
             )
 
+    def handle_method_event(self, event):
+        self.sidebar.update_exporter(self.sidebar.accordion.method_selector.component.value)
+
     def handle_export_event(self, event):
-        data = np.array([1, 2, 3, 4])
         if (event.obj == self.sidebar.accordion.file_exporter.component):
+            data = self.data_selection(self.sidebar.accordion.method_selector.component.value)
 
-            sig_pro = sp.Signal_Process([self.sidebar.accordion.channel_selector_input.component.value,
-                        self.sidebar.accordion.channel_selector_output.component.value],
-                        self.preprocessing.file_paths,
-                        self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.blocksize_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value)
-
-            if self.sidebar.accordion.method_selector.component.value == "Cross Spectral Density":
-                data = sig_pro.csm()
-
-            self.sidebar.accordion.file_exporter.select_directory(event,data,
+            self.sidebar.accordion.file_exporter.select_directory(event, data,
                         self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value,
                         self.sidebar.accordion.method_selector.component.value,
@@ -367,6 +363,28 @@ class AppController:
                         self.sidebar.accordion.overlap_selector.component.value,
                                                                   )
 
+    def data_selection(self, method):
+        data = self.signal_process.current_data
+
+        if method == "Cross Spectral Density":
+            data = np.abs(self.signal_process.current_data[:, 0, 1])
+
+        if method == "Auto Spectral Density - Input":
+            data = np.abs(self.signal_process.current_data[:, 0, 0])
+
+        if method == "Auto Spectral Density - Output":
+            data = np.abs(self.signal_process.current_data[:, 1, 1])
+
+        if method == "Impulse Response":
+            data = self.signal_process.impulse_response_data
+
+        if method == "Amplitude Response":
+            data = self.signal_process.amplitude_response_data
+
+        if method == "Phase Response":
+            data = self.signal_process.phase_response_data
+
+        return data
     def servable(self):
         """
         Makes the application servable.
