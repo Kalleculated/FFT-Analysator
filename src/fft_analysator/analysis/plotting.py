@@ -76,7 +76,7 @@ class Plotter:
             if self.block != 0:
                 
                 if fractional_part == 0:
-                    t = t + self.block * (len(time_data)/self.fs)
+                    t = t + self.block * (self.block_size/self.fs)
                 else:
                     if integer_part > (self.block):
                         t = t + self.block * (self.block_size/self.fs) 
