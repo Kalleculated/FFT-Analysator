@@ -46,7 +46,6 @@ class Sidebar:
         if (callback or callback_fileupload or callback_table_chooser or callback_analysis_event or
             callback_exporter_event or callback_method_event):
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
-            self.accordion.stretching_switch.component.param.watch(callback, "value")
             self.accordion.channel_selector_input.component.param.watch(callback, "value")
             self.accordion.channel_selector_output.component.param.watch(callback, "value")
             self.accordion.color_picker_ch1.component.param.watch(callback, "value")
@@ -60,6 +59,9 @@ class Sidebar:
             self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
             self.accordion.method_selector.component.param.watch(callback_method_event, "value")
+            self.accordion.toggle_group.component.param.watch(callback, "value")
+
+
 
     def update_channel_selector(self, data_callback=None):
         """
@@ -212,12 +214,12 @@ class Sidebar:
             A callback function to retrieve the data. If not provided, the widgets are disabled.
         """
         if data_callback:
-            self.accordion.stretching_switch.component.disabled = False
+            self.accordion.toggle_group.component.disabled = False
             self.accordion.window_selector.component.disabled = False
             self.accordion.overlap_selector.component.disabled = False
             self.accordion.method_selector.component.disabled = False
         else:
-            self.accordion.stretching_switch.component.disabled = True
+            self.accordion.toggle_group.component.disabled = True
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
             self.accordion.method_selector.component.disabled = True
@@ -229,6 +231,23 @@ class Sidebar:
         else:
             self.accordion.exporter_selector.component.disabled = False
             self.accordion.file_exporter.component.disabled = False
+
+    def update_toggle_group(self):
+        print(self.accordion.toggle_group.component.value)
+        if 'Stretch' in self.accordion.toggle_group.component.value:
+            self.accordion.toggle_group.stretch = True
+        else:
+            self.accordion.toggle_group.stretch = False
+
+        if 'Log' in self.accordion.toggle_group.component.value:
+            self.accordion.toggle_group.log = True
+        else:
+            self.accordion.toggle_group.log = False
+
+        if 'Grid' in self.accordion.toggle_group.component.value:
+            self.accordion.toggle_group.grid = True
+        else:
+            self.accordion.toggle_group.grid = False
 
     def servable(self):
         """

@@ -1,3 +1,3 @@
-# FFT-Analysator
+# FFT-Analyzer
 
-Entwicklung eines FFT Analysators für den Kurs Python &amp; Akustik an der TU Berlin.
+For installation, user and developers guides, please refer to the documentation linked at the top right.
