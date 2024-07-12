@@ -1,6 +1,4 @@
 import numpy as np
-import scipy.fft as fft
-import scipy.signal as sc
 import acoular as ac
 
 class Signal_Process:
@@ -125,11 +123,6 @@ class Signal_Process:
             db (boolean): Return the array in dB values.
 
         """
-        # Autopowerspec from signal_x --> self.powerspectra[:,0,0]
-        # Autopowerspec from signal_y --> self.powerspectra[:,1,1]
-        # Crosspowerspec from x and y --> self.powerspectra[:,0,1]
-        #self.invalid_channels([signal_x, signal_y])
-        #self.powerspectra = ac.PowerSpectra(time_data=self.source, block_size=block_size, window=window, overlap=overlap)
 
         if csm_dB:
             self.current_data = 10*np.log10(self.powerspectra.csm)
