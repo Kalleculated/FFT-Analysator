@@ -40,6 +40,7 @@ class Preprocess:
         self.source_result = self.source.result(num=self.block_size)
         self.selected_data_block = next(self.source_result)
 
+    
     def set_channel_data(self, channel):
         """
         Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
@@ -102,6 +103,7 @@ class Preprocess:
         """
         Get_channel_size returns the size of the current channel
         """
+        #size = np.array(self.source)[:, self.current_channel].shape[0]
         size = np.array(self.converted_file)[:, self.current_channel].shape[0]
         return size
 

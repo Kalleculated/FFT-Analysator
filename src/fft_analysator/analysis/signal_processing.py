@@ -75,7 +75,7 @@ class Signal_Process:
         self.source.invalid_channels = self.invalid_channel_list
 
     # create a time axis
-    def create_time_axis(self, N):
+    def create_time_axis(self,N):
         """
         The create_time_axis function creates a time axis for the x-Axis
         Args:

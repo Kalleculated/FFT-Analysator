@@ -2,6 +2,12 @@ import holoviews as hv
 import numpy as np
 import panel as pn
 from panel.pane import HoloViews
+from holoviews import opts
+import math
+
+#from bokeh.models import LogTicker, FixedTicker
+#hv.extension('bokeh')
+
 import acoular as ac
 from fft_analysator.analysis.signal_processing import Signal_Process
 
@@ -31,6 +37,8 @@ class Plotter:
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
+        self.block_size = data_callback.block_size
+        self.numsamples = data_callback.source.numsamples
         self.signal_process = signal_process_callback
         self.channels = channels
         self.color_picker_value = color_picker_value
@@ -39,7 +47,7 @@ class Plotter:
         self.x_log = x_log
         self.y_log = y_log
        
-
+        
         if channels:
             if len(channels) == 1:
                 self.input_channel = self.channels[0]
@@ -61,7 +69,20 @@ class Plotter:
             time_data = self.data_callback.set_channel_on_data_block(channel)
 
             # Create the dynamic time axis for the given blocks
-            t = self.signal_process.create_time_axis(len(time_data)) * (self.block + 1)
+            t = self.signal_process.create_time_axis(N=len(time_data))   
+            amount_steps = self.numsamples/self.block_size        
+            fractional_part, integer_part = math.modf(amount_steps)
+            
+            if self.block != 0:
+                
+                if fractional_part == 0:
+                    t = t + self.block * (len(time_data)/self.fs)
+                else:
+                    if integer_part > (self.block):
+                        t = t + self.block * (self.block_size/self.fs) 
+                    else:                     
+                        amount_samp = self.numsamples - (self.block) * self.block_size     
+                        t = t + (self.block-1) * (self.block_size/self.fs) + (amount_samp/self.fs) / fractional_part
 
             # set title
             if self.input_channel == self.output_channel:
@@ -87,7 +108,6 @@ class Plotter:
         # Update the corresponding tab with new signals
         self.tabs.component[0] = (self.tabs.str_signal_tab, signals)
 
-
     def create_frequency_response_plot(self):
 
         # set the signals column
@@ -96,35 +116,62 @@ class Plotter:
         # set a own color picker for results
         color_value = self.color_picker_value[2]
 
-        H =  self.signal_process.frequency_response(frq_rsp_dB=True)
+        H_dB =  self.signal_process.frequency_response(frq_rsp_dB=True)
+        H =  self.signal_process.frequency_response(frq_rsp_dB=False)
         phi = self.signal_process.phase_response(deg=True)
+        
         f = self.signal_process.create_frequency_axis()
+        f_log = np.logspace(0, np.log10(f[-1]), len(f))
 
-        #self.x_log 
-        #self.y_log 
         
-        if not self.x_log:
+        # mean of block wise frequency response
+        #self.signal_process.block_size
+        
+        if not self.x_log and not self.y_log:
             # Create frequency response fig
-            fig1 = hv.Curve((f,H),
-                    kdims="Frequency in Hz", vdims="Magnitude in dB", label=f'Amplitude Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid)
+            fig1 = hv.Curve((f,H_dB),
+                    kdims="Frequency in Hz", vdims="Magnitude", label=f'Amplitude Response') \
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=False,logy=False)
 
             # Create phase response fig
             fig2 = hv.Curve((f,phi),
                     kdims="Frequency in Hz", vdims="Phase in degree ° ", label=f'Phase Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid)
-        else:
-            
-            # Create frequency response fig
-            fig1 = hv.Curve((f,H),
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=False,logy=False)
+                
+        elif self.x_log and not self.y_log:   
+            fig1 = hv.Curve((f_log,H_dB),
+                    kdims="Frequency in Hz", vdims="Magnitude", label=f'Amplitude Response') \
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True,logy=False)
+                    
+            # Create phase response fig
+            fig2 = hv.Curve((f_log,phi),
+                    kdims="Frequency in Hz", vdims="Phase in degree ° ", label=f'Phase Response') \
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True,logy=False)
+                
+        elif not self.x_log and self.y_log:
+            fig1 = hv.Curve((f,H_dB),
                     kdims="Frequency in Hz", vdims="Magnitude in dB", label=f'Amplitude Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True)
-
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=False,logy=True)
+                    
             # Create phase response fig
             fig2 = hv.Curve((f,phi),
                     kdims="Frequency in Hz", vdims="Phase in degree ° ", label=f'Phase Response') \
-                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True)
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=False,logy=False)
+                
+        elif self.x_log and self.y_log:
+            fig1 = hv.Curve((f_log,H_dB),
+                    kdims="Frequency in Hz", vdims="Magnitude in dB", label=f'Amplitude Response') \
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True,logy=True)
+                    
+            # Create phase response fig
+            fig2 = hv.Curve((f_log,phi),
+                    kdims="Frequency in Hz", vdims="Phase in degree ° ", label=f'Phase Response') \
+                .opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,logx=True,logy=False)
         
+
+
+
+
 
         for fig in [fig1, fig2]:
 
