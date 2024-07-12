@@ -5,7 +5,7 @@ class ExporterSelector:
         self.export_selector = pn.widgets.Select
         self.options = ['Numpy Array', 'Binary']
         self._component = self.export_selector(name='Choose export extension:', options=self.options, width=300,
-                                               value='Numpy Array', disabled=False)
+                                               value='Numpy Array', disabled=True)
     @property
     def component(self):
         return self._component

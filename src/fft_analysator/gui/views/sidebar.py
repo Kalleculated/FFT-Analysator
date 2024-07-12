@@ -1,4 +1,3 @@
-
 from fft_analysator.gui.components.accordion import Accordion
 from os import path
 import math
@@ -30,7 +29,8 @@ class Sidebar:
     """
 
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
-                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None):
+                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None,
+                 callback_method_event=None):
         """
                 Constructs all the necessary attributes for the Sidebar object.
 
@@ -43,7 +43,8 @@ class Sidebar:
         self.accordion = Accordion()
         self.layout = self.accordion.component
 
-        if callback or callback_fileupload or callback_table_chooser or callback_analysis_event or callback_exporter_event:
+        if (callback or callback_fileupload or callback_table_chooser or callback_analysis_event or
+            callback_exporter_event or callback_method_event):
             self.accordion.file_input.component.param.watch(callback_fileupload, "value")
             self.accordion.channel_selector_input.component.param.watch(callback, "value")
             self.accordion.channel_selector_output.component.param.watch(callback, "value")
@@ -57,6 +58,7 @@ class Sidebar:
             self.accordion.overlap_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
+            self.accordion.method_selector.component.param.watch(callback_method_event, "value")
             self.accordion.toggle_group.component.param.watch(callback, "value")
             self.accordion.toggle_x_axis.component.param.watch(callback, "value")
             self.accordion.toggle_y_axis.component.param.watch(callback, "value")
@@ -79,7 +81,6 @@ class Sidebar:
             self.accordion.channel_selector_input.component.name = "Input channel:"
             self.accordion.channel_selector_input.component.options = (list(range(data_callback.get_channel_count())))
             self.accordion.channel_selector_output.component.options = (list(range(data_callback.get_channel_count())))
-
         else:
             self.accordion.channel_selector_output.component.name = "No data chosen!"
             self.accordion.channel_selector_input.component.name = "No data chosen!"
@@ -97,7 +98,7 @@ class Sidebar:
             and self.accordion.channel_selector_output.component.value is not None):
 
             self.ch = list(dict.fromkeys([self.accordion.channel_selector_input.component.value,
-                self.accordion.channel_selector_output.component.value]))
+                                          self.accordion.channel_selector_output.component.value]))
             self.amount_ch = len(self.ch)
 
             if self.amount_ch == 1:
@@ -168,7 +169,8 @@ class Sidebar:
             self.accordion.int_slider.component.disabled = False
             self.accordion.int_slider.component.value = 0
             self.accordion.int_slider.component.start = 0
-            self.accordion.int_slider.component.end = math.ceil((data_callback.source.numsamples)/data_callback.block_size)-1
+            self.accordion.int_slider.component.end = math.ceil(
+                (data_callback.source.numsamples) / data_callback.block_size) - 1
 
             # update the navigation buttons as well since they are coupled with the int_slider
             self.accordion.gen_nav.index_box.disabled = False
@@ -227,6 +229,14 @@ class Sidebar:
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
             self.accordion.method_selector.component.disabled = True
+
+    def update_exporter(self, method_callback=None):
+        if method_callback == "No Analysis Function" or method_callback is None:
+            self.accordion.exporter_selector.component.disabled = True
+            self.accordion.file_exporter.component.disabled = True
+        else:
+            self.accordion.exporter_selector.component.disabled = False
+            self.accordion.file_exporter.component.disabled = False
 
     def update_toggle_group(self):
         if 'Stretch' in self.accordion.toggle_group.component.value:

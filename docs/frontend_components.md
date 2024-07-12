@@ -44,9 +44,9 @@
 
 ::: fft_analysator.gui.components.selector
 
-### Switch
+### Toggle Group
 
-::: fft_analysator.gui.components.switch
+::: fft_analysator.gui.components.toggle_group
 
 ### Tabs
 
