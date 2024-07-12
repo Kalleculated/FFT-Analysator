@@ -31,7 +31,7 @@ class MethodSelector:
         self.selector = pn.widgets.Select
         self.options = ["No Analysis Function", "Auto Spectral Density - Input", "Auto Spectral Density - Output",
                         "Cross Spectral Density", "Coherence","Auto Correlation - Input", "Auto Correlation - Output",
-                        "Cross Correlation", "Impulse response", "Frequency Response"]
+                        "Cross Correlation", "Impulse Response", "Amplitude Response", "Phase Response"]
         self._component = self.selector(name='Choose analysis and saving method:', options=self.options, width=300,
                                         value='No Analysis Function', disabled=True)
 

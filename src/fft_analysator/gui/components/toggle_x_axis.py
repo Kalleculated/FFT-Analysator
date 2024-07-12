@@ -33,7 +33,7 @@ class ToggleXAxis:
         self.x_log = False
         self.toggle_group = pn.widgets.ToggleGroup
         self.options = ['x-linear', 'x-log']
-        self._component = self.toggle_group(name='Choose table:', options=self.options, width=140, disabled=False,
+        self._component = self.toggle_group(name='Choose table:', options=self.options, width=140, disabled=True,
                                             behavior="radio", value='x-linear')
 
     @property

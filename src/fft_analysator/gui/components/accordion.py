@@ -18,9 +18,6 @@ from fft_analysator.gui.components.toggle_y_axis import ToggleYAxis
 from fft_analysator.gui.components.toggle_x_axis import ToggleXAxis
 
 
-
-
-
 class Accordion:
     """A class representing an accordion component.
 
@@ -78,14 +75,7 @@ class Accordion:
         self.color_picker_ch1.component.visible = False
         self.color_picker_ch2.component.visible = False
         self.color_picker_result.component.visible = False
-        
-        # Initially toggle group buttons
-        self.toggle_group.grid = False
-        self.toggle_group.stretch  = False
-        self.toggle_x_axis.x_log = False
-        self.toggle_y_axis.y_log= False
-        
-        
+
         self._component = self.accordion(('Upload', pn.Column(pn.Row(self.file_input.component, self.data_selector.component), self.selector.component, self.blocksize_selector.component)),
                                           ('Plot', pn.Column(pn.Row(self.channel_selector_input.component, self.channel_selector_output.component),
                                                             pn.Row(self.color_picker_ch1.component,self.color_picker_ch2.component,self.color_picker_result.component),
