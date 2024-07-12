@@ -424,28 +424,6 @@ class AppController:
 
         return data
 
-    def data_selection(self, method):
-        data = self.signal_process.current_data
-
-        if method == "Cross Spectral Density":
-            data = np.abs(self.signal_process.current_data[:, 0, 1])
-
-        if method == "Auto Spectral Density - Input":
-            data = np.abs(self.signal_process.current_data[:, 0, 0])
-
-        if method == "Auto Spectral Density - Output":
-            data = np.abs(self.signal_process.current_data[:, 1, 1])
-
-        if method == "Impulse Response":
-            data = self.signal_process.impulse_response_data
-
-        if method == "Amplitude Response":
-            data = self.signal_process.amplitude_response_data
-
-        if method == "Phase Response":
-            data = self.signal_process.phase_response_data
-
-        return data
     def servable(self):
         """
         Makes the application servable.

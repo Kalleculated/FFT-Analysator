@@ -222,9 +222,6 @@ class Sidebar:
             self.accordion.window_selector.component.disabled = False
             self.accordion.overlap_selector.component.disabled = False
             self.accordion.method_selector.component.disabled = False
-            self.accordion.toggle_group.component.disabled = False
-            self.accordion.toggle_x_axis.component.disabled = False
-            self.accordion.toggle_y_axis.component.disabled = False
         else:
             self.accordion.toggle_group.component.disabled = True
             self.accordion.toggle_x_axis.component.disabled = True
@@ -232,9 +229,6 @@ class Sidebar:
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
             self.accordion.method_selector.component.disabled = True
-            self.accordion.toggle_group.component.disabled = True
-            self.accordion.toggle_x_axis.component.disabled = True
-            self.accordion.toggle_y_axis.component.disabled = True
 
     def update_exporter(self, method_callback=None):
         if method_callback == "No Analysis Function" or method_callback is None:
@@ -280,8 +274,6 @@ class Sidebar:
             self.accordion.toggle_y_axis.y_log = True
         else:
             self.accordion.toggle_y_axis.y_log = False
-
-        print(self.accordion.toggle_x_axis.x_log, self.accordion.toggle_y_axis.y_log)
 
     def servable(self):
         """
