@@ -1110,7 +1110,7 @@ The file_paths attribute is initialized as None.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">current_method</span> <span class="o">=</span> <span class="s1">&#39;No Analysis Function&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span> <span class="o">=</span> <span class="n">Sidebar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_fileupload_event</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_sidebar_event</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_table_choose_event</span><span class="p">,</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">handle_intslider_event</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_blocksize_selector_event</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_update_analysis_event</span><span class="p">,</span>
-                            <span class="bp">self</span><span class="o">.</span><span class="n">handle_export_event</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">handle_export_event</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_method_event</span><span class="p">)</span>
 
     <span class="c1"># Initialization of panel extensions and template</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">template_layout</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">FastListTemplate</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;FFT-Analysator&quot;</span><span class="p">,</span>
@@ -1157,10 +1157,7 @@ The file_paths attribute is initialized as None.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/controllers/app_controller.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
@@ -1198,7 +1195,10 @@ The file_paths attribute is initialized as None.</p>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
-<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_blocksize_selector_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_blocksize_selector_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles the blocksize selector event.</span>
 
@@ -1341,10 +1341,7 @@ The file_paths attribute is initialized as None.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/controllers/app_controller.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">202</span>
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
@@ -1381,7 +1378,10 @@ The file_paths attribute is initialized as None.</p>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
-<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_intslider_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_intslider_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles the intslider event.</span>
 
@@ -1522,7 +1522,10 @@ The file_paths attribute is initialized as None.</p>
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_sidebar_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_sidebar_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles the sidebar event.</span>
 
@@ -1535,6 +1538,9 @@ The file_paths attribute is initialized as None.</p>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">color_picker_result</span><span class="o">.</span><span class="n">component</span>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span>
+        <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">calculation_menu</span><span class="o">.</span><span class="n">signal_menu</span><span class="o">.</span><span class="n">clicked</span>
+        <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">overlap_menu</span><span class="o">.</span><span class="n">overlap_menu</span><span class="o">.</span><span class="n">clicked</span>
+        <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">window_menu</span><span class="o">.</span><span class="n">window_menu</span><span class="o">.</span><span class="n">clicked</span>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">method_selector</span><span class="o">.</span><span class="n">component</span>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">overlap_selector</span><span class="o">.</span><span class="n">component</span>
         <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">obj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">window_selector</span><span class="o">.</span><span class="n">component</span>
@@ -1623,10 +1629,7 @@ The file_paths attribute is initialized as None.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/controllers/app_controller.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
@@ -1634,7 +1637,10 @@ The file_paths attribute is initialized as None.</p>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
-<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_table_choose_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_table_choose_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles the table choose event.</span>
 
@@ -1670,10 +1676,7 @@ The file_paths attribute is initialized as None.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/controllers/app_controller.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
 <span class="normal">288</span>
 <span class="normal">289</span>
 <span class="normal">290</span>
@@ -1731,7 +1734,10 @@ The file_paths attribute is initialized as None.</p>
 <span class="normal">342</span>
 <span class="normal">343</span>
 <span class="normal">344</span>
-<span class="normal">345</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_update_analysis_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">handle_update_analysis_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles the update analysis event.</span>
 
@@ -1816,12 +1822,12 @@ The file_paths attribute is initialized as None.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/controllers/app_controller.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes the application servable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

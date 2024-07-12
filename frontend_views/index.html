@@ -1498,7 +1498,7 @@
 
 
 </h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">Sidebar</span><span class="p">(</span><span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_analysis_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_exporter_event</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">Sidebar</span><span class="p">(</span><span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_analysis_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_exporter_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_method_event</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -1528,7 +1528,8 @@ The amount_ch attribute is initialized as 0.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
@@ -1556,8 +1557,11 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
-<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-             <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_analysis_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_exporter_event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_fileupload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_table_chooser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_intslider</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">callback_block_selector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_analysis_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback_exporter_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">callback_method_event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Constructs all the necessary attributes for the Sidebar object.</span>
 
@@ -1570,7 +1574,8 @@ The amount_ch attribute is initialized as 0.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span> <span class="o">=</span> <span class="n">Accordion</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">component</span>
 
-    <span class="k">if</span> <span class="n">callback</span> <span class="ow">or</span> <span class="n">callback_fileupload</span> <span class="ow">or</span> <span class="n">callback_table_chooser</span> <span class="ow">or</span> <span class="n">callback_analysis_event</span> <span class="ow">or</span> <span class="n">callback_exporter_event</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">callback</span> <span class="ow">or</span> <span class="n">callback_fileupload</span> <span class="ow">or</span> <span class="n">callback_table_chooser</span> <span class="ow">or</span> <span class="n">callback_analysis_event</span> <span class="ow">or</span>
+        <span class="n">callback_exporter_event</span> <span class="ow">or</span> <span class="n">callback_method_event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">file_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_fileupload</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
@@ -1584,6 +1589,7 @@ The amount_ch attribute is initialized as 0.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">overlap_selector</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_analysis_event</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">window_selector</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_analysis_event</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">file_exporter</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_exporter_event</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">method_selector</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback_method_event</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">toggle_group</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
                   </details>
@@ -1617,11 +1623,11 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes the sidebar servable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1652,9 +1658,7 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
@@ -1675,7 +1679,8 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">84</span>
 <span class="normal">85</span>
 <span class="normal">86</span>
-<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_channel_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_channel_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the channel selector based on the provided data.</span>
 
@@ -1691,7 +1696,6 @@ The amount_ch attribute is initialized as 0.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Input channel:&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">get_channel_count</span><span class="p">())))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">get_channel_count</span><span class="p">())))</span>
-
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No data chosen!&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;No data chosen!&quot;</span>
@@ -1722,8 +1726,7 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
-<span class="normal"> 90</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
 <span class="normal"> 93</span>
@@ -1756,7 +1759,8 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_color_picker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_color_picker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the color picker based on the selected channels.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1765,7 +1769,7 @@ The amount_ch attribute is initialized as 0.</p>
         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_input</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span><span class="p">]))</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">channel_selector_output</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">amount_ch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ch</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_ch</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1814,15 +1818,15 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
-<span class="normal">147</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
-<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_file_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_file_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the file list based on the file paths in the file input component.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1857,9 +1861,7 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -1875,7 +1877,9 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
-<span class="normal">223</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_general_plotting_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_general_plotting_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the general plotting widgets based on the provided data.</span>
 
@@ -1920,8 +1924,7 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">156</span>
-<span class="normal">157</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
@@ -1956,7 +1959,9 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
-<span class="normal">192</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_intslider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_intslider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the integer slider and the navigation buttons based on the provided data.</span>
 
@@ -1969,7 +1974,8 @@ The amount_ch attribute is initialized as 0.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">data_callback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numsamples</span><span class="p">)</span><span class="o">/</span><span class="n">data_callback</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">int_slider</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">data_callback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numsamples</span><span class="p">)</span> <span class="o">/</span> <span class="n">data_callback</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
         <span class="c1"># update the navigation buttons as well since they are coupled with the int_slider</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accordion</span><span class="o">.</span><span class="n">gen_nav</span><span class="o">.</span><span class="n">index_box</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">False</span>
@@ -2019,16 +2025,16 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_nav_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_nav_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the navigation index based on the provided index.</span>
 
@@ -2064,8 +2070,7 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
-<span class="normal">126</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
 <span class="normal">129</span>
@@ -2083,7 +2088,8 @@ The amount_ch attribute is initialized as 0.</p>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">144</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the selector based on the provided data.</span>
 
