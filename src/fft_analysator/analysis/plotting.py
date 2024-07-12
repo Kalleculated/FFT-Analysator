@@ -25,30 +25,13 @@ class Plotter:
         The output channel number.
     """
 
-    def __init__(self, channels, tabs_callback, data_callback,window,overlap, color_picker_value,stretch_value=None):
-        """
-        Constructs all the necessary attributes for the ClassName object.
-
-        Args:
-            channels : list
-                A list of channels.
-            data_callback : DataCallback
-                An instance of the DataCallback class.
-            color_picker_value : list
-                A list of color values for each channel.
-            stretch_value : bool
-                A flag indicating whether to stretch the plot width.
-            window : str
-                The window type for the signal processing.
-            overlap : float
-                The overlap value for the signal processing.
-        """
+    def __init__(self, signal_process_callback, channels, tabs_callback, data_callback,
+                window, overlap, color_picker_value,stretch_value=None):
         self.data_callback = data_callback
         self.tabs = tabs_callback
         self.fs = self.data_callback.get_abtastrate()
         self.block = data_callback.current_block_idx
-        self.signal_process = Signal_Process(channels, data_callback.file_paths,
-            block_size=data_callback.block_size, window=window, overlap=overlap)
+        self.signal_process = signal_process_callback
         self.channels = channels
         self.color_picker_value = color_picker_value
         self.stretch_value = stretch_value

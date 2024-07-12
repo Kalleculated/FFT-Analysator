@@ -20,7 +20,7 @@ class Signal_Process:
         '75%','87.5%'
     """
 
-    def __init__(self, channels, file_path, window='Hanning', block_size=1024, overlap='50%'):
+    def __init__(self, channels=[], file_path=None, window='Hanning', block_size=1024, overlap='50%'):
         self.file_path = file_path
         self.window = window
         self.block_size = block_size
@@ -32,9 +32,9 @@ class Signal_Process:
             self.source = ac.MaskedTimeSamples(name=self.file_path)
             self.abtastrate = self.source.sample_freq
             self.numchannels_total = self.source.numchannels_total
-            #self.invalid_channel_list = []
-            #self.powerspectra = None
-            
+            self.invalid_channel_list = []
+            self.powerspectra = None
+
             if channels:
                 if len(channels) == 1:
                     self.input_channel = self.channels[0]
@@ -42,11 +42,24 @@ class Signal_Process:
                 else:
                     self.input_channel = self.channels[0]
                     self.output_channel = self.channels[1]
-            
-                
-            self.invalid_channels([self.input_channel, self.output_channel])
-            self.powerspectra = ac.PowerSpectra(time_data=self.source, block_size=self.block_size, window=self.window, overlap=self.overlap)
-            
+
+    def set_parameters(self, channels, window, overlap):
+        if channels:
+            self.channels = channels
+
+            if len(channels) == 1:
+                self.input_channel = self.channels[0]
+                self.output_channel = self.channels[0]
+            else:
+                self.input_channel = self.channels[0]
+                self.output_channel = self.channels[1]
+
+        self.window = window
+        self.overlap = overlap
+
+        self.invalid_channels([self.input_channel, self.output_channel])
+        self.powerspectra = ac.PowerSpectra(time_data=self.source, block_size=self.block_size,
+                                                    window=self.window, overlap=self.overlap)
 
     # sort out invalid channels
     def invalid_channels(self, valid_channels):
