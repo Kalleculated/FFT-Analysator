@@ -23,7 +23,7 @@ class FileExporter:
             if ext == "Numpy Array":
                 np.save(file_name, data)
             if ext == "Binary":
-                data = np.abs(data[:,0,1])
+                data = np.abs(data)
                 data.tofile(file_name)
         else:
             self.dir_path = None
