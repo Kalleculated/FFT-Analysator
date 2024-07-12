@@ -14,6 +14,8 @@ from fft_analysator.gui.components.overlap_selector import OverlapSelector
 from fft_analysator.gui.components.exporter import FileExporter
 from fft_analysator.gui.components.exporter_selector import ExporterSelector
 from fft_analysator.gui.components.toggle_group import ToggleGroup
+from fft_analysator.gui.components.toggle_y_axis import ToggleYAxis
+from fft_analysator.gui.components.toggle_x_axis import ToggleXAxis
 
 
 class Accordion:
@@ -60,6 +62,8 @@ class Accordion:
         self.file_exporter = FileExporter()
         self.exporter_selector = ExporterSelector()
         self.toggle_group = ToggleGroup()
+        self.toggle_x_axis = ToggleXAxis()
+        self.toggle_y_axis = ToggleYAxis()
         self.accordion = pn.Accordion
 
         # Set default colors
@@ -78,7 +82,8 @@ class Accordion:
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
                                                             #self.int_slider.component,
                                                             self.gen_nav.component,
-                                                            self.toggle_group.component
+                                                            self.toggle_group.component,
+                                                            pn.Row(self.toggle_x_axis.component, self.toggle_y_axis.component)
                                                             )),
                                             ('Calculation', pn.Column(pn.Row(self.window_selector.component,
                                                                             self.overlap_selector.component),

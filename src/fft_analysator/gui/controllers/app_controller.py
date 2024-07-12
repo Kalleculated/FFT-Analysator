@@ -122,10 +122,13 @@ class AppController:
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
             or event.obj == self.sidebar.accordion.toggle_group.component
+            or event.obj == self.sidebar.accordion.toggle_x_axis.component
+            or event.obj == self.sidebar.accordion.toggle_y_axis.component
         )
             and self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
+            # Update the toggle group widgets
             self.sidebar.update_toggle_group()
             # Update the color picker
             self.sidebar.update_color_picker()
