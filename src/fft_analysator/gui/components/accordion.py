@@ -1,7 +1,6 @@
 import panel as pn
 
 from fft_analysator.gui.components.file_input_tkinter import FileInputComponent
-from fft_analysator.gui.components.switch import Switch
 from fft_analysator.gui.components.color_picker import Colorpicker
 from fft_analysator.gui.components.method_selector import MethodSelector
 from fft_analysator.gui.components.selector import Selector
@@ -14,6 +13,7 @@ from fft_analysator.gui.components.window_selector import WindowSelector
 from fft_analysator.gui.components.overlap_selector import OverlapSelector
 from fft_analysator.gui.components.exporter import FileExporter
 from fft_analysator.gui.components.exporter_selector import ExporterSelector
+from fft_analysator.gui.components.toggle_group import ToggleGroup
 
 
 class Accordion:
@@ -46,7 +46,6 @@ class Accordion:
         self.color_picker_ch1 = Colorpicker()
         self.color_picker_ch2 = Colorpicker()
         self.color_picker_result = Colorpicker()
-        self.stretching_switch = Switch()
         self.method_selector = MethodSelector()
         self.selector = Selector()
         self.data_selector = DataSelector()
@@ -60,6 +59,7 @@ class Accordion:
         self.overlap_selector = OverlapSelector()
         self.file_exporter = FileExporter()
         self.exporter_selector = ExporterSelector()
+        self.toggle_group = ToggleGroup()
         self.accordion = pn.Accordion
 
         # Set default colors
@@ -78,9 +78,8 @@ class Accordion:
                                                             pn.layout.Divider(margin=(5, 0, 5, 0)),
                                                             #self.int_slider.component,
                                                             self.gen_nav.component,
-                                                            pn.Row(pn.widgets.StaticText(name='Stretch plot', value='', margin=(0, 15)),  # noqa: E501
-                                                                     self.stretching_switch.component))),
-
+                                                            self.toggle_group.component
+                                                            )),
                                             ('Calculation', pn.Column(pn.Row(self.window_selector.component,
                                                                             self.overlap_selector.component),
                                                                             self.method_selector.component)

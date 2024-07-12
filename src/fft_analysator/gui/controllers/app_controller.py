@@ -113,24 +113,20 @@ class AppController:
         """
         # Update the main view when the sidebar event is triggered
         if ((
-            event.obj == self.sidebar.accordion.stretching_switch.component
-            or event.obj == self.sidebar.accordion.color_picker_ch1.component
+            event.obj == self.sidebar.accordion.color_picker_ch1.component
             or event.obj == self.sidebar.accordion.color_picker_ch2.component
             or event.obj == self.sidebar.accordion.color_picker_result.component
             or event.obj == self.sidebar.accordion.channel_selector_input.component
             or event.obj == self.sidebar.accordion.channel_selector_output.component
-            or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
-            or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
-            or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
-
             or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
+            or event.obj == self.sidebar.accordion.toggle_group.component
         )
             and self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
-
+            self.sidebar.update_toggle_group()
             # Update the color picker
             self.sidebar.update_color_picker()
             # Update signal
@@ -139,7 +135,7 @@ class AppController:
                 self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
@@ -152,7 +148,7 @@ class AppController:
                         self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
-                        self.sidebar.accordion.stretching_switch.component.value,
+                        self.sidebar.accordion.toggle_group.stretch,
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
@@ -161,13 +157,12 @@ class AppController:
                         self.sidebar.accordion.overlap_selector.component.value
                     )
         else:
-
             self.sidebar.update_color_picker()
             self.main_view.update_signal(
                 self.preprocessing,
                 self.signal_process,
                 [],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
@@ -179,7 +174,7 @@ class AppController:
                         self.preprocessing,
                         self.signal_process,
                         [],
-                        self.sidebar.accordion.stretching_switch.component.value,
+                        self.sidebar.accordion.toggle_group.stretch,
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
@@ -219,7 +214,7 @@ class AppController:
                     self.signal_process,
                     [self.sidebar.accordion.channel_selector_input.component.value,
                     self.sidebar.accordion.channel_selector_output.component.value],
-                    self.sidebar.accordion.stretching_switch.component.value,
+                    self.sidebar.accordion.toggle_group.stretch,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
                     self.sidebar.accordion.color_picker_result.component.value],
@@ -235,7 +230,7 @@ class AppController:
                     self.signal_process,
                     [self.sidebar.accordion.channel_selector_input.component.value,
                     self.sidebar.accordion.channel_selector_output.component.value],
-                    self.sidebar.accordion.stretching_switch.component.value,
+                    self.sidebar.accordion.toggle_group.stretch,
                     [self.sidebar.accordion.color_picker_ch1.component.value,
                     self.sidebar.accordion.color_picker_ch2.component.value,
                     self.sidebar.accordion.color_picker_result.component.value],
@@ -265,7 +260,7 @@ class AppController:
                 self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
@@ -277,7 +272,7 @@ class AppController:
                         self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
-                        self.sidebar.accordion.stretching_switch.component.value,
+                        self.sidebar.accordion.toggle_group.stretch,
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
@@ -301,7 +296,7 @@ class AppController:
                 self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
@@ -314,7 +309,7 @@ class AppController:
                         self.signal_process,
                         [self.sidebar.accordion.channel_selector_input.component.value,
                         self.sidebar.accordion.channel_selector_output.component.value],
-                        self.sidebar.accordion.stretching_switch.component.value,
+                        self.sidebar.accordion.toggle_group.stretch,
                         [self.sidebar.accordion.color_picker_ch1.component.value,
                         self.sidebar.accordion.color_picker_ch2.component.value,
                         self.sidebar.accordion.color_picker_result.component.value],
@@ -328,7 +323,7 @@ class AppController:
                 self.signal_process,
                 [self.sidebar.accordion.channel_selector_input.component.value,
                 self.sidebar.accordion.channel_selector_output.component.value],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
@@ -340,7 +335,7 @@ class AppController:
                 self.preprocessing,
                 self.signal_process,
                 [],
-                self.sidebar.accordion.stretching_switch.component.value,
+                self.sidebar.accordion.toggle_group.stretch,
                 [self.sidebar.accordion.color_picker_ch1.component.value,
                 self.sidebar.accordion.color_picker_ch2.component.value,
                 self.sidebar.accordion.color_picker_result.component.value],
