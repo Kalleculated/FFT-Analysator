@@ -26,6 +26,10 @@ class Signal_Process:
         self.block_size = block_size
         self.overlap = overlap
         self.channels = channels
+        self.current_data = None
+        self.impulse_response_data = None
+        self.amplitude_response_data = None
+        self.phase_response_data = None
 
         if file_path:
 
@@ -148,7 +152,8 @@ class Signal_Process:
         else:
             coherence = np.abs(csm_matrix[:, 0, 1])**2 / (csm_matrix[:, 0, 0].real * csm_matrix[:, 1, 1].real)
 
-        return coherence
+        self.current_data = coherence
+        return self.current_data
 
     # calculate frequency response based on H1 estimator --> H1 = Gxy / Gxx
     def frequency_response(self, frq_rsp_dB=True):
@@ -169,9 +174,11 @@ class Signal_Process:
         else:
             H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 1]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
         if frq_rsp_dB:
-            return 20*np.log10(abs(np.squeeze(H)))
+            self.amplitude_response_data = 20*np.log10(abs(np.squeeze(H)))
+            return self.amplitude_response_data
         else:
-            return np.abs(np.squeeze(H))
+            self.amplitude_response_data = np.abs(np.squeeze(H))
+            return self.amplitude_response_data
 
     # calculate phase response based on H1 estimator --> H1 = Gxy / Gxx
     def phase_response(self, deg=True):
@@ -193,7 +200,8 @@ class Signal_Process:
             H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 1]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
 
         phase = np.angle(H,deg=deg)
-        return phase
+        self.phase_response_data = phase
+        return self.phase_response_data
 
     # calculate impulse response based on H1 estimator and inversed fft --> H1 = Gxy / Gxx
     def impuls_response(self):
@@ -213,9 +221,8 @@ class Signal_Process:
             H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 1]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
 
         N = len(csm_matrix[:, 0, 0])
-        #h = fft.irfft(H, n=N)
-        h = np.fft.irfft(H, n=N)
-        return h
+        self.impulse_response_data = np.fft.irfft(H, n=N)
+        return self.impulse_response_data
 
     # calculate auto/cross correlation in time domain
     def correlation(self,type=None):
@@ -243,5 +250,5 @@ class Signal_Process:
             else:
                 corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 1], n=N))
 
-        #return np.roll(corr / np.max(np.abs(corr)), N//2)
-        return corr / np.max(np.abs(corr))
+        self.current_data = corr / np.max(np.abs(corr))
+        return self.current_data
