@@ -30,7 +30,8 @@ class Sidebar:
     """
 
     def __init__(self, callback_fileupload=None, callback=None, callback_table_chooser=None, callback_intslider=None,
-                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None):
+                 callback_block_selector=None, callback_analysis_event=None, callback_exporter_event=None,
+                 callback_method_event=None):
         """
                 Constructs all the necessary attributes for the Sidebar object.
 
@@ -57,7 +58,10 @@ class Sidebar:
             self.accordion.overlap_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.window_selector.component.param.watch(callback_analysis_event, "value")
             self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
+            self.accordion.method_selector.component.param.watch(callback_method_event, "value")
             self.accordion.toggle_group.component.param.watch(callback, "value")
+            self.accordion.toggle_x_axis.component.param.watch(callback, "value")
+            self.accordion.toggle_y_axis.component.param.watch(callback, "value")
 
 
 
@@ -216,11 +220,25 @@ class Sidebar:
             self.accordion.window_selector.component.disabled = False
             self.accordion.overlap_selector.component.disabled = False
             self.accordion.method_selector.component.disabled = False
+            self.accordion.toggle_group.component.disabled = False
+            self.accordion.toggle_x_axis.component.disabled = False
+            self.accordion.toggle_y_axis.component.disabled = False
         else:
             self.accordion.toggle_group.component.disabled = True
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
             self.accordion.method_selector.component.disabled = True
+            self.accordion.toggle_group.component.disabled = True
+            self.accordion.toggle_x_axis.component.disabled = True
+            self.accordion.toggle_y_axis.component.disabled = True
+    
+    def update_exporter(self, method_callback=None):
+        if method_callback == "No Analysis Function" or method_callback is None:
+            self.accordion.exporter_selector.component.disabled = True
+            self.accordion.file_exporter.component.disabled = True
+        else:
+            self.accordion.exporter_selector.component.disabled = False
+            self.accordion.file_exporter.component.disabled = False
 
     def update_toggle_group(self):
         if (self.accordion.channel_selector_input.component.value is not None
@@ -235,11 +253,16 @@ class Sidebar:
                 self.accordion.toggle_group.grid = True
             else:
                 self.accordion.toggle_group.grid = False
+            
+            if self.accordion.toggle_x_axis.component.value == 'x-log':
+                self.accordion.toggle_x_axis.x_log = True
+            else:
+                self.accordion.toggle_x_axis.x_log = False
 
-        #if 'Log' in self.accordion.toggle_group.component.value:
-        #    self.accordion.toggle_group.log = True
-        #else:
-        #    self.accordion.toggle_group.log = False
+            if self.accordion.toggle_y_axis.component.value == 'y-log':
+                self.accordion.toggle_y_axis.y_log = True
+            else:
+                self.accordion.toggle_y_axis.y_log = False
         
     def servable(self):
         """

@@ -62,7 +62,7 @@ class AppController:
         self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
                                 self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event,
-                                self.handle_export_event)
+                                self.handle_export_event, self.handle_method_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -122,6 +122,8 @@ class AppController:
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
             or event.obj == self.sidebar.accordion.toggle_group.component
+            or event.obj == self.sidebar.accordion.toggle_x_axis.component
+            or event.obj == self.sidebar.accordion.toggle_y_axis.component
         )
             and self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
@@ -145,6 +147,8 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
                 
             )
 
@@ -161,6 +165,8 @@ class AppController:
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value,
                         self.sidebar.accordion.toggle_group.grid,
+                        self.sidebar.accordion.toggle_x_axis.x_log,
+                        self.sidebar.accordion.toggle_y_axis.y_log,
                     )
         else:
             self.sidebar.update_color_picker()
@@ -175,6 +181,8 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
             )
 
             self.main_view.update_analysis_plot(
@@ -189,6 +197,8 @@ class AppController:
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value,
                         self.sidebar.accordion.toggle_group.grid,
+                        self.sidebar.accordion.toggle_x_axis.x_log,
+                        self.sidebar.accordion.toggle_y_axis.y_log,
                     )
 
     def handle_table_choose_event(self, event):
@@ -229,6 +239,8 @@ class AppController:
                     self.sidebar.accordion.window_selector.component.value,
                     self.sidebar.accordion.overlap_selector.component.value,
                     self.sidebar.accordion.toggle_group.grid,
+                    self.sidebar.accordion.toggle_x_axis.x_log,
+                    self.sidebar.accordion.toggle_y_axis.y_log,
                 )
             else:
                 self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
@@ -246,6 +258,8 @@ class AppController:
                     self.sidebar.accordion.window_selector.component.value,
                     self.sidebar.accordion.overlap_selector.component.value,
                     self.sidebar.accordion.toggle_group.grid,
+                    self.sidebar.accordion.toggle_x_axis.x_log,
+                    self.sidebar.accordion.toggle_y_axis.y_log,
                 )
 
     def handle_blocksize_selector_event(self, event):
@@ -277,6 +291,8 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
@@ -291,6 +307,9 @@ class AppController:
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value,
                         self.sidebar.accordion.toggle_group.grid,
+                        self.sidebar.accordion.toggle_x_axis.x_log,
+                        self.sidebar.accordion.toggle_y_axis.y_log,
+                        
                     )
 
     def handle_update_analysis_event(self, event):
@@ -315,6 +334,8 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
             )
 
             self.main_view.update_analysis_plot(
@@ -330,6 +351,8 @@ class AppController:
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value,
                         self.sidebar.accordion.toggle_group.grid,
+                        self.sidebar.accordion.toggle_x_axis.x_log,
+                        self.sidebar.accordion.toggle_y_axis.y_log,
                     )
         else:
             self.main_view.update_signal(
@@ -344,6 +367,8 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
             )
 
             self.main_view.update_analysis_plot(
@@ -358,8 +383,12 @@ class AppController:
                 self.sidebar.accordion.window_selector.component.value,
                 self.sidebar.accordion.overlap_selector.component.value,
                 self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
             )
-
+    def handle_method_event(self, event):
+        self.sidebar.update_exporter(self.sidebar.accordion.method_selector.component.value)
+        
     def handle_export_event(self, event):
         data = np.array([1, 2, 3, 4])
         if (event.obj == self.sidebar.accordion.file_exporter.component):
@@ -380,8 +409,30 @@ class AppController:
                         self.sidebar.accordion.method_selector.component.value,
                         self.sidebar.accordion.exporter_selector.component.value,
                         self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value,
-                                                                  )
+                        self.sidebar.accordion.overlap_selector.component.value,)
+                        
+    def data_selection(self, method):
+        data = self.signal_process.current_data
+
+        if method == "Cross Spectral Density":
+            data = np.abs(self.signal_process.current_data[:, 0, 1])
+
+        if method == "Auto Spectral Density - Input":
+            data = np.abs(self.signal_process.current_data[:, 0, 0])
+
+        if method == "Auto Spectral Density - Output":
+            data = np.abs(self.signal_process.current_data[:, 1, 1])
+
+        if method == "Impulse Response":
+            data = self.signal_process.impulse_response_data
+
+        if method == "Amplitude Response":
+            data = self.signal_process.amplitude_response_data
+
+        if method == "Phase Response":
+            data = self.signal_process.phase_response_data
+
+        return data                                               
 
     def servable(self):
         """
