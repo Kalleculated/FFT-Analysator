@@ -62,7 +62,7 @@ class AppController:
         self.current_method = 'No Analysis Function'
         self.sidebar = Sidebar(self.handle_fileupload_event, self.handle_sidebar_event, self.handle_table_choose_event,
                                 self.handle_intslider_event, self.handle_blocksize_selector_event, self.handle_update_analysis_event,
-                                self.handle_export_event)
+                                self.handle_export_event, self.handle_method_event)
 
         # Initialization of panel extensions and template
         self.template_layout = pn.template.FastListTemplate(title="FFT-Analysator",
@@ -122,7 +122,6 @@ class AppController:
             or event.obj == self.sidebar.accordion.calculation_menu.signal_menu.clicked
             or event.obj == self.sidebar.accordion.overlap_menu.overlap_menu.clicked
             or event.obj == self.sidebar.accordion.window_menu.window_menu.clicked
-
             or event.obj == self.sidebar.accordion.method_selector.component
             or event.obj == self.sidebar.accordion.overlap_selector.component
             or event.obj == self.sidebar.accordion.window_selector.component
@@ -322,6 +321,7 @@ class AppController:
                         self.sidebar.accordion.window_selector.component.value,
                         self.sidebar.accordion.overlap_selector.component.value
                     )
+
         else:
             self.main_view.update_signal(
                 self.preprocessing,
@@ -349,6 +349,22 @@ class AppController:
                 self.sidebar.accordion.overlap_selector.component.value
             )
 
+    def handle_method_event(self, event):
+        self.sidebar.update_exporter(self.sidebar.accordion.method_selector.component.value)
+
+    def handle_export_event(self, event):
+        if (event.obj == self.sidebar.accordion.file_exporter.component):
+            data = self.data_selection(self.sidebar.accordion.method_selector.component.value)
+
+            self.sidebar.accordion.file_exporter.select_directory(event, data,
+                        self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value,
+                        self.sidebar.accordion.method_selector.component.value,
+                        self.sidebar.accordion.exporter_selector.component.value,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value,
+                                                                  )
+
     def data_selection(self, method):
         data = self.signal_process.current_data
 
@@ -371,20 +387,6 @@ class AppController:
             data = self.signal_process.phase_response_data
 
         return data
-
-    def handle_export_event(self, event):
-        if (event.obj == self.sidebar.accordion.file_exporter.component):
-            data = self.data_selection(self.sidebar.accordion.method_selector.component.value)
-
-            self.sidebar.accordion.file_exporter.select_directory(event, data,
-                        self.sidebar.accordion.channel_selector_input.component.value,
-                        self.sidebar.accordion.channel_selector_output.component.value,
-                        self.sidebar.accordion.method_selector.component.value,
-                        self.sidebar.accordion.exporter_selector.component.value,
-                        self.sidebar.accordion.window_selector.component.value,
-                        self.sidebar.accordion.overlap_selector.component.value,
-                                                                  )
-
     def servable(self):
         """
         Makes the application servable.

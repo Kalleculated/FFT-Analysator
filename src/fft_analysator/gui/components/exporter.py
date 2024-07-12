@@ -5,7 +5,8 @@ import os
 class FileExporter:
     def __init__(self):
         self.file_input_button = pn.widgets.Button
-        self._component = self.file_input_button(name='\U0001F4BE ' 'Save and Export', margin=(10, 0, 10, 10), width=150)
+        self._component = self.file_input_button(name='\U0001F4BE ' 'Save and Export', margin=(10, 0, 10, 10), width=150,
+                                                 disabled=True)
         self.dir_path = None
 
     def select_directory(self, event, data, chn1, chn2, method, ext, window, overlap):
