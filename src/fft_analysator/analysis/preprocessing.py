@@ -25,9 +25,6 @@ class Preprocess:
             self.selected_data_block = next(self.source_result)
 
         self.current_block_idx = 0
-
-        # brauchen wir das wirklich alles? wir sollten wirklich schauen, was wir als Attribut speichern
-        # oft lohnt sich returnen und in der plot function weiterverarbeiten mehr
         self.data = None
         self.channel_count = None
         self.channel_size = None
