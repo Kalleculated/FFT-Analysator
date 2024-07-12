@@ -60,6 +60,8 @@ class Sidebar:
             self.accordion.file_exporter.component.param.watch(callback_exporter_event, "value")
             self.accordion.method_selector.component.param.watch(callback_method_event, "value")
             self.accordion.toggle_group.component.param.watch(callback, "value")
+            self.accordion.toggle_x_axis.component.param.watch(callback, "value")
+            self.accordion.toggle_y_axis.component.param.watch(callback, "value")
 
 
 
@@ -215,11 +217,15 @@ class Sidebar:
         """
         if data_callback:
             self.accordion.toggle_group.component.disabled = False
+            self.accordion.toggle_x_axis.component.disabled = False
+            self.accordion.toggle_y_axis.component.disabled = False
             self.accordion.window_selector.component.disabled = False
             self.accordion.overlap_selector.component.disabled = False
             self.accordion.method_selector.component.disabled = False
         else:
             self.accordion.toggle_group.component.disabled = True
+            self.accordion.toggle_x_axis.component.disabled = True
+            self.accordion.toggle_y_axis.component.disabled = True
             self.accordion.window_selector.component.disabled = True
             self.accordion.overlap_selector.component.disabled = True
             self.accordion.method_selector.component.disabled = True
@@ -233,21 +239,27 @@ class Sidebar:
             self.accordion.file_exporter.component.disabled = False
 
     def update_toggle_group(self):
-        print(self.accordion.toggle_group.component.value)
         if 'Stretch' in self.accordion.toggle_group.component.value:
             self.accordion.toggle_group.stretch = True
         else:
             self.accordion.toggle_group.stretch = False
 
-        if 'Log' in self.accordion.toggle_group.component.value:
-            self.accordion.toggle_group.log = True
-        else:
-            self.accordion.toggle_group.log = False
-
         if 'Grid' in self.accordion.toggle_group.component.value:
             self.accordion.toggle_group.grid = True
         else:
             self.accordion.toggle_group.grid = False
+
+        if self.accordion.toggle_x_axis.component.value == 'x-log':
+            self.accordion.toggle_x_axis.x_log = True
+        else:
+            self.accordion.toggle_x_axis.x_log = False
+
+        if self.accordion.toggle_y_axis.component.value == 'y-log':
+            self.accordion.toggle_y_axis.y_log = True
+        else:
+            self.accordion.toggle_y_axis.y_log = False
+
+        print(self.accordion.toggle_x_axis.x_log, self.accordion.toggle_y_axis.y_log)
 
     def servable(self):
         """
