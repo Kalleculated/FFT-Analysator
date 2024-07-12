@@ -199,7 +199,6 @@ class AppController:
         if event.obj == self.sidebar.accordion.selector.component:
             if self.sidebar.accordion.selector.component.value:
                 self.preprocessing.table_key = self.sidebar.accordion.selector.component.value
-                self.preprocessing.converted_file = self.preprocessing.convert_data()
                 self.sidebar.update_channel_selector(self.preprocessing)
 
     def handle_intslider_event(self, event):

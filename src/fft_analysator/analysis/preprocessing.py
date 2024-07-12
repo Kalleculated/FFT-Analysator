@@ -20,7 +20,6 @@ class Preprocess:
 
         if file_paths:
             self.table_key = self.get_table_names()[0]
-            self.converted_file = self.convert_data()
             self.source = ac.TimeSamples(name=self.file_paths)
             self.source_result = self.source.result(num=self.block_size)
             self.selected_data_block = next(self.source_result)
@@ -122,16 +121,6 @@ class Preprocess:
         """
         abtastrate = self.source.sample_freq
         return abtastrate
-
-    def convert_data(self):
-        """
-        Convert_data reads the .h5 file and reads the data. Not used for Signalprocessing.
-        """
-        with h5py.File(self.file_paths, 'r') as file:
-            # Zugriff auf den gewünschten Datensatz
-            data = file[self.table_key][:]  # type: ignore
-
-        return data
 
     def get_table_names(self):
         """
