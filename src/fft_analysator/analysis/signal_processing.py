@@ -104,12 +104,20 @@ class Signal_Process:
         """
 
         block_size_factor = self.data_callback.source.numsamples / self.block_size
-        tau = np.arange(-N//2,N//2) * 4 * block_size_factor / self.abtastrate
+        if N % 2 == 0:
+            tau = np.arange(-N//2,N//2-1) * 4 * block_size_factor / self.abtastrate
+        else:  
+            tau = np.arange(-N//2,N//2) * 4 * block_size_factor / self.abtastrate
+            
         return tau
 
     def SPL(self,channel):
         """
-        The SPL function calculates the Sound Pressure Level of the current channel.
+        The SPL function calculates the Sound Pressure Level of the current signal.
+        
+        Args:
+            channel (int): Channel number.
+        
         """
         
         return 20*np.log10(np.abs(self.data_callback.set_channel_on_data_block(channel))/self.p0)
@@ -124,14 +132,12 @@ class Signal_Process:
         Cross spectral density between signal1 and signal2.
 
         Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
             window (string): window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',
             'Hamming', 'Bartlett', 'Blackman'
             block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
             overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',
             '75%','87.5%'
-            db (boolean): Return the array in dB values.
+            csm_db (boolean): Return the array in dB values.
 
         """
 
@@ -148,8 +154,7 @@ class Signal_Process:
         The coherence function calculates the coherence between two given signals.
 
         Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
+            None
         """
         csm_matrix = self.csm()
 
@@ -169,9 +174,7 @@ class Signal_Process:
         It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral density between signal x and signal y
         and Gxx is the Power Spectral Density of signal x.
 
-        Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
+        Args:      
             db (boolean): Return the array ian dB values.
         """
         csm_matrix = self.csm()
@@ -197,9 +200,7 @@ class Signal_Process:
         It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral Density between signal x and signal y
         and Gxx is the Power Spectral Density of signal x.
 
-        Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
+        Args:  
             deg (boolean): Return the array in degrees
         """
         csm_matrix = self.csm()
@@ -222,8 +223,7 @@ class Signal_Process:
         and Gxx is the Power Spectral Density of signal x.
 
         Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
+            imp_dB (boolean): Return the array in dB values.
         """
         csm_matrix = self.csm()
         if self.input_channel == self.output_channel:
@@ -235,20 +235,22 @@ class Signal_Process:
         self.impulse_response_data = np.fft.irfft(H, n=N)
         
         if imp_dB:
-            self.impulse_response_data = 20*np.log10(abs(self.impulse_response_data)/self.p0)
+            if self.input_channel != self.output_channel:
+                self.impulse_response_data = 20*np.log10(abs(self.impulse_response_data)/self.p0)
+            else:
+                self.impulse_response_data = np.ones(N) 
+                self.impulse_response_data = 20*np.log10(abs(self.impulse_response_data)/self.p0)
         else:
             self.impulse_response_data = self.impulse_response_data
             
         return self.impulse_response_data
-
+    
     # calculate auto/cross correlation in time domain
     def correlation(self,type=None):
         """
         The correlation function calculates the correlation response between the two given signals.
 
         Args:
-            signal_x (numpy array): Input signal defined by the user
-            signal_y (numpy array): Output signal defined by the user
             type (string): Determines if an auto or cross correlation is being calculated. Allowed options: 'xx', 'yy', 'xy'
         """
         csm_matrix = self.csm()
@@ -267,6 +269,5 @@ class Signal_Process:
             else:
                 corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 1], n=N))
 
-        print(np.min(corr))
         self.current_data = corr / np.max(np.abs(corr)) # normalize the correlation to max_value
         return self.current_data

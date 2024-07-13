@@ -4,17 +4,8 @@ from panel.pane import HoloViews
 import holoviews as hv
 from holoviews import opts
 import math
-
-# "plotty"
- #hv.extension("bokeh", enable_mathjax=True) 
- 
-from bokeh.models import ColumnDataSource
-from bokeh.plotting import figure 
-#from bokeh.models import Range1d
 import acoular as ac
 from fft_analysator.analysis.signal_processing import Signal_Process
-
-
 
 
 class Plotter:
@@ -146,7 +137,6 @@ class Plotter:
             H =  self.signal_process.frequency_response(frq_rsp_dB=True)
             y_label = "SPL in dB" # "Sound Pressure Level
         
-        
         # Create the phase response
         phi = self.signal_process.phase_response(deg=True)
         
@@ -178,7 +168,6 @@ class Plotter:
         # set a own color picker for results
         color_value = self.color_picker_value[2]
 
-        
         # values in dB
         if not self.db:
             h = self.signal_process.impuls_response(imp_dB=False).real
@@ -195,28 +184,13 @@ class Plotter:
         # Create and scaling time axis
         block_size_factor = self.data_callback.source.numsamples / self.block_size
         t = self.signal_process.create_time_axis(len(h)) * 4 * block_size_factor 
-        
-        # correct peak position due to windowing, leakage , phase shifting arftifacts (H1-estimator)
-        peak_index = np.argmax(np.abs(h))
-        h_shifted = np.roll(h, -peak_index)
-        delta_t = t[1] - t[0]
-        t_shifted = np.arange(len(h_shifted)) * delta_t
-        
-        # Find the index of the peak or the first significant energy point
-        #peak_index = np.argmax(np.abs(h))
-        
-        # Shift the impulse response to start at the peak
-        #h_shifted = h[peak_index:]
-        
-        # Recalculate the time axis to match the shifted impulse response
-        #delta_t = t[1] - t[0]  # Calculate the time step from the original time axis
-        #t_shifted = np.arange(len(h_shifted)) * delta_t
-        
+             
         # Create frequency response fig
-        fig = hv.Curve((t_shifted,h_shifted), kdims="Time in s", vdims=y_label, label = f'Impulse Response')
+        fig = hv.Curve((t,h), kdims="Time in s", vdims=y_label, label = f'Impulse Response')
         fig.opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,
-                logx = False, logy = self.y_log, ylim=(np.min(h) + scale_min_factor * 
-                np.min(h), np.max(h) + scale_max_factor * np.max(h)) if not self.y_log else (0, None))
+                logx = False, logy = self.y_log, xlim=(-0.1, np.max(t) + 0.1),
+                ylim=(np.min(h) + scale_min_factor * 
+                np.min(h), np.max(h) + scale_max_factor * np.max(h))) #if not self.y_log else (0, None))
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
@@ -260,7 +234,6 @@ class Plotter:
                 y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
             else:
                 csm_value = csm[:,0,0]
-                # power spectral density, PSD
                 y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
                           
         elif type == 'yy':
@@ -301,7 +274,6 @@ class Plotter:
                 ylim=(np.min(np.abs(csm_value))-0.2*np.min(np.abs(csm_value)), np.max(np.abs(csm_value)) +
                         0.2*np.max(np.abs(csm_value)))) #if not self.y_log else (, None)))
 
-
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
 
@@ -329,10 +301,12 @@ class Plotter:
             corr = self.signal_process.correlation(type='xy')
             ylim = (np.min(corr) - 0.1, np.max(corr) + 0.1)
         
+        if len(corr) % 2 != 0:
+            corr = np.roll(corr,1) # shift correlation to 1 sample
+            
         # create time delay axis
-        tau = self.signal_process.create_correlation_axis(len(corr)) 
-
-
+        tau = self.signal_process.create_correlation_axis(len(corr))
+        
         fig = hv.Curve((tau,corr),kdims=r'$$\mathrm{\tau}$$ in s', vdims=y_label, label=title )
         fig.opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid,
                  xlim=(np.min(tau)+0.1*np.min(tau),np.max(tau)+0.1*np.max(tau)), 
