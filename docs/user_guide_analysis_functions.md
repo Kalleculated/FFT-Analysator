@@ -14,7 +14,7 @@ $$
 The function does not have symmetry (\(\psi_{xy}(\tau) = \psi_{yx}(-\tau)\)).
 
 **Power Spectral Density**:
-The power spectral density (or simply, power spectrum) for a signal is referred to as the autoleistungsspektrum and indicates the distribution of the power of the signal across different frequencies and can be derived from the autocorrelation function:
+The power spectral density (or simply, power spectrum) for a signal indicates the distribution of the power of the signal across different frequencies and can be derived from the autocorrelation function:
 
 $$
 S_{xx}(f) = \int_{-\infty}^{+\infty} \psi(\tau)e^{-j2\pi f\tau}d\tau.
@@ -26,7 +26,7 @@ $$
 \psi_{xx}(\tau) = \int_{-\infty}^{+\infty} S_{xx}(f)e^{j2\pi f\tau}df.
 $$
 
-Due to the properties of the Fourier transformation, the autoleistungsspektrum is also symmetric \(S_{xx}(-f) = S_{xx}(f)\). As with the autocorrelation function, only the one-sided spectrum is considered for physical relevance:
+Due to the properties of the Fourier transformation, the power spectrum is also symmetric \(S_{xx}(-f) = S_{xx}(f)\). As with the autocorrelation function, only the one-sided spectrum is considered for physical relevance:
 
 $$
 G_{xx}(f) = 2S_{xx}(f), \quad f \geq 0.
