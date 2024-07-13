@@ -10,22 +10,28 @@
       
       
       
+        <link rel="canonical" href="https://kalleculated.github.io/FFT-Analysator/user_guide_analysis_functions/">
       
       
+        <link rel="prev" href="../user_guide_and_screenshots/">
       
-      <link rel="icon" href="/FFT-Analysator/assets/images/favicon.png">
+      
+        <link rel="next" href="../api_documentation/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
-        <title>FFT-Analysator</title>
+        <title>Analysis functions - FFT-Analysator</title>
       
     
     
-      <link rel="stylesheet" href="/FFT-Analysator/assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="/FFT-Analysator/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,11 +50,11 @@
       
     
     
-      <link rel="stylesheet" href="/FFT-Analysator/assets/_markdown_exec_pyodide.css">
+      <link rel="stylesheet" href="../assets/_markdown_exec_pyodide.css">
     
-      <link rel="stylesheet" href="/FFT-Analysator/assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("/FFT-Analysator/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -86,7 +92,7 @@
             
             
   
-    <a href="/FFT-Analysator/insiders/#how-to-become-a-sponsor"><strong>Sponsorship</strong></a>
+    <a href="../insiders/#how-to-become-a-sponsor"><strong>Sponsorship</strong></a>
     is now available!
     <span class="twemoji heart pulse">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.655 14.916v-.001h-.002l-.006-.003-.018-.01a22.066 22.066 0 0 1-3.744-2.584C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.044 5.231-3.886 6.818a22.094 22.094 0 0 1-3.433 2.414 7.152 7.152 0 0 1-.31.17l-.018.01-.008.004a.75.75 0 0 1-.69 0Z"/></svg>
@@ -115,9 +121,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/FFT-Analysator/." title="FFT-Analysator" class="md-header__button md-logo" aria-label="FFT-Analysator" data-md-component="logo">
+    <a href=".." title="FFT-Analysator" class="md-header__button md-logo" aria-label="FFT-Analysator" data-md-component="logo">
       
-  <img src="/FFT-Analysator/logo.png" alt="logo">
+  <img src="../logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -134,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Analysis functions
             
           </span>
         </div>
@@ -259,9 +265,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/FFT-Analysator/." title="FFT-Analysator" class="md-nav__button md-logo" aria-label="FFT-Analysator" data-md-component="logo">
+    <a href=".." title="FFT-Analysator" class="md-nav__button md-logo" aria-label="FFT-Analysator" data-md-component="logo">
       
-  <img src="/FFT-Analysator/logo.png" alt="logo">
+  <img src="../logo.png" alt="logo">
 
     </a>
     FFT-Analysator
@@ -308,7 +314,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="/FFT-Analysator/." class="md-nav__link ">
+            <a href=".." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -384,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -409,8 +415,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -421,13 +429,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -441,7 +447,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             User Documentation
@@ -455,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/user_guide_and_screenshots/" class="md-nav__link">
+      <a href="../user_guide_and_screenshots/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -473,10 +479,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/FFT-Analysator/user_guide_analysis_functions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -485,6 +498,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -549,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/api_documentation/" class="md-nav__link">
+      <a href="../api_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -570,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/dev_backend_documentation/" class="md-nav__link">
+      <a href="../dev_backend_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/dev_frontend_documentation/" class="md-nav__link">
+      <a href="../dev_frontend_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/frontend_controllers/" class="md-nav__link">
+      <a href="../frontend_controllers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/frontend_views/" class="md-nav__link">
+      <a href="../frontend_views/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FFT-Analysator/frontend_components/" class="md-nav__link">
+      <a href="../frontend_components/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -758,8 +772,86 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+  
+  
+
+
+  <h1>Analysis functions</h1>
+
+<p><strong>Correlation Function</strong>:
+The correlation function is used to investigate temporal relationships within a signal or between two signals. The autocorrelation function considers the investigation with one signal and is defined by:</p>
+<div class="arithmatex">\[
+\psi_{xx}(\tau) = \lim_{T \to \infty} \frac{1}{T} \int_0^T x(t)x(t+\tau)dt.
+\]</div>
+<p>The function is symmetric (<span class="arithmatex">\(\psi_{xx}(\tau) = \psi_{xx}(-\tau)\)</span>) due to the commutativity of the factors of the product in the integrand. For two different signals <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>, the cross-correlation function can be calculated:</p>
+<div class="arithmatex">\[
+\psi_{xy}(\tau) = \lim_{T \to \infty} \frac{1}{T} \int_0^T x(t)y(t+\tau)dt.
+\]</div>
+<p>The function does not have symmetry (<span class="arithmatex">\(\psi_{xy}(\tau) = \psi_{yx}(-\tau)\)</span>).</p>
+<p><strong>Power Spectral Density</strong>:
+The power spectral density (or simply, power spectrum) for a signal is referred to as the autoleistungsspektrum and indicates the distribution of the power of the signal across different frequencies and can be derived from the autocorrelation function:</p>
+<div class="arithmatex">\[
+S_{xx}(f) = \int_{-\infty}^{+\infty} \psi(\tau)e^{-j2\pi f\tau}d\tau.
+\]</div>
+<p>The relationship between the correlation function and the power spectrum is thus given by Fourier transformation:</p>
+<div class="arithmatex">\[
+\psi_{xx}(\tau) = \int_{-\infty}^{+\infty} S_{xx}(f)e^{j2\pi f\tau}df.
+\]</div>
+<p>Due to the properties of the Fourier transformation, the autoleistungsspektrum is also symmetric <span class="arithmatex">\(S_{xx}(-f) = S_{xx}(f)\)</span>. As with the autocorrelation function, only the one-sided spectrum is considered for physical relevance:</p>
+<div class="arithmatex">\[
+G_{xx}(f) = 2S_{xx}(f), \quad f \geq 0.
+\]</div>
+<p>For two signals, the cross-power spectrum can be calculated:</p>
+<div class="arithmatex">\[
+\underline{S}_{xy}(f) = \int_{-\infty}^{+\infty} \psi_{xy}(\tau)e^{-j2\pi f\tau}d\tau.
+\]</div>
+<p>The cross-power spectrum has the following properties:</p>
+<div class="arithmatex">\[
+\underline{S}_{xy}(-f) = \underline{S}_{xy}^*(f) \quad \text{and} \quad \underline{S}_{xy}(f) = \underline{S}_{yx}^*(f).
+\]</div>
+<p>Here too, it makes sense to restrict the spectrum to positive frequencies, and one obtains for the one-sided spectrum <span class="arithmatex">\(\underline{G}_{xy} = 2\underline{S}_{xy}(f)\)</span>, <span class="arithmatex">\(f \geq 0\)</span>.</p>
+<p><strong>For practical applications</strong>, power spectra are calculated efficiently using Fourier transformation, exploiting the relationship between correlation functions and power spectra to compute the correlation functions. For a discrete time signal <span class="arithmatex">\(x_i(t)\)</span>, the Fourier transformation over an observation period <span class="arithmatex">\(0 \leq t \leq T\)</span> is defined by:</p>
+<div class="arithmatex">\[
+\underline{X}_i(f,T) = \int_0^T x_i(t)e^{-j2\pi ft}dt.
+\]</div>
+<p>With the magnitude square of the Fourier transform, the distribution of signal power over the frequencies <span class="arithmatex">\(f\)</span> for <span class="arithmatex">\(x_i(t)\)</span> can be indicated by:</p>
+<div class="arithmatex">\[
+S_{xx}(f,T,i) = \frac{1}{T} | \underline{X}_i(f,T)|^2 = \frac{1}{T} \underline{X}_i(f,T)\underline{X}_i^*(f,T).
+\]</div>
+<p>By taking the expected value for all discrete values <span class="arithmatex">\(i\)</span>, the auto or cross-power spectrum can then be determined:</p>
+<div class="arithmatex">\[
+G_{xx}(f) = 2 \cdot \lim_{T \to \infty} E(\underline{X}_i(f,T)\underline{X}_i^*(f,T)),
+\]</div>
+<div class="arithmatex">\[
+\underline{G}_{xy}(f) = 2 \cdot \lim_{T \to \infty} E(\underline{X}_i(f,T)\underline{Y}_i^*(f,T)).
+\]</div>
+<p><strong>Coherence</strong>:
+Coherence is a statistical measure for the linear relationship between two signals, can take values between <span class="arithmatex">\(0 \leq \gamma_{xy}^2 \leq 1\)</span> and is calculated as follows:</p>
+<div class="arithmatex">\[
+\gamma_{xy}^2(f) = \frac{| \underline{G_{xy}}(f)^2|}{G_{xx}(g)G_{yy}(f)}.
+\]</div>
+<p><strong>Frequency Response</strong>:
+The frequency response shows how a system processes signals of different frequencies. To account for the possibility of noise in the output or input signal, there are various approaches to provide a suitable estimate of the frequency response without systematic errors. A possible estimate based on the given power spectra is:</p>
+<div class="arithmatex">\[
+\underline{H}_1(f) = \frac{\underline{G}_{xy}(f)}{G_{xx}(f)}.
+\]</div>
+<p><strong>Impulse Response</strong>:
+Frequency response and impulse response are linked via the Fourier transform. Thus, the impulse response, which describes the reaction of a physical system to a Dirac pulse, can be obtained from the inverse Fourier transformation of the frequency response.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -793,14 +885,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/FFT-Analysator/", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.expand", "search.highlight", "search.suggest", "toc.follow"], "search": "/FFT-Analysator/assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.expand", "search.highlight", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/FFT-Analysator/assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="/FFT-Analysator/assets/_markdown_exec_pyodide.js"></script>
+        <script src="../assets/_markdown_exec_pyodide.js"></script>
       
-        <script src="/FFT-Analysator/javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
