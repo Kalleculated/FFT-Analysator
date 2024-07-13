@@ -152,5 +152,23 @@ reportPrivateImportUsage = false
 reportUnboundVariable = false
 exclude = ["docs", "setup.py"]
 
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-dependencies = ["mkdocstrings-python"]
+name = "fft_analysator"
+version = "1.0"
+description = "A FFT-Analyzer for acoustic data"
+dependencies = [
+    "numpy==1.26.4",
+    "mkdocstrings-python",
+    "acoular",
+    "h5py",
+    "holoviews",
+    "matplotlib",
+    "pandas",
+    "panel",
+    "scipy",
+    "pytest",
+]
