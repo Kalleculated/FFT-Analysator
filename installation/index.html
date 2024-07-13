@@ -767,13 +767,13 @@
 <h1 id="installation">Installation</h1>
 <p>There are two different ways to install the FFT-Analyzer:</p>
 <ol>
-<li>Download the source code, install the packages from the <code>requirement.txt</code> by navigating to the root directory and using the command <code>pip install -r requirements.txt</code>, afterwards to start the app use <code>panel serve src\fft_analysator\app.py --autoreload</code>.</li>
-<li>Alternatively, you can download the source code and install the package by navigating to the root and using the command <code>pip install .</code>. Afterwards you can start the app by importing it by doing:
+<li>Download the source code, install the packages from the <code>requirement.txt</code> by navigating to the root directory and using the command <code>pip install -r requirements.txt</code>, afterwards to start the app use <code>panel serve src\fft_analysator\app.py --autoreload</code> and navigate to the url given to you inside of the console in the browser of your choice.</li>
+<li>Alternatively, you can download the source code and install the package by navigating to the root and using the command <code>pip install .</code> or <code>pip install setup.py</code>. Afterwards you can start the app by importing it by doing:
 <div class="highlight"><pre><span></span><code>from fft_analysator.app import App
 
 App().serve_app()
-</code></pre></div></li>
-<li>If you only want to use the API and are not interested in using the GUI, you can refer to the API documentation and either choose option 2 or 3.</li>
+</code></pre></div>
+If you only want to use the API and are not interested in using the GUI, you can refer to the API documentation and should preferably choose option 2.</li>
 </ol>
 
 
