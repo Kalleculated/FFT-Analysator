@@ -8,5 +8,8 @@ widget_test
 *.txt
 *.gitignore
 *.DS_Store
+*.spec
+*.exe
 site
 cache
+build
