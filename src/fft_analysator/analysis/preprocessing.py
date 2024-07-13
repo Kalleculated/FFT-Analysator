@@ -13,6 +13,7 @@ class Preprocess:
         file_paths (object): Get the callback to the data object
         block_size (int): Length of data block.
     """
+    
     def __init__(self, file_paths=None, block_size=1024):
 
         self.file_paths = file_paths

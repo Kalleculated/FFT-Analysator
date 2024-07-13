@@ -9,8 +9,7 @@ from fft_analysator.gui.views.sidebar import Sidebar
 from fft_analysator.analysis.signal_processing import Signal_Process
 
 
-hv.extension("bokeh", "plotly")  # type: ignore
-
+hv.extension("bokeh",enable_mathjax=True) # type: ignore
 
 class AppController:
     """
@@ -89,7 +88,8 @@ class AppController:
         if self.file_paths:
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
             self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
-                                                block_size=self.sidebar.accordion.blocksize_selector.component.value)
+                                                block_size=self.sidebar.accordion.blocksize_selector.component.value,
+                                                data_callback=self.preprocessing)
             # signal_process insert
             if event.obj == self.sidebar.accordion.file_input.component:
                 self.sidebar.update_file_list()
@@ -148,6 +148,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
 
             )
 
@@ -166,6 +167,7 @@ class AppController:
                         self.sidebar.accordion.toggle_group.grid,
                         self.sidebar.accordion.toggle_x_axis.x_log,
                         self.sidebar.accordion.toggle_y_axis.y_log,
+                        self.sidebar.accordion.toggle_group.db,
                     )
         else:
             self.sidebar.update_color_picker()
@@ -182,6 +184,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
             )
 
             self.main_view.update_analysis_plot(
@@ -198,6 +201,7 @@ class AppController:
                         self.sidebar.accordion.toggle_group.grid,
                         self.sidebar.accordion.toggle_x_axis.x_log,
                         self.sidebar.accordion.toggle_y_axis.y_log,
+                        self.sidebar.accordion.toggle_group.db,
                     )
 
     def handle_table_choose_event(self, event):
@@ -240,6 +244,7 @@ class AppController:
                     self.sidebar.accordion.toggle_group.grid,
                     self.sidebar.accordion.toggle_x_axis.x_log,
                     self.sidebar.accordion.toggle_y_axis.y_log,
+                    self.sidebar.accordion.toggle_group.db,
                 )
             else:
                 self.preprocessing.set_data_block_to_idx(self.sidebar.accordion.int_slider.component.value)
@@ -259,6 +264,7 @@ class AppController:
                     self.sidebar.accordion.toggle_group.grid,
                     self.sidebar.accordion.toggle_x_axis.x_log,
                     self.sidebar.accordion.toggle_y_axis.y_log,
+                    self.sidebar.accordion.toggle_group.db,
                 )
 
     def handle_blocksize_selector_event(self, event):
@@ -271,7 +277,8 @@ class AppController:
             # reinitalize the preprocessing object with the new blocksize
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
             self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
-                                                block_size=self.sidebar.accordion.blocksize_selector.component.value)
+                                                block_size=self.sidebar.accordion.blocksize_selector.component.value,
+                                                data_callback=self.preprocessing)
 
             # update the sidebar components
             self.sidebar.update_file_list()
@@ -292,6 +299,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
             )
             self.main_view.update_analysis_plot(
                         self.preprocessing,
@@ -308,6 +316,7 @@ class AppController:
                         self.sidebar.accordion.toggle_group.grid,
                         self.sidebar.accordion.toggle_x_axis.x_log,
                         self.sidebar.accordion.toggle_y_axis.y_log,
+                        self.sidebar.accordion.toggle_group.db,
 
                     )
 
@@ -335,6 +344,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
             )
 
             self.main_view.update_analysis_plot(
@@ -352,6 +362,7 @@ class AppController:
                         self.sidebar.accordion.toggle_group.grid,
                         self.sidebar.accordion.toggle_x_axis.x_log,
                         self.sidebar.accordion.toggle_y_axis.y_log,
+                        self.sidebar.accordion.toggle_group.db,
                     )
         else:
             self.main_view.update_signal(
@@ -368,6 +379,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
             )
 
             self.main_view.update_analysis_plot(
@@ -384,6 +396,7 @@ class AppController:
                 self.sidebar.accordion.toggle_group.grid,
                 self.sidebar.accordion.toggle_x_axis.x_log,
                 self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
             )
 
     def handle_method_event(self, event):

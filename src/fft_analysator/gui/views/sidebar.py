@@ -238,22 +238,6 @@ class Sidebar:
             self.accordion.exporter_selector.component.disabled = False
             self.accordion.file_exporter.component.disabled = False
 
-    def update_exporter(self, method_callback=None):
-        if method_callback == "No Analysis Function" or method_callback is None:
-            self.accordion.exporter_selector.component.disabled = True
-            self.accordion.file_exporter.component.disabled = True
-        else:
-            self.accordion.exporter_selector.component.disabled = False
-            self.accordion.file_exporter.component.disabled = False
-
-    def update_exporter(self, method_callback=None):
-        if method_callback == "No Analysis Function" or method_callback is None:
-            self.accordion.exporter_selector.component.disabled = True
-            self.accordion.file_exporter.component.disabled = True
-        else:
-            self.accordion.exporter_selector.component.disabled = False
-            self.accordion.file_exporter.component.disabled = False
-
     def update_toggle_group(self):
         if 'Stretch' in self.accordion.toggle_group.component.value:
             self.accordion.toggle_group.stretch = True
@@ -274,6 +258,11 @@ class Sidebar:
             self.accordion.toggle_y_axis.y_log = True
         else:
             self.accordion.toggle_y_axis.y_log = False
+            
+        if "dB" in self.accordion.toggle_group.component.value:
+            self.accordion.toggle_group.db = True
+        else:
+            self.accordion.toggle_group.db = False
 
     def servable(self):
         """
