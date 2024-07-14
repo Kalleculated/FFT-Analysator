@@ -97,6 +97,7 @@ class Accordion:
         """Get the accordion component.
 
         Returns:
-            pn.Accordion: The accordion component.
+            _component (object):
+                The stored widget.
         """
         return self._component

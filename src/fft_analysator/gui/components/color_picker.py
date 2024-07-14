@@ -5,12 +5,11 @@ class Colorpicker:
     """
     A class used to represent a Color Picker widget.
 
-    Attributes
-    ----------
-    color_picker : object
-        An instance of the panel ColorPicker widget.
-    _component : object
-        The panel ColorPicker widget with specific parameters.
+    Attributes:
+        color_picker (object):
+            An instance of the panel ColorPicker widget.
+        _component (object):
+            The panel ColorPicker widget with specific parameters.
 
     """
 
@@ -26,9 +25,8 @@ class Colorpicker:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component

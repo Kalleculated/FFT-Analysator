@@ -13,19 +13,17 @@ class MainView:
 
     This class is responsible for updating the signal and analysis plots based on the provided data.
 
-    Attributes
-    ----------
-    tabs : object
-        An instance of the Tabs class.
-    layout : object
-        A panel Column layout containing the tabs component.
+    Attributes:
+        tabs (object):
+            An instance of the Tabs class.
+        layout (object):
+            A panel Column layout containing the tabs component.
 
-    Methods
-    -------
-    update_signal(data_callback, channels, stretch_value, color_picker_value, window, overlap)
-        Updates the signal plots based on the provided data.
-    update_analysis_plot(data_callback, channels, stretch_value, color_picker_value, analysis_callback, window, overlap)
-        Updates the analysis plots based on the provided data.
+    Methods:
+        update_signal(data_callback, channels, stretch_value, color_picker_value, window, overlap):
+            Updates the signal plots based on the provided data.
+        update_analysis_plot(data_callback, channels, stretch_value, color_picker_value, analysis_callback, window, overlap):
+            Updates the analysis plots based on the provided data.
     """
 
     def __init__(self):
@@ -43,24 +41,20 @@ class MainView:
         """
         Updates the signal plots based on the provided data.
 
-        Parameters
-        ----------
-        data_callback : function
-            A callback function to retrieve the data.
-        channels : list
-            A list of channels to plot.
-        stretch_value : int
-            The stretch value for the plot.
-        color_picker_value : str
-            The selected color for the plot.
-        window : str
-            The selected window function.
-        overlap : int
-            The overlap value for the plot.
+        Args:
+            data_callback (function): A callback function that returns the data to be plotted.
+            channels (list): A list of channels to be plotted.
+            stretch_value (int): The stretch value for the plot.
+            color_picker_value (str): The color for the plot.
+            window (str): The window type for the plot.
+            overlap (float): The overlap value for the plot.
+
+        Returns:
+            None
         """
         if channels:
             signal_process_callback.set_parameters(channels, window, overlap)
-            
+
             print(show_grid)
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
                             color_picker_value, stretch_value, show_grid,x_log,y_log, db)
@@ -84,22 +78,17 @@ class MainView:
         """
         Updates the analysis plots based on the provided data.
 
-        Parameters
-        ----------
-        data_callback : function
-            A callback function to retrieve the data.
-        channels : list
-            A list of channels to plot.
-        stretch_value : int
-            The stretch value for the plot.
-        color_picker_value : str
-            The selected color for the plot.
-        analysis_callback : function
-            A callback function to perform the analysis.
-        window : str
-            The selected window function.
-        overlap : int
-            The overlap value for the plot.
+        Args:
+            data_callback (function): A callback function that returns the data to be plotted.
+            channels (list): A list of channels to be plotted.
+            stretch_value (int): The stretch value for the plot.
+            color_picker_value (str): The color for the plot.
+            analysis_callback (function): A callback function that returns the analysis data to be plotted.
+            window (str): The window type for the plot.
+            overlap (float): The overlap value for the plot.
+
+        Returns:
+            None
         """
         if channels:
             signal_process_callback.set_parameters(channels, window, overlap)
@@ -138,11 +127,11 @@ class MainView:
 
             elif analysis_callback == "No Analysis Function":
                 self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function is choosen")
-                
+
             elif analysis_callback == "Impulse Response" or analysis_callback == "Amplitude Response" or analysis_callback == "Phase Response":
-                
+
                 self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function for this Tab is choosen")
-                  
+
         else:
             self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'No data chosen!')
 

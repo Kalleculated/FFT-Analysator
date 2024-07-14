@@ -7,25 +7,23 @@ class Tabs:
 
     This class encapsulates a panel Tabs widget and provides an interface for interacting with it.
 
-    Attributes
-    ----------
-    tabs : object
-        An instance of the panel Tabs widget.
-    str_signal_tab : str
-        The title of the signal tab.
-    str_frequency_response_tab : str
-        The title of the frequency response tab.
-    str_impulse_response_tab : str
-        The title of the impulse response tab.
-    str_analysis_function_tab : str
-        The title of the analysis function tab.
-    _component : object
-        The panel Tabs widget with specific parameters.
+    Attributes:
+        tabs (object):
+            An instance of the panel Tabs widget.
+        str_signal_tab (str):
+            The title of the signal tab.
+        str_frequency_response_tab (str):
+            The title of the frequency response tab.
+        str_impulse_response_tab (str):
+            The title of the impulse response tab.
+        str_analysis_function_tab (str):
+            The title of the analysis function tab.
+        _component (object):
+            The panel Tabs widget with specific parameters.
 
-    Methods
-    -------
-    component()
-        Gets the stored widget.
+    Methods:
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self):
@@ -55,9 +53,8 @@ class Tabs:
 
         This method returns the panel Tabs widget stored in the _component attribute.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component
