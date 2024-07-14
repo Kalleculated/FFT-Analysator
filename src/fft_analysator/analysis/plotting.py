@@ -222,7 +222,7 @@ class Plotter:
 
         # Create and scaling time axis
         block_size_factor = self.data_callback.source.numsamples / self.block_size
-        t = self.signal_process.create_time_axis(len(h)) * 4 * block_size_factor
+        t = self.signal_process.create_time_axis(len(h)) * 8 * block_size_factor
 
         # Create frequency response fig
         fig = hv.Curve((t,h), kdims="Time in s", vdims=y_label, label = f'Impulse Response')
@@ -343,18 +343,17 @@ class Plotter:
             title = "Auto Correlation - Input"
             y_label = r'$$\mathrm{\psi}_{xx}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='xx')
-            ylim = (-0.1,1.1)
+            
         elif type == 'yy':
             title = "Auto Correlation - Output"
             y_label = r'$$\mathrm{\psi}_{yy}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='yy')
-            ylim = (-0.1,1.1)
+           
         elif type == 'xy':
             title = "Cross Correlation"
             y_label = r'$$\mathrm{\psi}_{xy}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='xy')
-            ylim = (np.min(corr) - 0.1, np.max(corr) + 0.1)
-
+            
         if len(corr) % 2 != 0:
             corr = np.roll(corr,1) # shift correlation to 1 sample
 
@@ -364,7 +363,7 @@ class Plotter:
         fig = hv.Curve((tau,corr),kdims=r'$$\mathrm{\tau}$$ in s', vdims=y_label, label=title )
         fig.opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid,
                  xlim=(np.min(tau)+0.1*np.min(tau),np.max(tau)+0.1*np.max(tau)),
-                 ylim=ylim ,logx=False, logy=False)
+                 ylim=(np.min(corr) - 0.1, np.max(corr) + 0.1) ,logx=False, logy=False)
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)

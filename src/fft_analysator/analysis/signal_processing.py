@@ -234,6 +234,11 @@ class Signal_Process:
 
         N = len(csm_matrix[:, 0, 0])
         self.impulse_response_data = np.fft.irfft(H, n=N)
+        shifted_signal = np.fft.fftshift(self.impulse_response_data)
+        peak_index = np.argmax(shifted_signal)
+        signal_up_to_peak = shifted_signal[:peak_index + 1]
+        self.impulse_response_data = np.flip(signal_up_to_peak)
+
 
         if imp_dB:
             if self.input_channel != self.output_channel:
