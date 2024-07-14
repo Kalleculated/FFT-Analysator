@@ -2838,24 +2838,13 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.stretching_switch">stretching_switch</span></code></td>
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.method_selector">method_selector</span></code></td>
             <td>
-                  <code>Switch</code>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.method_selector.MethodSelector" href="#fft_analysator.gui.components.method_selector.MethodSelector">MethodSelector</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The switch for stretching.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.calculation_selector">calculation_selector</span></code></td>
-            <td>
-                  <code>CalculationSelector</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The selector for calculations.</p>
+                <p>The selector for methods.</p>
               </div>
             </td>
           </tr>
@@ -2948,13 +2937,68 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.overlap_selectgor">overlap_selectgor</span></code></td>
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.overlap_selector">overlap_selector</span></code></td>
             <td>
                   <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.overlap_selector.OverlapSelector" href="#fft_analysator.gui.components.overlap_selector.OverlapSelector">OverlapSelector</a></code>
             </td>
             <td>
               <div class="doc-md-description">
                 <p>The selector for the overlaps.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.exporter_selector">exporter_selector</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.exporter_selector.ExporterSelector" href="#fft_analysator.gui.components.exporter_selector.ExporterSelector">ExporterSelector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The selector for the exporters.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.file_exporter">file_exporter</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.exporter.FileExporter" href="#fft_analysator.gui.components.exporter.FileExporter">FileExporter</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The file exporter component.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.toggle_group">toggle_group</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.toggle_group.ToggleGroup" href="#fft_analysator.gui.components.toggle_group.ToggleGroup">ToggleGroup</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The toggle group component.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.toggle_y_axis">toggle_y_axis</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.toggle_y_axis.ToggleYAxis" href="#fft_analysator.gui.components.toggle_y_axis.ToggleYAxis">ToggleYAxis</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The toggle for the y-axis.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.gui.components.accordion.Accordion.toggle_x_axis">toggle_x_axis</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="fft_analysator.gui.components.toggle_x_axis.ToggleXAxis" href="#fft_analysator.gui.components.toggle_x_axis.ToggleXAxis">ToggleXAxis</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The toggle for the x-axis.</p>
               </div>
             </td>
           </tr>
@@ -2974,11 +3018,7 @@
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/gui/components/accordion.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
@@ -3021,7 +3061,11 @@
 <span class="normal">90</span>
 <span class="normal">91</span>
 <span class="normal">92</span>
-<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">file_input</span> <span class="o">=</span> <span class="n">FileInputComponent</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">color_picker_ch1</span> <span class="o">=</span> <span class="n">Colorpicker</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">color_picker_ch2</span> <span class="o">=</span> <span class="n">Colorpicker</span><span class="p">()</span>
