@@ -1,9 +1,7 @@
 acoular
 h5py
 holoviews
-matplotlib
 numpy==1.26.4
-pandas
 panel
 scipy
 pytest
