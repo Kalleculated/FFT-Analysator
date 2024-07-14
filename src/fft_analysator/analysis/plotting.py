@@ -171,7 +171,7 @@ class Plotter:
             y_label = "Sound Pressure in Pa"
         else:
             H =  self.signal_process.frequency_response(frq_rsp_dB=True)
-            y_label = "SPL in dB" # "Sound Pressure Level
+            y_label = "SPL(f) in dB" # "Sound Pressure Level
 
         # Create the phase response
         phi = self.signal_process.phase_response(deg=True)
@@ -229,7 +229,7 @@ class Plotter:
         fig.opts(color=color_value, shared_axes=False, width=750, height=350,show_grid=self.show_grid,
                 logx = False, logy = self.y_log, xlim=(-0.1, np.max(t) + 0.1),
                 ylim=(np.min(h) + scale_min_factor *
-                np.min(h), np.max(h) + scale_max_factor * np.max(h))) #if not self.y_log else (0, None))
+                np.min(h), np.max(h) + scale_max_factor * np.max(h)) if not self.y_log else (0, None))
 
         # Create a HoloViews pane for the figure
         plot_pane = HoloViews(fig,  sizing_mode='stretch_width' if self.stretch_value else None)
@@ -288,33 +288,35 @@ class Plotter:
             title = "Auto Power Spectrum - Output"
 
             if self.db:
-                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
-            else:
-                y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
-
-            if self.input_channel == self.output_channel:
-                if self.db:
-                    y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
+                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'       
+                if self.input_channel == self.output_channel:
                     csm_value = csm_dB[:,0,0]
                 else:
-                    y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
-                    csm_value = csm[:,0,0]
+                    csm_value = csm_dB[:,1,1]           
             else:
-                if self.db:
-                    y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
-                    csm_value = csm_dB[:,1,1]
+                y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
+                if self.input_channel == self.output_channel:
+                    csm_value = csm[:,0,0]
                 else:
-                    y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
                     csm_value = csm[:,1,1]
+                    
         elif type == 'xy':
             title = "Cross Power Spectrum"
+            
             if self.db:
-                csm_value = csm_dB[:,0,1]
-                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
+                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'       
+                if self.input_channel == self.output_channel:
+                    csm_value = csm_dB[:,0,0]
+                else:
+                    csm_value = csm_dB[:,0,1]           
             else:
-                csm_value = csm[:,0,1]
                 y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
-
+                if self.input_channel == self.output_channel:
+                    csm_value = csm[:,0,0]
+                else:
+                    csm_value = csm[:,0,1]
+                    
+                    
 
         fig = hv.Curve((f,np.abs(csm_value)),kdims="Frequency in Hz", vdims= y_label, label=title)
         fig.opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid,
