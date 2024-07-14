@@ -19,8 +19,8 @@ nav:
 - User Documentation:
   - User Guide and Screenshots: user_guide_and_screenshots.md
   - Analysis functions: user_guide_analysis_functions.md
+  - API Documentation: api_documentation.md
 - Developer Documentation:
-    - API Documentation: api_documentation.md
     - Backend Documentation: dev_backend_documentation.md
     - Frontend Documentation:
         - Overview: dev_frontend_documentation.md
