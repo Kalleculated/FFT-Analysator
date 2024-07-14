@@ -258,6 +258,11 @@ class Sidebar:
             self.accordion.toggle_y_axis.y_log = True
         else:
             self.accordion.toggle_y_axis.y_log = False
+            
+        if "dB" in self.accordion.toggle_group.component.value:
+            self.accordion.toggle_group.db = True
+        else:
+            self.accordion.toggle_group.db = False
 
     def servable(self):
         """

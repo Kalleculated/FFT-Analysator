@@ -39,7 +39,7 @@ class MainView:
         self.layout = pn.Column(self.tabs.component, sizing_mode='stretch_width')
 
 
-    def update_signal(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, window, overlap, show_grid,x_log,y_log):
+    def update_signal(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, window, overlap, show_grid,x_log,y_log, db):
         """
         Updates the signal plots based on the provided data.
 
@@ -63,7 +63,7 @@ class MainView:
             
             print(show_grid)
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
-                            color_picker_value, stretch_value, show_grid,x_log,y_log)
+                            color_picker_value, stretch_value, show_grid,x_log,y_log, db)
 
             # generate time plot
             plot.create_time_plot()
@@ -80,7 +80,7 @@ class MainView:
 
 
     def update_analysis_plot(self, data_callback, signal_process_callback, channels, stretch_value, color_picker_value, analysis_callback,
-                             window, overlap, show_grid,x_log,y_log):
+                             window, overlap, show_grid,x_log,y_log, db):
         """
         Updates the analysis plots based on the provided data.
 
@@ -105,7 +105,7 @@ class MainView:
             signal_process_callback.set_parameters(channels, window, overlap)
 
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
-                            color_picker_value, stretch_value, show_grid,x_log,y_log)
+                            color_picker_value, stretch_value, show_grid,x_log,y_log, db)
 
             # plot analysis function
             if analysis_callback == "Auto Spectral Density - Input":
@@ -137,7 +137,12 @@ class MainView:
                 plot.create_coherence_plot()
 
             elif analysis_callback == "No Analysis Function":
-                self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function choosen")
+                self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function is choosen")
+                
+            elif analysis_callback == "Impulse Response" or analysis_callback == "Amplitude Response" or analysis_callback == "Phase Response":
+                
+                self.tabs.component[3] = (self.tabs.str_analysis_function_tab, "No Analysis Function for this Tab is choosen")
+                  
         else:
             self.tabs.component[3] = (self.tabs.str_analysis_function_tab, 'No data chosen!')
 

@@ -33,8 +33,9 @@ class ToggleGroup:
         self.stretch = False
         self.grid = False
         self.log = False
+        self.db = False
         self.toggle_group = pn.widgets.ToggleGroup
-        self.options = ['Stretch', 'Grid']
+        self.options = ['Stretch','dB','Grid']
         self._component = self.toggle_group(name='Choose table:', options=self.options, width=300, disabled=True)
 
     @property
