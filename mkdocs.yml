@@ -1,8 +1,8 @@
-site_name: "FFT-Analysator"
-site_description: "Eine Dokumentation für den FFT-Analysator"
+site_name: "FFT-Analyzer"
+site_description: "The documentation for the FFT-Analyzer"
 site_url: "https://kalleculated.github.io/FFT-Analysator/"
 repo_url: "https://github.com/Kalleculated/FFT-Analysator/"
-repo_name: "FFT-Analysator/FFT-Analysator"
+repo_name: "FFT-Analysator"
 watch: [mkdocs.yml, docs, src/fft_analysator]
 site_dir: "site"
 
@@ -86,7 +86,7 @@ plugins:
             ignore_init_summary: true
           docstring_section_style: table
           filters: ["!^_"]
-          heading_level: 1
+          heading_level: 2
           inherited_members: true
           merge_init_into_class: true
           parameter_headings: true

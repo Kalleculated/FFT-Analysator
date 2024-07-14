@@ -1,9 +1,7 @@
-## Views
-
-### Sidebar
+## Sidebar
 
 :::fft_analysator.gui.views.sidebar
 
-### Main View
+## Main View
 
 :::fft_analysator.gui.views.main_view
