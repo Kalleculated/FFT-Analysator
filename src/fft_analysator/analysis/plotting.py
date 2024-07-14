@@ -1,10 +1,10 @@
-import numpy as np
 import panel as pn
 from panel.pane import HoloViews
 import holoviews as hv
 from holoviews import opts
 import math
 import acoular as ac
+import numpy as np
 from fft_analysator.analysis.signal_processing import Signal_Process
 
 

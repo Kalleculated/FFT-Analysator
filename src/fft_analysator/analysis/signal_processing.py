@@ -1,5 +1,6 @@
-import numpy as np
 import acoular as ac
+import numpy as np
+
 
 class Signal_Process:
     """
@@ -17,7 +18,7 @@ class Signal_Process:
         overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',
         '75%','87.5%'
     """
-    
+
     def __init__(self, channels=[], file_path=None, window='Hanning', block_size=1024, overlap='50%', data_callback=None):
         self.file_path = file_path
         self.window = window
@@ -106,23 +107,23 @@ class Signal_Process:
         block_size_factor = self.data_callback.source.numsamples / self.block_size
         if N % 2 == 0:
             tau = np.arange(-N//2,N//2-1) * 4 * block_size_factor / self.abtastrate
-        else:  
+        else:
             tau = np.arange(-N//2,N//2) * 4 * block_size_factor / self.abtastrate
-            
+
         return tau
 
     def SPL(self,channel):
         """
         The SPL function calculates the Sound Pressure Level of the current signal.
-        
+
         Args:
             channel (int): Channel number.
-        
+
         """
-        
+
         return 20*np.log10(np.abs(self.data_callback.set_channel_on_data_block(channel))/self.p0)
 
-    
+
     # create a cross spectral matrix with the two given signals
     #def csm(self, signal_x, signal_y, window='Hanning', block_size=1024, overlap='50%',dB=False):
     def csm(self,csm_dB=False):
@@ -164,7 +165,7 @@ class Signal_Process:
             coherence = np.abs(csm_matrix[:, 0, 1])**2 / (csm_matrix[:, 0, 0].real * csm_matrix[:, 1, 1].real)
 
         self.current_data = coherence
-        
+
         return self.current_data
 
     # calculate frequency response based on H1 estimator --> H1 = Gxy / Gxx
@@ -174,7 +175,7 @@ class Signal_Process:
         It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral density between signal x and signal y
         and Gxx is the Power Spectral Density of signal x.
 
-        Args:      
+        Args:
             db (boolean): Return the array ian dB values.
         """
         csm_matrix = self.csm()
@@ -183,7 +184,7 @@ class Signal_Process:
             H = np.divide(csm_matrix[:, 0, 0].real, csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 0].real), where=(np.abs(csm_matrix[:, 0, 0].real) > 1e-10))
         else:
             H = np.divide(csm_matrix[:, 0, 1], csm_matrix[:, 0, 0].real, out=np.zeros_like(csm_matrix[:, 0, 1]), where=(np.abs(csm_matrix[:, 0, 1]) > 1e-10))
-            
+
         if frq_rsp_dB:
             # return SPL(f) based on H1 estimator
             self.amplitude_response_data = 20*np.log10(abs(np.squeeze(H)/self.p0))
@@ -201,7 +202,7 @@ class Signal_Process:
         It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral Density between signal x and signal y
         and Gxx is the Power Spectral Density of signal x.
 
-        Args:  
+        Args:
             deg (boolean): Return the array in degrees
         """
         csm_matrix = self.csm()
@@ -213,7 +214,7 @@ class Signal_Process:
 
         phase = np.angle(H,deg=deg)
         self.phase_response_data = phase
-        
+
         return self.phase_response_data
 
     # calculate impulse response based on H1 estimator and inversed fft --> H1 = Gxy / Gxx
@@ -238,19 +239,19 @@ class Signal_Process:
         peak_index = np.argmax(shifted_signal)
         signal_up_to_peak = shifted_signal[:peak_index + 1]
         self.impulse_response_data = np.flip(signal_up_to_peak)
-        
-        
+
+
         if imp_dB:
             if self.input_channel != self.output_channel:
                 self.impulse_response_data = 20*np.log10(abs(self.impulse_response_data)/self.p0)
             else:
-                self.impulse_response_data = np.ones(N//2) 
+                self.impulse_response_data = np.ones(N)
                 self.impulse_response_data = 20*np.log10(abs(self.impulse_response_data)/self.p0)
         else:
             self.impulse_response_data = self.impulse_response_data
-            
+
         return self.impulse_response_data
-    
+
     # calculate auto/cross correlation in time domain
     def correlation(self,type=None):
         """
