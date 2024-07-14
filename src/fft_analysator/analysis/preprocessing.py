@@ -1,6 +1,6 @@
 import h5py
-import numpy as np
 from acoular import sources as ac
+import numpy as np
 
 
 class Preprocess:
@@ -13,7 +13,7 @@ class Preprocess:
         file_paths (object): Get the callback to the data object
         block_size (int): Length of data block.
     """
-    
+
     def __init__(self, file_paths=None, block_size=1024):
 
         self.file_paths = file_paths
@@ -41,7 +41,7 @@ class Preprocess:
         self.source_result = self.source.result(num=self.block_size)
         self.selected_data_block = next(self.source_result)
 
-    
+
     def set_channel_data(self, channel):
         """
         Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and
