@@ -2575,12 +2575,7 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
 <span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
@@ -2599,7 +2594,12 @@ given signals.</p>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
-<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The correlation function calculates the correlation response between the two given signals.</span>
 
@@ -3073,7 +3073,12 @@ and Gxx is the Power Spectral Density of signal x.</p>
 <span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
-<span class="normal">247</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The impulse_response function calculates the impulse response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Spectral density between signal x and signal y</span>
@@ -3090,6 +3095,11 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">csm_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">impulse_response_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">shifted_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">impulse_response_data</span><span class="p">)</span>
+    <span class="n">peak_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">shifted_signal</span><span class="p">)</span>
+    <span class="n">signal_up_to_peak</span> <span class="o">=</span> <span class="n">shifted_signal</span><span class="p">[:</span><span class="n">peak_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">impulse_response_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">signal_up_to_peak</span><span class="p">)</span>
+
 
     <span class="k">if</span> <span class="n">imp_dB</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
@@ -4167,8 +4177,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
 <span class="normal">369</span>
 <span class="normal">370</span>
 <span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">372</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plots the correlation function based on the provided data and parameters.</span>
 
@@ -4182,17 +4191,16 @@ and Gxx is the Power Spectral Density of signal x.</p>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Auto Correlation - Input&quot;</span>
         <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$$\mathrm{\psi}_</span><span class="si">{xx}</span><span class="s1">(\mathrm{\tau})$$&#39;</span>
         <span class="n">corr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_process</span><span class="o">.</span><span class="n">correlation</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;xx&#39;</span><span class="p">)</span>
-        <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+
     <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;yy&#39;</span><span class="p">:</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Auto Correlation - Output&quot;</span>
         <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$$\mathrm{\psi}_</span><span class="si">{yy}</span><span class="s1">(\mathrm{\tau})$$&#39;</span>
         <span class="n">corr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_process</span><span class="o">.</span><span class="n">correlation</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;yy&#39;</span><span class="p">)</span>
-        <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+
     <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;xy&#39;</span><span class="p">:</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Cross Correlation&quot;</span>
         <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$$\mathrm{\psi}_</span><span class="si">{xy}</span><span class="s1">(\mathrm{\tau})$$&#39;</span>
         <span class="n">corr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_process</span><span class="o">.</span><span class="n">correlation</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">)</span>
-        <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># shift correlation to 1 sample</span>
@@ -4203,7 +4211,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">tau</span><span class="p">,</span><span class="n">corr</span><span class="p">),</span><span class="n">kdims</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$$\mathrm{\tau}$$ in s&#39;</span><span class="p">,</span> <span class="n">vdims</span><span class="o">=</span><span class="n">y_label</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">title</span> <span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color_value</span><span class="p">,</span> <span class="n">shared_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">show_grid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">show_grid</span><span class="p">,</span>
              <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">tau</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">tau</span><span class="p">)),</span>
-             <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span> <span class="p">,</span><span class="n">logx</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+             <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span> <span class="p">,</span><span class="n">logx</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1"># Create a HoloViews pane for the figure</span>
     <span class="n">plot_pane</span> <span class="o">=</span> <span class="n">HoloViews</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span>  <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">&#39;stretch_width&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stretch_value</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
@@ -4400,7 +4408,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
     <span class="c1"># Create and scaling time axis</span>
     <span class="n">block_size_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_callback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numsamples</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_process</span><span class="o">.</span><span class="n">create_time_axis</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">block_size_factor</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_process</span><span class="o">.</span><span class="n">create_time_axis</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">))</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">block_size_factor</span>
 
     <span class="c1"># Create frequency response fig</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="n">kdims</span><span class="o">=</span><span class="s2">&quot;Time in s&quot;</span><span class="p">,</span> <span class="n">vdims</span><span class="o">=</span><span class="n">y_label</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Impulse Response&#39;</span><span class="p">)</span>
