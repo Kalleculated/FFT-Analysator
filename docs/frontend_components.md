@@ -20,6 +20,14 @@
 
 ::: fft_analysator.gui.components.data_selector
 
+### Exporter Selector
+
+::: fft_analysator.gui.components.exporter_selector
+
+### Exporter
+
+::: fft_analysator.gui.components.exporter
+
 ### File Input Tkinter
 
 ::: fft_analysator.gui.components.file_input_tkinter
@@ -47,6 +55,14 @@
 ### Toggle Group
 
 ::: fft_analysator.gui.components.toggle_group
+
+### Toggle Group x-axis
+
+::: fft_analysator.gui.components.toggle_x_axis
+
+### Toggle Group y-axis
+
+::: fft_analysator.gui.components.toggle_y_axis
 
 ### Tabs
 
