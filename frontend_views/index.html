@@ -1650,11 +1650,11 @@ The amount_ch attribute is initialized as 0.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/sidebar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes the sidebar servable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2273,11 +2273,11 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/main_view.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes the main view servable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2296,7 +2296,7 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_analysis_plot</span><span class="p">(</span><span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span> <span class="n">x_log</span><span class="p">,</span> <span class="n">y_log</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_analysis_plot</span><span class="p">(</span><span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span> <span class="n">x_log</span><span class="p">,</span> <span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2380,8 +2380,13 @@ overlap : int
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
-<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_analysis_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span>
-                         <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">):</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_analysis_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span>
+                         <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the analysis plots based on the provided data.</span>
 
@@ -2406,7 +2411,7 @@ overlap : int
         <span class="n">signal_process_callback</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">)</span>
 
         <span class="n">plot</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span>
-                        <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">)</span>
+                        <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 
         <span class="c1"># plot analysis function</span>
         <span class="k">if</span> <span class="n">analysis_callback</span> <span class="o">==</span> <span class="s2">&quot;Auto Spectral Density - Input&quot;</span><span class="p">:</span>
@@ -2438,7 +2443,12 @@ overlap : int
             <span class="n">plot</span><span class="o">.</span><span class="n">create_coherence_plot</span><span class="p">()</span>
 
         <span class="k">elif</span> <span class="n">analysis_callback</span> <span class="o">==</span> <span class="s2">&quot;No Analysis Function&quot;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">component</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">str_analysis_function_tab</span><span class="p">,</span> <span class="s2">&quot;No Analysis Function choosen&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">component</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">str_analysis_function_tab</span><span class="p">,</span> <span class="s2">&quot;No Analysis Function is choosen&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">analysis_callback</span> <span class="o">==</span> <span class="s2">&quot;Impulse Response&quot;</span> <span class="ow">or</span> <span class="n">analysis_callback</span> <span class="o">==</span> <span class="s2">&quot;Amplitude Response&quot;</span> <span class="ow">or</span> <span class="n">analysis_callback</span> <span class="o">==</span> <span class="s2">&quot;Phase Response&quot;</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">component</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">str_analysis_function_tab</span><span class="p">,</span> <span class="s2">&quot;No Analysis Function for this Tab is choosen&quot;</span><span class="p">)</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">component</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">str_analysis_function_tab</span><span class="p">,</span> <span class="s1">&#39;No data chosen!&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2455,7 +2465,7 @@ overlap : int
 
 
 </h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_signal</span><span class="p">(</span><span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span> <span class="n">x_log</span><span class="p">,</span> <span class="n">y_log</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">update_signal</span><span class="p">(</span><span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span> <span class="n">x_log</span><span class="p">,</span> <span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2514,7 +2524,7 @@ overlap : int
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">):</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the signal plots based on the provided data.</span>
 
@@ -2538,7 +2548,7 @@ overlap : int
 
         <span class="nb">print</span><span class="p">(</span><span class="n">show_grid</span><span class="p">)</span>
         <span class="n">plot</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span>
-                        <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">)</span>
+                        <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 
         <span class="c1"># generate time plot</span>
         <span class="n">plot</span><span class="o">.</span><span class="n">create_time_plot</span><span class="p">()</span>
