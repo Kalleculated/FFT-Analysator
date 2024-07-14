@@ -6,7 +6,6 @@ widget_test
 *.ipynb
 *.egg*
 *.txt
-*.gitignore
 *.DS_Store
 *.spec
 *.exe
