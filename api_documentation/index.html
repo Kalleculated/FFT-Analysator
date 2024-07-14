@@ -786,28 +786,30 @@
 <p>An example of those classes can be seen below. For more Information please refer to the User Manual and Documentation. </p>
 <div class="highlight"><span class="filename">Initializing Preprocessing</span><pre><span></span><code><span class="kn">import</span> <span class="nn">fft_analysator.analysis.preprocessing</span> <span class="k">as</span> <span class="nn">pp</span>
 
-<span class="n">my_file_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/file/myFile.h5&#39;</span> <span class="c1"># Path to h5-File</span>
+
+<span class="n">my_file_path</span> <span class="o">=</span> <span class="s1">&#39;path/to/file.h5&#39;</span> <span class="c1"># Path to h5-File</span>
 <span class="n">my_block_size</span> <span class="o">=</span> <span class="mi">2048</span> <span class="c1"># Choose block size</span>
 
-<span class="n">preproc</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="p">(</span><span class="n">my_file_path</span><span class="p">,</span> <span class="n">block_size</span> <span class="o">=</span> <span class="n">my_block_size</span><span class="p">)</span>
+<span class="n">preproc</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">Preprocess</span><span class="p">(</span><span class="n">my_file_path</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="n">my_block_size</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Calculating with Signal Processing</span><pre><span></span><code><span class="kn">import</span> <span class="nn">fft_analysator.analysis.signal_processing</span> <span class="k">as</span> <span class="nn">sp</span>
 
+
 <span class="n">my_channels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># Define your channles</span>
-<span class="n">my_window</span> <span class="o">=</span> <span class="s1">&#39;Hanning&#39;</span> <span class="c1"># Select a window. </span>
+<span class="n">my_window</span> <span class="o">=</span> <span class="s1">&#39;Hanning&#39;</span> <span class="c1"># Select a window.</span>
 <span class="n">my_overlap</span> <span class="o">=</span> <span class="s1">&#39;75%&#39;</span> <span class="c1"># Select overlap</span>
 
-<span class="n">signal_proc</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Signal_Processing</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">file_path</span><span class="o">=</span><span class="n">my_file_path</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="n">my_block_size</span><span class="p">)</span>
+<span class="n">signal_proc</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Signal_Process</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">file_path</span><span class="o">=</span><span class="n">my_file_path</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="n">my_block_size</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="n">preproc</span><span class="p">)</span>
 
 <span class="c1"># One is able to change the parameters by using the method &quot;set_parameters&quot;</span>
 
-<span class="n">signal_proc</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">my_channles</span><span class="p">,</span> <span class="n">my_window</span><span class="p">,</span> <span class="n">my_overlap</span><span class="p">)</span>
+<span class="n">signal_proc</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">my_channels</span><span class="p">,</span> <span class="n">my_window</span><span class="p">,</span> <span class="n">my_overlap</span><span class="p">)</span>
 
-<span class="c1"># Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array </span>
+<span class="c1"># Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array</span>
 <span class="c1"># with dimensions [Frequencies, Input channel, Output Channel], where in our case the Input channel is 1 and</span>
-<span class="c1"># Output channel is 4. The data is complex valued. </span>
+<span class="c1"># Output channel is 4. The data is complex valued.</span>
 
-<span class="n">csm_data</span> <span class="o">=</span> <span class="n">signal_proc</span><span class="o">.</span><span class="n">csm</span>
+<span class="n">csm_data</span> <span class="o">=</span> <span class="n">signal_proc</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
 <span class="n">csm_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Cross spectral density between channel 1 and 4</span>
 <span class="n">csm_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Auto spectral density of channel 1</span>
