@@ -4,3 +4,4 @@ holoviews
 numpy==1.26.4
 panel
 scipy
+pytest
