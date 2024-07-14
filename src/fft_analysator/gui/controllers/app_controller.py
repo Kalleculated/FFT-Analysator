@@ -17,33 +17,31 @@ class AppController:
 
     This class is responsible for handling user interactions and updating the application's state accordingly.
 
-    Attributes
-    ----------
-    main_view : object
-        An instance of the MainView class.
-    current_method : str
-        The currently selected analysis method.
-    sidebar : object
-        An instance of the Sidebar class.
-    template_layout : object
-        A FastListTemplate instance for the application layout.
-    file_paths : str
-        The paths to the data files.
+    Attributes:
+        main_view (object):
+            An instance of the MainView class.
+        current_method (str):
+            The currently selected analysis method.
+        sidebar (object):
+            An instance of the Sidebar class.
+        template_layout (object):
+            A FastListTemplate instance for the application layout.
+        file_paths (str):
+            The paths to the data files.
 
-    Methods
-    -------
-    handle_fileupload_event()
-        Handles the file upload event.
-    handle_sidebar_event()
-        Handles the sidebar event.
-    handle_table_choose_event()
-        Handles the table choose event.
-    handle_intslider_event()
-        Handles the intslider event.
-    handle_blocksize_selector_event()
-        Handles the blocksize selector event.
-    handle_update_analysis_event()
-        Handles the update analysis event.
+    Methods:
+        handle_fileupload_event():
+            Handles the file upload event.
+        handle_sidebar_event():
+            Handles the sidebar event.
+        handle_table_choose_event():
+            Handles the table choose event.
+        handle_intslider_event():
+            Handles the intslider event.
+        handle_blocksize_selector_event():
+            Handles the blocksize selector event.
+        handle_update_analysis_event():
+            Handles the update analysis event.
     """
 
     def __init__(self):
@@ -80,7 +78,13 @@ class AppController:
         """
         Handles the file upload event.
 
-        This method is called when a file upload event occurs.
+        This method is responsible for handling the event when a file is uploaded by the user.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         # Handle the file upload event and update the preprocessing object
         self.file_paths = self.sidebar.accordion.file_input.file_paths
@@ -109,7 +113,13 @@ class AppController:
         """
         Handles the sidebar event.
 
-        This method is called when a sidebar event occurs.
+        This method is responsible for handling the event when a user interacts with the sidebar.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         # Update the main view when the sidebar event is triggered
         if ((
@@ -208,7 +218,13 @@ class AppController:
         """
         Handles the table choose event.
 
-        This method is called when a table choose event occurs.
+        This method is responsible for handling the event when a user chooses a table.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         # Update the main view when the table chooser event is triggered
         # Note, we could also split this into multiple functions
@@ -221,7 +237,13 @@ class AppController:
         """
         Handles the intslider event.
 
-        This method is called when an intslider event occurs.
+        This method is responsible for handling the event when a user interacts with the intslider.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         if self.file_paths:
             if (self.sidebar.accordion.int_slider.component.value > self.preprocessing.current_block_idx):
@@ -271,7 +293,13 @@ class AppController:
         """
         Handles the blocksize selector event.
 
-        This method is called when a blocksize selector event occurs.
+        This method is responsible for handling the event when a user interacts with the blocksize selector.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         if self.file_paths:
             # reinitalize the preprocessing object with the new blocksize
@@ -324,7 +352,13 @@ class AppController:
         """
         Handles the update analysis event.
 
-        This method is called when an update analysis event occurs.
+        This method is responsible for handling the event when a user updates the analysis.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
         """
         if (self.file_paths
             and self.sidebar.accordion.channel_selector_input.component.value is not None
@@ -400,9 +434,31 @@ class AppController:
             )
 
     def handle_method_event(self, event):
+        """
+        Handles the method selection event.
+
+        This method is responsible for updating the exporter when a new method is selected.
+
+        Args:
+            event (object): The event that triggers the method selection.
+
+        Returns:
+            None
+        """
         self.sidebar.update_exporter(self.sidebar.accordion.method_selector.component.value)
 
     def handle_export_event(self, event):
+        """
+        Handles the export event.
+
+        This method is responsible for exporting the data when the export button is clicked.
+
+        Args:
+            event (object): The event that triggers the export.
+
+        Returns:
+            None
+        """
         if (event.obj == self.sidebar.accordion.file_exporter.component):
             data = self.data_selection(self.sidebar.accordion.method_selector.component.value)
 
@@ -415,6 +471,17 @@ class AppController:
                         self.sidebar.accordion.overlap_selector.component.value,)
 
     def data_selection(self, method):
+        """
+        Selects the appropriate data based on the selected method.
+
+        This method is responsible for selecting the appropriate data based on the method chosen by the user.
+
+        Args:
+            method (str): The selected method.
+
+        Returns:
+            data (np.array): The selected data.
+        """
         data = self.signal_process.current_data
 
         if method == "Cross Spectral Density":

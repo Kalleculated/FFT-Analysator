@@ -9,16 +9,14 @@ class App:
 
     This class is responsible for initializing and running the application.
 
-    Attributes
-    ----------
-    app : object
-        An instance of the AppController class.
+    Attributes:
+        app (AppController):
+            An instance of the AppController class.
 
-    Methods
-    -------
-    run()
+    Methods:
+    run():
         Makes the application servable.
-    serve_app()
+    serve_app():
         Serves the application on a specific port and opens it in a web browser.
     """
 
@@ -33,12 +31,22 @@ class App:
     def run(self):
         """
         Makes the application servable.
+
+        This method calls the servable method of the app attribute, which makes the application ready to be served.
+
+        Returns:
+            None
         """
         self.app.servable()
 
     def serve_app(self):
         """
         Serves the application on a specific port and opens it in a web browser.
+
+        This method calls the serve method of the app attribute, which starts a server and opens the application in a web browser.
+
+        Returns:
+            None
         """
         pn.serve(self.app.template_layout, port=5000, show=True)
 

@@ -26,7 +26,8 @@ class BlocksizeSelector:
         Get the block size selector component.
 
         Returns:
-            pn.widgets.Select: The block size selector component.
+            _component (object):
+                The stored widget.
 
         """
         return self._component

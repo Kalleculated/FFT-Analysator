@@ -7,21 +7,19 @@ class FileInputComponent:
     """
     A class used to represent a File Input Component.
 
-    Attributes
-    ----------
-    file_input_button : object
-        An instance of the panel Button widget.
-    _component : object
-        The panel Button widget with specific parameters.
-    file_paths : str
-        The paths of the selected files. Initially None.
+    Attributes:
+        file_input_button (object):
+            An instance of the panel Button widget.
+        _component (object):
+            The panel Button widget with specific parameters.
+        file_paths (str):
+            The paths of the selected files. Initially None.
 
-    Methods
-    -------
-    select_files(event)
-        Opens a file dialog to select files.
-    component()
-        Gets the stored widget.
+    Methods:
+        select_files(event):
+            Opens a file dialog to select files.
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self):
@@ -63,9 +61,8 @@ class FileInputComponent:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component

@@ -5,35 +5,33 @@ class GeneratorNavigator:
     """
     A class used to represent a Generator Navigator.
 
-    Attributes
-    ----------
-    button_back : object
-        An instance of the panel Button widget for navigating backwards.
-    button_forward : object
-        An instance of the panel Button widget for navigating forwards.
-    reset_button : object
-        An instance of the panel Button widget for resetting.
-    index_box : object
-        An instance of the panel IntInput widget for inputting index.
-    goto_button : object
-        An instance of the panel Button widget for going to a specific index.
-    _component : object
-        The panel Row widget with specific parameters.
-    int_slider_callback : object
-        The callback function for the integer slider.
+    Attributes:
+        button_back (object):
+            An instance of the panel Button widget for navigating backwards.
+        button_forward (object):
+            An instance of the panel Button widget for navigating forwards.
+        reset_button (object):
+            An instance of the panel Button widget for resetting.
+        index_box (object):
+            An instance of the panel IntInput widget for inputting index.
+        goto_button (object):
+            An instance of the panel Button widget for going to a specific index.
+        _component (object):
+            The panel Row widget with specific parameters.
+        int_slider_callback (object):
+            The callback function for the integer slider.
 
-    Methods
-    -------
-    int_slider_next(event)
-        Increments the value of the integer slider.
-    int_slider_previous(event)
-        Decrements the value of the integer slider.
-    int_slider_reset(event)
-        Resets the value of the integer slider.
-    int_slider_goto(event)
-        Sets the value of the integer slider to the value of the index box.
-    component()
-        Gets the stored widget.
+    Methods:
+        int_slider_next(event):
+            Increments the value of the integer slider.
+        int_slider_previous(event):
+            Decrements the value of the integer slider.
+        int_slider_reset(event):
+            Resets the value of the integer slider.
+        int_slider_goto(event):
+            Sets the value of the integer slider to the value of the index box.
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self, int_slider_callback):
@@ -105,9 +103,8 @@ class GeneratorNavigator:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component

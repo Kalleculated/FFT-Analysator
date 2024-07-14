@@ -5,19 +5,17 @@ class MethodSelector:
     """
     A class used to represent a Method Selector widget.
 
-    Attributes
-    ----------
-    selector : object
-        An instance of the panel Select widget.
-    options : list
-        A list of options for the selector widget.
-    _component : object
-        The panel Select widget with specific parameters.
+    Attributes:
+        selector (object):
+            An instance of the panel Select widget.
+        options (list):
+            A list of options for the selector widget.
+        _component (object):
+            The panel Select widget with specific parameters.
 
-    Methods
-    -------
-    component()
-        Gets the stored widget.
+    Methods:
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self):
@@ -40,9 +38,8 @@ class MethodSelector:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component

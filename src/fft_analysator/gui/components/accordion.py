@@ -28,8 +28,7 @@ class Accordion:
         color_picker_ch1 (Colorpicker): The color picker for channel 1.
         color_picker_ch2 (Colorpicker): The color picker for channel 2.
         color_picker_result (Colorpicker): The color picker for the result.
-        stretching_switch (Switch): The switch for stretching.
-        calculation_selector (CalculationSelector): The selector for calculations.
+        method_selector (MethodSelector): The selector for methods.
         selector (Selector): The selector component.
         data_selector (DataSelector): The data selector component.
         int_slider (IntSlider): The integer slider component.
@@ -38,7 +37,12 @@ class Accordion:
         channel_selector_input (ChannelSelector): The channel selector for input.
         channel_selector_output (ChannelSelector): The channel selector for output.
         window_selector (WindowSelector): The selector for the windows.
-        overlap_selectgor (OverlapSelector): The selector for the overlaps.
+        overlap_selector (OverlapSelector): The selector for the overlaps.
+        exporter_selector (ExporterSelector): The selector for the exporters.
+        file_exporter (FileExporter): The file exporter component.
+        toggle_group (ToggleGroup): The toggle group component.
+        toggle_y_axis (ToggleYAxis): The toggle for the y-axis.
+        toggle_x_axis (ToggleXAxis): The toggle for the x-axis.
         accordion (pn.Accordion): The accordion component.
 
     """
@@ -97,6 +101,7 @@ class Accordion:
         """Get the accordion component.
 
         Returns:
-            pn.Accordion: The accordion component.
+            _component (object):
+                The stored widget.
         """
         return self._component

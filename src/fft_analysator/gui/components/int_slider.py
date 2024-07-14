@@ -6,17 +6,15 @@ class IntSlider:
     A helper class used to represent a helper Integer Slider widget to store the logic for the
     generator navigation buttons.
 
-    Attributes
-    ----------
-    int_slider : object
-        An instance of the panel IntSlider widget.
-    _component : object
-        The panel IntSlider widget with specific parameters.
+    Attributes:
+        int_slider (object):
+            An instance of the panel IntSlider widget.
+        _component (object):
+            The panel IntSlider widget with specific parameters.
 
-    Methods
-    -------
-    component()
-        Gets the stored widget.
+    Methods:
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self):
@@ -35,9 +33,8 @@ class IntSlider:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component

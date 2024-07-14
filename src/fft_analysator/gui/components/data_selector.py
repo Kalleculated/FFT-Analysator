@@ -7,19 +7,17 @@ class DataSelector:
 
     This class encapsulates a panel Select widget and provides an interface for populating it with options and retrieving the selected option.
 
-    Attributes
-    ----------
-    selector : object
-        An instance of the panel Select widget.
-    options : list
-        A list of options for the selector widget. Initially empty.
-    _component : object
-        The panel Select widget with specific parameters.
+    Attributes:
+        selector (object):
+            An instance of the panel Select widget.
+        options (list):
+            A list of options for the selector widget. Initially empty.
+        _component (object):
+            The panel Select widget with specific parameters.
 
-    Methods
-    -------
-    component()
-        Gets the stored widget.
+    Methods:
+        component():
+            Gets the stored widget.
     """
 
     def __init__(self):
@@ -40,9 +38,8 @@ class DataSelector:
         """
         Gets the stored widget.
 
-        Returns
-        -------
-        object
-            The stored widget.
+        Returns:
+            _component (object):
+                The stored widget.
         """
         return self._component
