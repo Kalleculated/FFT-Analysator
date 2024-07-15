@@ -10,16 +10,54 @@ class Signal_Process:
     two signals, frequency and impulse response between input and output data and cross/auto correlation between two
     given signals.
 
-    Args:
-        file_path (object): Get the callback to the data object
-        window (string): window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',
-        'Hamming', 'Bartlett', 'Blackman'
-        block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
-        overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',
-        '75%','87.5%'
+
+        Attributes:
+        file_path (string or path): A String or Path to import.
+        window (string): Window name for the FFT
+        block_size (int): Block size for processing.
+        overlap (string): Overlap percentage
+        channels (list): List of channels
+        current_data (Numpy Array): Current Data for the Signal tab
+        impulse_response_data (Numpy Array): Data for the Impulse response
+        amplitude_response_data (Numpy Array): Data for the Amplitude response
+        phase_response_data (Numpy Array): Data for the Phase
+        data_callback (object):
+        p0 (int): Is equal to 20*10**-6. Auditory threshold
+        source (Acoular MaskedTimeSamples): MaskedTimeSamples class to filter out channles
+        abtastrate (int): Sample frequency
+        numchannels_total (int): Total numbers of channels
+        invalid_channel_list (list): Invalid channel list
+        powerspectra (Acoular Powerspectra): Acoular Powerspectra class for calculation
+        input_channel (int): Input channel
+        output_channel (int): Output channel
+
+
+    Methods:
+        set_parameters(int, str, str): Sets Parameters
+        invalid_channels(list): Filters all invalid channels
+        create_time_axis(int): Creates time axis
+        create_frequency_axis(): Creates frequncy axis
+        create_correlation_axis(int): Create correlation axis
+        SPL(channel): Calculates Sound Pressure Level
+        csm(csm_dB=False): Calculates Cross spectral Matrix
+        coherence(): Calculates Coherence
+        frequency_response( frq_rsp_dB=True): Calculates frequency response
+        phase_response(deg=True): Calculates phase response
+        impuls_response(imp_dB=False): Calculates impulse response
+        correlation(type=None): Calculates correlation
     """
 
     def __init__(self, channels=[], file_path=None, window='Hanning', block_size=1024, overlap='50%', data_callback=None):
+        """
+        Constructs all the necessary attributes for the Signal_Process object.
+
+
+        Args:
+            file_path (object): Get the callback to the data object
+            window (string): window function for the fourier transformation: Allowed options: 'Rectangular', 'Hanning', 'Hamming', 'Bartlett', 'Blackman'
+            block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
+            overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None', '50%', '75%', '87.5%'
+        """
         self.file_path = file_path
         self.window = window
         self.block_size = block_size
@@ -70,6 +108,7 @@ class Signal_Process:
     def invalid_channels(self, valid_channels):
         """
         The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.
+
         Args:
             valid_channels (list): Contains the two selected channels chosen by the user.
         """
@@ -78,20 +117,28 @@ class Signal_Process:
         self.source.invalid_channels = self.invalid_channel_list
 
     # create a time axis
-    def create_time_axis(self,N):
+    def create_time_axis(self, N):
         """
         The create_time_axis function creates a time axis for the x-Axis
+
         Args:
             N (int): Size of the axis
+
+        Returns:
+            time_axis (np.array): The time axis.
         """
 
         time_axis = np.arange(N) / self.abtastrate
+
         return time_axis
 
     # create frequency axis
     def create_frequency_axis(self):
         """
         The create_frequency_axis function creates the x-Axis for the frequency function
+
+        Returns:
+            powerspectra.fftfreq (np.array): The frequency axis
         """
 
         return self.powerspectra.fftfreq()
@@ -100,8 +147,12 @@ class Signal_Process:
     def create_correlation_axis(self, N):
         """
         The create_correlation_axis function creates the x-Axis for the correlation function
+
         Args:
             N (int): Size of the axis
+
+        Returns:
+            tau (np.array): The correlation axis
         """
 
         block_size_factor = self.data_callback.source.numsamples / self.block_size
@@ -112,13 +163,15 @@ class Signal_Process:
 
         return tau
 
-    def SPL(self,channel):
+    def SPL(self, channel):
         """
         The SPL function calculates the Sound Pressure Level of the current signal.
 
         Args:
             channel (int): Channel number.
 
+        Returns:
+            SPL (int): Sound Pressure Level of a channel
         """
 
         return 20*np.log10(np.abs(self.data_callback.set_channel_on_data_block(channel))/self.p0)
@@ -129,17 +182,14 @@ class Signal_Process:
     def csm(self,csm_dB=False):
         """
         The csm function calculates the csm (Cross Spectral Matrix) of Acoular for the valid signals. It returns a
-        three-dimensional array with size (number of frequencies,2,2) where [:, signal1, signal2] is the
+        three-dimensional array with size (number of frequencies, 2, 2) where [:, signal1, signal2] is the
         Cross spectral density between signal1 and signal2.
 
         Args:
-            window (string): window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',
-            'Hamming', 'Bartlett', 'Blackman'
-            block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
-            overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',
-            '75%','87.5%'
-            csm_db (boolean): Return the array in dB values.
+            csm_dB (Boolean): Return the array in dB values.
 
+        Returns:
+            current_data (np.array): The Cross Spectral Matrix
         """
 
         if csm_dB:
@@ -156,6 +206,9 @@ class Signal_Process:
 
         Args:
             None
+
+        Returns:
+            current_data (np.array): The coherence
         """
         csm_matrix = self.csm()
 
@@ -176,7 +229,10 @@ class Signal_Process:
         and Gxx is the Power Spectral Density of signal x.
 
         Args:
-            db (boolean): Return the array ian dB values.
+            frq_rsp_dB (boolean): Return the array in dB values.
+
+        Returns:
+            amplitude_response_data (np.array): The frequency response
         """
         csm_matrix = self.csm()
 
@@ -204,6 +260,9 @@ class Signal_Process:
 
         Args:
             deg (boolean): Return the array in degrees
+
+        Returns:
+            phase_response_data (np.array): The phase response
         """
         csm_matrix = self.csm()
 
@@ -226,6 +285,8 @@ class Signal_Process:
 
         Args:
             imp_dB (boolean): Return the array in dB values.
+        Returns:
+            impulse_response_data (np.array): The impulse response
         """
         csm_matrix = self.csm()
         if self.input_channel == self.output_channel:
@@ -259,6 +320,8 @@ class Signal_Process:
 
         Args:
             type (string): Determines if an auto or cross correlation is being calculated. Allowed options: 'xx', 'yy', 'xy'
+        Returns:
+            current_data (np.array): The correlation data
         """
         csm_matrix = self.csm()
         N = len(csm_matrix[:, 0, 0])
