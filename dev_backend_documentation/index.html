@@ -1587,6 +1587,202 @@ internal Signalprocessing class. It contains information about the block size, d
 sample frequency. It is able to return the complete data as a Numpy array or iterate over the defined block size.</p>
 
 
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.file_paths">file_paths</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a> or path</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A String or Path to import.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.block_size">block_size</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Block size for processing.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.table_key">table_key</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Table key names.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.source">source</span></code></td>
+            <td>
+                  <code><span title="Acoular.TimeSamples">TimeSamples</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Acoular TimeSamples class.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.source_result">source_result</span></code></td>
+            <td>
+                  <code>generator</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Generator of the current block result.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.selected_data_block">selected_data_block</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Selected data block.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.current_block_idx">current_block_idx</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Index of the current data block.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.selected_channel_data">selected_channel_data</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>All data of selected channel.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.reinitialize_source" href="#fft_analysator.analysis.preprocessing.Preprocess.reinitialize_source">reinitialize_source</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Reinitializes the generator</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.set_channel_data" href="#fft_analysator.analysis.preprocessing.Preprocess.set_channel_data">set_channel_data</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gives the complete data of a channel</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.set_channel_on_data_block" href="#fft_analysator.analysis.preprocessing.Preprocess.set_channel_on_data_block">set_channel_on_data_block</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gives the data block of a channel</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.set_next_data_block" href="#fft_analysator.analysis.preprocessing.Preprocess.set_next_data_block">set_next_data_block</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gives the next data block</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.set_current_channel" href="#fft_analysator.analysis.preprocessing.Preprocess.set_current_channel">set_current_channel</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Changes the current selected channel</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.set_data_block_to_idx" href="#fft_analysator.analysis.preprocessing.Preprocess.set_data_block_to_idx">set_data_block_to_idx</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Returns the data block of an idx</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.get_channel_size" href="#fft_analysator.analysis.preprocessing.Preprocess.get_channel_size">get_channel_size</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets the channel size</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.get_channel_count" href="#fft_analysator.analysis.preprocessing.Preprocess.get_channel_count">get_channel_count</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets the channel count</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.get_abtastrate" href="#fft_analysator.analysis.preprocessing.Preprocess.get_abtastrate">get_abtastrate</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets the sample frequency</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.preprocessing.Preprocess.get_table_names" href="#fft_analysator.analysis.preprocessing.Preprocess.get_table_names">get_table_names</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets the table names</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
 <p><span class="doc-section-title">Parameters:</span></p>
     <table>
       <thead>
@@ -1631,22 +1827,36 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs all the necessary attributes for the Preprocess object.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_paths (object): Get the callback to the data object</span>
+<span class="sd">        block_size (int): Length of data block.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span> <span class="o">=</span> <span class="n">file_paths</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">block_size</span>
@@ -1658,9 +1868,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
         <span class="bp">self</span><span class="o">.</span><span class="n">selected_data_block</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_result</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">current_block_idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">channel_count</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">channel_size</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="bp">self</span><span class="o">.</span><span class="n">selected_channel_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 </code></pre></div></td></tr></table></div>
                   </details>
@@ -1692,16 +1900,45 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
       <p>Get_abtastrate returns the sample_freq from the current .h5 file via Acoular</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>abtasterate</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sample Frequency</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_abtastrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_abtastrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_abtastrate returns the sample_freq from the current .h5 file via Acoular</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        abtasterate (int): Sample Frequency</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">abtastrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">sample_freq</span>
     <span class="k">return</span> <span class="n">abtastrate</span>
@@ -1726,18 +1963,49 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
       <p>Get_channel_count returns the number of channels of the current .h5 file</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>count</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of channels</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_channel_count returns the number of channels of the current .h5 file</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        count (int): Number of channels</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numchannels</span>
+
     <span class="k">return</span> <span class="n">count</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1760,17 +2028,46 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
       <p>Get_channel_size returns the size of the current channel</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>size</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Channel size</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_channel_size returns the size of the current channel</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        size (int): Channel size</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#size = np.array(self.source)[:, self.current_channel].shape[0]</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">converted_file</span><span class="p">)[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_channel</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1796,23 +2093,54 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
       <p>Get_table_names returns a list of all data set keyword contained in the current .h5 File</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>keys</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of table names</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_table_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_table_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_table_names returns a list of all data set keyword contained in the current .h5 File</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        keys (list): A list of table names</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="c1"># Zugriff auf den gewünschten Datensatz</span>
         <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
 
     <span class="k">return</span> <span class="n">keys</span>
 </code></pre></div></td></tr></table></div>
@@ -1839,15 +2167,15 @@ viewed data blocks.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reinitialize_source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reinitialize_source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The reinitialize_source function reinitializes the generator from Acoular. It is used for returning to already</span>
 <span class="sd">    viewed data blocks.</span>
@@ -1909,18 +2237,18 @@ saving the data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_channel_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_channel_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_channel_data sets returns the complete channel by iterating over the generator of Acoular and</span>
 <span class="sd">    saving the data blocks in a Numpy Array.</span>
@@ -1981,22 +2309,28 @@ saving the data blocks in a Numpy Array.</p>
           </tr>
       </tbody>
     </table>
+      <p>Returns:
+    Numpy Array</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_channel_on_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_channel_on_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_channel_data_on_data_block sets returns the block data of a channel as a Numpy Array.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        channel (int): Channel number.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Numpy Array</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_data_block</span><span class="p">[:,</span> <span class="n">channel</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
@@ -2051,14 +2385,14 @@ saving the data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_current_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_current_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_current_channel sets the attribute current_channel by taking a channel.</span>
 
@@ -2119,23 +2453,23 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_data_block_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_data_block_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of</span>
 <span class="sd">    the generator from Acoular and saving this data blocks in a Numpy Array.</span>
@@ -2176,14 +2510,14 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_next_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_next_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_next_data_block sets the attribute selected_data_block by selecting the next element of</span>
 <span class="sd">    the generator from Acoular and saving this data blocks in a Numpy Array.</span>
@@ -2258,6 +2592,136 @@ It is initialized by a required the file_path, a window option for the Fourier t
 and an Overlap percentage. Possible signal processing are CSM calculation (Cross Spectral Matrix), coherence between
 two signals, frequency and impulse response between input and output data and cross/auto correlation between two
 given signals.</p>
+<pre><code>Attributes:
+file_path (string or path): A String or Path to import.
+window (string): Window name for the FFT
+block_size (int): Block size for processing.
+overlap (string): Overlap percentage
+channels (list): List of channels
+current_data (Numpy Array): Current Data for the Signal tab
+impulse_response_data (Numpy Array): Data for the Impulse response
+amplitude_response_data (Numpy Array): Data for the Amplitude response
+phase_response_data (Numpy Array): Data for the Phase
+data_callback (object):
+p0 (int): Is equal to 20*10**-6. Auditory threshold
+source (Acoular MaskedTimeSamples): MaskedTimeSamples class to filter out channles
+abtastrate (int): Sample frequency
+numchannels_total (int): Total numbers of channels
+invalid_channel_list (list): Invalid channel list
+powerspectra (Acoular Powerspectra): Acoular Powerspectra class for calculation
+input_channel (int): Input channel
+output_channel (int): Output channel
+</code></pre>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.set_parameters">set_parameters</span></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sets Parameters</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.invalid_channels" href="#fft_analysator.analysis.signal_processing.Signal_Process.invalid_channels">invalid_channels</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Filters all invalid channels</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.create_time_axis" href="#fft_analysator.analysis.signal_processing.Signal_Process.create_time_axis">create_time_axis</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Creates time axis</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.create_frequency_axis" href="#fft_analysator.analysis.signal_processing.Signal_Process.create_frequency_axis">create_frequency_axis</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Creates frequncy axis</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.create_correlation_axis" href="#fft_analysator.analysis.signal_processing.Signal_Process.create_correlation_axis">create_correlation_axis</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Create correlation axis</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.SPL" href="#fft_analysator.analysis.signal_processing.Signal_Process.SPL">SPL</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates Sound Pressure Level</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.csm" href="#fft_analysator.analysis.signal_processing.Signal_Process.csm">csm</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates Cross spectral Matrix</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.coherence" href="#fft_analysator.analysis.signal_processing.Signal_Process.coherence">coherence</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates Coherence</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.frequency_response" href="#fft_analysator.analysis.signal_processing.Signal_Process.frequency_response">frequency_response</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates frequency response</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.phase_response" href="#fft_analysator.analysis.signal_processing.Signal_Process.phase_response">phase_response</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates phase response</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.impuls_response" href="#fft_analysator.analysis.signal_processing.Signal_Process.impuls_response">impuls_response</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates impulse response</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.correlation" href="#fft_analysator.analysis.signal_processing.Signal_Process.correlation">correlation</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Calculates correlation</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2292,7 +2756,7 @@ given signals.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',</p>
+                <p>window function for the fourier transformation: Allowed options: 'Rectangular', 'Hanning', 'Hamming', 'Bartlett', 'Blackman'</p>
               </div>
             </td>
             <td>
@@ -2320,7 +2784,7 @@ given signals.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',</p>
+                <p>Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None', '50%', '75%', '87.5%'</p>
               </div>
             </td>
             <td>
@@ -2332,34 +2796,54 @@ given signals.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">[],</span> <span class="n">file_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;Hanning&#39;</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span> <span class="n">data_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs all the necessary attributes for the Signal_Process object.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (object): Get the callback to the data object</span>
+<span class="sd">        window (string): window function for the fourier transformation: Allowed options: &#39;Rectangular&#39;, &#39;Hanning&#39;, &#39;Hamming&#39;, &#39;Bartlett&#39;, &#39;Blackman&#39;</span>
+<span class="sd">        block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536</span>
+<span class="sd">        overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: &#39;None&#39;, &#39;50%&#39;, &#39;75%&#39;, &#39;87.5%&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span> <span class="o">=</span> <span class="n">block_size</span>
@@ -2446,24 +2930,51 @@ given signals.</p>
       </tbody>
     </table>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>SPL</code></td>            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sound Pressure Level of a channel</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">SPL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">channel</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">SPL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The SPL function calculates the Sound Pressure Level of the current signal.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        channel (int): Channel number.</span>
 
+<span class="sd">    Returns:</span>
+<span class="sd">        SPL (int): Sound Pressure Level of a channel</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_callback</span><span class="o">.</span><span class="n">set_channel_on_data_block</span><span class="p">(</span><span class="n">channel</span><span class="p">))</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="p">)</span>
@@ -2488,30 +2999,59 @@ given signals.</p>
 
       <p>The coherence function calculates the coherence between two given signals.</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>current_data</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The coherence</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The coherence function calculates the coherence between two given signals.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        current_data (np.array): The coherence</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
@@ -2572,39 +3112,45 @@ given signals.</p>
           </tr>
       </tbody>
     </table>
+      <p>Returns:
+    current_data (np.array): The correlation data</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The correlation function calculates the correlation response between the two given signals.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        type (string): Determines if an auto or cross correlation is being calculated. Allowed options: &#39;xx&#39;, &#39;yy&#39;, &#39;xy&#39;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        current_data (np.array): The correlation data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">csm_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -2643,30 +3189,88 @@ given signals.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The create_correlation_axis function creates the x-Axis for the correlation function
-Args:
-    N (int): Size of the axis</p>
+      <p>The create_correlation_axis function creates the x-Axis for the correlation function</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>N</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Size of the axis</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>tau</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The correlation axis</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_correlation_axis function creates the x-Axis for the correlation function</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        N (int): Size of the axis</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tau (np.array): The correlation axis</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">block_size_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_callback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numsamples</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span>
@@ -2697,16 +3301,44 @@ Args:
 
       <p>The create_frequency_axis function creates the x-Axis for the frequency function</p>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>powerspectra.fftfreq (np.array): The frequency axis</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_frequency_axis function creates the x-Axis for the frequency function</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        powerspectra.fftfreq (np.array): The frequency axis</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">powerspectra</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">()</span>
@@ -2729,28 +3361,88 @@ Args:
 
     <div class="doc doc-contents ">
 
-      <p>The create_time_axis function creates a time axis for the x-Axis
-Args:
-    N (int): Size of the axis</p>
+      <p>The create_time_axis function creates a time axis for the x-Axis</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>N</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Size of the axis</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>time_axis</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The time axis.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_time_axis function creates a time axis for the x-Axis</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        N (int): Size of the axis</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        time_axis (np.array): The time axis.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">abtastrate</span>
+
     <span class="k">return</span> <span class="n">time_axis</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2772,7 +3464,7 @@ Args:
     <div class="doc doc-contents ">
 
       <p>The csm function calculates the csm (Cross Spectral Matrix) of Acoular for the valid signals. It returns a
-three-dimensional array with size (number of frequencies,2,2) where [:, signal1, signal2] is the
+three-dimensional array with size (number of frequencies, 2, 2) where [:, signal1, signal2] is the
 Cross spectral density between signal1 and signal2.</p>
 
 
@@ -2788,51 +3480,9 @@ Cross spectral density between signal1 and signal2.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>window</code></td>
+            <td><code>csm_dB</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>window function for the fourier transformation: Allowed options: 'Rectangular','Hanning',</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>block_size</code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>overlap</code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None','50%',</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>csm_db</code></td>
-            <td>
-                  <code>boolean</code>
+                  <code>Boolean</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2840,7 +3490,30 @@ Cross spectral density between signal1 and signal2.</p>
               </div>
             </td>
             <td>
-                <em>required</em>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>current_data</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Cross Spectral Matrix</p>
+              </div>
             </td>
           </tr>
       </tbody>
@@ -2848,41 +3521,35 @@ Cross spectral density between signal1 and signal2.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">csm_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">csm_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The csm function calculates the csm (Cross Spectral Matrix) of Acoular for the valid signals. It returns a</span>
-<span class="sd">    three-dimensional array with size (number of frequencies,2,2) where [:, signal1, signal2] is the</span>
+<span class="sd">    three-dimensional array with size (number of frequencies, 2, 2) where [:, signal1, signal2] is the</span>
 <span class="sd">    Cross spectral density between signal1 and signal2.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        window (string): window function for the fourier transformation: Allowed options: &#39;Rectangular&#39;,&#39;Hanning&#39;,</span>
-<span class="sd">        &#39;Hamming&#39;, &#39;Bartlett&#39;, &#39;Blackman&#39;</span>
-<span class="sd">        block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536</span>
-<span class="sd">        overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: &#39;None&#39;,&#39;50%&#39;,</span>
-<span class="sd">        &#39;75%&#39;,&#39;87.5%&#39;</span>
-<span class="sd">        csm_db (boolean): Return the array in dB values.</span>
+<span class="sd">        csm_dB (Boolean): Return the array in dB values.</span>
 
+<span class="sd">    Returns:</span>
+<span class="sd">        current_data (np.array): The Cross Spectral Matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">csm_dB</span><span class="p">:</span>
@@ -2927,17 +3594,40 @@ and Gxx is the Power Spectral Density of signal x.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>db</code></td>
+            <td><code>frq_rsp_dB</code></td>
             <td>
                   <code>boolean</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Return the array ian dB values.</p>
+                <p>Return the array in dB values.</p>
               </div>
             </td>
             <td>
-                <em>required</em>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>amplitude_response_data</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The frequency response</p>
+              </div>
             </td>
           </tr>
       </tbody>
@@ -2945,37 +3635,43 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frq_rsp_dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frq_rsp_dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The frequency_response function calculates the frequency response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral density between signal x and signal y</span>
 <span class="sd">    and Gxx is the Power Spectral Density of signal x.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        db (boolean): Return the array ian dB values.</span>
+<span class="sd">        frq_rsp_dB (boolean): Return the array in dB values.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        amplitude_response_data (np.array): The frequency response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
@@ -3043,42 +3739,46 @@ and Gxx is the Power Spectral Density of signal x.</p>
           </tr>
       </tbody>
     </table>
+      <p>Returns:
+    impulse_response_data (np.array): The impulse response</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The impulse_response function calculates the impulse response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Spectral density between signal x and signal y</span>
@@ -3086,6 +3786,8 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        imp_dB (boolean): Return the array in dB values.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        impulse_response_data (np.array): The impulse response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
@@ -3130,23 +3832,52 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.
-Args:
-    valid_channels (list): Contains the two selected channels chosen by the user.</p>
+      <p>The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>valid_channels</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contains the two selected channels chosen by the user.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        valid_channels (list): Contains the two selected channels chosen by the user.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3205,28 +3936,54 @@ and Gxx is the Power Spectral Density of signal x.</p>
       </tbody>
     </table>
 
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>phase_response_data</code></td>            <td>
+                  <code><span title="numpy.array">array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The phase response</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The phase_response function calculates the phase response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral Density between signal x and signal y</span>
@@ -3234,6 +3991,9 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        deg (boolean): Return the array in degrees</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        phase_response_data (np.array): The phase response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
