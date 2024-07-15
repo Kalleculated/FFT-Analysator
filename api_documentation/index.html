@@ -805,7 +805,7 @@
 
 <span class="n">signal_proc</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">my_channels</span><span class="p">,</span> <span class="n">my_window</span><span class="p">,</span> <span class="n">my_overlap</span><span class="p">)</span>
 
-<span class="c1"># Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array</span>
+<span class="c1"># Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array, this is done with acoular</span>
 <span class="c1"># with dimensions [Frequencies, Input channel, Output Channel], where in our case the Input channel is 1 and</span>
 <span class="c1"># Output channel is 4. The data is complex valued.</span>
 
@@ -814,6 +814,8 @@
 <span class="n">csm_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Cross spectral density between channel 1 and 4</span>
 <span class="n">csm_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Auto spectral density of channel 1</span>
 <span class="n">csm_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Cross spectral density of channel 4</span>
+
+<span class="n">phase_response</span> <span class="o">=</span> <span class="n">signal_proc</span><span class="o">.</span><span class="n">phase_response</span><span class="p">()</span> <span class="c1"># Calculate the phase response</span>
 </code></pre></div>
 
 
