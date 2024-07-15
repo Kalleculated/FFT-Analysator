@@ -32,7 +32,7 @@ signal_proc = sp.Signal_Process(channels=[], file_path=my_file_path, block_size=
 
 signal_proc.set_parameters(my_channels, my_window, my_overlap)
 
-# Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array
+# Calculating now for example the CSM (Cross spectral Matrix). The CSM is a three dimensional array, this is done with acoular
 # with dimensions [Frequencies, Input channel, Output Channel], where in our case the Input channel is 1 and
 # Output channel is 4. The data is complex valued.
 
@@ -41,4 +41,6 @@ csm_data = signal_proc.csm()
 csm_data[:,0,1] # Cross spectral density between channel 1 and 4
 csm_data[:,0,0] # Auto spectral density of channel 1
 csm_data[:,1,1] # Cross spectral density of channel 4
+
+phase_response = signal_proc.phase_response() # Calculate the phase response
 ```
