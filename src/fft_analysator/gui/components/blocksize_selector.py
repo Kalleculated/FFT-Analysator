@@ -17,7 +17,7 @@ class BlocksizeSelector:
         The block size selector is initialized as a panel Select widget with specific parameters.
         """
         self.blocksize_selector = pn.widgets.Select
-        self.sizes = [128, 256, 512, 1024, 2048, 8192, 16384, 32768, 65536]
+        self.sizes = [128, 256, 512, 1024, 2048,4096, 8192, 16384, 32768, 65536]
         self._component = self.blocksize_selector(name='Select Blocksize', options=self.sizes, value=1024)
 
     @property

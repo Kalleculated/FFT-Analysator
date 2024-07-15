@@ -193,7 +193,7 @@ class Signal_Process:
         """
 
         if csm_dB:
-            self.current_data = 10*np.log10(self.powerspectra.csm)
+            self.current_data = 10*np.log10(np.divide(self.powerspectra.csm, 10**-12))
             return self.current_data
         else:
             self.current_data = self.powerspectra.csm
@@ -244,10 +244,11 @@ class Signal_Process:
         if frq_rsp_dB:
             # return SPL(f) based on H1 estimator
             self.amplitude_response_data = 20*np.log10(abs(np.squeeze(H)/self.p0))
+            
         else:
             # absoulte value of H1 estimator
             self.amplitude_response_data = np.abs(np.squeeze(H))
-
+                
         return self.amplitude_response_data
 
     # calculate phase response based on H1 estimator --> H1 = Gxy / Gxx
