@@ -879,6 +879,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fft_analysator.analysis.signal_processing.Signal_Process.set_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;set_parameters
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1418,6 +1427,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fft_analysator.analysis.signal_processing.Signal_Process.set_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;set_parameters
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1600,7 +1618,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.file_paths">file_paths</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1622,7 +1640,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.table_key">table_key</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1655,7 +1673,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.selected_data_block">selected_data_block</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1677,7 +1695,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.selected_channel_data">selected_channel_data</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2310,7 +2328,7 @@ saving the data blocks in a Numpy Array.</p>
       </tbody>
     </table>
       <p>Returns:
-    Numpy Array</p>
+    numpy_array</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
@@ -2330,7 +2348,7 @@ saving the data blocks in a Numpy Array.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        channel (int): Channel number.</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        Numpy Array</span>
+<span class="sd">        numpy_array</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_data_block</span><span class="p">[:,</span> <span class="n">channel</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
@@ -2603,7 +2621,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.file_path">file_path</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2614,7 +2632,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.window">window</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2636,7 +2654,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.overlap">overlap</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2658,7 +2676,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.current_data">current_data</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2669,7 +2687,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.impulse_response_data">impulse_response_data</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2680,7 +2698,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.amplitude_response_data">amplitude_response_data</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2691,7 +2709,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.phase_response_data">phase_response_data</span></code></td>
             <td>
-                  <code>Numpy Array</code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2812,7 +2830,7 @@ given signals.</p>
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.set_parameters">set_parameters</span></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fft_analysator.analysis.signal_processing.Signal_Process.set_parameters" href="#fft_analysator.analysis.signal_processing.Signal_Process.set_parameters">set_parameters</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Sets Parameters</p>
@@ -2926,7 +2944,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code>file_path</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2940,7 +2958,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code>window</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2968,7 +2986,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code>overlap</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3027,10 +3045,10 @@ given signals.</p>
 
 
 <span class="sd">    Args:</span>
-<span class="sd">        file_path (object): Get the callback to the data object</span>
-<span class="sd">        window (string): window function for the fourier transformation: Allowed options: &#39;Rectangular&#39;, &#39;Hanning&#39;, &#39;Hamming&#39;, &#39;Bartlett&#39;, &#39;Blackman&#39;</span>
+<span class="sd">        file_path (str): Get the callback to the data object</span>
+<span class="sd">        window (str): window function for the fourier transformation: Allowed options: &#39;Rectangular&#39;, &#39;Hanning&#39;, &#39;Hamming&#39;, &#39;Bartlett&#39;, &#39;Blackman&#39;</span>
 <span class="sd">        block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536</span>
-<span class="sd">        overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: &#39;None&#39;, &#39;50%&#39;, &#39;75%&#39;, &#39;87.5%&#39;</span>
+<span class="sd">        overlap (str): Overlap percentage between two blocks for the Welch-Method. Allowed options: &#39;None&#39;, &#39;50%&#39;, &#39;75%&#39;, &#39;87.5%&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
@@ -3143,18 +3161,18 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
 <span class="normal">176</span>
-<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">SPL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">SPL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The SPL function calculates the Sound Pressure Level of the current signal.</span>
 
@@ -3199,7 +3217,7 @@ given signals.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>current_data</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3212,16 +3230,7 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
 <span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
@@ -3231,7 +3240,16 @@ given signals.</p>
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
-<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coherence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The coherence function calculates the coherence between two given signals.</span>
 
@@ -3239,7 +3257,7 @@ given signals.</p>
 <span class="sd">        None</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        current_data (np.array): The coherence</span>
+<span class="sd">        current_data (numpy_array): The coherence</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
@@ -3287,7 +3305,7 @@ given signals.</p>
           <tr class="doc-section-item">
             <td><code>type</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3301,20 +3319,11 @@ given signals.</p>
       </tbody>
     </table>
       <p>Returns:
-    current_data (np.array): The correlation data</p>
+    current_data (numpy_array): The correlation data</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
-<span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">326</span>
 <span class="normal">327</span>
 <span class="normal">328</span>
 <span class="normal">329</span>
@@ -3332,14 +3341,23 @@ given signals.</p>
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
-<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The correlation function calculates the correlation response between the two given signals.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        type (string): Determines if an auto or cross correlation is being calculated. Allowed options: &#39;xx&#39;, &#39;yy&#39;, &#39;xy&#39;</span>
+<span class="sd">        type (str): Determines if an auto or cross correlation is being calculated. Allowed options: &#39;xx&#39;, &#39;yy&#39;, &#39;xy&#39;</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        current_data (np.array): The correlation data</span>
+<span class="sd">        current_data (numpy_array): The correlation data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">csm_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -3422,7 +3440,7 @@ given signals.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>tau</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3435,16 +3453,7 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
@@ -3452,7 +3461,16 @@ given signals.</p>
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
-<span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_correlation_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_correlation_axis function creates the x-Axis for the correlation function</span>
 
@@ -3460,7 +3478,7 @@ given signals.</p>
 <span class="sd">        N (int): Size of the axis</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        tau (np.array): The correlation axis</span>
+<span class="sd">        tau (numpy_array): The correlation axis</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">block_size_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_callback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">numsamples</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span>
@@ -3506,7 +3524,7 @@ given signals.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>powerspectra.fftfreq (np.array): The frequency axis</p>
+                <p>powerspectra.fftfreq (numpy_array): The frequency axis</p>
               </div>
             </td>
           </tr>
@@ -3515,20 +3533,20 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_frequency_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_frequency_axis function creates the x-Axis for the frequency function</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        powerspectra.fftfreq (np.array): The frequency axis</span>
+<span class="sd">        powerspectra.fftfreq (numpy_array): The frequency axis</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">powerspectra</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">()</span>
@@ -3594,7 +3612,7 @@ given signals.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>time_axis</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3607,20 +3625,20 @@ given signals.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_time_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The create_time_axis function creates a time axis for the x-Axis</span>
 
@@ -3628,7 +3646,7 @@ given signals.</p>
 <span class="sd">        N (int): Size of the axis</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        time_axis (np.array): The time axis.</span>
+<span class="sd">        time_axis (numpy_array): The time axis.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">abtastrate</span>
@@ -3672,7 +3690,7 @@ Cross spectral density between signal1 and signal2.</p>
           <tr class="doc-section-item">
             <td><code>csm_dB</code></td>
             <td>
-                  <code>Boolean</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3698,7 +3716,7 @@ Cross spectral density between signal1 and signal2.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>current_data</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3711,16 +3729,7 @@ Cross spectral density between signal1 and signal2.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">191</span>
 <span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
@@ -3729,17 +3738,26 @@ Cross spectral density between signal1 and signal2.</p>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
-<span class="normal">200</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">csm_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">csm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">csm_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The csm function calculates the csm (Cross Spectral Matrix) of Acoular for the valid signals. It returns a</span>
 <span class="sd">    three-dimensional array with size (number of frequencies, 2, 2) where [:, signal1, signal2] is the</span>
 <span class="sd">    Cross spectral density between signal1 and signal2.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        csm_dB (Boolean): Return the array in dB values.</span>
+<span class="sd">        csm_dB (bool): Return the array in dB values.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        current_data (np.array): The Cross Spectral Matrix</span>
+<span class="sd">        current_data (numpy_array): The Cross Spectral Matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">csm_dB</span><span class="p">:</span>
@@ -3786,7 +3804,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
           <tr class="doc-section-item">
             <td><code>frq_rsp_dB</code></td>
             <td>
-                  <code>boolean</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3812,7 +3830,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>amplitude_response_data</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3825,16 +3843,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
@@ -3852,17 +3861,26 @@ and Gxx is the Power Spectral Density of signal x.</p>
 <span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
-<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frq_rsp_dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">frequency_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frq_rsp_dB</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The frequency_response function calculates the frequency response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral density between signal x and signal y</span>
 <span class="sd">    and Gxx is the Power Spectral Density of signal x.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        frq_rsp_dB (boolean): Return the array in dB values.</span>
+<span class="sd">        frq_rsp_dB (bool): Return the array in dB values.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        amplitude_response_data (np.array): The frequency response</span>
+<span class="sd">        amplitude_response_data (numpy_array): The frequency response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
@@ -3918,7 +3936,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
           <tr class="doc-section-item">
             <td><code>imp_dB</code></td>
             <td>
-                  <code>boolean</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3932,20 +3950,11 @@ and Gxx is the Power Spectral Density of signal x.</p>
       </tbody>
     </table>
       <p>Returns:
-    impulse_response_data (np.array): The impulse response</p>
+    impulse_response_data (numpy_array): The impulse response</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
@@ -3970,16 +3979,25 @@ and Gxx is the Power Spectral Density of signal x.</p>
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">impuls_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">imp_dB</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The impulse_response function calculates the impulse response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Spectral density between signal x and signal y</span>
 <span class="sd">    and Gxx is the Power Spectral Density of signal x.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        imp_dB (boolean): Return the array in dB values.</span>
+<span class="sd">        imp_dB (bool): Return the array in dB values.</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        impulse_response_data (np.array): The impulse response</span>
+<span class="sd">        impulse_response_data (numpy_array): The impulse response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
@@ -4057,16 +4075,16 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">invalid_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_channels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The invalid_channels function fills the invalid_channel_list with two valid channels chosen by the user.</span>
 
@@ -4114,7 +4132,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
           <tr class="doc-section-item">
             <td><code>deg</code></td>
             <td>
-                  <code>boolean</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4140,7 +4158,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>phase_response_data</code></td>            <td>
-                  <code><span title="numpy.array">array</span></code>
+                  <code>numpy_array</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4153,16 +4171,7 @@ and Gxx is the Power Spectral Density of signal x.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
@@ -4175,17 +4184,26 @@ and Gxx is the Power Spectral Density of signal x.</p>
 <span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
-<span class="normal">277</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">phase_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The phase_response function calculates the phase response between the input and output signal.</span>
 <span class="sd">    It uses the H1 estimator H1 = Gxy / Gxx, where Gxy is the Cross Spectral Density between signal x and signal y</span>
 <span class="sd">    and Gxx is the Power Spectral Density of signal x.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        deg (boolean): Return the array in degrees</span>
+<span class="sd">        deg (bool): Return the array in degrees</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        phase_response_data (np.array): The phase response</span>
+<span class="sd">        phase_response_data (numpy_array): The phase response</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">csm_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csm</span><span class="p">()</span>
 
@@ -4198,6 +4216,137 @@ and Gxx is the Power Spectral Density of signal x.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">phase_response_data</span> <span class="o">=</span> <span class="n">phase</span>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase_response_data</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="fft_analysator.analysis.signal_processing.Signal_Process.set_parameters" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">set_parameters</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">set_parameters</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+      <p>The set_parameters function sets parameters</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>channels</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New selected channels</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>window</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New window function</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>overlap</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New Overlap percentage</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>src/fft_analysator/analysis/signal_processing.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The set_parameters function sets parameters</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        channels (list): New selected channels</span>
+<span class="sd">        window (str): New window function</span>
+<span class="sd">        overlap (str): New Overlap percentage</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">channels</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">channels</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">overlap</span> <span class="o">=</span> <span class="n">overlap</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">invalid_channels</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">powerspectra</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">PowerSpectra</span><span class="p">(</span><span class="n">time_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">block_size</span><span class="p">,</span>
+                                                <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overlap</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
