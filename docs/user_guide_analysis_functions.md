@@ -83,4 +83,4 @@ $$
 $$
 
 **Impulse Response**:
-Frequency response and impulse response are linked via the Fourier transform. Thus, the impulse response, which describes the reaction of a physical system to a Dirac pulse, can be obtained from the inverse Fourier transformation of the frequency response.
+Frequency response and impulse response are linked via the Fourier transform. Thus, the impulse response, which describes the reaction of a physical system to a Dirac pulse, can be obtained from the inverse Fourier transformation of the frequency response. Their exists multiple estimators for the Impulse Response. We have decided to use the $H_1$-Estimator.
