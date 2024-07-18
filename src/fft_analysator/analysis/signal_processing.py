@@ -11,8 +11,8 @@ class Signal_Process:
     given signals.
 
 
-        Attributes:
-        file_path (string or path): A String or Path to import.
+    Attributes:
+        file_path (string): A Path to import.
         window (string): Window name for the FFT
         block_size (int): Block size for processing.
         overlap (string): Overlap percentage
@@ -23,11 +23,11 @@ class Signal_Process:
         phase_response_data (Numpy Array): Data for the Phase
         data_callback (object):
         p0 (int): Is equal to 20*10**-6. Auditory threshold
-        source (Acoular MaskedTimeSamples): MaskedTimeSamples class to filter out channles
+        source (MaskedTimeSamples): MaskedTimeSamples class to filter out channles
         abtastrate (int): Sample frequency
         numchannels_total (int): Total numbers of channels
         invalid_channel_list (list): Invalid channel list
-        powerspectra (Acoular Powerspectra): Acoular Powerspectra class for calculation
+        powerspectra (PowerSpectra): Acoular Powerspectra class for calculation
         input_channel (int): Input channel
         output_channel (int): Output channel
 

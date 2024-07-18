@@ -10,10 +10,10 @@ class Preprocess:
     sample frequency. It is able to return the complete data as a Numpy array or iterate over the defined block size.
 
     Attributes:
-        file_paths (string or path): A String or Path to import.
+        file_paths (string): A Path to import.
         block_size (int): Block size for processing.
         table_key (string): Table key names.
-        source (Acoular.TimeSamples): Acoular TimeSamples class.
+        source (TimeSamples): Acoular TimeSamples class.
         source_result (generator): Generator of the current block result.
         selected_data_block (Numpy Array): Selected data block.
         current_block_idx (int): Index of the current data block.
