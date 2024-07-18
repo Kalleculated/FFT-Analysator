@@ -288,35 +288,35 @@ class Plotter:
             title = "Auto Power Spectrum - Output"
 
             if self.db:
-                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'       
+                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
                 if self.input_channel == self.output_channel:
                     csm_value = csm_dB[:,0,0]
                 else:
-                    csm_value = csm_dB[:,1,1]           
+                    csm_value = csm_dB[:,1,1]
             else:
                 y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
                 if self.input_channel == self.output_channel:
                     csm_value = csm[:,0,0]
                 else:
                     csm_value = csm[:,1,1]
-                    
+
         elif type == 'xy':
             title = "Cross Power Spectrum"
-            
+
             if self.db:
-                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'       
+                y_label = r'PSD in $$\mathrm{dB}/\mathrm{Hz}$$'
                 if self.input_channel == self.output_channel:
                     csm_value = csm_dB[:,0,0]
                 else:
-                    csm_value = csm_dB[:,0,1]           
+                    csm_value = csm_dB[:,0,1]
             else:
                 y_label = r'PSD in $$\mathrm{Pa}^{2}/\mathrm{Hz}$$'
                 if self.input_channel == self.output_channel:
                     csm_value = csm[:,0,0]
                 else:
                     csm_value = csm[:,0,1]
-                    
-                    
+
+
 
         fig = hv.Curve((f,np.abs(csm_value)),kdims="Frequency in Hz", vdims= y_label, label=title)
         fig.opts(color=color_value, shared_axes=False, width=750, height=350, show_grid=self.show_grid,
@@ -345,17 +345,17 @@ class Plotter:
             title = "Auto Correlation - Input"
             y_label = r'$$\mathrm{\psi}_{xx}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='xx')
-            
+
         elif type == 'yy':
             title = "Auto Correlation - Output"
             y_label = r'$$\mathrm{\psi}_{yy}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='yy')
-           
+
         elif type == 'xy':
             title = "Cross Correlation"
             y_label = r'$$\mathrm{\psi}_{xy}(\mathrm{\tau})$$'
             corr = self.signal_process.correlation(type='xy')
-            
+
         if len(corr) % 2 != 0:
             corr = np.roll(corr,1) # shift correlation to 1 sample
 

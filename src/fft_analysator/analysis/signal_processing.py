@@ -340,4 +340,5 @@ class Signal_Process:
                 corr = np.fft.fftshift(np.fft.irfft(csm_matrix[:, 0, 1], n=N))
 
         self.current_data = corr / np.max(np.abs(corr)) # normalize the correlation to max_value
+
         return self.current_data

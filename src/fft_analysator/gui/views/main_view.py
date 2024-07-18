@@ -55,7 +55,6 @@ class MainView:
         if channels:
             signal_process_callback.set_parameters(channels, window, overlap)
 
-            print(show_grid)
             plot = Plotter(signal_process_callback, channels, self.tabs, data_callback, window, overlap,
                             color_picker_value, stretch_value, show_grid,x_log,y_log, db)
 

@@ -60,7 +60,6 @@ class FileExporter:
         if dir:
             self.dir_path = dir
             file_name = str(dir) + "/" + str(method) + "_" + str(chn1) + "_" + str(chn2) + "_" + str(window) + "_" + str(overlap)
-            print(file_name)
             if ext == "Numpy Array":
                 np.save(file_name, data)
             if ext == "Binary":

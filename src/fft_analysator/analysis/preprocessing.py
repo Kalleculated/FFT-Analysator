@@ -97,7 +97,6 @@ class Preprocess:
         """
         self.current_block_idx += 1
         self.selected_data_block = next(self.source_result)
-        print('next')
 
     def set_current_channel(self, channel):
         """
@@ -122,7 +121,6 @@ class Preprocess:
             if idx > 0:
                 for i in range(idx):
                     self.selected_data_block = next(self.source_result)
-            print('previous')
         except StopIteration:
             print('End of file reached')
 
@@ -133,8 +131,8 @@ class Preprocess:
         Returns:
             size (int): Channel size
         """
-        #size = np.array(self.source)[:, self.current_channel].shape[0]
         size = np.array(self.converted_file)[:, self.current_channel].shape[0]
+
         return size
 
     def get_channel_count(self):
@@ -156,6 +154,7 @@ class Preprocess:
             abtasterate (int): Sample Frequency
         """
         abtastrate = self.source.sample_freq
+
         return abtastrate
 
     def get_table_names(self):
@@ -168,6 +167,5 @@ class Preprocess:
         with h5py.File(self.file_paths, 'r') as file:
             # Zugriff auf den gewünschten Datensatz
             keys = list(file.keys())
-
 
         return keys

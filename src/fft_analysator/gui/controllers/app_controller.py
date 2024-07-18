@@ -186,7 +186,6 @@ class AppController:
             and self.sidebar.accordion.channel_selector_output.component.value is not None):
             # Update the toggle group widgets
             self.sidebar.update_toggle_group()
-            print(self.sidebar.accordion.toggle_group.component.value)
             # Update the color picker
             self.sidebar.update_color_picker()
             # Update signal
