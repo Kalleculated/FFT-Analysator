@@ -244,11 +244,11 @@ class Signal_Process:
         if frq_rsp_dB:
             # return SPL(f) based on H1 estimator
             self.amplitude_response_data = 20*np.log10(abs(np.squeeze(H)/self.p0))
-            
+
         else:
             # absoulte value of H1 estimator
             self.amplitude_response_data = np.abs(np.squeeze(H))
-                
+
         return self.amplitude_response_data
 
     # calculate phase response based on H1 estimator --> H1 = Gxy / Gxx

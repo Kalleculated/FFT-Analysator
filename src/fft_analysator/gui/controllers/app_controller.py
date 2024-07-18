@@ -89,7 +89,7 @@ class AppController:
         # Handle the file upload event and update the preprocessing object
         self.file_paths = self.sidebar.accordion.file_input.file_paths
 
-        if self.file_paths:
+        if self.preprocessing:
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
             self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
                                                 block_size=self.sidebar.accordion.blocksize_selector.component.value,
@@ -102,6 +102,52 @@ class AppController:
                 self.sidebar.update_intslider(self.preprocessing)
                 self.sidebar.update_general_plotting_widgets(self.preprocessing)
 
+            self.main_view.update_signal(
+                self.preprocessing,
+                self.signal_process,
+                [self.sidebar.accordion.channel_selector_input.component.value,
+                self.sidebar.accordion.channel_selector_output.component.value],
+                self.sidebar.accordion.toggle_group.stretch,
+                [self.sidebar.accordion.color_picker_ch1.component.value,
+                self.sidebar.accordion.color_picker_ch2.component.value,
+                self.sidebar.accordion.color_picker_result.component.value],
+                self.sidebar.accordion.window_selector.component.value,
+                self.sidebar.accordion.overlap_selector.component.value,
+                self.sidebar.accordion.toggle_group.grid,
+                self.sidebar.accordion.toggle_x_axis.x_log,
+                self.sidebar.accordion.toggle_y_axis.y_log,
+                self.sidebar.accordion.toggle_group.db,
+            )
+            self.main_view.update_analysis_plot(
+                        self.preprocessing,
+                        self.signal_process,
+                        [self.sidebar.accordion.channel_selector_input.component.value,
+                        self.sidebar.accordion.channel_selector_output.component.value],
+                        self.sidebar.accordion.toggle_group.stretch,
+                        [self.sidebar.accordion.color_picker_ch1.component.value,
+                        self.sidebar.accordion.color_picker_ch2.component.value,
+                        self.sidebar.accordion.color_picker_result.component.value],
+                        self.sidebar.accordion.method_selector.component.value,
+                        self.sidebar.accordion.window_selector.component.value,
+                        self.sidebar.accordion.overlap_selector.component.value,
+                        self.sidebar.accordion.toggle_group.grid,
+                        self.sidebar.accordion.toggle_x_axis.x_log,
+                        self.sidebar.accordion.toggle_y_axis.y_log,
+                        self.sidebar.accordion.toggle_group.db,
+
+                    )
+        elif self.file_paths and self.preprocessing is None:
+            self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
+            self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
+                                                block_size=self.sidebar.accordion.blocksize_selector.component.value,
+                                                data_callback=self.preprocessing)
+            # signal_process insert
+            if event.obj == self.sidebar.accordion.file_input.component:
+                self.sidebar.update_file_list()
+                self.sidebar.update_selector(self.preprocessing)
+                self.sidebar.update_channel_selector(self.preprocessing)
+                self.sidebar.update_intslider(self.preprocessing)
+                self.sidebar.update_general_plotting_widgets(self.preprocessing)
         else:
             self.sidebar.update_file_list()
             self.sidebar.update_selector()
