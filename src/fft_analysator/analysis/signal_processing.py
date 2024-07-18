@@ -17,10 +17,10 @@ class Signal_Process:
         block_size (int): Block size for processing.
         overlap (str): Overlap percentage
         channels (list): List of channels
-        current_data (np.array): Current Data for the Signal tab
-        impulse_response_data (np.array): Data for the Impulse response
-        amplitude_response_data (np.array): Data for the Amplitude response
-        phase_response_data (np.array): Data for the Phase
+        current_data (numpy_array): Current Data for the Signal tab
+        impulse_response_data (numpy_array): Data for the Impulse response
+        amplitude_response_data (numpy_array): Data for the Amplitude response
+        phase_response_data (numpy_array): Data for the Phase
         data_callback (object):
         p0 (int): Is equal to 20*10**-6. Auditory threshold
         source (MaskedTimeSamples): MaskedTimeSamples class to filter out channles
@@ -134,7 +134,7 @@ class Signal_Process:
             N (int): Size of the axis
 
         Returns:
-            time_axis (np.array): The time axis.
+            time_axis (numpy_array): The time axis.
         """
 
         time_axis = np.arange(N) / self.abtastrate
@@ -147,7 +147,7 @@ class Signal_Process:
         The create_frequency_axis function creates the x-Axis for the frequency function
 
         Returns:
-            powerspectra.fftfreq (np.array): The frequency axis
+            powerspectra.fftfreq (numpy_array): The frequency axis
         """
 
         return self.powerspectra.fftfreq()
@@ -161,7 +161,7 @@ class Signal_Process:
             N (int): Size of the axis
 
         Returns:
-            tau (np.array): The correlation axis
+            tau (numpy_array): The correlation axis
         """
 
         block_size_factor = self.data_callback.source.numsamples / self.block_size
@@ -198,7 +198,7 @@ class Signal_Process:
             csm_dB (bool): Return the array in dB values.
 
         Returns:
-            current_data (np.array): The Cross Spectral Matrix
+            current_data (numpy_array): The Cross Spectral Matrix
         """
 
         if csm_dB:
@@ -217,7 +217,7 @@ class Signal_Process:
             None
 
         Returns:
-            current_data (np.array): The coherence
+            current_data (numpy_array): The coherence
         """
         csm_matrix = self.csm()
 
@@ -241,7 +241,7 @@ class Signal_Process:
             frq_rsp_dB (bool): Return the array in dB values.
 
         Returns:
-            amplitude_response_data (np.array): The frequency response
+            amplitude_response_data (numpy_array): The frequency response
         """
         csm_matrix = self.csm()
 
@@ -271,7 +271,7 @@ class Signal_Process:
             deg (bool): Return the array in degrees
 
         Returns:
-            phase_response_data (np.array): The phase response
+            phase_response_data (numpy_array): The phase response
         """
         csm_matrix = self.csm()
 
@@ -295,7 +295,7 @@ class Signal_Process:
         Args:
             imp_dB (bool): Return the array in dB values.
         Returns:
-            impulse_response_data (np.array): The impulse response
+            impulse_response_data (numpy_array): The impulse response
         """
         csm_matrix = self.csm()
         if self.input_channel == self.output_channel:
@@ -330,7 +330,7 @@ class Signal_Process:
         Args:
             type (str): Determines if an auto or cross correlation is being calculated. Allowed options: 'xx', 'yy', 'xy'
         Returns:
-            current_data (np.array): The correlation data
+            current_data (numpy_array): The correlation data
         """
         csm_matrix = self.csm()
         N = len(csm_matrix[:, 0, 0])

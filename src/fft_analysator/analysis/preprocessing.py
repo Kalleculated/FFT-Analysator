@@ -15,9 +15,9 @@ class Preprocess:
         table_key (str): Table key names.
         source (TimeSamples): Acoular TimeSamples class.
         source_result (generator): Generator of the current block result.
-        selected_data_block (np.array): Selected data block.
+        selected_data_block (numpy_array): Selected data block.
         current_block_idx (int): Index of the current data block.
-        selected_channel_data (np.array): All data of selected channel.
+        selected_channel_data (numpy_array): All data of selected channel.
 
 
     Methods:
@@ -86,7 +86,7 @@ class Preprocess:
         Args:
             channel (int): Channel number.
         Returns:
-            np.array
+            numpy_array
         """
         return self.selected_data_block[:, channel]
 
