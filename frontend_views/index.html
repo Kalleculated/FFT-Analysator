@@ -2783,11 +2783,11 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/main_view.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">139</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">servable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes the main view servable.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2950,7 +2950,8 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/gui/views/main_view.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 76</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 75</span>
+<span class="normal"> 76</span>
 <span class="normal"> 77</span>
 <span class="normal"> 78</span>
 <span class="normal"> 79</span>
@@ -3009,8 +3010,7 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_analysis_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_analysis_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">analysis_callback</span><span class="p">,</span>
                          <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the analysis plots based on the provided data.</span>
@@ -3247,8 +3247,7 @@ The layout attribute is initialized as a panel Column layout containing the tabs
 <span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates the signal plots based on the provided data.</span>
 
@@ -3266,7 +3265,6 @@ The layout attribute is initialized as a panel Column layout containing the tabs
     <span class="k">if</span> <span class="n">channels</span><span class="p">:</span>
         <span class="n">signal_process_callback</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="n">show_grid</span><span class="p">)</span>
         <span class="n">plot</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">signal_process_callback</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="p">,</span> <span class="n">data_callback</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">overlap</span><span class="p">,</span>
                         <span class="n">color_picker_value</span><span class="p">,</span> <span class="n">stretch_value</span><span class="p">,</span> <span class="n">show_grid</span><span class="p">,</span><span class="n">x_log</span><span class="p">,</span><span class="n">y_log</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 

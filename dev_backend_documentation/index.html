@@ -1925,15 +1925,16 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_abtastrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_abtastrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_abtastrate returns the sample_freq from the current .h5 file via Acoular</span>
 
@@ -1941,6 +1942,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 <span class="sd">        abtasterate (int): Sample Frequency</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">abtastrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">sample_freq</span>
+
     <span class="k">return</span> <span class="n">abtastrate</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1988,16 +1990,16 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">140</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
 <span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_channel_count returns the number of channels of the current .h5 file</span>
 
@@ -2053,24 +2055,24 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_channel_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_channel_size returns the size of the current channel</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        size (int): Channel size</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#size = np.array(self.source)[:, self.current_channel].shape[0]</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">converted_file</span><span class="p">)[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_channel</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
     <span class="k">return</span> <span class="n">size</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2118,7 +2120,8 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">160</span>
+<span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
@@ -2128,9 +2131,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_table_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_table_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get_table_names returns a list of all data set keyword contained in the current .h5 File</span>
 
@@ -2140,7 +2141,6 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
     <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="c1"># Zugriff auf den gewünschten Datensatz</span>
         <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
 
     <span class="k">return</span> <span class="n">keys</span>
 </code></pre></div></td></tr></table></div>
@@ -2385,14 +2385,14 @@ saving the data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">102</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
+<span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_current_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_current_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_current_channel sets the attribute current_channel by taking a channel.</span>
 
@@ -2453,7 +2453,8 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
+<span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -2467,9 +2468,7 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_data_block_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+<span class="normal">125</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_data_block_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_data_block_to_idx sets the attribute selected_data_block by selecting a specific element of</span>
 <span class="sd">    the generator from Acoular and saving this data blocks in a Numpy Array.</span>
@@ -2483,7 +2482,6 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
         <span class="k">if</span> <span class="n">idx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">selected_data_block</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_result</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;previous&#39;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End of file reached&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2510,21 +2508,19 @@ the generator from Acoular and saving this data blocks in a Numpy Array.</p>
 
             <details class="quote">
               <summary>Source code in <code>src/fft_analysator/analysis/preprocessing.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_next_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_next_data_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set_next_data_block sets the attribute selected_data_block by selecting the next element of</span>
 <span class="sd">    the generator from Acoular and saving this data blocks in a Numpy Array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">current_block_idx</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">selected_data_block</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_result</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3335,7 +3331,8 @@ given signals.</p>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
-<span class="normal">343</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">343</span>
+<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The correlation function calculates the correlation response between the two given signals.</span>
 
@@ -3361,6 +3358,7 @@ given signals.</p>
             <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">csm_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="n">N</span><span class="p">))</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span> <span class="o">=</span> <span class="n">corr</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">corr</span><span class="p">))</span> <span class="c1"># normalize the correlation to max_value</span>
+
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -4940,11 +4938,11 @@ and Gxx is the Power Spectral Density of signal x.</p>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Auto Power Spectrum - Output&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">:</span>
-            <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{dB}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>       
+            <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{dB}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
                 <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>           
+                <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{Pa}</span><span class="s1">^</span><span class="si">{2}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
@@ -4956,11 +4954,11 @@ and Gxx is the Power Spectral Density of signal x.</p>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Cross Power Spectrum&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">:</span>
-            <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{dB}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>       
+            <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{dB}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
                 <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>           
+                <span class="n">csm_value</span> <span class="o">=</span> <span class="n">csm_dB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">y_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PSD in $$\mathrm</span><span class="si">{Pa}</span><span class="s1">^</span><span class="si">{2}</span><span class="s1">/\mathrm</span><span class="si">{Hz}</span><span class="s1">$$&#39;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channel</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channel</span><span class="p">:</span>
