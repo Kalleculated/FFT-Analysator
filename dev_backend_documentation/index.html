@@ -1600,11 +1600,11 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.file_paths">file_paths</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a> or path</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A String or Path to import.</p>
+                <p>A Path to import.</p>
               </div>
             </td>
           </tr>
@@ -1633,7 +1633,7 @@ sample frequency. It is able to return the complete data as a Numpy array or ite
           <tr class="doc-section-item">
             <td><code><span title="fft_analysator.analysis.preprocessing.Preprocess.source">source</span></code></td>
             <td>
-                  <code><span title="Acoular.TimeSamples">TimeSamples</span></code>
+                  <code>TimeSamples</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2592,26 +2592,218 @@ It is initialized by a required the file_path, a window option for the Fourier t
 and an Overlap percentage. Possible signal processing are CSM calculation (Cross Spectral Matrix), coherence between
 two signals, frequency and impulse response between input and output data and cross/auto correlation between two
 given signals.</p>
-<pre><code>Attributes:
-file_path (string or path): A String or Path to import.
-window (string): Window name for the FFT
-block_size (int): Block size for processing.
-overlap (string): Overlap percentage
-channels (list): List of channels
-current_data (Numpy Array): Current Data for the Signal tab
-impulse_response_data (Numpy Array): Data for the Impulse response
-amplitude_response_data (Numpy Array): Data for the Amplitude response
-phase_response_data (Numpy Array): Data for the Phase
-data_callback (object):
-p0 (int): Is equal to 20*10**-6. Auditory threshold
-source (Acoular MaskedTimeSamples): MaskedTimeSamples class to filter out channles
-abtastrate (int): Sample frequency
-numchannels_total (int): Total numbers of channels
-invalid_channel_list (list): Invalid channel list
-powerspectra (Acoular Powerspectra): Acoular Powerspectra class for calculation
-input_channel (int): Input channel
-output_channel (int): Output channel
-</code></pre>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.file_path">file_path</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A Path to import.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.window">window</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Window name for the FFT</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.block_size">block_size</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Block size for processing.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.overlap">overlap</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/string.html#module-string">string</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Overlap percentage</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.channels">channels</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of channels</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.current_data">current_data</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Current Data for the Signal tab</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.impulse_response_data">impulse_response_data</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Data for the Impulse response</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.amplitude_response_data">amplitude_response_data</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Data for the Amplitude response</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.phase_response_data">phase_response_data</span></code></td>
+            <td>
+                  <code>Numpy Array</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Data for the Phase</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.data_callback">data_callback</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#object">object</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.p0">p0</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Is equal to 20<em>10</em>*-6. Auditory threshold</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.source">source</span></code></td>
+            <td>
+                  <code>MaskedTimeSamples</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MaskedTimeSamples class to filter out channles</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.abtastrate">abtastrate</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sample frequency</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.numchannels_total">numchannels_total</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Total numbers of channels</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.invalid_channel_list">invalid_channel_list</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Invalid channel list</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.powerspectra">powerspectra</span></code></td>
+            <td>
+                  <code>PowerSpectra</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Acoular Powerspectra class for calculation</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.input_channel">input_channel</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input channel</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="fft_analysator.analysis.signal_processing.Signal_Process.output_channel">output_channel</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output channel</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 <p><span class="doc-section-title">Methods:</span></p>
