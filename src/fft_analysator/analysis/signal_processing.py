@@ -12,15 +12,15 @@ class Signal_Process:
 
 
     Attributes:
-        file_path (string): A Path to import.
-        window (string): Window name for the FFT
+        file_path (str): A Path to import.
+        window (str): Window name for the FFT
         block_size (int): Block size for processing.
-        overlap (string): Overlap percentage
+        overlap (str): Overlap percentage
         channels (list): List of channels
-        current_data (Numpy Array): Current Data for the Signal tab
-        impulse_response_data (Numpy Array): Data for the Impulse response
-        amplitude_response_data (Numpy Array): Data for the Amplitude response
-        phase_response_data (Numpy Array): Data for the Phase
+        current_data (np.array): Current Data for the Signal tab
+        impulse_response_data (np.array): Data for the Impulse response
+        amplitude_response_data (np.array): Data for the Amplitude response
+        phase_response_data (np.array): Data for the Phase
         data_callback (object):
         p0 (int): Is equal to 20*10**-6. Auditory threshold
         source (MaskedTimeSamples): MaskedTimeSamples class to filter out channles
@@ -33,7 +33,7 @@ class Signal_Process:
 
 
     Methods:
-        set_parameters(int, str, str): Sets Parameters
+        set_parameters(list, str, str): Sets Parameters
         invalid_channels(list): Filters all invalid channels
         create_time_axis(int): Creates time axis
         create_frequency_axis(): Creates frequncy axis
@@ -53,10 +53,10 @@ class Signal_Process:
 
 
         Args:
-            file_path (object): Get the callback to the data object
-            window (string): window function for the fourier transformation: Allowed options: 'Rectangular', 'Hanning', 'Hamming', 'Bartlett', 'Blackman'
+            file_path (str): Get the callback to the data object
+            window (str): window function for the fourier transformation: Allowed options: 'Rectangular', 'Hanning', 'Hamming', 'Bartlett', 'Blackman'
             block_size (int): Length of data block. Allowed values: 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
-            overlap (string): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None', '50%', '75%', '87.5%'
+            overlap (str): Overlap percentage between two blocks for the Welch-Method. Allowed options: 'None', '50%', '75%', '87.5%'
         """
         self.file_path = file_path
         self.window = window
@@ -87,6 +87,15 @@ class Signal_Process:
                     self.output_channel = self.channels[1]
 
     def set_parameters(self, channels, window, overlap):
+        """
+        The set_parameters function sets parameters
+
+        Args:
+            channels (list): New selected channels
+            window (str): New window function
+            overlap (str): New Overlap percentage
+        """
+
         if channels:
             self.channels = channels
 
@@ -186,7 +195,7 @@ class Signal_Process:
         Cross spectral density between signal1 and signal2.
 
         Args:
-            csm_dB (Boolean): Return the array in dB values.
+            csm_dB (bool): Return the array in dB values.
 
         Returns:
             current_data (np.array): The Cross Spectral Matrix
@@ -229,7 +238,7 @@ class Signal_Process:
         and Gxx is the Power Spectral Density of signal x.
 
         Args:
-            frq_rsp_dB (boolean): Return the array in dB values.
+            frq_rsp_dB (bool): Return the array in dB values.
 
         Returns:
             amplitude_response_data (np.array): The frequency response
@@ -259,7 +268,7 @@ class Signal_Process:
         and Gxx is the Power Spectral Density of signal x.
 
         Args:
-            deg (boolean): Return the array in degrees
+            deg (bool): Return the array in degrees
 
         Returns:
             phase_response_data (np.array): The phase response
@@ -284,7 +293,7 @@ class Signal_Process:
         and Gxx is the Power Spectral Density of signal x.
 
         Args:
-            imp_dB (boolean): Return the array in dB values.
+            imp_dB (bool): Return the array in dB values.
         Returns:
             impulse_response_data (np.array): The impulse response
         """
@@ -319,7 +328,7 @@ class Signal_Process:
         The correlation function calculates the correlation response between the two given signals.
 
         Args:
-            type (string): Determines if an auto or cross correlation is being calculated. Allowed options: 'xx', 'yy', 'xy'
+            type (str): Determines if an auto or cross correlation is being calculated. Allowed options: 'xx', 'yy', 'xy'
         Returns:
             current_data (np.array): The correlation data
         """

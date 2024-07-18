@@ -10,14 +10,14 @@ class Preprocess:
     sample frequency. It is able to return the complete data as a Numpy array or iterate over the defined block size.
 
     Attributes:
-        file_paths (string): A Path to import.
+        file_paths (str): A Path to import.
         block_size (int): Block size for processing.
-        table_key (string): Table key names.
+        table_key (str): Table key names.
         source (TimeSamples): Acoular TimeSamples class.
         source_result (generator): Generator of the current block result.
-        selected_data_block (Numpy Array): Selected data block.
+        selected_data_block (np.array): Selected data block.
         current_block_idx (int): Index of the current data block.
-        selected_channel_data (Numpy Array): All data of selected channel.
+        selected_channel_data (np.array): All data of selected channel.
 
 
     Methods:
@@ -86,7 +86,7 @@ class Preprocess:
         Args:
             channel (int): Channel number.
         Returns:
-            Numpy Array
+            np.array
         """
         return self.selected_data_block[:, channel]
 
