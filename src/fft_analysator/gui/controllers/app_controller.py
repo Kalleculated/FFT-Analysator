@@ -89,7 +89,7 @@ class AppController:
         # Handle the file upload event and update the preprocessing object
         self.file_paths = self.sidebar.accordion.file_input.file_paths
 
-        if self.preprocessing:
+        if self.preprocessing and self.file_paths:
             self.preprocessing = pp.Preprocess(self.file_paths, self.sidebar.accordion.blocksize_selector.component.value)
             self.signal_process = Signal_Process(channels=[], file_path=self.file_paths,
                                                 block_size=self.sidebar.accordion.blocksize_selector.component.value,
